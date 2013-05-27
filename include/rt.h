@@ -166,6 +166,20 @@ typedef struct	s_resource
 /* double	*matrice_rot(double a, double x, double y, double z); */
 /* t_ptn	*mul_matrice(double *matrice, t_ptn *ptn); */
 
+// SRC                                                                                                                                                                                              
+// my_put.c                                                                                                                                                                                                         
+int             my_strlen(char *);
+void            my_putchar(char, int);
+void            my_putstr(char *, int);
+
+// MLX                                                                                                                                                                                              
+// wind.c                                                                                                                                                                                                           
+void            rt_main_mlx(t_rs *);
+
+//my_pixel_put_to_image.c  
+
+void		my_pixel_put_to_image(t_img *, int, int, unsigned int);
+
 double	*creat_matrice();
 double	*matrice_translat(double x, double y, double z);
 double	*matrice_homo(double x, double y, double z);
