@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 00:00:01 2013 karina martynava
+** Last update Tue May 28 00:10:24 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -13,7 +13,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "rt.h"
-
 
 #define	SIZE_LARG	500;
 #define	SIZE_LONG	500;

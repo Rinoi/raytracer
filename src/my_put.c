@@ -5,12 +5,12 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue Feb 19 21:47:47 2013 lucas mayol
-** Last update Mon May 27 23:27:39 2013 lucas mayol
+** Last update Tue May 28 00:12:09 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "rtv1.h"
+#include "rt.h"
 
 int	my_strlen(char *str)
 {

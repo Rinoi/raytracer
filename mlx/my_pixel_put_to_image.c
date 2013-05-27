@@ -5,10 +5,10 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Mon May  6 13:51:56 2013 lucas mayol
-** Last update Mon May  6 13:51:58 2013 lucas mayol
+** Last update Tue May 28 00:14:14 2013 karina martynava
 */
 
-#include "../include/rtv1.h"
+#include "rt.h"
 
 void		my_pixel_put_to_image(t_img *img, int x, int y, unsigned int color)
 {

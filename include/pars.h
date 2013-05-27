@@ -5,13 +5,13 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue Feb 19 22:42:11 2013 lucas mayol
-** Last update Mon May 27 23:09:58 2013 karina martynava
+** Last update Tue May 28 00:09:57 2013 karina martynava
 */
 
 #ifndef _PAR_XML_
 #define _PAR_XML_
 
-# include "rtv1.h"
+# include "rt.h"
 
 # define SCENE		"scene"
 # define SPHERE		"sphere"
