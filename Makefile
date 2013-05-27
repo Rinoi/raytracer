@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Mon May 27 23:38:24 2013 karina martynava
+## Last update Tue May 28 01:17:53 2013 louis martin-pierrat
 ##
 
 CC	=	gcc
@@ -20,7 +20,7 @@ NAME	=	rt
 
 RM	=	rm -f
 
-INC	=	-Iinclude
+INC	=	-I./include
 
 SRCS	=	src/main.c \
 		src/my_put.c \
