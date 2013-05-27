@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Mon May 27 23:26:01 2013 karina martynava
+## Last update Mon May 27 23:38:24 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -23,7 +23,9 @@ RM	=	rm -f
 INC	=	-Iinclude
 
 SRCS	=	src/main.c \
-		mlx/my_pixel_put_to_image.c
+		src/my_put.c \
+		mlx/my_pixel_put_to_image.c \
+		mlx/wind.c
 
 OBJS	=	$(SRCS:.c=.o)
 

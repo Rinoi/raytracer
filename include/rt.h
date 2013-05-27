@@ -121,7 +121,7 @@ typedef struct	s_resource
   t_lux		*lux;
   //  t_env		*bckground;
   void		*aff;
-  void		*inter_search;
+  void		*send_rayon;
   t_wind	wind;
   t_kdtree	*tree;
   t_pov		*eyes;
