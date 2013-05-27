@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 00:10:24 2013 karina martynava
+** Last update Tue May 28 00:30:06 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -37,7 +37,6 @@ int	init_rs(t_rs *rs)
   rs->eyes->lng = SIZE_LONG;
   return (EXIT_SUCCESS);
 }
-
 
 int	main(int argc, __attribute__((unused))char **argv)
 {

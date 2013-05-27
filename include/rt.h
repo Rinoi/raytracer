@@ -16,8 +16,9 @@
 # include "mlx.h"
 # include "kdtree.h"
 
-# define RAD(x) (M_PI * (x) / 180)
-# define NOTINIT 0xFFFFFFFF
+# define RAD(x)		(M_PI * (x) / 180)
+# define NOTINIT	0xFFFFFFFF
+# define EPSILLON	0.00001
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
