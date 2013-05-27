@@ -120,6 +120,8 @@ typedef struct	s_resource
   t_obj		*obj_inf;
   t_lux		*lux;
   //  t_env		*bckground;
+  void		*aff;
+  void		*inter_search;
   t_wind	wind;
   t_kdtree	*tree;
   t_pov		*eyes;

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Mon May 27 23:21:36 2013 karina martynava
+** Last update Mon May 27 23:26:26 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -14,10 +14,10 @@
 #include <stdlib.h>
 #include "rtv1.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, __attribute__((unused))char **argv)
 {
-  int	fd;
-  t_rs	rs;
+  /* int	fd; */
+  /* t_rs	rs; */
 
   if (argc == 2)
     {
