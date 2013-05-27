@@ -5,10 +5,11 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Fri May 24 13:36:37 2013 lucas mayol
+** Last update Mon May 27 18:18:55 2013 lucas mayol
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "../include/rtv1.h"
 
 static void    	my_cpy_tmp(t_ptn *tmp, t_ptn *ptn)

@@ -5,10 +5,11 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Mon May  6 12:59:28 2013 lucas mayol
-** Last update Mon May 27 11:46:21 2013 lucas mayol
+** Last update Mon May 27 18:18:19 2013 lucas mayol
 */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "mlx.h"
 #include "../include/rtv1.h"
 

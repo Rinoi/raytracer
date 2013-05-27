@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 14 23:41:41 2013 lucas mayol
-** Last update Sat May 18 02:48:41 2013 lucas mayol
+** Last update Mon May 27 18:20:47 2013 lucas mayol
 */
 
 #include <values.h>
@@ -35,7 +35,6 @@ t_inter		*check_obj_in_tree(t_l_obj *obj, t_st *droit)
   t_ptn		*tmp;
   t_l_obj	*cp;
   t_inter	*my_return;
-  int		i;
 
   if ((my_return = malloc(sizeof(t_inter))) == NULL)
     exit(EXIT_FAILURE);
@@ -107,7 +106,7 @@ t_inter		*my_send_rayon_rec(t_kdtree *tree, t_st *droite, int a)
   t_inter       *my_return;
   t_inter       *my_return2;
   double	r1;
-  double	r2;
+  //  double	r2;
 
   if (tree == NULL)
     return (NULL);
@@ -120,7 +119,7 @@ t_inter		*my_send_rayon_rec(t_kdtree *tree, t_st *droite, int a)
   else
     my_return = my_send_rayon_rec(tree->t_r, droite, MAX_ITERATION - 1);
   r1 = find_inter_plan_dr(&tree->plan, droite);
-  r2 = find_inter_plan_dr(&tree->t_p->plan, droite);
+  //  r2 = find_inter_plan_dr(&tree->t_p->plan, droite);
   if (r1 != MAXDOUBLE)
     {
       if (i <= 0)
@@ -225,7 +224,6 @@ t_inter		*my_send_rayon_act_kdtree(t_rs *rs, t_st *droite)
 {
   int           i;
   t_inter       *my_return;
-  double	r1;
   
   if (my_place_c_kd(rs->tree, droite) == -1)
     return (NULL);
