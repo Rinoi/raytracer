@@ -1,0 +1,49 @@
+<scene>
+  <obj>
+    <sphere>
+      <cord>
+	<x>0.5</x>
+	<y>-5</y>
+	<z>0</z>
+      </cord>
+      <data>
+	<rayon> 5 </rayon>
+      </data>
+      <ref>0</ref>
+      <color>16578305</color>
+    </sphere>
+    <sphere>
+      <cord>
+	<x>0.5</x>
+	<y>5</y>
+	<z>0</z>
+      </cord>
+      <data>
+	<rayon> 5 </rayon>
+      </data>
+      <ref>0</ref>
+      <color>12128795</color>
+    </sphere>
+    <sphere>
+      <cord>
+	<x>0.5</x>
+	<y>0</y>
+	<z>7</z>
+      </cord>
+      <data>
+	<rayon> 5 </rayon>
+      </data>
+      <ref>0</ref>
+      <color>16579297</color>
+    </sphere>
+  </obj>
+  <lumiere>
+    <new name="lumier 1">
+      <cord>
+        <x>-50</x>
+        <y>0</y>
+        <z>2</z>
+      </cord>
+    </new>
+  </lumiere>
+</scene>

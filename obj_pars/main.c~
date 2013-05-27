@@ -1,0 +1,168 @@
+/*
+** main.c for rt in /home/martyn_k//svn/Raytracer
+** 
+** Made by karina martynava
+** Login   <martyn_k@epitech.net>
+** 
+** Started on  Sat May 11 18:19:53 2013 karina martynava
+** Last update Sun May 12 00:08:21 2013 karina martynava
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "pars.h"
+#include "get_next_line.h"
+#include "obj_pars.h"
+#include "rtv1.h"
+
+typedef struct s_obj_pars_cmd
+{
+  char	*str;
+  void	(*ptr)(t_ext *, t_vr **, char **);
+} t_obj_cmd;
+
+void	add_point(t_ext *ex, t_vr **vr, char **tab);
+
+const t_obj_cmd	g_cmd[]=
+  {
+    {"v", add_point},
+    {"f", NULL},
+    {"#", NULL}
+  };
+
+char	**wrd_tab(char *str, char c);
+
+void	add_point(t_ext *ex, t_vr **vr, char **tab)
+{
+  t_vr	*new;
+  int	i;
+  int	bol;
+
+  i = 0;
+  if (*vr == NULL || (*vr)->i == 99)
+    {
+      new = malloc(sizeof(*new));
+      if (new == NULL)
+	return ;
+      new->i = 0;
+      new->total = (*vr == NULL) ? 0 : (*vr)->total + 99;
+      new->prv = *vr;
+      new->nxt = NULL;
+      if (*vr != NULL)
+	(*vr)->nxt = new;
+      *vr = new;
+    }
+  bol = 1;
+  while (i < 3)
+    {
+      if (bol && tab[i + 1] == NULL)
+	bol = 0;
+      (*vr)->ptn[((*vr)->i)][i] = (bol) ? my_getfloat(tab[i+ 1]) : 0;
+-      i++;
+    }
+  (*vr)->i += 1;
+  usleep(2154);
+}
+
+float	get_cord_face(t_vr **vr, char *str)
+{
+  int	nb;
+
+  nb = my_getnbr(str);
+  if (nb <= 0 || (*vr) == NULL)
+    return (0);
+  printf("IS THIS WORKING (%d) %d - %d ?\n", nb, (*vr)->total, (*vr)->total + 99);
+  while (nb <= (*vr)->total || nb - 1 >= (*vr)->total + 99)
+    {
+      if (nb - 1 <= (*vr)->total)
+	{
+	  if ((*vr)->prv == NULL)
+	    return (0);
+	  *vr = (*vr)->prv;
+	}
+      else
+	{
+	  if ((*vr)->nxt == NULL)
+	    return (0);
+	  *vr = (*vr)->nxt;
+	}
+      printf("%d vr->total < %d < vr->total + 99 %d\n", (*vr)->total, nb, (*vr)->total + 99);
+    }
+  printf("%d vr->total < %d < vr->total + 99 %d\n", (*vr)->total, nb, (*vr)->total + 99);
+  return (1.0);
+}
+
+void		add_face(t_ext *ex, t_vr **vr, char **tab, t_obj **list)
+{
+  t_obj		*elem;
+  int		bol;
+
+  bol = 1;
+  if ((elem = malloc(sizeof(t_obj))) == NULL)
+    return ;
+  elem->ref = 0;
+  elem->color = ex->obj.color;
+  elem->ref = ex->obj.ref;
+  if (bol && tab != NULL && tab[0])
+    elem->ptn.x = ex->obj.ptn.x + get_cord_face(vr, tab[0]);
+  else
+    bol = 0;
+  if (bol && tab != NULL && tab[0])
+    elem->ptn.y = ex->obj.ptn.y + get_cord_face(vr, tab[1]);
+  else
+    bol = 0;
+  if (bol && tab != NULL && tab[0])
+    elem->ptn.z = ex->obj.ptn.z + get_cord_face(vr, tab[2]);
+  elem->next = *list;
+  //  elem->prev = NULL;
+  *list = elem;
+}
+
+void	pars(t_ext *ext, t_obj **list)
+{
+  int	i;
+  int	j;
+  char	*str;
+  char	**tab;
+  t_vr	*vr;
+
+  vr = NULL;
+  str = NULL;
+  while ((str = get_next_line(ext->fd)) != NULL)
+    {
+      tab = wrd_tab(str, ' ');
+      if (tab != NULL && my_strcmp(g_cmd[0].str, tab[0]))
+	(g_cmd[0].ptr)(ext, &vr, tab);
+      else if (tab != NULL && my_strcmp(g_cmd[1].str, tab[0]))
+	add_face(ext, &vr, tab, list);
+      i = 0;
+      while (tab != NULL && tab[i] != NULL)
+	free(tab[i++]);
+      free(tab);
+      free(str);
+    }
+}
+
+int	main(int ac, char **av)
+{
+  t_ext	ext;
+  t_obj	*list;
+
+  list = NULL;
+  ext.obj.ptn.x = 0;
+  ext.obj.ptn.y = 0;
+  ext.obj.ptn.z = 0;
+  ext.obj.rot.x = 0;
+  ext.obj.rot.y = 0;
+  ext.obj.rot.z = 0;
+  if (ac > 1)
+    {
+      if ((ext.fd = open(av[1], O_RDONLY)) == -1)
+	return (EXIT_FAILURE);
+      pars(&ext, &list);
+    }
+  return (EXIT_SUCCESS);
+}

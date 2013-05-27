@@ -1,0 +1,11 @@
+/*
+** call_norm.c for RT in /home/mayol_l//git/Raytracer
+** 
+** Made by lucas mayol
+** Login   <mayol_l@epitech.net>
+** 
+** Started on  Mon May 13 21:39:06 2013 lucas mayol
+** Last update Mon May 13 21:39:24 2013 lucas mayol
+*/
+
+t_ptn   *cal_norm_shere(t_obj *obj, t_ptn *ptn);

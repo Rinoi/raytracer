@@ -1,0 +1,18 @@
+/*
+** call_norm.c for RT in /home/mayol_l//git/RayTracer
+** 
+** Made by lucas mayol
+** Login   <mayol_l@epitech.net>
+** 
+** Started on  Sat May 11 21:26:55 2013 lucas mayol
+** Last update Sat May 11 21:28:37 2013 lucas mayol
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "../include/rtv1.h"
+
+t_ptn	*cal_norm_triangle();
+{
+
+}
