@@ -5,13 +5,16 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Mon May 27 23:33:49 2013 karina martynava
+** Last update Tue May 28 00:07:43 2013 karina martynava
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "mlx.h"
-#include "rtv1.h"
+#include "rt.h"
+
+
+#define	ESC_CODE	65307
 
 void	rtv1_ini(t_rs *rs)
 {
@@ -25,6 +28,16 @@ void	rtv1_ini(t_rs *rs)
   rs->wind.img.img = mlx_get_data_addr(rs->wind.img.img_ptr,
 				       &(rs->wind.img.bpp),
 				       &(rs->wind.img.sizeline), &(rs->wind.img.endian));
+}
+
+int	my_keybrd(int keycode, t_rs *rs)
+{
+  if (keycode == ESC_CODE)
+    {
+      mlx_destroy_window(rs->wind.mlx_ptr, rs->wind.wind_ptr);
+      exit(EXIT_FAILURE);
+    }
+  return (0);
 }
 
 int	my_expose(t_rs *rs)
@@ -44,12 +57,13 @@ void	rt_main_mlx(t_rs *rs)
   /* send_rayon_main(rs); */
   mlx_put_image_to_window(rs->wind.mlx_ptr, rs->wind.wind_ptr,
 			  rs->wind.img.img_ptr, 0, 0);
-  mlx_expose_hook(rs->wind.wind_ptr, my_expose, rs);
   mlx_loop_hook(rs->wind.wind_ptr, my_expose, rs);
+  mlx_expose_hook(rs->wind.wind_ptr, my_expose, rs);
+  mlx_key_hook(rs->wind.wind_ptr, my_keybrd, rs);
+  mlx_loop(rs->wind.mlx_ptr);
   while (42)
     {
       usleep(10000);
       my_expose(rs);
     }
-  mlx_loop(rs->wind.mlx_ptr);
 }

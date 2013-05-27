@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Mon May 27 23:58:42 2013 karina martynava
+** Last update Tue May 28 00:00:01 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -55,7 +55,7 @@ int	main(int argc, __attribute__((unused))char **argv)
       init_rs(&rs);
       /* my_take_data_for_rs(&rs, fd); */
       /* rs.tree = creat_tree(rs.obj); */
-      /* rt_main(&rs); */
+      rt_main_mlx(&rs);
     }
   else
     {
