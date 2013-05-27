@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Tue May 28 00:07:43 2013 karina martynava
+** Last update Tue May 28 01:50:03 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -16,11 +16,11 @@
 
 #define	ESC_CODE	65307
 
-void	rtv1_ini(t_rs *rs)
+int	rtv1_ini(t_rs *rs)
 {
   rs->wind.mlx_ptr = mlx_init();
   if (rs->wind.mlx_ptr == NULL)
-    exit(EXIT_FAILURE);
+    return (EXIT_FAILURE);
   rs->wind.wind_ptr = mlx_new_window(rs->wind.mlx_ptr,
 				     1000, 1000, "RT");
   rs->wind.img.img_ptr = mlx_new_image(rs->wind.mlx_ptr,
@@ -28,6 +28,7 @@ void	rtv1_ini(t_rs *rs)
   rs->wind.img.img = mlx_get_data_addr(rs->wind.img.img_ptr,
 				       &(rs->wind.img.bpp),
 				       &(rs->wind.img.sizeline), &(rs->wind.img.endian));
+  return (EXIT_SUCCESS);
 }
 
 int	my_keybrd(int keycode, t_rs *rs)
@@ -49,7 +50,11 @@ int	my_expose(t_rs *rs)
 
 void	rt_main_mlx(t_rs *rs)
 {
-  rtv1_ini(rs);
+  if (rtv1_ini(rs) == EXIT_FAILURE)
+    {
+      my_putstr("Mlx error\n", 2);
+      exit(EXIT_FAILURE);
+    }
   rs->eyes->cam.x = -14;
   rs->eyes->cam.y = 0;
   rs->eyes->cam.z = 0;

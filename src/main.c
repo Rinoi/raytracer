@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 00:30:06 2013 karina martynava
+** Last update Tue May 28 01:49:32 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -19,6 +19,8 @@
 
 int	init_rs(t_rs *rs)
 {
+  float	*r;
+
   rs->aff = NULL;
   rs->send_rayon = NULL;
   rs->eyes = malloc(sizeof(*(rs->eyes)));
@@ -35,6 +37,21 @@ int	init_rs(t_rs *rs)
   rs->eyes->rot.z = 0;
   rs->eyes->larg = SIZE_LARG;
   rs->eyes->lng = SIZE_LONG;
+  
+  if ((rs->obj_inf = malloc(sizeof(*(rs->obj_inf)))) == NULL)
+    return (EXIT_FAILURE);
+  rs->obj_inf->next = NULL;
+  rs->obj_inf->ptn.x = 0;
+  rs->obj_inf->ptn.y = 0;
+  rs->obj_inf->ptn.z = 0;
+  rs->obj_inf->rot.x = 0;
+  rs->obj_inf->rot.y = 0;
+  rs->obj_inf->rot.z = 0;
+  rs->obj_inf->mat = NULL;
+  rs->obj_inf->matrix = NULL;
+  r = malloc(sizeof(float));
+  *r = 5;
+  rs->obj_inf->data = (void *)r;
   return (EXIT_SUCCESS);
 }
 
@@ -50,7 +67,8 @@ int	main(int argc, __attribute__((unused))char **argv)
       	  my_putstr("open error\n", 2);
       	  return (EXIT_FAILURE);
       	}
-      init_rs(&rs);
+      if (init_rs(&rs) == EXIT_FAILURE)
+	return (EXIT_FAILURE);
       /* my_take_data_for_rs(&rs, fd); */
       /* rs.tree = creat_tree(rs.obj); */
       rt_main_mlx(&rs);
