@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue May 28 06:42:09 2013 karina martynava
+** Last update Tue May 28 08:07:28 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -75,7 +75,6 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
 	      col[1] = col[1] + coef * sv->green * 0.5;
 	      col[2] = col[2] + coef * sv->blue * 0.5;
 	    }
-	  printf("%f\n", coef);
 	}
       sv = sv->next;
     }
