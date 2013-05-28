@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Apr 11 13:52:32 2013 lucas mayol
-** Last update Tue May 28 06:16:02 2013 lucas mayol
+** Last update Tue May 28 06:59:05 2013 lucas mayol
 */
 
 #include	<stdlib.h>
@@ -48,8 +48,24 @@ double		*creat_matrice()
 void		creat_matrice_for_obj(t_obj *obj)
 {
   double	*matrice;
+  double	*matrice2;
+  double	*m;
 
-  if ((obj->matrix = matrice_translat(obj->ptn.x, obj->ptn.y, obj->ptn.z))
-      == NULL)
+  if ((obj->matrix = matrice_rot_x(obj->rot.x)) == NULL)
     return ;
+
+  matrice = matrice_rot_y(obj->rot.y);
+  m = matrice;
+
+  matrice2 = mul_matrice(matrice, obj->matrix);
+  free(obj->matrix);
+  obj->matrix = matrice2;
+  free(matrice);
+
+  matrice = matrice_rot_z(obj->rot.z);
+  matrice2 = mul_matrice(matrice, obj->matrix);
+  free(obj->matrix);
+  obj->matrix = matrice2;
+  free(matrice);
 }
+    

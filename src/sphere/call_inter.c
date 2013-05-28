@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 06:19:52 2013 lucas mayol
+** Last update Tue May 28 06:27:07 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -19,6 +19,9 @@ t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
   float		c;
   int		x;
   
+  dr.cord.x -= obj->ptn.x;
+  dr.cord.y -= obj->ptn.y;
+  dr.cord.z -= obj->ptn.z;
   if ((inter = malloc(sizeof(t_inter))) == NULL)
     return (NULL);
   a = pow(dr.vec.x, 2) + pow(dr.vec.y, 2) + pow(dr.vec.z, 2);

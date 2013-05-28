@@ -73,7 +73,7 @@ typedef	struct	s_obj
   void		*data;
   //  int		id;
   t_mat		*mat;
-  float		*matrix;
+  double       	*matrix;
   t_box		box;
   t_inter      	*(*cal_inter)(struct s_obj *obj, t_st dr);
   float		(*cal_lux_cos)(struct s_obj *obj, t_ptn *ptn, t_lux *lux);
