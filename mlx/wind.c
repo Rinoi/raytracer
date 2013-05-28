@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Tue May 28 02:45:05 2013 lucas mayol
+** Last update Tue May 28 04:40:39 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -49,13 +49,14 @@ int	my_expose(t_rs *rs)
   return (0);
 }
 
+
+#include <stdio.h>
+
 void	rt_main_mlx(t_rs *rs)
 {
   rtv1_ini(rs);
-  rs->eyes->cam.x = -14;
-  rs->eyes->cam.y = 0;
-  rs->eyes->cam.z = 0;
   /* ini_texture(rs); */
+  printf("MLX %f, %f, %f\n", rs->eyes->cam.x, rs->eyes->cam.y, rs->eyes->cam.z);
   send_rayon_main(rs);
   mlx_put_image_to_window(rs->wind.mlx_ptr, rs->wind.wind_ptr,
 			  rs->wind.img.img_ptr, 0, 0);

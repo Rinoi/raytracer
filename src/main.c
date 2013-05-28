@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 04:05:15 2013 lucas mayol
+** Last update Tue May 28 04:45:41 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -15,7 +15,7 @@
 #include "rt.h"
 
 #define	SIZE_LARG	500;
-#define	SIZE_LONG	500;
+#define	SIZE_LONG	700;
 
 int	init_rs(t_rs *rs)
 {
@@ -29,9 +29,9 @@ int	init_rs(t_rs *rs)
   rs->obj_inf = NULL;
   rs->obj = NULL;
   rs->tree = NULL;
-  rs->eyes->cam.x = 0;
+  rs->eyes->cam.x = -20;
   rs->eyes->cam.y = 0;
-  rs->eyes->cam.z = -50;
+  rs->eyes->cam.z = 0;
   rs->eyes->rot.x = 0;
   rs->eyes->rot.y = 0;
   rs->eyes->rot.z = 0;
@@ -56,6 +56,9 @@ int	init_rs(t_rs *rs)
   return (EXIT_SUCCESS);
 }
 
+
+#include <stdio.h>
+
 int	main(int argc, __attribute__((unused))char **argv)
 {
   int	fd;
@@ -70,6 +73,7 @@ int	main(int argc, __attribute__((unused))char **argv)
       	}
       if (init_rs(&rs) == EXIT_FAILURE)
 	return (EXIT_FAILURE);
+      printf("MLX %f, %f, %f\n", rs.eyes->cam.x, rs.eyes->cam.y, rs.eyes->cam.z);
       /* my_take_data_for_rs(&rs, fd); */
       /* rs.tree = creat_tree(rs.obj); */
       rt_main_mlx(&rs);

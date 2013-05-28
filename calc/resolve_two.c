@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 01:58:44 2013 karina martynava
-** Last update Tue May 28 03:27:36 2013 karina martynava
+** Last update Tue May 28 04:28:23 2013 karina martynava
 */
 
 #include <math.h>
@@ -34,7 +34,7 @@ float	resolve_two(float a, float b, float c, int *x)
 	  *x = 0;
 	  return (one);
 	}
-      *x  =(one < two) ? 0 : 1;
+      *x = (one < two) ? 0 : 1;
       return ((one < two) ? one : two);
     }
   return (-1.0f);

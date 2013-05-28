@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Tue May 28 04:15:49 2013 lucas mayol
+** Last update Tue May 28 04:45:01 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -63,15 +63,15 @@ void	*send_rayon_main_act(void *data)
   droit.cord.x = ((t_data_t *)(data))->rs->eyes->cam.x;
   droit.cord.y = ((t_data_t *)(data))->rs->eyes->cam.y;
   droit.cord.z = ((t_data_t *)(data))->rs->eyes->cam.z;
-  printf("%f, %f, %f\n", droit.cord.x, droit.cord.y, droit.cord.z);
-  droit.vec.x = 500;
+  printf("HERE %f, %f, %f\n", droit.cord.x, droit.cord.y, droit.cord.z);
+  droit.vec.x = ((t_data_t *)(data))->rs->eyes->larg / 2;
   while (droit.y <= ((t_data_t *)(data))->max)
     {
       droit.x = 0;
-      while (droit.x <= 1000)
+      while (droit.x <= ((t_data_t *)(data))->rs->eyes->larg)
 	{
-	  droit.vec.y = 500 - droit.x;
-	  droit.vec.z = 500 - droit.y;
+	  droit.vec.y = ((t_data_t *)(data))->rs->eyes->larg / 2 - droit.x;
+	  droit.vec.z = ((t_data_t *)(data))->rs->eyes->larg / 2 - droit.y;
 	  my_send_rayon(((t_data_t *)(data))->rs, &droit);
 	  droit.x += 1;
 	}
@@ -90,7 +90,8 @@ void		creat_thread(t_rs *rs, int ini, int max)
   data->ini = ini;
   data->max = max;
   data->rs = rs;
-  printf("%f\n", data->rs->eyes->cam.x);
+  //  printf("%f\n", data->rs->eyes->cam.x);
+  printf("TROLL %f %f %f\n", data->rs->eyes->cam.x, data->rs->eyes->cam.y, data->rs->eyes->cam.z);
   pthread_create(&thread, NULL, send_rayon_main_act, (void *)data);
 }
 
