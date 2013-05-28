@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 20:59:10 2013 karina martynava
+** Last update Tue May 28 23:02:58 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -20,11 +20,16 @@ void		change_dr(t_obj *obj, t_st *dr)
   dr->vec.x = ptn->x;
   dr->vec.y = ptn->y;
   dr->vec.z = ptn->z;
+  free(ptn);
+
   dr->cord.x -= obj->ptn.x;
   dr->cord.y -= obj->ptn.y;
   dr->cord.z -= obj->ptn.z;
+  ptn = mul_m_p(obj->matrix, &dr->cord);
+  dr->cord.x = ptn->x;
+  dr->cord.y = ptn->y;
+  dr->cord.z = ptn->z;
   // printf("NEW %f, %f, %f\n\n", dr->vec.x, dr->vec.y, dr->vec.z);
-  free(ptn);
 }
 
 t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)

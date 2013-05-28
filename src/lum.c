@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue May 28 20:16:18 2013 karina martynava
+** Last update Tue May 28 22:59:31 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -50,6 +50,23 @@ int	inlight(t_rs *rs, t_st *droit)
   return (1);
 }
 
+void	blinn_phong(float lamber_coef, float coef_ref, t_ptn *lightdir, t_inter *last, t_st *st, float view_proj)
+{
+  float	light_proj;
+  t_ptn	blinn;
+  float	dist;
+  float	coef_blinn;
+
+  light_proj = lamber_coef / coef_ref;
+  sub_vect(&blinn, lightdir, &(st->vec));
+  dist = sqrt(scal_prod(&blinn, &blinn));
+  if (dist != 0.0f)
+    {
+      coef_blinn = fmaxf(light_proj - view_proj, 0.0f) / dist;
+      coef_blinn = pow(coef_blinn, last->obj->mat->spec_pow) * coef_ref;
+    }
+}
+
 void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
 {
   t_lux	*sv;
@@ -69,19 +86,19 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
       light.vec.z = sv->cord.z - light.cord.z;
       /* if (inlight(rs, &light)) */
       /* 	{ */
-	  coef = lambert_coef(&(light.vec), nrml, coef_ref);
-	  if (point->obj->mat && coef > 0)
-	    {
-	      col[0] = col[0] + coef * sv->red * point->obj->mat->red;
-	      col[1] = col[1] + coef * sv->green * point->obj->mat->green;
-	      col[2] = col[2] + coef * sv->blue * point->obj->mat->blue;
-	    }
-	  else if (coef > 0)
-	    {
-	      col[0] = col[0] + coef * sv->red * 1;
-	      col[1] = col[1] + coef * sv->green * 1;
-	      col[2] = col[2] + coef * sv->blue * 1;
-	    /* } */
+      coef = lambert_coef(&(light.vec), nrml, coef_ref);
+      if (point->obj->mat && coef > 0)
+	{
+	  col[0] = col[0] + coef * sv->red * point->obj->mat->red;
+	  col[1] = col[1] + coef * sv->green * point->obj->mat->green;
+	  col[2] = col[2] + coef * sv->blue * point->obj->mat->blue;
+	}
+      else if (coef > 0)
+	{
+	  col[0] = col[0] + coef * sv->red * 1;
+	  col[1] = col[1] + coef * sv->green * 1;
+	  col[2] = col[2] + coef * sv->blue * 1;
+	  /* } */
 	}
       sv = sv->next;
     }

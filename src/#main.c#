@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 23:05:02 2013 karina martynava
+** Last update Tue May 28 19:07:40 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -29,7 +29,7 @@ int	init_rs(t_rs *rs)
   rs->obj_inf = NULL;
   rs->obj = NULL;
   rs->tree = NULL;
-  rs->eyes->cam.x = -50;
+  rs->eyes->cam.x = -20;
   rs->eyes->cam.y = 0;
   rs->eyes->cam.z = 0;
   rs->eyes->rot.x = 0;
@@ -42,14 +42,14 @@ int	init_rs(t_rs *rs)
     return (EXIT_FAILURE);
   rs->obj->next = NULL;
   rs->obj->ptn.x = 0;
-  rs->obj->ptn.y = 0;
-  rs->obj->ptn.z = 0;
-  rs->obj->rot.x = 45;
+  rs->obj->ptn.y = 10;
+  rs->obj->ptn.z = 10;
+  rs->obj->rot.x = 0;
   rs->obj->rot.y = 0;
   rs->obj->rot.z = 0;
   rs->obj->mat = NULL;
   rs->obj->matrix = NULL;
-  rs->obj->cal_inter = call_inter_cylinder;
+  rs->obj->cal_inter = call_inter_sphere;
   r = malloc(sizeof(float));
   *r = 5;
   rs->obj->data = (void *)r;
@@ -57,9 +57,9 @@ int	init_rs(t_rs *rs)
   if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)
     return (EXIT_FAILURE);
   rs->lux->next = NULL;
-  rs->lux->cord.x = -20;
-  rs->lux->cord.y = 40;
-  rs->lux->cord.z = 20;
+  rs->lux->cord.x = 0;
+  rs->lux->cord.y = 0;
+  rs->lux->cord.z = 0;
   rs->lux->red = 1;
   rs->lux->green = 1;
   rs->lux->blue = 1;

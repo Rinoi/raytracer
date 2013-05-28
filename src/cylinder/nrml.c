@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:04:31 2013 karina martynava
-** Last update Tue May 28 20:59:19 2013 karina martynava
+** Last update Tue May 28 21:10:08 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -28,11 +28,11 @@ t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn)
   if (mat != NULL)
     *nrml = *mat;
   nrml->z = 0;
-  free(mat);
-  mat = mul_m_p(obj->matrix_inv, nrml);
-  if (mat != NULL)
-    *nrml = *mat;
-  free(mat);
+  /* free(mat); */
+  /* mat = mul_m_p(obj->matrix, nrml); */
+  /* if (mat != NULL) */
+  /*   *nrml = *mat; */
+  /* free(mat); */
   return (nrml);
 }
  
