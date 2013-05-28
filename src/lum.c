@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue May 28 06:07:35 2013 karina martynava
+** Last update Tue May 28 06:22:26 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -27,7 +27,7 @@ int	inlight(t_rs *rs, t_st *droit)
   ptn = rs->obj;
   while (ptn != NULL)
     {
-      inter = ptn->cal_inter(ptn, droit);
+      inter = ptn->cal_inter(ptn, *droit);
       if (inter != NULL)
 	{
 	  if (inter->d < 1 && inter->d > 0)

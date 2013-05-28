@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Tue May 28 04:45:01 2013 karina martynava
+** Last update Tue May 28 06:20:59 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -24,7 +24,7 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
   inter_m = NULL;
   while (ptn != NULL)
     {
-      inter = ptn->cal_inter(ptn, droit);
+      inter = ptn->cal_inter(ptn, *droit);
       if (inter != NULL)
 	{
 	  if (inter_m == NULL || inter_m->d > inter->d)

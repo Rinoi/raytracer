@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Tue May 28 06:02:13 2013 karina martynava
+## Last update Tue May 28 06:20:12 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -32,7 +32,11 @@ SRCS	=	src/main.c \
 		calc/resolve_two.c \
 		calc/resolve_three.c \
 		src/sphere/call_inter.c \
-		src/cylinder/call_inter.c \
+		matrice/creat_matrice.c \
+		matrice/creat_matrice_spe.c \
+		matrice/opération.c \
+		matrice/matrice_dumb.c \
+		matrice/creat_matrice_rot.c
 
 OBJS	=	$(SRCS:.c=.o)
 

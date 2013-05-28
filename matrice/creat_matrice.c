@@ -5,11 +5,12 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Apr 11 13:52:32 2013 lucas mayol
-** Last update Mon May 27 23:54:17 2013 lucas mayol
+** Last update Tue May 28 06:16:02 2013 lucas mayol
 */
 
 #include	<stdlib.h>
 #include	<stdio.h>
+#include	"rt.h"
 
 double		*creat_matrice()
 {
@@ -42,4 +43,13 @@ double		*creat_matrice()
   matrice[15] = 1;
 
   return (matrice);
+}
+
+void		creat_matrice_for_obj(t_obj *obj)
+{
+  double	*matrice;
+
+  if ((obj->matrix = matrice_translat(obj->ptn.x, obj->ptn.y, obj->ptn.z))
+      == NULL)
+    return ;
 }

@@ -5,11 +5,12 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Apr 11 14:02:53 2013 lucas mayol
-** Last update Tue May 28 05:51:37 2013 lucas mayol
+** Last update Tue May 28 06:15:36 2013 lucas mayol
 */
 
 #include	<stdlib.h>
 #include	<stdio.h>
+#include	"rt.h"
 
 double		*mul_matrice(double *m1, double *m2)
 {
@@ -48,7 +49,7 @@ t_ptn		*mul_m_p(double *matrice, t_ptn *ptn)
 {
   t_ptn		*my_return;
 
-  if ((my_return = malloc(sizeof(t_prn))) == NULL)
+  if ((my_return = malloc(sizeof(t_ptn))) == NULL)
     return (NULL);
   my_return->x = matrice[0] * ptn->x + matrice[1] * ptn->y + matrice[2] * ptn->z;
   my_return->y = matrice[4] * ptn->x + matrice[5] * ptn->y + matrice[6] * ptn->z;
