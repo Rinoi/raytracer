@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Tue May 28 05:20:17 2013 lucas mayol
+## Last update Tue May 28 06:02:13 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -25,6 +25,8 @@ INC	=	-I./include
 SRCS	=	src/main.c \
 		src/my_put.c \
 		src/send_rayon_main.c \
+		src/lum.c \
+		src/vect_op.c \
 		mlx/my_pixel_put_to_image.c \
 		mlx/wind.c \
 		calc/resolve_two.c \
