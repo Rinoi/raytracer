@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 01:58:44 2013 karina martynava
-** Last update Tue May 28 02:30:25 2013 karina martynava
+** Last update Tue May 28 03:27:36 2013 karina martynava
 */
 
 #include <math.h>
@@ -18,7 +18,7 @@ float	resolve_two(float a, float b, float c, int *x)
   float	two;
 
   delta = pow(b, 2) - 4 * a * c;
-  if (a != 0.0f)
+  if (a != 0.0f && delta >= 0)
     {
       one = (- b - sqrt(delta)) / (2 * a);
       two = (- b + sqrt(delta)) / (2 * a);
