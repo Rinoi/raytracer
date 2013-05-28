@@ -57,10 +57,13 @@ typedef	struct	s_material
 
 typedef struct	s_lux
 {
-  t_ptn			cord;
-  int			color;
-  int			lux;
-  struct s_lux		*next;
+  t_ptn		cord;
+  int		color;
+  float		red;
+  float		green;
+  float		blue;
+  int		lux;
+  struct s_lux	*next;
 } t_lux;
 
 typedef	struct	s_obj
