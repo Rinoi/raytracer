@@ -142,9 +142,9 @@ typedef struct	s_resource
 
 // my_put.c
 
-int             my_strlen(char *);
-void            my_putchar(char, int);
-void            my_putstr(char *, int);
+int     my_strlen(char *);
+void    my_putchar(char, int);
+void    my_putstr(char *, int);
 
 // vect_op.c
 
@@ -164,6 +164,7 @@ void		my_pixel_put_to_image(t_img *, int, int, unsigned int);
 
 // matrice.h
 
+void	change_dr(t_obj *obj, t_st *dr);
 double	*creat_matrice();
 double	*matrice_translat(double x, double y, double z);
 double	*matrice_homo(double x, double y, double z);
@@ -181,6 +182,7 @@ void	*send_rayon_main_act(void *data);
 void	send_rayon_main(t_rs *rs);
 t_inter	*call_inter_sphere(t_obj *obj, t_st dr);
 t_inter	*call_inter_cylinder(t_obj *obj, t_st dr);
+t_inter	*call_inter_conus(t_obj *obj, t_st dr);
 float	resolve_two(float a, float b, float c, int *x);
 
 #endif

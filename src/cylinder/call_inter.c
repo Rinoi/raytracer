@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 06:54:34 2013 lucas mayol
+** Last update Tue May 28 07:26:22 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -15,14 +15,14 @@ void		change_dr(t_obj *obj, t_st *dr)
 {
   t_ptn		*ptn;
 
-  dr->cord.x -= obj->ptn.x;
-  dr->cord.y -= obj->ptn.y;
-  dr->cord.z -= obj->ptn.z;
   //  printf("ANC %f, %f, %f\n", dr->vec.x, dr->vec.y, dr->vec.z);
   ptn = mul_m_p(obj->matrix, &dr->vec);
   dr->vec.x = ptn->x;
   dr->vec.y = ptn->y;
   dr->vec.z = ptn->z;
+  dr->cord.x -= obj->ptn.x;
+  dr->cord.y -= obj->ptn.y;
+  dr->cord.z -= obj->ptn.z;
   // printf("NEW %f, %f, %f\n\n", dr->vec.x, dr->vec.y, dr->vec.z);
   free(ptn);
 }

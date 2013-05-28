@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:00:53 2013 karina martynava
-** Last update Tue May 28 06:08:02 2013 karina martynava
+** Last update Tue May 28 07:03:02 2013 karina martynava
 */
 
 #include "rt.h"
@@ -36,4 +36,11 @@ void	add_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
   tmp.y = a->y + b->y;
   tmp.z = a->z + b->z;
   *tochange = tmp;
+}
+
+void	mult_vect(t_ptn *a, float k)
+{
+  a->x = a->x * k;
+  a->y = a->y * k;
+  a->z = a->z * k;
 }
