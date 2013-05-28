@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:09:56 2013 karina martynava
-** Last update Tue May 28 08:41:27 2013 karina martynava
+** Last update Tue May 28 20:23:22 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -19,6 +19,7 @@ t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn)
  
   angle = ((float *)(obj->data))[0];
   angle = tan(RAD(angle));
+  angle = 1 / pow(angle, 2);
   nrml = malloc(sizeof(*nrml));
   if (nrml == NULL)
     return (NULL);

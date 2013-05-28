@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue May 28 10:02:24 2013 karina martynava
+** Last update Tue May 28 20:16:18 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -17,14 +17,13 @@ float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref)
   float	lamb;
   float	dist;
 
-  coef_ref = 1;
   lamb = scal_prod(lightray, nrml);
   dist = sqrt(scal_prod(lightray, lightray)) * sqrt(scal_prod(nrml, nrml));
   if (dist != 0)
     lamb = lamb / dist;
   else 
     lamb = -1.0f;
-  return (lamb);
+  return (lamb * coef_ref);
 }
 
 int	inlight(t_rs *rs, t_st *droit)
@@ -38,7 +37,7 @@ int	inlight(t_rs *rs, t_st *droit)
       inter = ptn->cal_inter(ptn, *droit);
       if (inter != NULL)
 	{
-	  if (inter->d < 1 && inter->d > 0)
+	  if (inter->d < 1 && inter->d > EPSILLON)
 	    {
 	      free(inter);
 	      return (0);
@@ -68,8 +67,8 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
       light.vec.x = sv->cord.x - light.cord.x;
       light.vec.y = sv->cord.y - light.cord.y;
       light.vec.z = sv->cord.z - light.cord.z;
-      if (inlight(rs, &light))
-      	{
+      /* if (inlight(rs, &light)) */
+      /* 	{ */
 	  coef = lambert_coef(&(light.vec), nrml, coef_ref);
 	  if (point->obj->mat && coef > 0)
 	    {
@@ -82,7 +81,7 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
 	      col[0] = col[0] + coef * sv->red * 1;
 	      col[1] = col[1] + coef * sv->green * 1;
 	      col[2] = col[2] + coef * sv->blue * 1;
-	    }
+	    /* } */
 	}
       sv = sv->next;
     }

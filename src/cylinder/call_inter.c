@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 09:25:00 2013 lucas mayol
+** Last update Tue May 28 20:59:10 2013 karina martynava
 */
 
 #include <stdlib.h>

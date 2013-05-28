@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 10:11:13 2013 karina martynava
+** Last update Tue May 28 20:41:46 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -29,7 +29,7 @@ int	init_rs(t_rs *rs)
   rs->obj_inf = NULL;
   rs->obj = NULL;
   rs->tree = NULL;
-  rs->eyes->cam.x = -20;
+  rs->eyes->cam.x = -50;
   rs->eyes->cam.y = 0;
   rs->eyes->cam.z = 0;
   rs->eyes->rot.x = 0;
@@ -43,15 +43,15 @@ int	init_rs(t_rs *rs)
   rs->obj->next = NULL;
   rs->obj->ptn.x = 0;
   rs->obj->ptn.y = 0;
-  rs->obj->ptn.z = -100;
+  rs->obj->ptn.z = 0;
   rs->obj->rot.x = 0;
   rs->obj->rot.y = 0;
-  rs->obj->rot.z = 0;
+  rs->obj->rot.z = 45;
   rs->obj->mat = NULL;
   rs->obj->matrix = NULL;
-  rs->obj->cal_inter = call_inter_plane;
+  rs->obj->cal_inter = call_inter_cylinder;
   r = malloc(sizeof(float));
-  *r = 50;
+  *r = 5;
   rs->obj->data = (void *)r;
   creat_matrice_for_obj(rs->obj);
   if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)
