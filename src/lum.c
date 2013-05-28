@@ -5,13 +5,13 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue May 28 06:02:56 2013 karina martynava
+** Last update Tue May 28 06:07:35 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include "rt.h"
 
-float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float *coef_ref)
+float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref)
 {
   float	lamb;
 
@@ -45,12 +45,12 @@ int	inlight(t_rs *rs, t_st *droit)
 
 void	enligten(t_inter *point, float coef_ref, t_rs *rs)
 {
-  t_lux	sv;
+  t_lux	*sv;
   float	lambert;
   t_st	light;
   t_ptn	*nrml;
 
-  nrml = *(point->cal_norm)(point->obj, &(point->ptn));
+  nrml = (*(point->cal_norm))(point->obj, &(point->ptn));
   sv = rs->lux;
   light.cord = point->ptn;
   while (sv != NULL)
@@ -58,9 +58,10 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs)
       light.vec.x = sv->cord.x - light.cord.x;
       light.vec.y = sv->cord.y - light.cord.y;
       light.vec.z = sv->cord.z - light.cord.z;
-      if (inlight(rs, light))
+      if (inlight(rs, &light))
 	{
-	  lambert = lamber_coef(&(light.vec), nrml, coef_ref);
+	  lambert = lambert_coef(&(light.vec), nrml, coef_ref);
+	  printf("%f\n", lambert);
 	}
       sv = sv->next;
     }

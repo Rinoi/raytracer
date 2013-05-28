@@ -146,8 +146,8 @@ void            my_putstr(char *, int);
 // vect_op.c
 
 float	scal_prod(t_ptn *, t_ptn *);
-void	sub_vect(t_ptn *, t_ptn, t_ptn);
-void	add_vect(t_ptn *, t_ptn, t_ptn);
+void	sub_vect(t_ptn *, t_ptn *, t_ptn *);
+void	add_vect(t_ptn *, t_ptn *, t_ptn *);
 
 // MLX
 

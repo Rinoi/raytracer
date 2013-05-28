@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:00:53 2013 karina martynava
-** Last update Tue May 28 04:10:27 2013 karina martynava
+** Last update Tue May 28 06:08:02 2013 karina martynava
 */
 
 #include "rt.h"
@@ -18,7 +18,7 @@ float	scal_prod(t_ptn *a, t_ptn *b)
   return (scal);
 }
 
-void	sub_vect(t_ptn *tochange, t_ptn a, t_ptn b)
+void	sub_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
 {
   t_ptn	tmp;
 
@@ -28,7 +28,7 @@ void	sub_vect(t_ptn *tochange, t_ptn a, t_ptn b)
   *tochange = tmp;
 }
 
-void	add_vect(t_ptn *tochange, t_ptn a, t_ptn b)
+void	add_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
 {
   t_ptn	tmp;
 
