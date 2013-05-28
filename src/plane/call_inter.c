@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 08:28:00 2013 karina martynava
+** Last update Tue May 28 09:05:54 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -14,18 +14,21 @@
 t_inter		*call_inter_plane(t_obj *obj, t_st dr)
 {
   t_inter	*inter;
-  float		k;
-  
+
   change_dr(obj, &dr);
-  if (dr.cord.z == 0)
-    return (NULL);
   if ((inter = malloc(sizeof(t_inter))) == NULL)
     return (NULL);
-  k = dr.cord.z / dr.cord.z;
-  if (k > EPSILLON)
-    inter->d = k;
+  if ((dr.vec.z == 0 && dr.vec.z != obj->ptn.z) ||
+      (obj->ptn.z < dr.cord.z && dr.vec.z > 0) ||
+      (obj->ptn.z > dr.cord.z && dr.vec.z < 0))
+    {
+      free(inter);
+      return (NULL);
+    }
+  if (dr.vec.z == 0)
+    inter->d = 0;
   else
-    inter->d = - 1.0f;
+    inter->d = - dr.cord.z / dr.vec.z;
   if (inter->d < 0)
     {
       free(inter);

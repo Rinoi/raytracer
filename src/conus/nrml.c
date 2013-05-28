@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:09:56 2013 karina martynava
-** Last update Tue May 28 08:29:22 2013 karina martynava
+** Last update Tue May 28 08:41:27 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -15,6 +15,7 @@ t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
   float	angle;
+  t_ptn	*mat;
  
   angle = ((float *)(obj->data))[0];
   angle = tan(RAD(angle));
@@ -24,6 +25,10 @@ t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn)
   nrml->x = ptn->x - obj->ptn.x;
   nrml->y = ptn->y - obj->ptn.y;
   nrml->z = - (ptn->z - obj->ptn.z) * angle;
+  mat = mul_m_p(obj->matrix_inv, nrml);
+  if (mat != NULL)
+    *nrml = *mat;
+  free(mat);
   return (nrml);
 }
  

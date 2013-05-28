@@ -184,6 +184,7 @@ void	send_rayon_main(t_rs *rs);
 t_inter	*call_inter_sphere(t_obj *obj, t_st dr);
 t_inter	*call_inter_cylinder(t_obj *obj, t_st dr);
 t_inter	*call_inter_conus(t_obj *obj, t_st dr);
+t_inter	*call_inter_plane(t_obj *obj, t_st dr);
 float	resolve_two(float a, float b, float c, int *x);
 
 #endif
