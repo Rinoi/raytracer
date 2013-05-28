@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 23:05:02 2013 karina martynava
+** Last update Tue May 28 23:25:10 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -57,9 +57,9 @@ int	init_rs(t_rs *rs)
   if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)
     return (EXIT_FAILURE);
   rs->lux->next = NULL;
-  rs->lux->cord.x = -20;
-  rs->lux->cord.y = 40;
-  rs->lux->cord.z = 20;
+  rs->lux->cord.x = -50;
+  rs->lux->cord.y = 0;
+  rs->lux->cord.z = 0;
   rs->lux->red = 1;
   rs->lux->green = 1;
   rs->lux->blue = 1;
