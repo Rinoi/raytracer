@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 23:15:18 2013 karina martynava
+** Last update Tue May 28 23:41:51 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -32,6 +32,24 @@ void		change_dr(t_obj *obj, t_st *dr)
   // printf("NEW %f, %f, %f\n\n", dr->vec.x, dr->vec.y, dr->vec.z);
 }
 
+int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter)
+{
+  t_ptn		ptn;
+  t_ptn		*res;
+
+  ptn.x = st->vec.x * inter->d;
+  ptn.y = st->vec.y * inter->d;
+  ptn.z = st->vec.z * inter->d;
+  res = mul_m_p(obj->matrix_inv, &ptn);
+  if (res->z > obj->ptn.z)
+    {
+      free(res);
+      return (-1);
+    }
+  free(res);
+  return (1);
+}
+
 t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
 {
   t_inter	*inter;
@@ -50,6 +68,11 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
     - pow(*((float *)(obj->data)), 2);
   inter->d = resolve_two(a, b, c, &x);
   if (inter->d == -1)
+    {
+      free(inter);
+      return (NULL);
+    }
+  if (is_a_god_cylinder(obj, &dr, inter) == -1)
     {
       free(inter);
       return (NULL);

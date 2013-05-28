@@ -5,11 +5,29 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 09:24:44 2013 lucas mayol
+** Last update Tue May 28 23:42:39 2013 lucas mayol
 */
 
 #include <stdlib.h>
 #include "rt.h"
+
+int             is_a_god_conus(t_obj *obj, t_st *st, t_inter *inter)
+{
+  t_ptn         ptn;
+  t_ptn         *res;
+
+  ptn.x = st->vec.x * inter->d;
+  ptn.y = st->vec.y * inter->d;
+  ptn.z = st->vec.z * inter->d;
+  res = mul_m_p(obj->matrix_inv, &ptn);
+  if (res->z > obj->ptn.z)
+    {
+      free(res);
+      return (-1);
+    }
+  free(res);
+  return (1);
+}
 
 t_inter		*call_inter_conus(t_obj *obj, t_st dr)
 {
@@ -34,6 +52,11 @@ t_inter		*call_inter_conus(t_obj *obj, t_st dr)
     - pow(dr.cord.z, 2) * angle * angle;
   inter->d = resolve_two(a, b, c, &x);
   if (inter->d < 0)
+    {
+      free(inter);
+      return (NULL);
+    }
+  if (is_a_god_conus(obj, &dr, inter) == -1)
     {
       free(inter);
       return (NULL);
