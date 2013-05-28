@@ -5,13 +5,15 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Tue May 28 09:18:24 2013 lucas mayol
+** Last update Tue May 28 10:00:59 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "rt.h"
 
+int		convert_col(float col[3]);
+void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3]);
 t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 {
   t_obj		*ptn;
@@ -40,9 +42,9 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
     }
   if (inter_m != NULL)
     {
-      inter->ptn.x = droit->cord.x + droit->vec.x * inter->d;
-      inter->ptn.y = droit->cord.y + droit->vec.y * inter->d;
-      inter->ptn.z = droit->cord.z + droit->vec.z * inter->d;
+      inter_m->ptn.x = droit->cord.x + droit->vec.x * inter->d;
+      inter_m->ptn.y = droit->cord.y + droit->vec.y * inter->d;
+      inter_m->ptn.z = droit->cord.z + droit->vec.z * inter->d;
     }
   return (inter_m);
 }
@@ -50,13 +52,22 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 void		my_send_rayon(t_rs *rs, t_st *droit)
 {
   t_inter	*inter;
+  int		color;
+  float		col[3];
 
+  col[0] = 0;
+  col[1] = 0;
+  col[2] = 0;
   inter = my_send_rayon_act(rs, droit);
   if (inter == NULL)
-    my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, 0x420);
+    {
+      my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, 0x420);
+    }
   else
     {
-      my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, 0xFFFFFF);
+      enligten(inter, 1.0, rs, col);
+      color = convert_col(col);
+      my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
       free(inter);
     }
 }

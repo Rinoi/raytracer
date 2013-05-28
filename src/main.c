@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 09:06:44 2013 karina martynava
+** Last update Tue May 28 10:11:13 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -43,9 +43,9 @@ int	init_rs(t_rs *rs)
   rs->obj->next = NULL;
   rs->obj->ptn.x = 0;
   rs->obj->ptn.y = 0;
-  rs->obj->ptn.z = -1;
-  rs->obj->rot.x = 20;
-  rs->obj->rot.y = 10;
+  rs->obj->ptn.z = -100;
+  rs->obj->rot.x = 0;
+  rs->obj->rot.y = 0;
   rs->obj->rot.z = 0;
   rs->obj->mat = NULL;
   rs->obj->matrix = NULL;
@@ -54,6 +54,15 @@ int	init_rs(t_rs *rs)
   *r = 50;
   rs->obj->data = (void *)r;
   creat_matrice_for_obj(rs->obj);
+  if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)
+    return (EXIT_FAILURE);
+  rs->lux->next = NULL;
+  rs->lux->cord.x = -50;
+  rs->lux->cord.y = 0;
+  rs->lux->cord.z = 0;
+  rs->lux->red = 1;
+  rs->lux->green = 1;
+  rs->lux->blue = 1;
   return (EXIT_SUCCESS);
 }
 

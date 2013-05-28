@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:01:03 2013 karina martynava
-** Last update Tue May 28 08:29:36 2013 karina martynava
+** Last update Tue May 28 10:06:14 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -18,6 +18,8 @@ t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn)
   nrml = malloc(sizeof(*nrml));
   if (nrml == NULL)
     return (NULL);
-  sub_vect(nrml, ptn, &(obj->ptn));
+  nrml->x = ptn->x - obj->ptn.x;
+  nrml->y = ptn->y - obj->ptn.y;
+  nrml->z = ptn->z - obj->ptn.z;
   return (nrml);
 }

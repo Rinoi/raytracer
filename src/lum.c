@@ -5,17 +5,25 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue May 28 08:07:28 2013 karina martynava
+** Last update Tue May 28 10:02:24 2013 karina martynava
 */
 
 #include <stdlib.h>
+#include <math.h>
 #include "rt.h"
 
 float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref)
 {
   float	lamb;
+  float	dist;
 
-  lamb = scal_prod(lightray, nrml) * coef_ref;
+  coef_ref = 1;
+  lamb = scal_prod(lightray, nrml);
+  dist = sqrt(scal_prod(lightray, lightray)) * sqrt(scal_prod(nrml, nrml));
+  if (dist != 0)
+    lamb = lamb / dist;
+  else 
+    lamb = -1.0f;
   return (lamb);
 }
 
@@ -43,8 +51,6 @@ int	inlight(t_rs *rs, t_st *droit)
   return (1);
 }
 
-#include <stdio.h>
-
 void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
 {
   t_lux	*sv;
@@ -54,26 +60,28 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
 
   nrml = (*(point->cal_norm))(point->obj, &(point->ptn));
   sv = rs->lux;
-  light.cord = point->ptn;
+  light.cord.x = point->ptn.x;
+  light.cord.y = point->ptn.y;
+  light.cord.z = point->ptn.z;
   while (sv != NULL)
     {
       light.vec.x = sv->cord.x - light.cord.x;
       light.vec.y = sv->cord.y - light.cord.y;
       light.vec.z = sv->cord.z - light.cord.z;
       if (inlight(rs, &light))
-	{
+      	{
 	  coef = lambert_coef(&(light.vec), nrml, coef_ref);
-	  if (point->obj->mat)
+	  if (point->obj->mat && coef > 0)
 	    {
 	      col[0] = col[0] + coef * sv->red * point->obj->mat->red;
 	      col[1] = col[1] + coef * sv->green * point->obj->mat->green;
 	      col[2] = col[2] + coef * sv->blue * point->obj->mat->blue;
 	    }
-	  else
+	  else if (coef > 0)
 	    {
-	      col[0] = col[0] + coef * sv->red * 0.5;
-	      col[1] = col[1] + coef * sv->green * 0.5;
-	      col[2] = col[2] + coef * sv->blue * 0.5;
+	      col[0] = col[0] + coef * sv->red * 1;
+	      col[1] = col[1] + coef * sv->green * 1;
+	      col[2] = col[2] + coef * sv->blue * 1;
 	    }
 	}
       sv = sv->next;

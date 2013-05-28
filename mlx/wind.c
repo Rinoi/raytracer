@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Tue May 28 04:40:39 2013 karina martynava
+** Last update Tue May 28 09:50:34 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -46,6 +46,7 @@ int	my_expose(t_rs *rs)
 {
   mlx_put_image_to_window(rs->wind.mlx_ptr, rs->wind.wind_ptr,
 			  rs->wind.img.img_ptr, 0, 0);
+  usleep(10000);
   return (0);
 }
 

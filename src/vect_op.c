@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:00:53 2013 karina martynava
-** Last update Tue May 28 07:03:02 2013 karina martynava
+** Last update Tue May 28 10:08:09 2013 karina martynava
 */
 
 #include "rt.h"
@@ -14,7 +14,7 @@ float	scal_prod(t_ptn *a, t_ptn *b)
 {
   float	scal;
 
-  scal = a->x * b->x + a->y * b->y + a->y * b->y;
+  scal = a->x * b->x + a->y * b->y + a->z * b->z;
   return (scal);
 }
 
