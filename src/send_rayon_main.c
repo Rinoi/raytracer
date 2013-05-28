@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Tue May 28 09:09:20 2013 karina martynava
+** Last update Tue May 28 09:18:24 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -30,12 +30,19 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 	  if (inter_m == NULL || inter_m->d > inter->d)
 	    {
 	      free(inter_m);
+	      inter->obj = ptn;
 	      inter_m = inter;
 	    }
 	  else
 	    free(inter);
 	}
       ptn = ptn->next;
+    }
+  if (inter_m != NULL)
+    {
+      inter->ptn.x = droit->cord.x + droit->vec.x * inter->d;
+      inter->ptn.y = droit->cord.y + droit->vec.y * inter->d;
+      inter->ptn.z = droit->cord.z + droit->vec.z * inter->d;
     }
   return (inter_m);
 }

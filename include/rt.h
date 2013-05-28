@@ -185,6 +185,10 @@ t_inter	*call_inter_sphere(t_obj *obj, t_st dr);
 t_inter	*call_inter_cylinder(t_obj *obj, t_st dr);
 t_inter	*call_inter_conus(t_obj *obj, t_st dr);
 t_inter	*call_inter_plane(t_obj *obj, t_st dr);
+t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn);
+t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn);
+t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn);
+t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
 float	resolve_two(float a, float b, float c, int *x);
 
 #endif

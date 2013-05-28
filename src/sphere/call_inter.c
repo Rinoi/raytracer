@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 09:08:22 2013 karina martynava
+** Last update Tue May 28 09:25:42 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -35,5 +35,6 @@ t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
       free(inter);
       return (NULL);
     }
+  inter->cal_norm = sphere_nrml;
   return (inter);
 }

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 07:26:22 2013 karina martynava
+** Last update Tue May 28 09:25:00 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -49,5 +49,6 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
       free(inter);
       return (NULL);
     }
+  inter->cal_norm = cylinder_nrml;
   return (inter);
 }
