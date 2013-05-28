@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 01:49:32 2013 karina martynava
+** Last update Tue May 28 04:05:15 2013 lucas mayol
 */
 
 #include <sys/types.h>
@@ -38,20 +38,21 @@ int	init_rs(t_rs *rs)
   rs->eyes->larg = SIZE_LARG;
   rs->eyes->lng = SIZE_LONG;
   
-  if ((rs->obj_inf = malloc(sizeof(*(rs->obj_inf)))) == NULL)
+  if ((rs->obj = malloc(sizeof(*(rs->obj)))) == NULL)
     return (EXIT_FAILURE);
-  rs->obj_inf->next = NULL;
-  rs->obj_inf->ptn.x = 0;
-  rs->obj_inf->ptn.y = 0;
-  rs->obj_inf->ptn.z = 0;
-  rs->obj_inf->rot.x = 0;
-  rs->obj_inf->rot.y = 0;
-  rs->obj_inf->rot.z = 0;
-  rs->obj_inf->mat = NULL;
-  rs->obj_inf->matrix = NULL;
+  rs->obj->next = NULL;
+  rs->obj->ptn.x = 0;
+  rs->obj->ptn.y = 0;
+  rs->obj->ptn.z = 0;
+  rs->obj->rot.x = 0;
+  rs->obj->rot.y = 0;
+  rs->obj->rot.z = 0;
+  rs->obj->mat = NULL;
+  rs->obj->matrix = NULL;
+  rs->obj->cal_inter = call_inter_sphere;
   r = malloc(sizeof(float));
   *r = 5;
-  rs->obj_inf->data = (void *)r;
+  rs->obj->data = (void *)r;
   return (EXIT_SUCCESS);
 }
 

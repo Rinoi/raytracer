@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Tue May 28 03:50:27 2013 karina martynava
+## Last update Tue May 28 03:21:05 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -24,12 +24,12 @@ INC	=	-I./include
 
 SRCS	=	src/main.c \
 		src/my_put.c \
+		src/send_rayon_main.c \
 		mlx/my_pixel_put_to_image.c \
 		mlx/wind.c \
 		calc/resolve_two.c \
 		calc/resolve_three.c \
-		calc/resolve_four.c \
-		calc/resolve_bis.c
+		src/sphere/call_inter.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

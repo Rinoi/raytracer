@@ -23,6 +23,13 @@
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
 
+typedef struct	s_data_t
+{
+  int		ini;
+  int		max;
+  t_rs		*rs;
+} t_data_t;
+
 typedef	struct	s_straight
 {
   float		power;
@@ -65,7 +72,7 @@ typedef	struct	s_obj
   t_mat		*mat;
   float		*matrix;
   t_box		box;
-  t_ptn		*(*cal_inter)(struct s_obj *obj, t_st *dr);
+  t_inter      	*(*cal_inter)(struct s_obj *obj, t_st *dr);
   float		(*cal_lux_cos)(struct s_obj *obj, t_ptn *ptn, t_lux *lux);
   //  unsigned int	d[4];
   struct s_obj	*next;
@@ -79,9 +86,6 @@ typedef	struct	s_inter
   float		dist;
   double	d;
   int		color;
-  float		red;
-  float		green;
-  float		blue;
 } t_inter;
 
 typedef struct	s_img
@@ -194,5 +198,9 @@ double	*matrice_rot_z(double angle);
 void	rt_main_mlx(t_rs *rs);
 
 void	ini_mlx(t_rs *rs);
+void	*send_rayon_main_act(void *data);
+void	send_rayon_main(t_rs *rs);
+t_inter	*call_inter_sphere(t_obj *obj, t_st *dr);
+float	resolve_two(float a, float b, float c, int *x);
 
 #endif
