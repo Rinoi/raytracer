@@ -79,6 +79,9 @@ typedef	struct	s_inter
   float		dist;
   double	d;
   int		color;
+  float		red;
+  float		green;
+  float		blue;
 } t_inter;
 
 typedef struct	s_img
