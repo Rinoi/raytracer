@@ -43,7 +43,7 @@
     </triangle>
   </obj>
   <lumiere>
-    <new name="lumier 1">
+    <new name="lumiere 1">
       <cord>
         <x>-400</x>
         <y>0</y>
@@ -59,10 +59,10 @@
 	<y> </y>
 	<z> </z>
       </cord>
-      <screen>
+    </eye>
+    <screen>
 	<larg> </larg>
 	<long> </long>
-      </screen>
-    </eye>
+    </screen>
   </pov>
 </scene>
