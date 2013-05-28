@@ -5,27 +5,27 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Tue May 28 02:02:59 2013 louis martin-pierrat
+** Last update Tue May 28 02:06:04 2013 louis martin-pierrat
 */
+#include		<unistd.h>
+#include		<stdlib.h>
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "mlx.h"
-#include "rt.h"
-
-#include	<stdio.h>
+#include		"mlx.h"
+#include		"rt.h"
 
 #define	ESC_CODE	65307
 
-void	rtv1_ini(t_rs *rs)
+void			rtv1_ini(t_rs *rs)
 {
-  rs->wind.mlx_ptr = mlx_init();
-  if (rs->wind.mlx_ptr == NULL)
-    return (EXIT_FAILURE);
+  if ((rs->wind.mlx_ptr = mlx_init()) == NULL)
+    {
+      my_putstr("Mlx error\n", 2);
+      exit(EXIT_FAILURE);
+    }
   rs->wind.wind_ptr = mlx_new_window(rs->wind.mlx_ptr,
-				     rs->eyes.larg, rs->eyes.lng, "RT");
+				     rs->eyes->larg, rs->eyes->lng, "RT");
   rs->wind.img.img_ptr = mlx_new_image(rs->wind.mlx_ptr,
-				       rs->eyes.larg, rs->eyes.lng);
+				       rs->eyes->larg, rs->eyes->lng);
   rs->wind.img.img = mlx_get_data_addr(rs->wind.img.img_ptr,
 				       &(rs->wind.img.bpp),
 				       &(rs->wind.img.sizeline),
@@ -51,11 +51,7 @@ int	my_expose(t_rs *rs)
 
 void	rt_main_mlx(t_rs *rs)
 {
-  if (rtv1_ini(rs) == EXIT_FAILURE)
-    {
-      my_putstr("Mlx error\n", 2);
-      exit(EXIT_FAILURE);
-    }
+  rtv1_ini(rs);
   rs->eyes->cam.x = -14;
   rs->eyes->cam.y = 0;
   rs->eyes->cam.z = 0;
