@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 04:45:41 2013 karina martynava
+** Last update Tue May 28 05:23:03 2013 lucas mayol
 */
 
 #include <sys/types.h>
@@ -14,8 +14,8 @@
 #include <stdlib.h>
 #include "rt.h"
 
-#define	SIZE_LARG	500;
-#define	SIZE_LONG	700;
+#define	SIZE_LARG	800;
+#define	SIZE_LONG	800;
 
 int	init_rs(t_rs *rs)
 {
@@ -49,7 +49,7 @@ int	init_rs(t_rs *rs)
   rs->obj->rot.z = 0;
   rs->obj->mat = NULL;
   rs->obj->matrix = NULL;
-  rs->obj->cal_inter = call_inter_sphere;
+  rs->obj->cal_inter = call_inter_cylinder;
   r = malloc(sizeof(float));
   *r = 5;
   rs->obj->data = (void *)r;
