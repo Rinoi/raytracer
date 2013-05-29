@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Wed May 29 19:11:50 2013 karina martynava
+** Last update Wed May 29 19:17:44 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -74,13 +74,15 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st)
   float	coef;
   t_st	light;
   t_ptn	*nrml;
-  /* t_ptn	*mat; */
+  t_ptn	*mat;
 
   nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
   sv = rs->lux;
-  /* add_vect(&light.cord, &point->rela_ptn, &st->cord); */
-  /* mat = mul_m_p(point->obj->matrix, &light.cord); */
-  sub_vect(&light.cord, &light.cord, &st->cord);
+  add_vect(&light.cord, &point->rela_ptn, &st->cord);
+  mat = mul_m_p(point->obj->matrix, &light.cord);
+  light.cord = *mat;
+  free(mat);
+  sub_vect(&light.cord, &point->rela_ptn, &st->cord);
   while (sv != NULL)
     {
       light.vec.x = sv->cord.x - light.cord.x;
@@ -88,7 +90,9 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st)
       light.vec.z = sv->cord.z - light.cord.z;
       /* if (inlight(rs, &light)) */
       /* 	{ */
-      coef = lambert_coef(&(light.vec), nrml, coef_ref);
+      coef = lambert_coef(&light.vec,
+			  nrml,
+			  coef_ref);
       if (point->obj->mat && coef > 0)
 	{
 	  col[0] = col[0] + coef * sv->red * point->obj->mat->red;
