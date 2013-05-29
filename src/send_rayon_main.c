@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Wed May 29 19:07:50 2013 karina martynava
+** Last update Wed May 29 19:55:44 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -53,11 +53,12 @@ void		my_send_rayon(t_rs *rs, t_st *droit)
 {
   t_inter	*inter;
   int		color;
-  float		col[3];
+  float		col[4];
 
   col[0] = 0;
   col[1] = 0;
   col[2] = 0;
+  col[3] = 1; /////////// REFLEXION
   inter = my_send_rayon_act(rs, droit);
   if (inter == NULL)
     {

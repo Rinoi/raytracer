@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Wed May 29 19:42:49 2013 karina martynava
+** Last update Wed May 29 19:55:15 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -70,7 +70,23 @@ void	blinn_phong(float lamber_coef, float coef_ref, t_ptn *lightdir, t_inter *la
     }
 }
 
-void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st)
+void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
+{
+  if (point->obj->mat && coef > 0)
+    {
+      col[0] = col[0] + coef * sv->red * point->obj->mat->red;
+      col[1] = col[1] + coef * sv->green * point->obj->mat->green;
+      col[2] = col[2] + coef * sv->blue * point->obj->mat->blue;
+    }
+  else if (coef > 0)
+    {
+      col[0] = col[0] + coef * sv->red * 1;
+      col[1] = col[1] + coef * sv->green * 1;
+      col[2] = col[2] + coef * sv->blue * 1;
+    }
+}
+
+void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 {
   t_lux	*sv;
   float	coef;
@@ -82,31 +98,18 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st)
   sv = rs->lux;
   add_vect(&light.cord, &point->rela_ptn, &st->cord);
   mat = mul_m_p(point->obj->matrix, &light.cord);
-  sub_vect(&light.cord, mat, &st->cord);
+  light.cord = *mat;
+  sub_vect(&light.cord, &light.cord, &st->cord);
   free(mat);
   while (sv != NULL)
     {
-      light.vec.x = sv->cord.x - light.cord.x;
-      light.vec.y = sv->cord.y - light.cord.y;
-      light.vec.z = sv->cord.z - light.cord.z;
-      /* sub_vect(&light.vec, &sv->cord, &light.cord); */
-      /* if (inlight(rs, &light) || sv->attribute == AMB) */
-      /* 	{ */
-      coef = lambert_coef(&light.vec, nrml, coef_ref, sv->attribute)
-	* sv->lux;
-      if (point->obj->mat && coef > 0)
+      sub_vect(&light.vec, &sv->cord, &light.cord);
+      if (inlight(rs, &light) || sv->attribute == AMB)
 	{
-	  col[0] = col[0] + coef * sv->red * point->obj->mat->red;
-	  col[1] = col[1] + coef * sv->green * point->obj->mat->green;
-	  col[2] = col[2] + coef * sv->blue * point->obj->mat->blue;
+	  coef = lambert_coef(&light.vec, nrml, col[3], sv->attribute)
+	    * sv->lux;
+	  work_with_illumination(sv, col, point, coef);
 	}
-      else if (coef > 0)
-	{
-	  col[0] = col[0] + coef * sv->red * 1;
-	  col[1] = col[1] + coef * sv->green * 1;
-	  col[2] = col[2] + coef * sv->blue * 1;
-	}
-      /* } */
       sv = sv->next;
     }
   free(nrml);
