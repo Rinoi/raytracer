@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed May 29 18:52:18 2013 karina martynava
+** Last update Wed May 29 19:43:00 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -56,6 +56,8 @@ int	init_rs(t_rs *rs)
   creat_matrice_for_obj(rs->obj);
   if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)
     return (EXIT_FAILURE);
+  rs->lux->attribute = 0;
+  rs->lux->lux = 0.2;
   rs->lux->next = NULL;
   rs->lux->cord.x = -50;
   rs->lux->cord.y = 0;

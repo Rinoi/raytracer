@@ -20,6 +20,8 @@
 # define NOTINIT	0xFFFFFFFF
 # define EPSILLON	0.00001
 
+# define AMB		1
+
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
 
@@ -57,12 +59,13 @@ typedef	struct	s_material
 
 typedef struct	s_lux
 {
+  char		attribute;
   t_ptn		cord;
   int		color;
   float		red;
   float		green;
   float		blue;
-  int		lux;
+  float		lux;
   struct s_lux	*next;
 } t_lux;
 

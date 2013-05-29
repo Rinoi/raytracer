@@ -5,18 +5,20 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Wed May 29 19:17:44 2013 karina martynava
+** Last update Wed May 29 19:42:49 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include <math.h>
 #include "rt.h"
 
-float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref)
+float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref, char attribute)
 {
   float	lamb;
   float	dist;
 
+  if (attribute == AMB)
+    return (1);
   lamb = scal_prod(lightray, nrml);
   dist = sqrt(scal_prod(lightray, lightray)) *
     sqrt(scal_prod(nrml, nrml));
@@ -38,7 +40,7 @@ int	inlight(t_rs *rs, t_st *droit)
       inter = ptn->cal_inter(ptn, *droit);
       if (inter != NULL)
 	{
-	  if (inter->d < 1 && inter->d > EPSILLON)
+	  if (inter->d < 1)
 	    {
 	      free(inter);
 	      return (0);
@@ -80,19 +82,18 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st)
   sv = rs->lux;
   add_vect(&light.cord, &point->rela_ptn, &st->cord);
   mat = mul_m_p(point->obj->matrix, &light.cord);
-  light.cord = *mat;
+  sub_vect(&light.cord, mat, &st->cord);
   free(mat);
-  sub_vect(&light.cord, &point->rela_ptn, &st->cord);
   while (sv != NULL)
     {
       light.vec.x = sv->cord.x - light.cord.x;
       light.vec.y = sv->cord.y - light.cord.y;
       light.vec.z = sv->cord.z - light.cord.z;
-      /* if (inlight(rs, &light)) */
+      /* sub_vect(&light.vec, &sv->cord, &light.cord); */
+      /* if (inlight(rs, &light) || sv->attribute == AMB) */
       /* 	{ */
-      coef = lambert_coef(&light.vec,
-			  nrml,
-			  coef_ref);
+      coef = lambert_coef(&light.vec, nrml, coef_ref, sv->attribute)
+	* sv->lux;
       if (point->obj->mat && coef > 0)
 	{
 	  col[0] = col[0] + coef * sv->red * point->obj->mat->red;
@@ -104,8 +105,8 @@ void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st)
 	  col[0] = col[0] + coef * sv->red * 1;
 	  col[1] = col[1] + coef * sv->green * 1;
 	  col[2] = col[2] + coef * sv->blue * 1;
-	  /* } */
 	}
+      /* } */
       sv = sv->next;
     }
   free(nrml);
