@@ -25,6 +25,17 @@
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
 
+typedef struct	s_img
+{
+  char		*img;
+  int		x;
+  int		y;
+  void		*img_ptr;
+  int		endian;
+  int		bpp;
+  int		sizeline;
+} t_img;
+
 typedef struct	s_data_t
 {
   int		ini;
@@ -54,7 +65,7 @@ typedef	struct	s_material
   float		trans;
   float		refract;
   float		diff_reflex;
-  void		*img;
+  t_img		img;
 } t_mat;
 
 typedef struct	s_lux
@@ -95,17 +106,6 @@ typedef	struct	s_inter
   double	d;
   int		color;
 } t_inter;
-
-typedef struct	s_img
-{
-  char		*img;
-  int		x;
-  int		y;
-  void		*img_ptr;
-  int		endian;
-  int		bpp;
-  int		sizeline;
-} t_img;
 
 typedef struct	s_wind
 {
@@ -167,6 +167,11 @@ void	rt_main_mlx(t_rs *);
 //my_pixel_put_to_image.c  
 
 void		my_pixel_put_to_image(t_img *, int, int, unsigned int);
+
+// img
+
+int	my_get_color_text(t_img *tex, int x, int y);
+void	load_img(t_rs *rs, t_img *text, char *str);
 
 // matrice.h
 

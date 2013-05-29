@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed May 29 19:51:49 2013 karina martynava
+** Last update Wed May 29 21:06:43 2013 lucas mayol
 */
 
 #include <sys/types.h>
@@ -24,6 +24,8 @@ int	init_rs(t_rs *rs)
   rs->aff = NULL;
   rs->send_rayon = NULL;
   rs->eyes = malloc(sizeof(*(rs->eyes)));
+  if ((rs->mat = malloc(sizeof(*(rs->mat)))) == NULL)
+    return (EXIT_FAILURE);
   if (rs->eyes == NULL)
     return (EXIT_FAILURE);
   rs->obj_inf = NULL;

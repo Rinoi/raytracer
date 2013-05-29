@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Wed May 29 18:59:51 2013 karina martynava
-** Last update Wed May 29 19:09:55 2013 karina martynava
+** Last update Wed May 29 21:14:08 2013 lucas mayol
 */
 
 #include <rt.h>
@@ -36,4 +36,40 @@ int     get_img_color(t_img *img, int x, int y)
       get += img->img[i + 2] * 0x10000;
     }
   return (get);
+}
+
+void    load_img(t_rs *rs, t_img *text, char *str)
+{
+  text->img_ptr = mlx_xpm_file_to_image(rs->wind.mlx_ptr,
+                                    str, &text->x, &text->y);
+  if (text->img_ptr != NULL)
+    {
+      text->img = mlx_get_data_addr(text->img,
+				    &(text->bpp),
+				    &(text->sizeline), &(text->endian));
+    }
+  else
+    text->img = NULL;
+}
+
+int		my_get_color_text(t_img *tex, int x, int y)
+{
+  unsigned int	*color;
+  unsigned char	cl[3];
+
+  if (tex != NULL)
+    {
+      color = (unsigned int*)cl;
+      cl[0] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
+                                       x];
+      cl[1] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
+                                       x + 1];
+      cl[2] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
+                                       x + 2];
+      cl[3] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
+                                       x + 3];
+      return (*color);
+    }
+  else
+    return (0);
 }
