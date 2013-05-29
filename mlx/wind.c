@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Wed May 29 19:10:31 2013 karina martynava
+** Last update Wed May 29 21:21:43 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -35,22 +35,21 @@ void			rtv1_ini(t_rs *rs)
   rs->wind.wind_ptr = mlx_new_window(rs->wind.mlx_ptr,
 				     rs->eyes->larg, rs->eyes->lng, "RT");
   rs->wind.img.img_ptr = mlx_new_image(rs->wind.mlx_ptr,
-				       rs->eyes->larg, rs->eyes->lng);
+				       rs->eyes->larg * 2, rs->eyes->lng * 2);
   rs->wind.img.img = mlx_get_data_addr(rs->wind.img.img_ptr,
 				       &(rs->wind.img.bpp),
 				       &(rs->wind.img.sizeline),
 				       &(rs->wind.img.endian));
+  rs->wind.img.x = rs->eyes->larg * 2;
+  rs->wind.img.y = rs->eyes->lng * 2;
   rs->bckground.img_ptr =
-    xpm_img_frmlx(rs->wind.mlx_ptr,
-		  "./img/bck.xpm", 1920, 1080);
+    xpm_img_frmlx(rs->wind.mlx_ptr, "./img/bck.xpm", 1920, 1080);
   rs->bckground.x = 1920;
   rs->bckground.y = 1080;
   if (rs->bckground.img_ptr != NULL)
     rs->bckground.img =
-      mlx_get_data_addr(rs->bckground.img_ptr,
-			&(rs->bckground.bpp),
-			&(rs->bckground.sizeline),
-			&(rs->bckground.endian));
+      mlx_get_data_addr(rs->bckground.img_ptr, &(rs->bckground.bpp),
+			&(rs->bckground.sizeline), &(rs->bckground.endian));
   else
     my_putstr("Background loading failure\n", 2);
 }

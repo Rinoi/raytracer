@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Wed May 29 18:59:51 2013 karina martynava
-** Last update Wed May 29 21:14:08 2013 lucas mayol
+** Last update Wed May 29 21:17:14 2013 karina martynava
 */
 
 #include <rt.h>
@@ -52,22 +52,21 @@ void    load_img(t_rs *rs, t_img *text, char *str)
     text->img = NULL;
 }
 
-int		my_get_color_text(t_img *tex, int x, int y)
+int		get_col(t_img *tex, int x, int y)
 {
   unsigned int	*color;
   unsigned char	cl[3];
+  int		i;
 
+  i = img->sizeline * y;
+  i += x * img->bpp / 8;
   if (tex != NULL)
     {
       color = (unsigned int*)cl;
-      cl[0] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
-                                       x];
-      cl[1] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
-                                       x + 1];
-      cl[2] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
-                                       x + 2];
-      cl[3] = (unsigned char)tex->img[y * tex->sizeline + (tex->bpp / 8) *
-                                       x + 3];
+      cl[0] = (unsigned char)tex->img[i];
+      cl[1] = (unsigned char)tex->img[i + 1];
+      cl[2] = (unsigned char)tex->img[i + 2];
+      cl[3] = (unsigned char)tex->img[i + 3];
       return (*color);
     }
   else

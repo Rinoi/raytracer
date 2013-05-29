@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 09:27:46 2013 karina martynava
-** Last update Tue May 28 09:35:05 2013 karina martynava
+** Last update Wed May 29 21:07:04 2013 karina martynava
 */
 
 int		convert_col(float col[3])

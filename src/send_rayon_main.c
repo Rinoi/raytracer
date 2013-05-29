@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Wed May 29 19:55:44 2013 karina martynava
+** Last update Wed May 29 21:23:27 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -13,8 +13,8 @@
 #include "rt.h"
 
 int     get_img_color(t_img *img, int x, int y);
-int		convert_col(float col[3]);
-void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st);
+int	convert_col(float col[3]);
+void	enligten(t_inter *point, t_rs *rs, float col[3], t_st *st);
 
 t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 {
@@ -59,22 +59,16 @@ void		my_send_rayon(t_rs *rs, t_st *droit)
   col[1] = 0;
   col[2] = 0;
   col[3] = 1; /////////// REFLEXION
+  color = get_img_color(&rs->bckground, droit->x, droit->y);
   inter = my_send_rayon_act(rs, droit);
-  if (inter == NULL)
+  if (inter)
     {
-      if (rs->bckground.img_ptr != NULL)
-	color = get_img_color(&rs->bckground, droit->x, droit->y);
-      else
-	color = 0x420;
-      my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
-    }
-  else
-    {
-      enligten(inter, 1.0, rs, col, droit);
+      enligten(inter, rs, col, droit);
       color = convert_col(col);
       my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
       free(inter);
     }
+  my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
 }
 
 void	*send_rayon_main_act(void *data)
@@ -88,7 +82,7 @@ void	*send_rayon_main_act(void *data)
   droit.cord.z = ((t_data_t *)(data))->rs->eyes->cam.z;
   printf("HERE %f, %f, %f\n", droit.cord.x, droit.cord.y, droit.cord.z);
   droit.vec.x = ((t_data_t *)(data))->rs->eyes->larg / 2;
-  while (droit.y <= ((t_data_t *)(data))->max)
+  while (droit.y <= ((t_data_t *)(data))->rs->)
     {
       droit.x = 0;
       while (droit.x <= ((t_data_t *)(data))->rs->eyes->larg)

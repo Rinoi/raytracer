@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Wed May 29 19:55:15 2013 karina martynava
+** Last update Wed May 29 20:40:45 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -43,7 +43,7 @@ int	inlight(t_rs *rs, t_st *droit)
 	  if (inter->d < 1)
 	    {
 	      free(inter);
-	      return (0);
+	      return (1);
 	    }
 	  else
 	    free(inter);
@@ -53,22 +53,23 @@ int	inlight(t_rs *rs, t_st *droit)
   return (1);
 }
 
-void	blinn_phong(float lamber_coef, float coef_ref, t_ptn *lightdir, t_inter *last, t_st *st, float view_proj)
-{
-  float	light_proj;
-  t_ptn	blinn;
-  float	dist;
-  float	coef_blinn;
+/* void	blinn_phong(float lamber_coef, t_ptn *lightdir, */
+/* 		    t_inter *last, t_st *st) */
+/* { */
+/*   float	light_proj; */
+/*   t_ptn	blinn; */
+/*   float	dist; */
+/*   float	coef_blinn; */
 
-  light_proj = lamber_coef / coef_ref;
-  sub_vect(&blinn, lightdir, &(st->vec));
-  dist = sqrt(scal_prod(&blinn, &blinn));
-  if (dist != 0.0f)
-    {
-      coef_blinn = fmaxf(light_proj - view_proj, 0.0f) / dist;
-      coef_blinn = pow(coef_blinn, last->obj->mat->spec_pow) * coef_ref;
-    }
-}
+/*   view_proj = lamber_coef / coef_ref; */
+/*   sub_vect(&blinn, lightdir, &(st->vec)); */
+/*   dist = sqrt(scal_prod(&blinn, &blinn)); */
+/*   if (dist != 0.0f) */
+/*     { */
+/*       coef_blinn = fmaxf(light_proj - view_proj, 0.0f) / dist; */
+/*       coef_blinn = pow(coef_blinn, last->obj->mat->spec_pow) * coef_ref; */
+/*     } */
+/* } */
 
 void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
