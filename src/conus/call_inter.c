@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 23:42:39 2013 lucas mayol
+** Last update Wed May 29 18:48:51 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -13,19 +13,13 @@
 
 int             is_a_god_conus(t_obj *obj, t_st *st, t_inter *inter)
 {
-  t_ptn         ptn;
-  t_ptn         *res;
-
-  ptn.x = st->vec.x * inter->d;
-  ptn.y = st->vec.y * inter->d;
-  ptn.z = st->vec.z * inter->d;
-  res = mul_m_p(obj->matrix_inv, &ptn);
-  if (res->z > obj->ptn.z)
+  inter->rela_ptn.x = st->cord.x + st->vec.x * inter->d;
+  inter->rela_ptn.y = st->cord.y + st->vec.y * inter->d;
+  inter->rela_ptn.z = st->cord.z + st->vec.z * inter->d;
+  if (inter->rela_ptn.z > obj->ptn.z)
     {
-      free(res);
       return (-1);
     }
-  free(res);
   return (1);
 }
 

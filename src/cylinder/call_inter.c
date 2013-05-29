@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Wed May 29 14:57:04 2013 karina martynava
+** Last update Wed May 29 18:46:47 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -34,19 +34,13 @@ void		change_dr(t_obj *obj, t_st *dr)
 
 int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter)
 {
-  t_ptn		ptn;
-  t_ptn		*res;
-
-  ptn.x = st->vec.x * inter->d;
-  ptn.y = st->vec.y * inter->d;
-  ptn.z = st->vec.z * inter->d;
-  res = mul_m_p(obj->matrix_inv, &ptn);
-  if (res->z > obj->ptn.z)
+  inter->rela_ptn.x = st->cord.x + st->vec.x * inter->d;
+  inter->rela_ptn.y = st->cord.y + st->vec.y * inter->d;
+  inter->rela_ptn.z = st->cord.z + st->vec.z * inter->d;
+  if (inter->rela_ptn.z > obj->ptn.z)
     {
-      free(res);
       return (-1);
     }
-  free(res);
   return (1);
 }
 
@@ -72,11 +66,11 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
       free(inter);
       return (NULL);
     }
-  /* if (is_a_god_cylinder(obj, &dr, inter) == -1) */
-  /*   { */
-  /*     free(inter); */
-  /*     return (NULL); */
-  /*   } */
+  if (is_a_god_cylinder(obj, &dr, inter) == -1)
+    {
+      free(inter);
+      return (NULL);
+    }
   inter->cal_norm = cylinder_nrml;
   return (inter);
 }

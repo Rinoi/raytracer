@@ -87,6 +87,7 @@ typedef	struct	s_inter
   t_ptn		*(*cal_norm)(struct s_obj *obj, t_ptn *ptn);
   t_obj		*obj;
   t_ptn		ptn;
+  t_ptn		rela_ptn;
   float		dist;
   double	d;
   int		color;

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed May 29 15:18:15 2013 karina martynava
+** Last update Wed May 29 18:52:18 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -43,15 +43,15 @@ int	init_rs(t_rs *rs)
   rs->obj->next = NULL;
   rs->obj->ptn.x = 0;
   rs->obj->ptn.y = 0;
-  rs->obj->ptn.z = 0;
-  rs->obj->rot.x = 20;
+  rs->obj->ptn.z = 10;
+  rs->obj->rot.x = 45;
   rs->obj->rot.y = 0;
   rs->obj->rot.z = 0;
   rs->obj->mat = NULL;
   rs->obj->matrix = NULL;
   rs->obj->cal_inter = call_inter_cylinder;
   r = malloc(sizeof(float));
-  *r = 5;
+  *r = 2;
   rs->obj->data = (void *)r;
   creat_matrice_for_obj(rs->obj);
   if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Wed May 29 15:51:32 2013 karina martynava
+** Last update Wed May 29 19:10:31 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -43,6 +43,8 @@ void			rtv1_ini(t_rs *rs)
   rs->bckground.img_ptr =
     xpm_img_frmlx(rs->wind.mlx_ptr,
 		  "./img/bck.xpm", 1920, 1080);
+  rs->bckground.x = 1920;
+  rs->bckground.y = 1080;
   if (rs->bckground.img_ptr != NULL)
     rs->bckground.img =
       mlx_get_data_addr(rs->bckground.img_ptr,

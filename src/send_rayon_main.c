@@ -5,15 +5,16 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Wed May 29 15:48:40 2013 karina martynava
+** Last update Wed May 29 19:07:50 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "rt.h"
 
+int     get_img_color(t_img *img, int x, int y);
 int		convert_col(float col[3]);
-void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3]);
+void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st);
 
 t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 {
@@ -60,12 +61,15 @@ void		my_send_rayon(t_rs *rs, t_st *droit)
   inter = my_send_rayon_act(rs, droit);
   if (inter == NULL)
     {
-      //      color = get_img_color();
-      my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, 0x420);
+      if (rs->bckground.img_ptr != NULL)
+	color = get_img_color(&rs->bckground, droit->x, droit->y);
+      else
+	color = 0x420;
+      my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
     }
   else
     {
-      enligten(inter, 1.0, rs, col);
+      enligten(inter, 1.0, rs, col, droit);
       color = convert_col(col);
       my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
       free(inter);

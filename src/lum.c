@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue May 28 22:59:31 2013 karina martynava
+** Last update Wed May 29 19:11:50 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -18,7 +18,8 @@ float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref)
   float	dist;
 
   lamb = scal_prod(lightray, nrml);
-  dist = sqrt(scal_prod(lightray, lightray)) * sqrt(scal_prod(nrml, nrml));
+  dist = sqrt(scal_prod(lightray, lightray)) *
+    sqrt(scal_prod(nrml, nrml));
   if (dist != 0)
     lamb = lamb / dist;
   else 
@@ -67,18 +68,19 @@ void	blinn_phong(float lamber_coef, float coef_ref, t_ptn *lightdir, t_inter *la
     }
 }
 
-void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3])
+void	enligten(t_inter *point, float coef_ref, t_rs *rs, float col[3], t_st *st)
 {
   t_lux	*sv;
   float	coef;
   t_st	light;
   t_ptn	*nrml;
+  /* t_ptn	*mat; */
 
-  nrml = (*(point->cal_norm))(point->obj, &(point->ptn));
+  nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
   sv = rs->lux;
-  light.cord.x = point->ptn.x;
-  light.cord.y = point->ptn.y;
-  light.cord.z = point->ptn.z;
+  /* add_vect(&light.cord, &point->rela_ptn, &st->cord); */
+  /* mat = mul_m_p(point->obj->matrix, &light.cord); */
+  sub_vect(&light.cord, &light.cord, &st->cord);
   while (sv != NULL)
     {
       light.vec.x = sv->cord.x - light.cord.x;
