@@ -141,6 +141,7 @@ typedef struct	s_resource
   t_wind	wind;
   t_kdtree	*tree;
   t_pov		*eyes;
+  t_mat		*mat;
   //  t_ptn		eyes;
   //  int		l;
 } t_rs;
