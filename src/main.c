@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Tue May 28 23:25:10 2013 karina martynava
+** Last update Wed May 29 15:18:15 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -44,7 +44,7 @@ int	init_rs(t_rs *rs)
   rs->obj->ptn.x = 0;
   rs->obj->ptn.y = 0;
   rs->obj->ptn.z = 0;
-  rs->obj->rot.x = 45;
+  rs->obj->rot.x = 20;
   rs->obj->rot.y = 0;
   rs->obj->rot.z = 0;
   rs->obj->mat = NULL;

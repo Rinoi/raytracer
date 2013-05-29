@@ -131,7 +131,7 @@ typedef struct	s_resource
   t_obj		*obj;
   t_obj		*obj_inf;
   t_lux		*lux;
-  //  t_env		*bckground;
+  t_img		bckground;
   void		*aff;
   void		*send_rayon;
   t_wind	wind;

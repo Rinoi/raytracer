@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Tue May 28 20:08:05 2013 karina martynava
+** Last update Wed May 29 15:48:40 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -44,7 +44,6 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
       inter_m->ptn.x = droit->cord.x + droit->vec.x * inter_m->d;
       inter_m->ptn.y = droit->cord.y + droit->vec.y * inter_m->d;
       inter_m->ptn.z = droit->cord.z + droit->vec.z * inter_m->d;
-      //      printf("%f %f %f\n", inter_m->ptn.x, inter_m->ptn.y, inter_m->ptn.z);
     }
   return (inter_m);
 }
@@ -61,6 +60,7 @@ void		my_send_rayon(t_rs *rs, t_st *droit)
   inter = my_send_rayon_act(rs, droit);
   if (inter == NULL)
     {
+      //      color = get_img_color();
       my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, 0x420);
     }
   else

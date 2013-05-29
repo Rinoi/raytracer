@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Tue May 28 23:41:51 2013 lucas mayol
+** Last update Wed May 29 14:57:04 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -72,11 +72,11 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
       free(inter);
       return (NULL);
     }
-  if (is_a_god_cylinder(obj, &dr, inter) == -1)
-    {
-      free(inter);
-      return (NULL);
-    }
+  /* if (is_a_god_cylinder(obj, &dr, inter) == -1) */
+  /*   { */
+  /*     free(inter); */
+  /*     return (NULL); */
+  /*   } */
   inter->cal_norm = cylinder_nrml;
   return (inter);
 }

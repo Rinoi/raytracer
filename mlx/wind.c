@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Tue May 28 09:50:34 2013 karina martynava
+** Last update Wed May 29 15:51:32 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -14,6 +14,16 @@
 #include		"rt.h"
 
 #define	ESC_CODE	65307
+
+void	*xpm_img_frmlx(void *mlx_ptr, char *filename,
+		       int width, int height)
+{
+  void	*ret;
+
+  ret = mlx_xpm_file_to_image(mlx_ptr, filename,
+			      &width, &height);
+  return (ret);
+}
 
 void			rtv1_ini(t_rs *rs)
 {
@@ -30,6 +40,17 @@ void			rtv1_ini(t_rs *rs)
 				       &(rs->wind.img.bpp),
 				       &(rs->wind.img.sizeline),
 				       &(rs->wind.img.endian));
+  rs->bckground.img_ptr =
+    xpm_img_frmlx(rs->wind.mlx_ptr,
+		  "./img/bck.xpm", 1920, 1080);
+  if (rs->bckground.img_ptr != NULL)
+    rs->bckground.img =
+      mlx_get_data_addr(rs->bckground.img_ptr,
+			&(rs->bckground.bpp),
+			&(rs->bckground.sizeline),
+			&(rs->bckground.endian));
+  else
+    my_putstr("Background loading failure\n", 2);
 }
 
 int	my_keybrd(int keycode, t_rs *rs)
