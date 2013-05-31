@@ -21,6 +21,7 @@
 # define EPSILLON	0.00001
 
 # define AMB		1
+# define ANTIA		2
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
@@ -111,6 +112,7 @@ typedef	struct	s_inter
 typedef struct	s_wind
 {
   t_img		img;
+  t_img		sampled;
   int		x;
   int		y;
   void		*wind_ptr;
@@ -133,6 +135,7 @@ typedef struct	s_pov
 
 typedef struct	s_resource
 {
+  int		thr;
   t_obj		*obj;
   t_obj		*obj_inf;
   t_lux		*lux;

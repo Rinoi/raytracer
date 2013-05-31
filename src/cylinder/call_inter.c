@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Fri May 31 16:26:35 2013 lucas mayol
+** Last update Fri May 31 17:34:00 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -40,7 +40,7 @@ int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter)
   inter->rela_ptn.x += obj->ptn.x;
   inter->rela_ptn.y += obj->ptn.y;
   inter->rela_ptn.z += obj->ptn.z;
-  printf("inter_rela : %f %f %f\n", inter->rela_ptn.x, inter->rela_ptn.y, inter->rela_ptn.z);
+  /* printf("inter_rela : %f %f %f\n", inter->rela_ptn.x, inter->rela_ptn.y, inter->rela_ptn.z); */
   if (inter->rela_ptn.z > obj->ptn.z)
     {
       return (-1);
