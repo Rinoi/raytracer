@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Fri May 31 18:06:22 2013 karina martynava
+** Last update Fri May 31 23:22:25 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -34,7 +34,7 @@ void			rtv1_ini(t_rs *rs)
     }
   rs->wind.wind_ptr =
     mlx_new_window(rs->wind.mlx_ptr,
-		   rs->eyes->larg, rs->eyes->lng, "RT");
+		   rs->eyes->larg * ANTIA, rs->eyes->lng * ANTIA, "RT");
   rs->wind.img.img_ptr =
     mlx_new_image(rs->wind.mlx_ptr,
 		  rs->eyes->larg * ANTIA, rs->eyes->lng * ANTIA);
@@ -75,10 +75,10 @@ int	my_keybrd(int keycode, t_rs *rs)
 
 int	my_expose(t_rs *rs)
 {
-  /* mlx_put_image_to_window(rs->wind.mlx_ptr, rs->wind.wind_ptr, */
-  /* 			  rs->wind.img.img_ptr, 0, 0); */
   mlx_put_image_to_window(rs->wind.mlx_ptr, rs->wind.wind_ptr,
-  			  rs->wind.sampled.img_ptr, 0, 0);
+  			  rs->wind.img.img_ptr, 0, 0);
+  /* mlx_put_image_to_window(rs->wind.mlx_ptr, rs->wind.wind_ptr, */
+  /* 			  rs->wind.sampled.img_ptr, 0, 0); */
   return (0);
 }
 
@@ -95,12 +95,11 @@ void	rt_main_mlx(t_rs *rs)
     return ;
   send_rayon_main(rs);
   mlx_put_image_to_window(rs->wind.mlx_ptr, rs->wind.wind_ptr,
-			  rs->wind.sampled.img_ptr, 0, 0);
+			  rs->wind.img.img_ptr, 0, 0);
   while (rs->thr != 4)
-    sleep(1);
+    usleep(10000);
   mlx_supersamp(rs, 0, rs->wind.sampled.x);
   mlx_expose_hook(rs->wind.wind_ptr, my_expose, rs);
   mlx_key_hook(rs->wind.wind_ptr, my_keybrd, rs);
-  mlx_loop_hook(rs->wind.mlx_ptr, &my_expose, rs);
   mlx_loop(rs->wind.mlx_ptr);
 }

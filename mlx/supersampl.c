@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Wed May 29 20:40:59 2013 karina martynava
-** Last update Fri May 31 17:47:51 2013 karina martynava
+** Last update Fri May 31 19:07:58 2013 karina martynava
 */
 
 #include "mlx.h"

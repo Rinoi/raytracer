@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Thu May 30 15:31:22 2013 lucas mayol
+** Last update Fri May 31 22:07:59 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -51,8 +51,16 @@ void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3])
   /*   } */
   /* else */
   /*   { */
-  tab[0] = 1;
-  tab[1] = 1;
-  tab[2] = 1;
-  //    }
+  if (obj->mat != NULL)
+    {
+      tab[0] = obj->mat->blue;
+      tab[1] = obj->mat->green;
+      tab[2] = obj->mat->red;
+    }
+  else
+    {
+      tab[0] = 1;
+      tab[1] = 1;
+      tab[2] = 1;
+    }
 }

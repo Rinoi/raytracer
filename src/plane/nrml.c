@@ -5,13 +5,13 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:20:26 2013 karina martynava
-** Last update Thu May 30 17:12:59 2013 lucas mayol
+** Last update Fri May 31 19:08:39 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include "rt.h"
 
-t_ptn	*plane_nrml(t_obj *obj, __attribute__((unused))t_ptn *ptn)
+t_ptn	*plane_nrml(__attribute__((unused))t_obj *obj, __attribute__((unused))t_ptn *ptn)
 {
   t_ptn	*nrml;
   //  t_ptn	*mat;

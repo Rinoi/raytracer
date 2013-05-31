@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 01:58:44 2013 karina martynava
-** Last update Fri May 31 15:50:05 2013 karina martynava
+** Last update Sat Jun  1 00:25:24 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -25,14 +25,14 @@ float	resolve_two(float a, float b, float c, int *x)
     {
       one = (- b - sqrt(delta)) / (2 * a);
       two = (- b + sqrt(delta)) / (2 * a);
-      if (one < EPSILLON && two < EPSILLON)
+      if (one <= EPSILLON && two <= EPSILLON)
 	return (-1.0);
-      if (two < EPSILLON)
+      if (two <= EPSILLON)
 	{
 	  *x = 1;
 	  return (one);
 	}
-      if (one < EPSILLON)
+      if (one <= EPSILLON)
 	{
 	  *x = 0;
 	  return (two);

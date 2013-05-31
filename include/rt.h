@@ -18,10 +18,19 @@
 
 # define RAD(x)		(M_PI * (x) / 180)
 # define NOTINIT	0xFFFFFFFF
-# define EPSILLON	0.00001
 
+// FOR INTERSECTIONS
+# define EPSILLON	0.0001
+
+// LUM
+# define NONE		0
 # define AMB		1
+# define SPOT		2
+# define SPOTLEN	5
+
+// POST - IN PROCESSING
 # define ANTIA		2
+# define MAXDEPTH	10
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
@@ -176,6 +185,9 @@ void		my_pixel_put_to_image(t_img *, int, int, unsigned int);
 
 int	get_col(t_img *tex, int x, int y);
 void	load_img(t_rs *rs, t_img *text, char *str);
+
+// sampl
+void	mlx_supersamp(t_rs *rs, int init, int to);
 
 // matrice.h
 

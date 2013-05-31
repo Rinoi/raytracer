@@ -5,12 +5,14 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Fri May 31 18:16:43 2013 karina martynava
+** Last update Sat Jun  1 00:03:02 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include <math.h>
 #include "rt.h"
+
+void	mult_vect(t_ptn *a, float k);
 
 float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref, char attribute)
 {
@@ -19,13 +21,11 @@ float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref, char attribute)
 
   if (attribute == AMB)
     return (1);
-  lamb = scal_prod(lightray, nrml);
-  dist = sqrt(scal_prod(lightray, lightray)) *
-    sqrt(scal_prod(nrml, nrml));
+  dist = sqrt(scal_prod(lightray, lightray)) * sqrt(scal_prod(nrml, nrml));
   if (dist != 0)
-    lamb = lamb / dist;
-  else 
-    lamb = -1.0f;
+    lamb = scal_prod(lightray, nrml) / dist;
+  else
+    return (-1.0);
   return (lamb * coef_ref);
 }
 
@@ -40,10 +40,10 @@ int	inlight(t_rs *rs, t_st *droit)
       inter = ptn->cal_inter(ptn, *droit);
       if (inter != NULL)
 	{
-	  if (inter->d < 1)
+	  if (inter->d < 1 && inter->d > 0)
 	    {
 	      free(inter);
-	      return (1);
+	      return (0);
 	    }
 	  else
 	    free(inter);
@@ -73,14 +73,14 @@ int	inlight(t_rs *rs, t_st *droit)
 
 void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
-  float	tab[3];
+  //  float	tab[3];
   
-  point->obj->cal_color(point->obj, point, tab);
+  //  point->obj->cal_color(point->obj, point, tab);
   if (point->obj->mat && coef > 0)
     {
-      col[0] = col[0] + coef * sv->blue * tab[0];
-      col[1] = col[1] + coef * sv->green * tab[1];
-      col[2] = col[2] + coef * sv->red * tab[2];
+      col[0] = col[0] + coef * sv->blue * point->obj->mat->blue;
+      col[1] = col[1] + coef * sv->green * point->obj->mat->green;
+      col[2] = col[2] + coef * sv->red * point->obj->mat->red;
     }
   else if (coef > 0)
     {
@@ -88,6 +88,7 @@ void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
       col[1] = col[1] + coef * sv->green * 1;
       col[2] = col[2] + coef * sv->red * 1;
     }
+  /* printf("%f %f %f\n", col[0], col[1], col[2]); */
 }
 
 void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
@@ -99,13 +100,12 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
   t_ptn	*mat;
 
   nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
+  /* mult_vect(nrml, 1.0 / sqrt(scal_prod(nrml, nrml))); */
   sv = rs->lux;
   add_vect(&light.cord, &point->ptn, &st->cord);
-  //  printf("av : %f, %f, %f\n", 
   mat = mul_m_p(point->obj->matrix, &light.cord);
   light.cord = *mat;
   sub_vect(&light.cord, &light.cord, &st->cord);
-  //  light.cord = (point->ptn);
   free(mat);
   while (sv != NULL)
     {
@@ -114,9 +114,12 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 	{
 	  coef = lambert_coef(&light.vec, nrml, col[3], sv->attribute)
 	    * sv->lux;
+	  if (sv->attribute == SPOT)
+	    coef = coef * (SPOTLEN - sqrt(scal_prod(&light.vec, &light.vec))) / SPOTLEN;
 	  work_with_illumination(sv, col, point, coef);
 	}
       sv = sv->next;
     }
+  /* printf("%f %f %f\n", col[0], col[1], col[2]); */
   free(nrml);
 }

@@ -5,14 +5,13 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 03:48:11 2013 karina martynava
-** Last update Fri May 31 15:50:07 2013 karina martynava
+** Last update Sat Jun  1 00:25:25 2013 karina martynava
 */
 
 #include <stdio.h>
 #include <values.h>
 #include <math.h>
-
-#define	EPSILLON	0
+#include "rt.h"
 
 float	resolve_two_bis(float a, float b, float c)
 {
@@ -27,7 +26,7 @@ float	resolve_two_bis(float a, float b, float c)
     {
       one = (- b - sqrt(delta)) / (2 * a);
       two = (- b + sqrt(delta)) / (2 * a);
-      if (one > 0)
+      if (one > EPSILLON)
 	return (one);
       return (two);
     }
