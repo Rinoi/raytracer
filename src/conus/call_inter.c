@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Wed May 29 18:48:51 2013 karina martynava
+** Last update Fri May 31 18:16:28 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -13,9 +13,9 @@
 
 int             is_a_god_conus(t_obj *obj, t_st *st, t_inter *inter)
 {
-  inter->rela_ptn.x = st->cord.x + st->vec.x * inter->d;
-  inter->rela_ptn.y = st->cord.y + st->vec.y * inter->d;
-  inter->rela_ptn.z = st->cord.z + st->vec.z * inter->d;
+  inter->rela_ptn.x = st->cord.x + st->vec.x * inter->d + obj->ptn.x;
+  inter->rela_ptn.y = st->cord.y + st->vec.y * inter->d + obj->ptn.y;
+  inter->rela_ptn.z = st->cord.z + st->vec.z * inter->d + obj->ptn.z;
   if (inter->rela_ptn.z > obj->ptn.z)
     {
       return (-1);
