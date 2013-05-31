@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sat Jun  1 00:42:10 2013 karina martynava
+** Last update Sat Jun  1 01:36:07 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -20,7 +20,6 @@
 int	init_rs(t_rs *rs)
 {
   float	*r;
-  float	*b;
   t_mat	*a;
   t_mat	*c;
 

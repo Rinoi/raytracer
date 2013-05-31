@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Fri May 31 17:46:47 2013 karina martynava
+## Last update Sat Jun  1 01:33:05 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -28,6 +28,7 @@ SRCS	=	src/main.c \
 		src/lum.c \
 		src/color.c \
 		src/vect_op.c \
+		src/reflexion.c \
 		mlx/my_pixel_put_to_image.c \
 		mlx/wind.c \
 		mlx/img.c \

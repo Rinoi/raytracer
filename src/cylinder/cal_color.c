@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Fri May 31 22:07:59 2013 karina martynava
+** Last update Sat Jun  1 01:39:27 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -32,7 +32,7 @@ int		cal_texture_cylinder(t_obj *obj, float x, float y, float z)
   return (get_col(&obj->mat->img, a, z));
 }
 
-void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3])
+void		cal_color_cylinder(t_obj *obj, __attribute__((unused))t_inter *inter, float tab[3])
 {
   /* int		color; */
   /* char		*tabs; */

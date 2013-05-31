@@ -5,13 +5,13 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Thu May 30 18:09:12 2013 lucas mayol
+** Last update Sat Jun  1 01:40:39 2013 karina martynava
 */
 
 #include <stdio.h>
 #include "rt.h"
 
-int	cal_texture_plan(t_obj *obj, float x, float y, float z)
+int	cal_texture_plan(t_obj *obj, float x, float y, __attribute__((unused))float z)
 {
   x = (int)x % obj->mat->img.x;
   y = (int)y % obj->mat->img.y;
@@ -32,7 +32,7 @@ void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
   if (obj->mat->img.img != NULL)
     {
       color = cal_texture_plan(obj, inter->ptn.x, inter->ptn.y, inter->ptn.z);
-      tabs = (char*)&color;
+      tabs = (unsigned char *)&color;
       printf("%x\n", tabs[0]);
       tab[0] = (unsigned char)tabs[0] / 255.0;
       tab[1] = (unsigned char)tabs[1] / 255.0;

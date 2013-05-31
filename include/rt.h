@@ -159,6 +159,23 @@ typedef struct	s_resource
   //  int		l;
 } t_rs;
 
+// color.c
+
+int	convert_col(float col[3]);
+
+// lum.c
+
+void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st);
+
+// reflexion.c
+
+void	col_update_reflex(float col[4], float tmp_col[4], t_inter *inter, t_st *st);
+
+// send_rayon.c
+
+t_inter	*my_send_rayon_act(t_rs *rs, t_st *droit);
+void	my_send_rayon(t_rs *rs, t_st *droit);
+
 // my_put.c
 
 int     my_strlen(char *);
@@ -170,6 +187,7 @@ void    my_putstr(char *, int);
 float	scal_prod(t_ptn *, t_ptn *);
 void	sub_vect(t_ptn *, t_ptn *, t_ptn *);
 void	add_vect(t_ptn *, t_ptn *, t_ptn *);
+void	mult_vect(t_ptn *, float);
 
 // MLX
 

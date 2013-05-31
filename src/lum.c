@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Sat Jun  1 00:03:02 2013 karina martynava
+** Last update Sat Jun  1 01:46:04 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -73,14 +73,14 @@ int	inlight(t_rs *rs, t_st *droit)
 
 void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
-  //  float	tab[3];
+  float	tab[3];
   
-  //  point->obj->cal_color(point->obj, point, tab);
+  point->obj->cal_color(point->obj, point, tab);
   if (point->obj->mat && coef > 0)
     {
-      col[0] = col[0] + coef * sv->blue * point->obj->mat->blue;
-      col[1] = col[1] + coef * sv->green * point->obj->mat->green;
-      col[2] = col[2] + coef * sv->red * point->obj->mat->red;
+      col[0] = col[0] + coef * sv->blue * tab[0];
+      col[1] = col[1] + coef * sv->green * tab[1];
+      col[2] = col[2] + coef * sv->red * tab[2];
     }
   else if (coef > 0)
     {
@@ -88,7 +88,6 @@ void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
       col[1] = col[1] + coef * sv->green * 1;
       col[2] = col[2] + coef * sv->red * 1;
     }
-  /* printf("%f %f %f\n", col[0], col[1], col[2]); */
 }
 
 void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
@@ -100,7 +99,6 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
   t_ptn	*mat;
 
   nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
-  /* mult_vect(nrml, 1.0 / sqrt(scal_prod(nrml, nrml))); */
   sv = rs->lux;
   add_vect(&light.cord, &point->ptn, &st->cord);
   mat = mul_m_p(point->obj->matrix, &light.cord);
@@ -114,12 +112,11 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 	{
 	  coef = lambert_coef(&light.vec, nrml, col[3], sv->attribute)
 	    * sv->lux;
-	  if (sv->attribute == SPOT)
-	    coef = coef * (SPOTLEN - sqrt(scal_prod(&light.vec, &light.vec))) / SPOTLEN;
+	  coef = (sv->attribute == SPOT) ? coef / SPOTLEN * \
+	    (1 - (sqrt(scal_prod(&light.vec, &light.vec)))) : coef;
 	  work_with_illumination(sv, col, point, coef);
 	}
       sv = sv->next;
     }
-  /* printf("%f %f %f\n", col[0], col[1], col[2]); */
   free(nrml);
 }
