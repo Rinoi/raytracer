@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:04:31 2013 karina martynava
-** Last update Wed May 29 18:15:36 2013 karina martynava
+** Last update Fri May 31 18:00:34 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -18,8 +18,8 @@ t_ptn	*cylinder_nrml(__attribute__((unused))t_obj *obj, t_ptn *ptn)
   nrml = malloc(sizeof(*nrml));
   if (nrml == NULL)
     return (NULL);
-  nrml->x = ptn->x;
-  nrml->y = ptn->y;
+  nrml->x = ptn->x - obj->ptn.x;
+  nrml->y = ptn->y - obj->ptn.y;
   nrml->z = 0;
   return (nrml);
 }

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Fri May 31 16:33:37 2013 lucas mayol
+** Last update Fri May 31 17:51:45 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -105,7 +105,7 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
   mat = mul_m_p(point->obj->matrix, &light.cord);
   light.cord = *mat;
   sub_vect(&light.cord, &light.cord, &st->cord);
-  light.cord = (point->ptn);
+  //  light.cord = (point->ptn);
   free(mat);
   while (sv != NULL)
     {
