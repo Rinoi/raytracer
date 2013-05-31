@@ -5,21 +5,33 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 03:48:11 2013 karina martynava
-** Last update Tue May 28 03:49:07 2013 karina martynava
+** Last update Fri May 31 15:50:07 2013 karina martynava
 */
 
+#include <stdio.h>
 #include <values.h>
 #include <math.h>
-#include "rt.h"
+
+#define	EPSILLON	0
 
 float	resolve_two_bis(float a, float b, float c)
 {
   float	delta;
+  float	one;
+  float	two;
 
   delta = pow(b, 2) - 4 * a * c;
+  if (a == 0 && b != 0)
+    return (- c / b);
   if (a != 0.0f && delta >= 0)
-    return ((- b - sqrt(delta)) / (2 * a));
-  return (MAXDOUBLE);
+    {
+      one = (- b - sqrt(delta)) / (2 * a);
+      two = (- b + sqrt(delta)) / (2 * a);
+      if (one > 0)
+	return (one);
+      return (two);
+    }
+  return (MAXFLOAT);
 }
 
 float	resolve_three_pos_delta_bis(float d[4], float q, float r)
@@ -28,12 +40,24 @@ float	resolve_three_pos_delta_bis(float d[4], float q, float r)
   float	prime;
   float	t;
   float	s;
+  float	tmp;
+  float	ret;
 
-  prime = r / pow(q, 3 / 2);
-  t = acosf(prime) / 3;
-  s = - 2 * pow(q, 1/2);
+  prime = r / sqrt(q * q * q);
+  t = acos(prime) / 3.0;
+  s = - 2 * sqrt(q);
   i = 0;
-  return (s * cosf(t + 2 * M_PI * i / 3) - d[2] / 3);
+  ret = -1.0f;
+  while (i < 3)
+    {
+      tmp = s * cos(t + 2 * M_PI * i / 3.0) - d[2] / 3.0;
+      if (tmp > 0)
+	return (tmp);
+      if (tmp > EPSILLON && (ret < 0 || ret > tmp))
+	ret = tmp;
+      i++;
+    }
+  return (ret);
 }
 
 float	resolve_three_bis(float d[4])
@@ -50,12 +74,19 @@ float	resolve_three_bis(float d[4])
     return (resolve_two_bis(d[2], d[1], d[0]));
   while (i++ < 3)
     d[i - 1] = d[i - 1] / d[3];
-  q = (pow(d[2], 2) - 3 * d[1]) / 9;
-  r = (d[2] * (pow(d[2], 2) - 4.5 * d[1]) + 13.5 * d[0]) / 27;
+
+  q = (pow(d[2], 2) - 3 * d[1]) / 9.0;
+  r = (d[2] * (pow(d[2], 2) - 4.5 * d[1]) + 13.5 * d[0]) / 27.0;
   delta = pow(q, 3) - pow(r, 2);
-  if (delta >= 0)
+  if (delta >= 0) // 3 solutions
     return (resolve_three_pos_delta_bis(d, q, r));
-  s = pow(pow(-delta, 1 / 2) + fabsf(r), 1 / 3);
-  ret = (r > 0) ? s + q / s - d[2] / 3 : s - q / s - d[2] / 3;
+  // 1 solution
+  s = sqrt(-delta) + fabsf(r);
+  s = pow(s, 1.0f / 3.0f);
+  ret = (r < 0) ?
+    s + q / s - d[2] / 3.0f :
+    - s - q / s - d[2] / 3.0f;
+  if (ret < 0)
+    return (-1.0f);
   return (ret);
 }

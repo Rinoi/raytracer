@@ -5,17 +5,22 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Wed May 29 20:40:59 2013 karina martynava
-** Last update Wed May 29 21:23:29 2013 karina martynava
+** Last update Thu May 30 18:57:26 2013 karina martynava
 */
 
-int		convert_col(int a, int b, int c, int d)
+#include "mlx.h"
+#include "rt.h"
+
+int		get_col(t_img *tex, int x, int y);
+
+int		median_col(int a, int b, int c, int d)
 {
   unsigned int	color;
   unsigned char	*modif;
   unsigned char	*m_a;
   unsigned char	*m_b;
   unsigned char	*m_c;
-  unsigned char	*m_c;
+  unsigned char	*m_d;
 
   modif = (unsigned char *)&color;
   m_a = (unsigned char *)&a;
@@ -29,30 +34,24 @@ int		convert_col(int a, int b, int c, int d)
   return (color);
 }
 
-void	mlx_supersamp(t_rs *rs)
+void	mlx_supersamp(t_rs *rs, int init, int to)
 {
-  t_img	sampled;
   int	color;
   int	x;
   int	y;
  
-  rs->wind.img.img_ptr =
-    mlx_new_image(rs->wind.mlx_ptr, rs->eyes->larg, rs->eyes->lng);
-  rs->wind.img.img =
-    mlx_get_data_addr(sampled.img_ptr, &(sampled.img.bpp),
-		      &(sampled.img.sizeline), &(sampled.img.endian));
-  x = 0;
-  while (x < rs->eyes->larg)
+  x = init / 2;
+  while (x < to)
     {
       y = 0;
-      while (y < rs->eyes->lng)
+      while (y < rs->wind.sampled.y)
 	{
 	  color =
-	    convert_col(get_col(rs->wind.img, x * 2, y * 2),
-			get_col(rs->wind.img, x * 2, y * 2 + 1),
-			get_col(rs->wind.img, x * 2 + 1, y * 2),
-			get_col(rs->wind.img, x * 2 + 1, y * 2 + 1))
-	  my_pixel_put_to_image(&sampled, x, y, color)
+	    median_col(get_col(&rs->wind.img, x * 2, y * 2),
+		       get_col(&rs->wind.img, x * 2, y * 2 + 1),
+		       get_col(&rs->wind.img, x * 2 + 1, y * 2),
+		       get_col(&rs->wind.img, x * 2 + 1, y * 2 + 1));
+	  my_pixel_put_to_image(&(rs->wind.sampled), x, y, color);
 	  y++;
 	}
       x++;
