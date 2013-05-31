@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Fri May 31 18:11:12 2013 lucas mayol
+** Last update Fri May 31 18:17:45 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -51,7 +51,7 @@ int	init_rs(t_rs *rs)
   rs->obj->rot.y = 0;
   rs->obj->rot.z = 0;
   rs->obj->matrix = NULL;
-  rs->obj->cal_inter = call_inter_cylinder;
+  rs->obj->cal_inter = call_inter_sphere;
   rs->obj->cal_color = cal_color_cylinder;
   r = malloc(sizeof(float));
   *r = 2;
@@ -66,8 +66,8 @@ int	init_rs(t_rs *rs)
   rs->lux->cord.y = 0;
   rs->lux->cord.z = 0;
   rs->lux->red = 1;
-  rs->lux->green = 1;
-  rs->lux->blue = 1;
+  rs->lux->green = 0;
+  rs->lux->blue = 0;
   return (EXIT_SUCCESS);
 }
 

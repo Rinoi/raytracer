@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Fri May 31 17:51:45 2013 lucas mayol
+** Last update Fri May 31 18:16:43 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -78,15 +78,15 @@ void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
   point->obj->cal_color(point->obj, point, tab);
   if (point->obj->mat && coef > 0)
     {
-      col[0] = col[0] + coef * sv->red * tab[0];
+      col[0] = col[0] + coef * sv->blue * tab[0];
       col[1] = col[1] + coef * sv->green * tab[1];
-      col[2] = col[2] + coef * sv->blue * tab[2];
+      col[2] = col[2] + coef * sv->red * tab[2];
     }
   else if (coef > 0)
     {
-      col[0] = col[0] + coef * sv->red * 1;
+      col[0] = col[0] + coef * sv->blue * 1;
       col[1] = col[1] + coef * sv->green * 1;
-      col[2] = col[2] + coef * sv->blue * 1;
+      col[2] = col[2] + coef * sv->red * 1;
     }
 }
 
