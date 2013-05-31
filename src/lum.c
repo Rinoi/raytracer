@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Wed May 29 20:40:45 2013 karina martynava
+** Last update Fri May 31 16:33:37 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -73,11 +73,14 @@ int	inlight(t_rs *rs, t_st *droit)
 
 void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
+  float	tab[3];
+  
+  point->obj->cal_color(point->obj, point, tab);
   if (point->obj->mat && coef > 0)
     {
-      col[0] = col[0] + coef * sv->red * point->obj->mat->red;
-      col[1] = col[1] + coef * sv->green * point->obj->mat->green;
-      col[2] = col[2] + coef * sv->blue * point->obj->mat->blue;
+      col[0] = col[0] + coef * sv->red * tab[0];
+      col[1] = col[1] + coef * sv->green * tab[1];
+      col[2] = col[2] + coef * sv->blue * tab[2];
     }
   else if (coef > 0)
     {
@@ -97,10 +100,12 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 
   nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
   sv = rs->lux;
-  add_vect(&light.cord, &point->rela_ptn, &st->cord);
+  add_vect(&light.cord, &point->ptn, &st->cord);
+  //  printf("av : %f, %f, %f\n", 
   mat = mul_m_p(point->obj->matrix, &light.cord);
   light.cord = *mat;
   sub_vect(&light.cord, &light.cord, &st->cord);
+  light.cord = (point->ptn);
   free(mat);
   while (sv != NULL)
     {

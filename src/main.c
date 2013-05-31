@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed May 29 21:06:43 2013 lucas mayol
+** Last update Fri May 31 16:37:29 2013 lucas mayol
 */
 
 #include <sys/types.h>
@@ -43,15 +43,16 @@ int	init_rs(t_rs *rs)
   if ((rs->obj = malloc(sizeof(*(rs->obj)))) == NULL)
     return (EXIT_FAILURE);
   rs->obj->next = NULL;
+  rs->obj->mat = rs->mat;
   rs->obj->ptn.x = 0;
   rs->obj->ptn.y = 0;
-  rs->obj->ptn.z = 10;
-  rs->obj->rot.x = 200;
+  rs->obj->ptn.z = 0;
+  rs->obj->rot.x = 45;
   rs->obj->rot.y = 0;
   rs->obj->rot.z = 0;
-  rs->obj->mat = NULL;
   rs->obj->matrix = NULL;
   rs->obj->cal_inter = call_inter_cylinder;
+  rs->obj->cal_color = cal_color_cylinder;
   r = malloc(sizeof(float));
   *r = 2;
   rs->obj->data = (void *)r;

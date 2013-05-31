@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Wed May 29 21:23:27 2013 karina martynava
+** Last update Fri May 31 16:20:07 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -45,6 +45,7 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
       inter_m->ptn.x = droit->cord.x + droit->vec.x * inter_m->d;
       inter_m->ptn.y = droit->cord.y + droit->vec.y * inter_m->d;
       inter_m->ptn.z = droit->cord.z + droit->vec.z * inter_m->d;
+      printf("PI : %f %f %f\n\n", inter_m->ptn.x, inter_m->ptn.y, inter_m->ptn.z);
     }
   return (inter_m);
 }
@@ -65,7 +66,11 @@ void		my_send_rayon(t_rs *rs, t_st *droit)
     {
       enligten(inter, rs, col, droit);
       color = convert_col(col);
-      my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
+      /* my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y */
+      /* 			    , cal_texture_plan(inter->obj, */
+      /* 					       inter->ptn.x, */
+      /* 					       inter->ptn.y, */
+      /* 					       inter->ptn.z)); */
       free(inter);
     }
   my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
@@ -82,7 +87,7 @@ void	*send_rayon_main_act(void *data)
   droit.cord.z = ((t_data_t *)(data))->rs->eyes->cam.z;
   printf("HERE %f, %f, %f\n", droit.cord.x, droit.cord.y, droit.cord.z);
   droit.vec.x = ((t_data_t *)(data))->rs->eyes->larg / 2;
-  while (droit.y <= ((t_data_t *)(data))->rs->)
+  while (droit.y <= ((t_data_t *)(data))->max)
     {
       droit.x = 0;
       while (droit.x <= ((t_data_t *)(data))->rs->eyes->larg)
@@ -94,6 +99,7 @@ void	*send_rayon_main_act(void *data)
 	}
       droit.y += 1;
     }
+  printf("END\n");
   return (NULL);
 }
 
@@ -114,8 +120,8 @@ void		creat_thread(t_rs *rs, int ini, int max)
 
 void		send_rayon_main(t_rs *rs)
 {
-  creat_thread(rs, 0, 1 * (rs->eyes->larg / 4));
-  creat_thread(rs, 1 * (rs->eyes->larg / 4), 2 * (rs->eyes->larg / 4));
+  //  creat_thread(rs, 0, 1 * (rs->eyes->larg / 4));
+  //  creat_thread(rs, 1 * (rs->eyes->larg / 4), 2 * (rs->eyes->larg / 4));
   creat_thread(rs, 2 * (rs->eyes->larg / 4), 3 * (rs->eyes->larg / 4));
-  creat_thread(rs, 3 * (rs->eyes->larg / 4), 4 * (rs->eyes->larg / 4));
+  //  creat_thread(rs, 3 * (rs->eyes->larg / 4), 4 * (rs->eyes->larg / 4));
 }

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Wed May 29 18:59:51 2013 karina martynava
-** Last update Wed May 29 21:17:14 2013 karina martynava
+** Last update Thu May 30 17:42:36 2013 lucas mayol
 */
 
 #include <rt.h>
@@ -44,7 +44,7 @@ void    load_img(t_rs *rs, t_img *text, char *str)
                                     str, &text->x, &text->y);
   if (text->img_ptr != NULL)
     {
-      text->img = mlx_get_data_addr(text->img,
+      text->img = mlx_get_data_addr(text->img_ptr,
 				    &(text->bpp),
 				    &(text->sizeline), &(text->endian));
     }
@@ -58,8 +58,9 @@ int		get_col(t_img *tex, int x, int y)
   unsigned char	cl[3];
   int		i;
 
-  i = img->sizeline * y;
-  i += x * img->bpp / 8;
+  //  printf("x : %d, y : %d\nmax : %d, %d\n\n", x, y, tex->x, tex->y);
+  i = tex->sizeline * y;
+  i += x * tex->bpp / 8;
   if (tex != NULL)
     {
       color = (unsigned int*)cl;

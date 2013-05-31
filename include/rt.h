@@ -92,6 +92,7 @@ typedef	struct	s_obj
   t_box		box;
   t_inter      	*(*cal_inter)(struct s_obj *obj, t_st dr);
   float		(*cal_lux_cos)(struct s_obj *obj, t_ptn *ptn, t_lux *lux);
+  void		(*cal_color)(struct s_obj *obj, t_inter *inter, float *retour);
   //  unsigned int	d[4];
   struct s_obj	*next;
 } t_obj;
@@ -170,7 +171,7 @@ void		my_pixel_put_to_image(t_img *, int, int, unsigned int);
 
 // img
 
-int	my_get_color_text(t_img *tex, int x, int y);
+int	get_col(t_img *tex, int x, int y);
 void	load_img(t_rs *rs, t_img *text, char *str);
 
 // matrice.h
@@ -191,14 +192,21 @@ void	rt_main_mlx(t_rs *rs);
 void	ini_mlx(t_rs *rs);
 void	*send_rayon_main_act(void *data);
 void	send_rayon_main(t_rs *rs);
+
 t_inter	*call_inter_sphere(t_obj *obj, t_st dr);
 t_inter	*call_inter_cylinder(t_obj *obj, t_st dr);
 t_inter	*call_inter_conus(t_obj *obj, t_st dr);
 t_inter	*call_inter_plane(t_obj *obj, t_st dr);
+
 t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
+
+void	cal_color_cylinder(t_obj *obj, t_inter *inter, float *tab);
+void	cal_color_plan(t_obj *obj, t_inter *inter, float tab[3]);
+int     cal_texture_plan(t_obj *obj, float x, float y, float z);
+
 float	resolve_two(float a, float b, float c, int *x);
 
 #endif
