@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Sat Jun  1 01:46:04 2013 karina martynava
+** Last update Sat Jun  1 20:11:24 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -14,7 +14,7 @@
 
 void	mult_vect(t_ptn *a, float k);
 
-float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref, char attribute)
+float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref, __attribute__((unused))char attribute)
 {
   float	lamb;
   float	dist;
@@ -26,7 +26,7 @@ float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref, char attribute)
     lamb = scal_prod(lightray, nrml) / dist;
   else
     return (-1.0);
-  return (lamb * coef_ref);
+  return (lamb);
 }
 
 int	inlight(t_rs *rs, t_st *droit)
@@ -53,23 +53,53 @@ int	inlight(t_rs *rs, t_st *droit)
   return (1);
 }
 
-/* void	blinn_phong(float lamber_coef, t_ptn *lightdir, */
-/* 		    t_inter *last, t_st *st) */
-/* { */
-/*   float	light_proj; */
-/*   t_ptn	blinn; */
-/*   float	dist; */
-/*   float	coef_blinn; */
 
-/*   view_proj = lamber_coef / coef_ref; */
-/*   sub_vect(&blinn, lightdir, &(st->vec)); */
-/*   dist = sqrt(scal_prod(&blinn, &blinn)); */
-/*   if (dist != 0.0f) */
-/*     { */
-/*       coef_blinn = fmaxf(light_proj - view_proj, 0.0f) / dist; */
-/*       coef_blinn = pow(coef_blinn, last->obj->mat->spec_pow) * coef_ref; */
-/*     } */
-/* } */
+float	reflect_ptn(t_ptn *toref, t_inter *last, t_ptn *viewpoint)
+{
+  t_ptn	*nrml;
+  float	scal;
+  float	dist;
+  float	omega;
+
+  nrml = (*(last->cal_norm))(last->obj, &(last->rela_ptn));	//// NORMAL
+  mult_vect(nrml, 1.0f / sqrt(scal_prod(nrml, nrml)));		//// NORMAL UNI
+  mult_vect(toref, - 1.0f / sqrt(scal_prod(toref, toref)));	//// FROM INTER TO LIGNE UNI
+  scal = scal_prod(nrml, toref);				
+  scal = 2.0f * scal;
+  toref->x = toref->x - scal * nrml->x;			// vecteur reflechi de la lum
+  toref->y = toref->y - scal * nrml->y;
+  toref->z = toref->z - scal * nrml->z;
+  dist = - sqrt(scal_prod(viewpoint, viewpoint));			// 
+  free(nrml);
+  if (dist != 0)
+    {
+      mult_vect(viewpoint, 1.0f / dist);		//// NORMAL UNI
+      omega = scal_prod(toref, viewpoint);
+      omega = (omega < 0) ? 0 : omega;
+	return (omega);
+    }
+  return (-1);
+}
+
+#define spec 60
+
+void	blinn_phong(t_st *st, t_ptn *light, t_inter *last, float col[4], t_lux *sv)
+{
+  t_ptn	ref;
+  t_ptn	viewpoint;
+  float	omega;
+
+  viewpoint = st->vec;
+  ref = *light;
+  omega = reflect_ptn(&ref, last, &viewpoint);
+  if (omega >= 0)
+    {
+      omega = pow(omega, spec) * sv->lux;
+      col[0] += omega;
+      col[1] += omega;
+      col[2] += omega;
+    }
+}
 
 void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
@@ -115,6 +145,8 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 	  coef = (sv->attribute == SPOT) ? coef / SPOTLEN * \
 	    (1 - (sqrt(scal_prod(&light.vec, &light.vec)))) : coef;
 	  work_with_illumination(sv, col, point, coef);
+	  if (sv->attribute != SPOT)
+	    blinn_phong(st, &light.vec, point, col, sv);
 	}
       sv = sv->next;
     }

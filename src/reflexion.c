@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Sat Jun  1 01:45:31 2013 karina martynava
+** Last update Sat Jun  1 20:38:40 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -33,9 +33,12 @@ void	new_straight(t_st *droit, t_inter *last)
 
 void	col_update_reflex(float col[4], float tmp_col[4], t_inter *inter, t_st *st)
 {
-  col[0] = (1.0 - col[3]) * col[0] + col[3] * tmp_col[0];
-  col[1] = (1.0 - col[3]) * col[1] + col[3] * tmp_col[1];
-  col[2] = (1.0 - col[3]) * col[2] + col[3] * tmp_col[2];
+  col[0] = tmp_col[0] * col[3] + (1.0 - col[3]) * col[0];
+  col[1] = tmp_col[1] * col[3] + (1.0 - col[3]) * col[1];
+  col[2] = tmp_col[2] * col[3] + (1.0 - col[3]) * col[2];
+  /* col[0] =  * col[0] + col[3] * tmp_col[0]; */
+  /* col[1] = (1.0 - col[3]) * col[1] + col[3] * tmp_col[1]; */
+  /* col[2] = (1.0 - col[3]) * col[2] + col[3] * tmp_col[2]; */
   col[3] = col[3] * inter->obj->mat->reflex;
   new_straight(st, inter);
 }
@@ -52,11 +55,14 @@ int	reflexion_time(t_rs *rs, t_st *droit, float col[4])
   refl = *droit;
   cmb = 0;
   bol = 0;
-  while (cmb < MAXDEPTH && cmb != -1 && col[3] > 0.0f && (i = 0) == 0)
+  while (cmb < MAXDEPTH && cmb != -1 && col[3] > 0.0f)
     {
+      i = 0;
       while (i < 3 && (tmp_col[i++] = 0) == 0);
       tmp_col[3] = col[3];
       inter = my_send_rayon_act(rs, &refl);
+      bol = 1;
+      cmb++;
       if (inter != NULL && (bol = 1) && ++cmb)
 	{
 	  enligten(inter, rs, tmp_col, &refl);

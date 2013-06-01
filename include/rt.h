@@ -31,6 +31,12 @@
 // POST - IN PROCESSING
 # define ANTIA		2
 # define MAXDEPTH	10
+# define EXPO		-0.66f
+# define B_AND_W	0
+# define SEPIA		0
+# define SEP_RED	112.0
+# define SEP_GREEN	66.0
+# define SEP_BLUE	20.0
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
@@ -69,7 +75,7 @@ typedef	struct	s_material
   float		red;
   float		green;
   float		blue;
-  float		spec;
+  float		spec[3];
   float		spec_pow;
   float		reflex;
   float		trans;

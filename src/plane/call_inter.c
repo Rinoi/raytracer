@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Thu May 30 17:08:26 2013 lucas mayol
+** Last update Sat Jun  1 20:34:12 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -34,6 +34,7 @@ t_inter		*call_inter_plane(t_obj *obj, t_st dr)
       free(inter);
       return (NULL);
     }
+  inter->obj = obj;
   inter->cal_norm = plane_nrml;
   inter->rela_ptn.x = dr.cord.x + dr.vec.x * inter->d;
   inter->rela_ptn.y = dr.cord.y + dr.vec.y * inter->d;

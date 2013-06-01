@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sat Jun  1 01:36:07 2013 karina martynava
+** Last update Sat Jun  1 20:38:29 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -14,14 +14,15 @@
 #include <stdlib.h>
 #include "rt.h"
 
-#define	SIZE_LARG	500;
-#define	SIZE_LONG	500;
+#define	SIZE_LARG	1000;
+#define	SIZE_LONG	1000;
 
 int	init_rs(t_rs *rs)
 {
   float	*r;
   t_mat	*a;
   t_mat	*c;
+  t_mat	*b;
 
   rs->aff = NULL;
   rs->send_rayon = NULL;
@@ -34,19 +35,40 @@ int	init_rs(t_rs *rs)
   rs->mat->green = 0.2;
   rs->mat->blue = 1;
   rs->mat->reflex = 0.5;
+  rs->mat->spec[0] = 1.0;
+  rs->mat->spec[1] = 1.0;
+  rs->mat->spec[2] = 1.0;
+  rs->mat->spec_pow = 60;
   if ((a = malloc(sizeof(*a))) == NULL)
     return (EXIT_FAILURE);
   a->red = 0.4;
   a->green = 1;
   a->blue = 1;
   a->reflex = 0.5;
+  a->spec[0] = 1.0;
+  a->spec[1] = 1.0;
+  a->spec[2] = 1.0;
+  a->spec_pow = 60;
+  if ((b = malloc(sizeof(*b))) == NULL)
+    return (EXIT_FAILURE);
+  b->red = 1;
+  b->green = 0.2;
+  b->blue = 0.6;
+  b->reflex = 0.5;
+  b->spec[0] = 1.0;
+  b->spec[1] = 1.0;
+  b->spec[2] = 1.0;
+  b->spec_pow = 60;
   if ((c = malloc(sizeof(*c))) == NULL)
     return (EXIT_FAILURE);
   c->red = 1;
   c->green = 0.8;
   c->blue = 0;
   c->reflex = 0.5;
-
+  c->spec[0] = 1.0;
+  c->spec[1] = 1.0;
+  c->spec[2] = 1.0;
+  c->spec_pow = 60;
 
   // SPHERES
   if (rs->eyes == NULL)
@@ -109,6 +131,20 @@ int	init_rs(t_rs *rs)
   rs->obj->next->next->cal_color = cal_color_cylinder;
   rs->obj->next->next->data = (void *)r;
   creat_matrice_for_obj(rs->obj->next->next);
+  if ((rs->obj->next->next->next = malloc(sizeof(*(rs->obj)))) == NULL)
+    return (EXIT_SUCCESS);
+  rs->obj->next->next->next->next = NULL;
+  rs->obj->next->next->next->mat = b;
+  rs->obj->next->next->next->ptn.x = 0;
+  rs->obj->next->next->next->ptn.y = 0;
+  rs->obj->next->next->next->ptn.z = -40;
+  rs->obj->next->next->next->rot.x = 0;
+  rs->obj->next->next->next->rot.y = 0;
+  rs->obj->next->next->next->rot.z = 0;
+  rs->obj->next->next->next->matrix = NULL;
+  rs->obj->next->next->next->cal_inter = call_inter_plane;
+  rs->obj->next->next->next->cal_color = cal_color_cylinder;
+  creat_matrice_for_obj(rs->obj->next->next->next);
 
   //LUMIERE
   if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)
@@ -125,11 +161,11 @@ int	init_rs(t_rs *rs)
   if ((rs->lux->next = malloc(sizeof(*(rs->lux)))) == NULL)
     return (EXIT_FAILURE);
   rs->lux->next->attribute = NONE;
-  rs->lux->next->lux = 0.6;
+  rs->lux->next->lux = 0.8;
   rs->lux->next->next = NULL;
-  rs->lux->next->cord.x = -50;
-  rs->lux->next->cord.y = 20;
-  rs->lux->next->cord.z = -100;
+  rs->lux->next->cord.x = -30;
+  rs->lux->next->cord.y = 30;
+  rs->lux->next->cord.z = 0;
   rs->lux->next->red = 1;
   rs->lux->next->green = 1;
   rs->lux->next->blue = 1;
@@ -138,7 +174,7 @@ int	init_rs(t_rs *rs)
   rs->lux->next->next->attribute = AMB;
   rs->lux->next->next->lux = 0.1;
   rs->lux->next->next->next = NULL;
-  rs->lux->next->next->cord.x = 0;
+  rs->lux->next->next->cord.x = -50;
   rs->lux->next->next->cord.y = 0;
   rs->lux->next->next->cord.z = 0;
   rs->lux->next->next->red = 1;
