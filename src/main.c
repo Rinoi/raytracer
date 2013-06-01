@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sat Jun  1 20:38:29 2013 karina martynava
+** Last update Sat Jun  1 20:55:15 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -137,7 +137,7 @@ int	init_rs(t_rs *rs)
   rs->obj->next->next->next->mat = b;
   rs->obj->next->next->next->ptn.x = 0;
   rs->obj->next->next->next->ptn.y = 0;
-  rs->obj->next->next->next->ptn.z = -40;
+  rs->obj->next->next->next->ptn.z = -30;
   rs->obj->next->next->next->rot.x = 0;
   rs->obj->next->next->next->rot.y = 0;
   rs->obj->next->next->next->rot.z = 0;

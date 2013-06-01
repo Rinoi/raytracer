@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  1 20:34:12 2013 karina martynava
+** Last update Sat Jun  1 20:49:37 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -26,10 +26,10 @@ t_inter		*call_inter_plane(t_obj *obj, t_st dr)
       return (NULL);
     }
   if (dr.vec.z == 0)
-    inter->d = 0;
+    inter->d = EPSILLON;
   else
     inter->d = - dr.cord.z / dr.vec.z;
-  if (inter->d < 0)
+  if (inter->d <= EPSILLON)
     {
       free(inter);
       return (NULL);

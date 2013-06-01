@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Sat Jun  1 20:11:24 2013 karina martynava
+** Last update Sat Jun  1 21:47:40 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -14,7 +14,7 @@
 
 void	mult_vect(t_ptn *a, float k);
 
-float	lambert_coef(t_ptn *lightray, t_ptn *nrml, float coef_ref, __attribute__((unused))char attribute)
+float	lambert_coef(t_ptn *lightray, t_ptn *nrml, char attribute)
 {
   float	lamb;
   float	dist;
@@ -140,7 +140,7 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
       sub_vect(&light.vec, &sv->cord, &light.cord);
       if (inlight(rs, &light) || sv->attribute == AMB)
 	{
-	  coef = lambert_coef(&light.vec, nrml, col[3], sv->attribute)
+	  coef = lambert_coef(&light.vec, nrml, sv->attribute)
 	    * sv->lux;
 	  coef = (sv->attribute == SPOT) ? coef / SPOTLEN * \
 	    (1 - (sqrt(scal_prod(&light.vec, &light.vec)))) : coef;

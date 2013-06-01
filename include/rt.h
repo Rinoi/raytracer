@@ -34,6 +34,7 @@
 # define EXPO		-0.66f
 # define B_AND_W	0
 # define SEPIA		0
+# define NEGATIVE	0
 # define SEP_RED	112.0
 # define SEP_GREEN	66.0
 # define SEP_BLUE	20.0
