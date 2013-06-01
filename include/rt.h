@@ -31,7 +31,7 @@
 // POST - IN PROCESSING
 # define ANTIA		2
 # define MAXDEPTH	10
-# define EXPO		-0.66f
+# define EXPO		-2.04f
 # define B_AND_W	0
 # define SEPIA		0
 # define NEGATIVE	0

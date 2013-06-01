@@ -5,10 +5,8 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 09:27:46 2013 karina martynava
-** Last update Sat Jun  1 22:59:30 2013 karina martynava
+** Last update Sun Jun  2 00:07:04 2013 karina martynava
 */
-
-#define	EXPO	-0.66f
 
 #include <math.h>
 #include "rt.h"
@@ -49,17 +47,22 @@ void	black_and_white(float col[3])
 }
 void	exposure(float col[3])
 {
-  float exposure = - 0.66f;
-  float	blue;
-  float	green;
-  float	red;
+  float		blue;
+  float		green;
+  float		red;
+  const float	exposure = EXPO;
 
   blue = col[0];
-  green = col[0];
-  red = col[0];
+  green = col[1];
+  red = col[2];
   blue = 1.0f - expf(blue * exposure);
   red = 1.0f - expf(red * exposure);
   green = 1.0f - expf(green * exposure);
+  col[0] = blue;
+  col[1] = green;
+  col[2] = red;
+  //      printf("---> %f %f %f\n", red, green, blue);
+  /* } */
 }
 
 int		convert_col(float col[3])
@@ -68,14 +71,15 @@ int		convert_col(float col[3])
   unsigned char	*modif;
   float		max;
 
+  exposure(col);
   if (SEPIA)
     sepia_tone(col);
-  max = (col[0] > col[1]) ? col[0] : col[1];
-  max = (max > col[2]) ? max : col[2];
-  max = (max > 1.0) ? 1.0 / max : 1.0;
-  col[0] = col[0] * max;
-  col[1] = col[1] * max;
-  col[2] = col[2] * max;
+  /* max = (col[0] > col[1]) ? col[0] : col[1]; */
+  /* max = (max > col[2]) ? max : col[2]; */
+  /* max = (max > 1.0) ? 1.0 / max : 1.0; */
+  /* col[0] = col[0] * max; */
+  /* col[1] = col[1] * max; */
+  /* col[2] = col[2] * max; */
   if (B_AND_W)
     black_and_white(col);
   if (NEGATIVE)
