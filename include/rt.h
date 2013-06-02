@@ -31,7 +31,7 @@
 // POST - IN PROCESSING
 # define ANTIA		2
 # define MAXDEPTH	10
-# define EXPO		-2.04f
+# define EXPO		-2.07f
 # define B_AND_W	0
 # define SEPIA		0
 # define NEGATIVE	0
@@ -79,6 +79,7 @@ typedef	struct	s_material
   float		spec[3];
   float		spec_pow;
   float		reflex;
+  float		bump;
   float		trans;
   float		refract;
   float		diff_reflex;
@@ -127,7 +128,6 @@ typedef	struct	s_inter
 
 typedef struct	s_wind
 {
-  t_img		img;
   t_img		sampled;
   int		x;
   int		y;
@@ -137,7 +137,11 @@ typedef struct	s_wind
 
 typedef struct	s_environnement
 {
-
+  char	antia;
+  char	b_and_w;
+  char	sepia;
+  char	negative;
+  char	pattern;
 } t_env;
 
 typedef struct	s_pov
@@ -156,15 +160,20 @@ typedef struct	s_resource
   t_obj		*obj_inf;
   t_lux		*lux;
   t_img		bckground;
+  t_env		env;
   void		*aff;
   void		*send_rayon;
   t_wind	wind;
   t_kdtree	*tree;
   t_pov		*eyes;
   t_mat		*mat;
-  //  t_ptn		eyes;
-  //  int		l;
 } t_rs;
+
+typedef struct	s_patterns
+{
+  int		num;
+  void		(*ptr)(t_data_t *, t_st *);
+} t_patterns;
 
 // color.c
 
@@ -181,7 +190,7 @@ void	col_update_reflex(float col[4], float tmp_col[4], t_inter *inter, t_st *st)
 // send_rayon.c
 
 t_inter	*my_send_rayon_act(t_rs *rs, t_st *droit);
-void	my_send_rayon(t_rs *rs, t_st *droit);
+void	my_send_rayon(t_rs *rs, t_st *droit, float col[4]);
 
 // my_put.c
 
@@ -196,6 +205,12 @@ void	sub_vect(t_ptn *, t_ptn *, t_ptn *);
 void	add_vect(t_ptn *, t_ptn *, t_ptn *);
 void	mult_vect(t_ptn *, float);
 
+// patterns.c
+
+void	alea_pattern(t_data_t *data, t_st *droit);
+void	nrml_pattern(t_data_t *data, t_st *droit);
+void	vert_pattern(t_data_t *data, t_st *droit);
+
 // MLX
 
 // wind.c
@@ -208,6 +223,7 @@ void		my_pixel_put_to_image(t_img *, int, int, unsigned int);
 
 // img
 
+int     get_img_color(t_img *img, int x, int y);
 int	get_col(t_img *tex, int x, int y);
 void	load_img(t_rs *rs, t_img *text, char *str);
 

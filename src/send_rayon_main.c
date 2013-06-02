@@ -5,16 +5,22 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Sat Jun  1 01:32:51 2013 karina martynava
+** Last update Sun Jun  2 19:38:14 2013 karina martynava
 */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "rt.h"
 
-int     get_img_color(t_img *img, int x, int y);
-int	convert_col(float col[3]);
-void	enligten(t_inter *point, t_rs *rs, float col[3], t_st *st);
+#define	NB_PAT	3
+
+t_patterns	g_pat[] =
+  {
+    {0, nrml_pattern},
+    {1, vert_pattern},
+    {2, alea_pattern}
+  };
 
 t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 {
@@ -45,32 +51,65 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
   return (inter_m);
 }
 
+int	antialiasing_color(int antialias, t_st *droit, t_rs *rs)
+{
+  int	i;
+  int	j;
+  float	final_col[4];
+  float	col[3];
+  float	antia;
+
+  antia = (antialias % 2 != 0 || antialias == 0) ? 1.0f : 1.0f / antialias;
+  i = 0;
+  final_col[0] = 0;
+  final_col[1] = 0;
+  final_col[2] = 0;
+  while (i < antialias)
+    {
+      j = 0;
+      droit->vec.z = rs->eyes->larg / 2 - droit->y + i * antia;
+      while (j < antialias)
+	{
+	  droit->vec.y = rs->eyes->larg / 2 - droit->x + j * antia;
+	  my_send_rayon(rs, droit, col);
+	  final_col[0] += col[0];
+	  final_col[1] += col[1];
+	  final_col[2] += col[2];
+	  j++;
+	}
+      i++;
+    }
+  final_col[0] = final_col[0] * antia;
+  final_col[1] = final_col[1] * antia;
+  final_col[2] = final_col[2] * antia;
+  return (convert_col(final_col));
+}
+
+
 void		*send_rayon_main_act(void *dt)
 {
   t_st		droit;
   t_data_t	*data;
+  int		i;
 
+  i = 0;
   data = ((t_data_t *)(dt));
   droit.y = data->ini;
   droit.cord.x = data->rs->eyes->cam.x;
   droit.cord.y = data->rs->eyes->cam.y;
   droit.cord.z = data->rs->eyes->cam.z;
   droit.vec.x = data->rs->eyes->larg / 2;
-  while (droit.y <= data->max)
+  while (i < NB_PAT && i != -1)
     {
-      droit.x = 0;
-      while (droit.x <= data->rs->wind.img.y)
+      if (g_pat[i].num == data->rs->env.pattern)
 	{
-	  droit.vec.y = data->rs->eyes->larg / 2 - droit.x / 2.0f;
-	  droit.vec.z = data->rs->eyes->larg / 2 - droit.y / 2.0f;
-	  my_send_rayon(data->rs, &droit);
-	  droit.x += 1;
+	  (g_pat[i].ptr)(data, &droit);
+	  i = -2;
 	}
-      droit.y += 1;
+      i++;
     }
-  printf("END\n");
-  mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
-			  data->rs->wind.img.img_ptr, 0, 0);
+  if (i == -1)
+    nrml_pattern(data, &droit);
   data->rs->thr += 1;
   return (NULL);
 }
@@ -93,8 +132,10 @@ void		creat_thread(t_rs *rs, int ini, int max)
 void		send_rayon_main(t_rs *rs)
 {
   rs->thr = 0;
-  creat_thread(rs, 0, 1 * (rs->wind.img.x / 4));
-  creat_thread(rs, 1 * (rs->wind.img.x / 4), 2 * (rs->wind.img.x / 4));
-  creat_thread(rs, 2 * (rs->wind.img.x / 4), 3 * (rs->wind.img.x / 4));
-  creat_thread(rs, 3 * (rs->wind.img.x / 4), 4 * (rs->wind.img.x / 4));
+  creat_thread(rs, 0, 1 * (rs->eyes->larg));
+  /* creat_thread(rs, 1 * (rs->eyes->larg / 4), 2 * (rs->eyes->larg / 4)); */
+  /* creat_thread(rs, 2 * (rs->eyes->larg / 4), 3 * (rs->eyes->larg / 4)); */
+  /* creat_thread(rs, 3 * (rs->eyes->larg / 4), 4 * (rs->eyes->larg / 4)); */
+  while (rs->thr != 1)
+    usleep(100000);
 }

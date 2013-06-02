@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sat Jun  1 22:59:00 2013 karina martynava
+## Last update Sun Jun  2 19:33:09 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -32,11 +32,11 @@ SRCS	=	src/main.c \
 		mlx/my_pixel_put_to_image.c \
 		mlx/wind.c \
 		mlx/img.c \
-		mlx/supersampl.c \
 		calc/resolve_two.c \
 		calc/resolve_bis.c \
 		calc/resolve_three.c \
 		calc/resolve_four.c \
+		src/patterns.c \
 		src/sphere/call_inter.c \
 		src/cylinder/call_inter.c \
 		src/conus/call_inter.c \

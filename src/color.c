@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 09:27:46 2013 karina martynava
-** Last update Sun Jun  2 00:07:04 2013 karina martynava
+** Last update Sun Jun  2 16:57:25 2013 karina martynava
 */
 
 #include <math.h>
@@ -74,12 +74,12 @@ int		convert_col(float col[3])
   exposure(col);
   if (SEPIA)
     sepia_tone(col);
-  /* max = (col[0] > col[1]) ? col[0] : col[1]; */
-  /* max = (max > col[2]) ? max : col[2]; */
-  /* max = (max > 1.0) ? 1.0 / max : 1.0; */
-  /* col[0] = col[0] * max; */
-  /* col[1] = col[1] * max; */
-  /* col[2] = col[2] * max; */
+  max = (col[0] > col[1]) ? col[0] : col[1];
+  max = (max > col[2]) ? max : col[2];
+  max = (max > 1.0) ? 1.0 / max : 1.0;
+  col[0] = col[0] * max;
+  col[1] = col[1] * max;
+  col[2] = col[2] * max;
   if (B_AND_W)
     black_and_white(col);
   if (NEGATIVE)

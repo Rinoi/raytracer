@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Sat Jun  1 20:38:40 2013 karina martynava
+** Last update Sun Jun  2 17:26:33 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -75,18 +75,15 @@ int	reflexion_time(t_rs *rs, t_st *droit, float col[4])
   return (bol);
 }
 
-void		my_send_rayon(t_rs *rs, t_st *droit)
+void		my_send_rayon(t_rs *rs, t_st *droit, float col[4])
 {
-  int		color;
-  float		col[4];
-
   col[0] = 0;
   col[1] = 0;
   col[2] = 0;
   col[3] = 1; /////////// REFLEXION
-  color = 0;
-  //  color = get_img_color(&rs->bckground, droit->x / 2, droit->y / 2);
-  if (reflexion_time(rs, droit, col))
-    color = convert_col(col);
-  my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
+  /* color = 0; */
+  /* //  color = get_img_color(&rs->bckground, droit->x / 2, droit->y / 2); */
+  reflexion_time(rs, droit, col);
+  /*   color = convert_col(col); */
+  /* my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color); */
 }

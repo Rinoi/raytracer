@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sat Jun  1 20:55:15 2013 karina martynava
+** Last update Sun Jun  2 19:58:31 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -27,6 +27,8 @@ int	init_rs(t_rs *rs)
   rs->aff = NULL;
   rs->send_rayon = NULL;
   rs->eyes = malloc(sizeof(*(rs->eyes)));
+
+  rs->env.pattern = 0;
 
   // MATERIEEEL
   if ((rs->mat = malloc(sizeof(*(rs->mat)))) == NULL)
@@ -70,7 +72,6 @@ int	init_rs(t_rs *rs)
   c->spec[2] = 1.0;
   c->spec_pow = 60;
 
-  // SPHERES
   if (rs->eyes == NULL)
     return (EXIT_FAILURE);
   rs->obj_inf = NULL;
@@ -84,6 +85,8 @@ int	init_rs(t_rs *rs)
   rs->eyes->rot.z = 0;
   rs->eyes->larg = SIZE_LARG;
   rs->eyes->lng = SIZE_LONG;
+
+  // SPHERES
   if ((rs->obj = malloc(sizeof(*(rs->obj)))) == NULL)
     return (EXIT_FAILURE);
   rs->obj->next = NULL;
