@@ -137,11 +137,11 @@ typedef struct	s_wind
 
 typedef struct	s_environnement
 {
-  char	antia;
-  char	b_and_w;
-  char	sepia;
-  char	negative;
-  char	pattern;
+  char		antia;
+  char		b_and_w;
+  char		sepia;
+  char		negative;
+  char		pattern;
 } t_env;
 
 typedef struct	s_pov
@@ -210,6 +210,10 @@ void	mult_vect(t_ptn *, float);
 void	alea_pattern(t_data_t *data, t_st *droit);
 void	nrml_pattern(t_data_t *data, t_st *droit);
 void	vert_pattern(t_data_t *data, t_st *droit);
+
+// anti aliasing
+
+int	antialiasing_color(int antialias, t_st *droit, t_rs *rs);
 
 // MLX
 

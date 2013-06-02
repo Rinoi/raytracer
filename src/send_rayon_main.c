@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Sun Jun  2 19:38:14 2013 karina martynava
+** Last update Sun Jun  2 20:19:01 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -50,41 +50,6 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
   inter_m->ptn.z = droit->cord.z + droit->vec.z * inter_m->d;
   return (inter_m);
 }
-
-int	antialiasing_color(int antialias, t_st *droit, t_rs *rs)
-{
-  int	i;
-  int	j;
-  float	final_col[4];
-  float	col[3];
-  float	antia;
-
-  antia = (antialias % 2 != 0 || antialias == 0) ? 1.0f : 1.0f / antialias;
-  i = 0;
-  final_col[0] = 0;
-  final_col[1] = 0;
-  final_col[2] = 0;
-  while (i < antialias)
-    {
-      j = 0;
-      droit->vec.z = rs->eyes->larg / 2 - droit->y + i * antia;
-      while (j < antialias)
-	{
-	  droit->vec.y = rs->eyes->larg / 2 - droit->x + j * antia;
-	  my_send_rayon(rs, droit, col);
-	  final_col[0] += col[0];
-	  final_col[1] += col[1];
-	  final_col[2] += col[2];
-	  j++;
-	}
-      i++;
-    }
-  final_col[0] = final_col[0] * antia;
-  final_col[1] = final_col[1] * antia;
-  final_col[2] = final_col[2] * antia;
-  return (convert_col(final_col));
-}
-
 
 void		*send_rayon_main_act(void *dt)
 {

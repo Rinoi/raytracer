@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Sun Jun  2 18:10:03 2013 karina martynava
+** Last update Sun Jun  2 21:52:48 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -14,6 +14,8 @@
 #include		"rt.h"
 
 #define	ESC_CODE	65307
+
+void	jpeg_creation(t_rs *rs);
 
 void	*xpm_img_frmlx(void *mlx_ptr, char *filename,
 		       int width, int height)
@@ -59,6 +61,7 @@ int	my_keybrd(int keycode, t_rs *rs)
   if (keycode == ESC_CODE && rs->thr == 1)
     {
       mlx_destroy_window(rs->wind.mlx_ptr, rs->wind.wind_ptr);
+      jpeg_creation(rs);
       exit(EXIT_FAILURE);
     }
   return (0);

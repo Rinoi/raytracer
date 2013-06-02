@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 09:27:46 2013 karina martynava
-** Last update Sun Jun  2 16:57:25 2013 karina martynava
+** Last update Sun Jun  2 21:52:48 2013 karina martynava
 */
 
 #include <math.h>
@@ -61,8 +61,6 @@ void	exposure(float col[3])
   col[0] = blue;
   col[1] = green;
   col[2] = red;
-  //      printf("---> %f %f %f\n", red, green, blue);
-  /* } */
 }
 
 int		convert_col(float col[3])
