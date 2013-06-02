@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Fri May 31 17:34:00 2013 karina martynava
+** Last update Mon Jun  3 00:44:06 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -32,18 +32,32 @@ void		change_dr(t_obj *obj, t_st *dr)
   // printf("NEW %f, %f, %f\n\n", dr->vec.x, dr->vec.y, dr->vec.z);
 }
 
-int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter)
+int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter, int i)
 {
+  int           x;
+  float         a;
+  float         b;
+  float         c;
+
   inter->rela_ptn.x = st->cord.x + st->vec.x * inter->d;
   inter->rela_ptn.y = st->cord.y + st->vec.y * inter->d;
   inter->rela_ptn.z = st->cord.z + st->vec.z * inter->d;
   inter->rela_ptn.x += obj->ptn.x;
   inter->rela_ptn.y += obj->ptn.y;
   inter->rela_ptn.z += obj->ptn.z;
-  /* printf("inter_rela : %f %f %f\n", inter->rela_ptn.x, inter->rela_ptn.y, inter->rela_ptn.z); */
-  if (inter->rela_ptn.z > obj->ptn.z)
+
+  if ((inter->rela_ptn.z > obj->ptn.z)
+      || (inter->rela_ptn.z < obj->ptn.z - obj->limit_z))
     {
-      return (-1);
+      if (i == 1)
+        return (-1);
+      a = pow(st->vec.x, 2) + pow(st->vec.y, 2);
+      b = 2 * (st->vec.x * st->cord.x
+               + st->vec.y * st->cord.y);
+      c = pow(st->cord.x, 2) + pow(st->cord.y, 2)
+        - pow(*((float *)(obj->data)), 2);
+      inter->d = resolve_two_inv(a, b, c, &x);
+      return (is_a_god_cylinder(obj, st, inter, 1));
     }
   return (1);
 }
@@ -70,11 +84,12 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
       free(inter);
       return (NULL);
     }
-  if (is_a_god_cylinder(obj, &dr, inter) == -1)
+  if (is_a_god_cylinder(obj, &dr, inter, 0) == -1)
     {
       free(inter);
       return (NULL);
     }
+  inter->obj = obj;
   inter->cal_norm = cylinder_nrml;
   return (inter);
 }

@@ -107,6 +107,7 @@ typedef	struct	s_obj
   t_mat		*mat;
   double       	*matrix;
   double       	*matrix_inv;
+  float		limit_z;
   t_box		box;
   t_inter      	*(*cal_inter)(struct s_obj *obj, t_st dr);
   float		(*cal_lux_cos)(struct s_obj *obj, t_ptn *ptn, t_lux *lux);
@@ -265,8 +266,8 @@ t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
 
 void	cal_color_cylinder(t_obj *obj, t_inter *inter, float *tab);
 void	cal_color_plan(t_obj *obj, t_inter *inter, float tab[3]);
-int     cal_texture_plan(t_obj *obj, float x, float y, float z);
+int	cal_texture_plan(t_obj *obj, float x, float y, float z);
 
 float	resolve_two(float a, float b, float c, int *x);
-
+float	resolve_two_inv(float a, float b, float c, int *x);
 #endif
