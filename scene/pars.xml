@@ -19,7 +19,7 @@
       <data>
 	<rayon> 100 </rayon>
       </data>
-      <mat_id> 1 <mat_id>
+      <mat_id> 1 </mat_id>
     </sphere>
     <triangle>
       <ptn>
@@ -39,11 +39,13 @@
 	  <z>0</z>
 	</a3>
       </ptn>
-      <mat_id> 1 <mat_id>
+      <mat_id> 1 </mat_id>
     </triangle>
   </obj>
   <lumiere>
     <new name="lumiere 1">
+      <!-- Attribute = NONE : AMB : SPOT : SPOTLEN -->
+      <attribute>NONE</attribute>
       <cord>
         <x>-400</x>
         <y>0</y>

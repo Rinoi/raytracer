@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Mon Apr 29 16:38:51 2013 lucas mayol
-** Last update Mon May 27 23:56:23 2013 lucas mayol
+** Last update Tue May 28 01:31:37 2013 louis martin-pierrat
 */
 
 #include <stdio.h>
@@ -21,7 +21,7 @@ double		*matrice_translat(double x, double y, double z)
   matrice[3] = x;
   matrice[7] = y;
   matrice[11] = z;
-  
+
   return (matrice);
 }
 

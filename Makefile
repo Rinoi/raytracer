@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sun Jun  2 21:54:51 2013 karina martynava
+## Last update Mon Jun  3 20:50:04 2013 louis martin-pierrat
 ##
 
 CC	=	gcc
@@ -54,6 +54,8 @@ SRCS	=	src/main.c \
 		matrice/opération.c \
 		matrice/matrice_dumb.c \
 		matrice/creat_matrice_rot.c
+
+include		Makefile.xml
 
 OBJS	=	$(SRCS:.c=.o)
 
