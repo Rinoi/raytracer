@@ -95,15 +95,15 @@ int	init_rs(t_rs *rs)
   /* rs->obj->ptn.x = 0; */
   /* rs->obj->ptn.y = 0; */
   /* rs->obj->ptn.z = 0; */
-  /* rs->obj->rot.x = 80; */
-  /* rs->obj->rot.y = 20; */
-  /* rs->obj->rot.z = 0; */
+  /* rs->obj->rot.x = 0; */
+  /* rs->obj->rot.y = 0; */
+  /* rs->obj->rot.z = 90; */
   /* rs->obj->limit_z = 25; */
   /* rs->obj->matrix = NULL; */
-  /* rs->obj->cal_inter = call_inter_cylinder; */
+  /* rs->obj->cal_inter = call_inter_conus; */
   /* rs->obj->cal_color = cal_color_cylinder; */
   /* r = malloc(sizeof(float)); */
-  /* *r = 10; */
+  /* *r = 55; */
   /* rs->obj->data = (void *)r; */
   /* creat_matrice_for_obj(rs->obj); */
   if ((rs->obj = malloc(sizeof(*(rs->obj)))) == NULL)
@@ -192,7 +192,7 @@ int	init_rs(t_rs *rs)
   rs->obj->next->next->next->next->next->ptn.y = 32;
   rs->obj->next->next->next->next->next->ptn.z = 20;
   rs->obj->next->next->next->next->next->rot.x = 0;
-  rs->obj->next->next->next->next->next->rot.y = 0;
+  rs->obj->next->next->next->next->next->rot.y = 90;
   rs->obj->next->next->next->next->next->rot.z = 0;
   rs->obj->next->next->next->next->next->limit_z = 15;
   rs->obj->next->next->next->next->next->matrix = NULL;
