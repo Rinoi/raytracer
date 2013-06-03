@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Sun Jun  2 20:19:01 2013 karina martynava
+** Last update Mon Jun  3 21:42:44 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -45,9 +45,13 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
     }
   if (inter_m == NULL)
     return (NULL);
-  inter_m->ptn.x = droit->cord.x + droit->vec.x * inter_m->d;      
+  inter_m->ptn.x = droit->cord.x + droit->vec.x * inter_m->d;
   inter_m->ptn.y = droit->cord.y + droit->vec.y * inter_m->d;
   inter_m->ptn.z = droit->cord.z + droit->vec.z * inter_m->d;
+  inter_m->rela_ptn.x = inter_m->ptn.x;
+  inter_m->rela_ptn.y = inter_m->ptn.y;
+  inter_m->rela_ptn.z = inter_m->ptn.z;
+  //  printf("%f, %f, %f\n", inter_m->ptn.x, inter_m->ptn.y, inter_m->ptn.z);
   return (inter_m);
 }
 

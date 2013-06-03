@@ -5,13 +5,13 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:04:31 2013 karina martynava
-** Last update Fri May 31 18:15:09 2013 lucas mayol
+** Last update Mon Jun  3 22:13:08 2013 lucas mayol
 */
 
 #include <stdlib.h>
 #include "rt.h"
 
-t_ptn	*cylinder_nrml(__attribute__((unused))t_obj *obj, t_ptn *ptn)
+t_ptn	*cylinder_nrml_a(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
  
@@ -23,4 +23,62 @@ t_ptn	*cylinder_nrml(__attribute__((unused))t_obj *obj, t_ptn *ptn)
   nrml->z = 0;
   return (nrml);
 }
+
+void	call_proj(float d, t_obj *obj, t_ptn *m)
+{
+  t_ptn	*mat;
+
+  m->x = 0;
+  m->y = 0;
+  m->z = -1;
+  mat = mul_m_p(obj->matrix_inv, m);
+  m->x = mat->x * d + obj->ptn.x;
+  m->y = mat->y * d + obj->ptn.y;
+  m->z = mat->z * d + obj->ptn.z;
+  free(mat);
+}
+
+t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn)
+{
+  t_ptn	*nrml;
+  //  t_ptn	*nrml2;
+  t_ptn	proj;
+  float	h;
+  float	d;
+
+  /* nrml2 = cylinder_nrml_a(obj, ptn); */
+  /* printf("ORI : %f, %f, %f\n", nrml2->x, nrml2->y, nrml2->z); */
+  /* free(nrml2); */
+  nrml = malloc(sizeof(*nrml));
+  if (nrml == NULL)
+    return (NULL);
+  h = sqrt(pow(obj->ptn.x - ptn->x, 2)
+	   + pow(obj->ptn.y - ptn->y, 2)
+	   + pow(obj->ptn.z - ptn->z, 2));
+  d = pow(h, 2) - pow(*((float *)(obj->data)), 2);
+  //  printf("d2 = %f\n", d);
+  if (d < 0)
+    d = -d;
+  d = sqrt(d);
+  //  printf("h : %f, op : %f, d : %f\n", h, *((float*)(obj->data)), d);
+  call_proj(d, obj, &proj);
+  nrml->x = ptn->x - proj.x;
+  nrml->y = ptn->y - proj.y;
+  nrml->z = ptn->z - proj.z;
+  //  printf("ptn : %f %f %f\n", ptn->x, ptn->y, ptn->z);
+  //  printf("proj %f %f %f\n", proj.x, proj.y, proj.z);
+  //  printf("NEW : %f, %f, %f\n\n", nrml->x, nrml->y, nrml->z);
+  //free(nrml);
+  return (nrml);
+}
+
+t_ptn	*cylinder_nrml_inv(t_obj *obj, t_ptn *ptn)
+{
+  t_ptn	*nrml;
  
+  nrml = cylinder_nrml(obj, ptn);
+  nrml->x = -nrml->x;
+  nrml->y = -nrml->y;
+  nrml->z = -nrml->z;
+  return (nrml);
+}

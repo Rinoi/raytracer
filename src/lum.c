@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Sat Jun  1 21:47:40 2013 karina martynava
+** Last update Mon Jun  3 22:09:54 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -131,10 +131,10 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
   nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
   sv = rs->lux;
   add_vect(&light.cord, &point->ptn, &st->cord);
-  mat = mul_m_p(point->obj->matrix, &light.cord);
-  light.cord = *mat;
+  /* mat = mul_m_p(point->obj->matrix, &light.cord); */
+  /* light.cord = *mat; */
   sub_vect(&light.cord, &light.cord, &st->cord);
-  free(mat);
+  //  free(mat);
   while (sv != NULL)
     {
       sub_vect(&light.vec, &sv->cord, &light.cord);

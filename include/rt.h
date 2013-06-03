@@ -261,6 +261,7 @@ t_inter	*call_inter_plane(t_obj *obj, t_st dr);
 
 t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn);
+t_ptn   *cylinder_nrml_inv(t_obj *obj, t_ptn *ptn);
 t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
 

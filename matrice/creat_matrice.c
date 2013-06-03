@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Apr 11 13:52:32 2013 lucas mayol
-** Last update Wed May 29 14:57:05 2013 karina martynava
+** Last update Mon Jun  3 22:36:50 2013 lucas mayol
 */
 
 #include	<stdlib.h>
@@ -53,12 +53,12 @@ void		creat_matrice_for_obj_inv(t_obj *obj)
   free(obj->matrix_inv);
   obj->matrix_inv = matrice2;
   free(matrice);
-
   matrice = matrice_rot_x(- obj->rot.x);
   matrice2 = mul_matrice(obj->matrix_inv, matrice);
   free(obj->matrix_inv);
   obj->matrix_inv = matrice2;
   free(matrice);
+
 }
 
 void		creat_matrice_for_obj(t_obj *obj)

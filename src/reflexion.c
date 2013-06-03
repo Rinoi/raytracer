@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Sun Jun  2 17:26:33 2013 karina martynava
+** Last update Mon Jun  3 16:57:11 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -85,5 +85,5 @@ void		my_send_rayon(t_rs *rs, t_st *droit, float col[4])
   /* //  color = get_img_color(&rs->bckground, droit->x / 2, droit->y / 2); */
   reflexion_time(rs, droit, col);
   /*   color = convert_col(col); */
-  /* my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color); */
+  //my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
 }

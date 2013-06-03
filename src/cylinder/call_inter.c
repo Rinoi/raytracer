@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Mon Jun  3 00:44:06 2013 lucas mayol
+** Last update Mon Jun  3 17:03:26 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -57,6 +57,7 @@ int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter, int i)
       c = pow(st->cord.x, 2) + pow(st->cord.y, 2)
         - pow(*((float *)(obj->data)), 2);
       inter->d = resolve_two_inv(a, b, c, &x);
+      inter->cal_norm = cylinder_nrml_inv;
       return (is_a_god_cylinder(obj, st, inter, 1));
     }
   return (1);
@@ -79,6 +80,7 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
   c = pow(dr.cord.x, 2) + pow(dr.cord.y, 2)
     - pow(*((float *)(obj->data)), 2);
   inter->d = resolve_two(a, b, c, &x);
+  inter->cal_norm = cylinder_nrml;
   if (inter->d == -1)
     {
       free(inter);
@@ -89,7 +91,9 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
       free(inter);
       return (NULL);
     }
+  inter->ptn.x = dr.vec.x * inter->d + dr.cord.x;
+  inter->ptn.y = dr.vec.y * inter->d + dr.cord.y;
+  inter->ptn.z = dr.vec.z * inter->d + dr.cord.z;
   inter->obj = obj;
-  inter->cal_norm = cylinder_nrml;
   return (inter);
 }
