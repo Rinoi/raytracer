@@ -5,11 +5,6 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-<<<<<<< HEAD
-** Last update Mon Jun  3 23:36:04 2013 lucas mayol
-=======
-** Last update Mon Jun  3 20:55:41 2013 louis martin-pierrat
->>>>>>> 8eabc041210ee695d042a337ed53991afd33b58e
 */
 
 #include <sys/types.h>
