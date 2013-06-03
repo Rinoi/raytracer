@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Mon Jun  3 01:12:26 2013 lucas mayol
+** Last update Mon Jun  3 20:55:41 2013 louis martin-pierrat
 */
 
 #include <sys/types.h>
@@ -13,6 +13,8 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "rt.h"
+
+#include	"xml.h"
 
 #define	SIZE_LARG	1000;
 #define	SIZE_LONG	1000;
@@ -249,11 +251,7 @@ int	main(int argc, __attribute__((unused))char **argv)
 
   if (argc == 2)
     {
-      if ((fd = open(argv[1], O_RDONLY)) == -1)
-      	{
-      	  my_putstr("open error\n", 2);
-      	  return (EXIT_FAILURE);
-      	}
+      xml_parsing(argv[1]);
       if (init_rs(&rs) == EXIT_FAILURE)
 	return (EXIT_FAILURE);
       printf("MLX %f, %f, %f\n", rs.eyes->cam.x, rs.eyes->cam.y, rs.eyes->cam.z);
