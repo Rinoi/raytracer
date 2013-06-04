@@ -1,0 +1,62 @@
+/*
+** call_color.c for RT in /home/mayol_l//git/raytracer
+** 
+** Made by lucas mayol
+** Login   <mayol_l@epitech.net>
+** 
+** Started on  Thu May 30 17:28:25 2013 lucas mayol
+** Last update Tue Jun  4 15:28:00 2013 lucas mayol
+*/
+
+#include <stdio.h>
+#include "rt.h"
+
+int	cal_texture_sphere(t_obj *obj, t_ptn inter)
+{
+  float	x;
+  float	y;
+  float	pc;
+
+  inter.x -= obj->ptn.x;
+  inter.y -= obj->ptn.y;
+  inter.z -= obj->ptn.z;
+
+  pc = inter.y;
+  x = acos( - (pc / sqrt(pow(inter.x, 2) + pow(inter.y, 2) + pow(inter.z, 2))));
+  x =  x / (3.1415);
+  x *= obj->mat->img.x;
+
+  pc = inter.z;
+  y = acos(- (pc / sqrt(pow(inter.x, 2) + pow(inter.y, 2) + pow(inter.z, 2))));
+  y = y / (3.1415);
+  y *= obj->mat->img.y;
+  if (y < 0 || x < 0)
+    {
+      printf("max %d %d\n", obj->mat->img.x, obj->mat->img.y);
+      printf("x %f y %f\n", x, y);
+    }
+  return (get_col(&obj->mat->img, x, y));
+}
+
+void		cal_color_shere(t_obj *obj, t_inter *inter, float tab[3])
+{
+  int		color;
+  unsigned char	*tabs;
+
+  if (obj->mat->img.img != NULL)
+    {
+      color = cal_texture_sphere(obj, inter->ptn);
+      tabs = (unsigned char *)&color;
+      //      printf("%x\n", tabs[0]);
+      tab[0] = (unsigned char)tabs[0] / 255.0;
+      tab[1] = (unsigned char)tabs[1] / 255.0;
+      tab[2] = (unsigned char)tabs[2] / 255.0;
+    }
+  else
+    {
+      printf("NON\n");
+      tab[0] = 1;
+      tab[1] = 1;
+      tab[2] = 1;
+    }
+}

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Sat Jun  1 01:40:39 2013 karina martynava
+** Last update Tue Jun  4 15:58:38 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -16,11 +16,9 @@ int	cal_texture_plan(t_obj *obj, float x, float y, __attribute__((unused))float 
   x = (int)x % obj->mat->img.x;
   y = (int)y % obj->mat->img.y;
   if (x < 0)
-    x = -x;
-  //    x = obj->mat->img.x + x;
+    x = obj->mat->img.x + x;
   if (y < 0)
-    y = -y;
-  //y = obj->mat->img.y + y;
+    y = obj->mat->img.y + y;
   return (get_col(&obj->mat->img, x, y));
 }
 
@@ -33,15 +31,24 @@ void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
     {
       color = cal_texture_plan(obj, inter->ptn.x, inter->ptn.y, inter->ptn.z);
       tabs = (unsigned char *)&color;
-      printf("%x\n", tabs[0]);
       tab[0] = (unsigned char)tabs[0] / 255.0;
       tab[1] = (unsigned char)tabs[1] / 255.0;
       tab[2] = (unsigned char)tabs[2] / 255.0;
     }
   else
     {
-      tab[0] = 1;
-      tab[1] = 1;
-      tab[2] = 1;
+      printf("NULL\n");
+      if (obj->mat != NULL)
+        {
+          tab[0] = obj->mat->blue;
+          tab[1] = obj->mat->green;
+          tab[2] = obj->mat->red;
+        }
+      else
+        {
+          tab[0] = 1;
+          tab[1] = 1;
+          tab[2] = 1;
+        }
     }
 }

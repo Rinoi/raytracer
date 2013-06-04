@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Mon Jun  3 21:42:44 2013 lucas mayol
+** Last update Tue Jun  4 14:50:20 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -28,7 +28,8 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
   t_inter	*inter;
   t_inter	*inter_m;
 
-  while ((ptn = rs->obj) && (inter_m = NULL));
+  ptn = rs->obj;
+  inter_m = NULL;
   while (ptn != NULL)
     {
       if ((inter = ptn->cal_inter(ptn, *droit)) != NULL)

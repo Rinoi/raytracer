@@ -5,13 +5,13 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Tue Jun  4 17:25:35 2013 lucas mayol
+** Last update Tue Jun  4 17:12:50 2013 lucas mayol
 */
 
 #include <stdio.h>
 #include "rt.h"
 
-int		cal_texture_cylinder(t_obj *obj, t_ptn inter)
+int		cal_texture_conus(t_obj *obj, t_ptn inter)
 {
   float		x;
   float		y;
@@ -32,16 +32,9 @@ int		cal_texture_cylinder(t_obj *obj, t_ptn inter)
   x =  x / (3.1415);
   x *= obj->mat->img.x;
   
-  //  printf("y : %f\n", inter.z);
-  if (obj->limit_z == 0)
-    {
-      y = (int)inter.z % obj->mat->img.y;
-      if (y < 0)
-	y = obj->mat->img.y + y;
-    }
-  else
-    y = (inter.z / (- obj->limit_z)) * obj->mat->img.y;
-  //  printf("y %f\n\n", y);
+  y = (int)inter.z % obj->mat->img.y;
+  if (y < 0)
+    y = obj->mat->img.y + y;
   if (y < 0 || x < 0 || x > obj->mat->img.x || y > obj->mat->img.y)
     {
       printf("max %d %d\n", obj->mat->img.x, obj->mat->img.y);
@@ -50,7 +43,7 @@ int		cal_texture_cylinder(t_obj *obj, t_ptn inter)
   return (get_col(&obj->mat->img, x, y));
 }
 
-void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3])
+void		cal_color_conus(t_obj *obj, t_inter *inter, float tab[3])
 {
   int		color;
   unsigned char *tabs;

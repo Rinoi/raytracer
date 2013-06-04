@@ -1,48 +1,36 @@
 /*
-** cal_color.c for RT in /home/mayol_l//git/raytracer
+** call_color.c for RT in /home/mayol_l//git/raytracer
 ** 
 ** Made by lucas mayol
 ** Login   <mayol_l@epitech.net>
 ** 
-** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Tue Jun  4 17:25:35 2013 lucas mayol
+** Started on  Thu May 30 17:28:25 2013 lucas mayol
+** Last update Tue Jun  4 15:33:26 2013 lucas mayol
 */
 
 #include <stdio.h>
 #include "rt.h"
 
-int		cal_texture_cylinder(t_obj *obj, t_ptn inter)
+int	cal_texture_sphere(t_obj *obj, t_ptn inter)
 {
-  float		x;
-  float		y;
-  float		pc;
-  t_ptn		*mat;
+  float	x;
+  float	y;
+  float	pc;
 
   inter.x -= obj->ptn.x;
   inter.y -= obj->ptn.y;
   inter.z -= obj->ptn.z;
-  mat = mul_m_p(obj->matrix, &inter);
-  inter.x = mat->x;
-  inter.y = mat->y;
-  inter.z = mat->z;
-  free(mat);
 
   pc = inter.y;
   x = acos( - (pc / sqrt(pow(inter.x, 2) + pow(inter.y, 2) + pow(inter.z, 2))));
   x =  x / (3.1415);
   x *= obj->mat->img.x;
-  
-  //  printf("y : %f\n", inter.z);
-  if (obj->limit_z == 0)
-    {
-      y = (int)inter.z % obj->mat->img.y;
-      if (y < 0)
-	y = obj->mat->img.y + y;
-    }
-  else
-    y = (inter.z / (- obj->limit_z)) * obj->mat->img.y;
-  //  printf("y %f\n\n", y);
-  if (y < 0 || x < 0 || x > obj->mat->img.x || y > obj->mat->img.y)
+
+  pc = inter.z;
+  y = acos(- (pc / sqrt(pow(inter.x, 2) + pow(inter.y, 2) + pow(inter.z, 2))));
+  y = y / (3.1415);
+  y *= obj->mat->img.y;
+  if (y < 0 || x < 0)
     {
       printf("max %d %d\n", obj->mat->img.x, obj->mat->img.y);
       printf("x %f y %f\n", x, y);
@@ -50,14 +38,14 @@ int		cal_texture_cylinder(t_obj *obj, t_ptn inter)
   return (get_col(&obj->mat->img, x, y));
 }
 
-void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3])
+void		cal_color_shere(t_obj *obj, t_inter *inter, float tab[3])
 {
   int		color;
-  unsigned char *tabs;
+  unsigned char	*tabs;
 
   if (obj->mat->img.img != NULL)
     {
-      color = cal_texture_cylinder(obj, inter->ptn);
+      color = cal_texture_sphere(obj, inter->ptn);
       tabs = (unsigned char *)&color;
       tab[0] = (unsigned char)tabs[0] / 255.0;
       tab[1] = (unsigned char)tabs[1] / 255.0;

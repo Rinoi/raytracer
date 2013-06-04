@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Mon Jun  3 20:50:04 2013 louis martin-pierrat
+## Last update Tue Jun  4 17:13:15 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -49,6 +49,8 @@ SRCS	=	src/main.c \
 		src/plane/nrml.c \
 		src/cylinder/cal_color.c \
 		src/plane/call_color.c \
+		src/sphere/call_color.c \
+		src/conus/call_color.c \
 		matrice/creat_matrice.c \
 		matrice/creat_matrice_spe.c \
 		matrice/opération.c \

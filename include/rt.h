@@ -70,20 +70,21 @@ typedef	struct	s_straight
   t_ptn		c_kd;
 } t_st;
 
-typedef	struct	s_material
+typedef	struct		s_material
 {
-  int		id;
-  float		red;
-  float		green;
-  float		blue;
-  float		spec[3];
-  float		spec_pow;
-  float		reflex;
-  float		bump;
-  float		trans;
-  float		refract;
-  float		diff_reflex;
-  t_img		img;
+  int			id;
+  float			red;
+  float			green;
+  float			blue;
+  float			spec[3];
+  float			spec_pow;
+  float			reflex;
+  float			bump;
+  float			trans;
+  float			refract;
+  float			diff_reflex;
+  t_img			img;
+  struct s_material	*next;
 } t_mat;
 
 typedef struct	s_lux
@@ -267,6 +268,8 @@ t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
 
 void	cal_color_cylinder(t_obj *obj, t_inter *inter, float *tab);
 void	cal_color_plan(t_obj *obj, t_inter *inter, float tab[3]);
+void	cal_color_shere(t_obj *obj, t_inter *inter, float tab[3]);
+void	cal_color_conus(t_obj *obj, t_inter *inter, float tab[3]);
 int	cal_texture_plan(t_obj *obj, float x, float y, float z);
 
 float	resolve_two(float a, float b, float c, int *x);
