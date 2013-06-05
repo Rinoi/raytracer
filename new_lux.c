@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:35:43 2013 louis martin-pierrat
-** Last update Wed Jun  5 03:21:29 2013 karina martynava
+** Last update Wed Jun  5 05:09:28 2013 louis martin-pierrat
 */
 
 #include	<stdio.h>
@@ -24,7 +24,7 @@ void		new_lux(t_lux **lux, struct s_xml *tree)
   get_fvalue(tree, "blue", &new->blue) == FAILURE ? new->blue = 1 : 0;
   get_fvalue(tree, "green", &new->green) == FAILURE ? new->green = 1 : 0;
   get_ivalue(tree, "color", &new->color) == FAILURE ? new->color = 0xFFFFFF : 0;
-  get_fvalues(tree, "coord", "x", &new->cord.x) == FAILURE ? new->cord.x = 0 : 0;
+  get_fvalues(tree, "coord", "x", &new->cord.x) == FAILURE ? new->cord.x = -200 : 0;
   get_fvalues(tree, "coord", "y", &new->cord.y) == FAILURE ? new->cord.y = 0 : 0;
   get_fvalues(tree, "coord", "z", &new->cord.z) == FAILURE ? new->cord.z = 0 : 0;
   get_ivalue(tree, "attribute", &new->attribute) == FAILURE ? new->attribute = NONE : 0;
@@ -106,14 +106,22 @@ t_mat		*seek_mat(int mat_id, t_mat *mat)
   return (tmp);
 }
 
+void		add_to_end(t_obj **obj, t_obj *new)
+{
+  t_obj		*tmp;
+
+  tmp = (*obj);
+  while (tmp != NULL && tmp->next != NULL)
+    tmp = tmp->next;
+  (tmp == NULL) ? ((*obj) = new) : (tmp->next = new);
+}
+
 void		new_sphere(t_obj **obj, t_mat *mat, struct s_xml *tree)
 {
   t_obj		*new;
-  t_obj		*tmp;
   float		*rayon;
   int		mat_id;
 
-  tmp = (*obj);
   rayon = xmalloc(sizeof(float));
   new = xmalloc(sizeof(t_obj));
   get_fvalues(tree, "coord", "x", &new->ptn.x) == FAILURE ? new->ptn.x = 0 : 0;
@@ -131,15 +139,72 @@ void		new_sphere(t_obj **obj, t_mat *mat, struct s_xml *tree)
   creat_matrice_for_obj(new);
   new->cal_color = cal_color_shere;
   new->cal_inter = call_inter_sphere;
-
   /*  */
   printf("sphere\n");
   printf("coord = (x : %f y : %f z : %f)\n", new->ptn.x, new->ptn.y, new->ptn.z);
   printf("rotation = (x : %f z : %f z : %f)\n", new->rot.x, new->rot.y, new->rot.z);
   printf("rayon = %f\nmaterial_id = %d\n\n", *rayon, mat_id);
   /*  */
+  add_to_end(obj, new);
+}
 
-  while (tmp != NULL && tmp->next != NULL)
-    tmp = tmp->next;
-  (tmp == NULL) ? ((*obj) = new) : (tmp->next = new);
+void		new_plane(t_obj **obj, t_mat *mat, struct s_xml *tree)
+{
+  t_obj		*new;
+  int		mat_id;
+
+  mat_id = 0;
+  new = xmalloc(sizeof(t_obj));
+  get_fvalues(tree, "coord", "x", &new->ptn.x) == FAILURE ? new->ptn.x = 0 : 0;
+  get_fvalues(tree, "coord", "y", &new->ptn.y) == FAILURE ? new->ptn.y = 0 : 0;
+  get_fvalues(tree, "coord", "z", &new->ptn.z) == FAILURE ? new->ptn.z = 0 : 0;
+  get_fvalues(tree, "rot", "x", &new->rot.x) == FAILURE ? new->rot.x = 0 : 0;
+  get_fvalues(tree, "rot", "y", &new->rot.y) == FAILURE ? new->rot.y = 0 : 0;
+  get_fvalues(tree, "rot", "z", &new->rot.z) == FAILURE ? new->rot.z = 0 : 0;
+  get_ivalue(tree, "material_id", &mat_id) == FAILURE ?
+    (new->mat = NULL) : (new->mat = seek_mat(mat_id, mat));
+  new->next = NULL;
+  new->matrix = NULL;
+  creat_matrice_for_obj(new);
+  new->cal_color = cal_color_plan;
+  new->cal_inter = call_inter_plane;
+  /*  */
+  printf("plan\n");
+  printf("coord = (x : %f y : %f z : %f)\n", new->ptn.x, new->ptn.y, new->ptn.z);
+  printf("rotation = (x : %f z : %f z : %f)\n", new->rot.x, new->rot.y, new->rot.z);
+  printf("material_id = %d\n\n", mat_id);
+  /*  */
+  add_to_end(obj, new);
+}
+
+void		new_cylinder(t_obj **obj, t_mat *mat, struct s_xml *tree)
+{ 
+  int		mat_id;
+  float		*angle;
+  t_obj		*new;
+
+  angle = xmalloc(sizeof(float));
+  new = xmalloc(sizeof(t_obj));
+  get_fvalues(tree, "coord", "x", &new->ptn.x) == FAILURE ? new->ptn.x = 0 : 0;
+  get_fvalues(tree, "coord", "y", &new->ptn.y) == FAILURE ? new->ptn.y = 0 : 0;
+  get_fvalues(tree, "coord", "z", &new->ptn.z) == FAILURE ? new->ptn.z = 0 : 0;
+  get_fvalues(tree, "rot", "x", &new->rot.x) == FAILURE ? new->rot.x = 0 : 0;
+  get_fvalues(tree, "rot", "y", &new->rot.y) == FAILURE ? new->rot.y = 0 : 0;
+  get_fvalues(tree, "rot", "z", &new->rot.z) == FAILURE ? new->rot.z = 0 : 0;
+  get_fvalue(tree, "angle", angle) == FAILURE ? (*angle) = 45 : 0;
+  new->data = (void *)(angle);
+  get_ivalue(tree, "material_id", &mat_id) == FAILURE ? 
+    (new->mat = NULL) : (new->mat = seek_mat(mat_id, mat));
+  new->next = NULL;
+  new->matrix = NULL;
+  creat_matrice_for_obj(new);
+  new->cal_color = cal_color_cylinder;
+  new->cal_inter = call_inter_cylinder;
+  /*  */
+  printf("cylinder\n");
+  printf("coord = (x : %f y : %f z : %f)\n", new->ptn.x, new->ptn.y, new->ptn.z);
+  printf("rotation = (x : %f z : %f z : %f)\n", new->rot.x, new->rot.y, new->rot.z);
+  printf("rayon = %f\nmaterial_id = %d\n\n", *angle, mat_id);
+  /*  */
+  add_to_end(obj, new);
 }

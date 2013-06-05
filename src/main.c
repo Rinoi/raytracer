@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed Jun  5 03:20:01 2013 karina martynava
+** Last update Wed Jun  5 05:10:33 2013 louis martin-pierrat
 */
 
 #include <sys/types.h>
@@ -102,10 +102,15 @@ int	init_rs(t_rs *rs, __attribute__((unused))struct s_xml *tree)
       else if (m_strcmp(tree->child->name, "material") == 0)
   	new_material(&rs->mat, tree->child);
       else if (m_strcmp(tree->child->name, "sphere") == 0)
-  	new_sphere( &rs->obj, rs->mat, tree->child);
+  	new_sphere(&rs->obj, rs->mat, tree->child);
+      else if (m_strcmp(tree->child->name, "plan") == 0)
+	new_plane(&rs->obj, rs->mat, tree->child);
+      else if (m_strcmp(tree->child->name, "cylindre") == 0)
+	new_cylinder(&rs->obj, rs->mat, tree->child);
       tree->child = tree->child->next;
     }
-
+  if (tree == NULL)
+    return (EXIT_FAILURE);
   //LUMIERE
   /* if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL) */
   /*   return (EXIT_FAILURE); */
