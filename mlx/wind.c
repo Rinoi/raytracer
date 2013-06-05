@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Wed Jun  5 02:38:31 2013 karina martynava
+** Last update Wed Jun  5 19:29:48 2013 lucas mayol
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -29,11 +29,11 @@ void	*xpm_img_frmlx(void *mlx_ptr, char *filename,
 
 void			rtv1_ini(t_rs *rs)
 {
-  if ((rs->wind.mlx_ptr = mlx_init()) == NULL)
-    {
-      my_putstr("Mlx error\n", 2);
-      exit(EXIT_FAILURE);
-    }
+  /* if ((rs->wind.mlx_ptr = mlx_init()) == NULL) */
+  /*   { */
+  /*     my_putstr("Mlx error\n", 2); */
+  /*     exit(EXIT_FAILURE); */
+  /*   } */
   rs->wind.wind_ptr =
     mlx_new_window(rs->wind.mlx_ptr, rs->eyes->larg, rs->eyes->lng, "RT");
   rs->wind.sampled.img_ptr = mlx_new_image(rs->wind.mlx_ptr,

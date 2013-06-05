@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed Jun  5 16:55:52 2013 louis martin-pierrat
+** Last update Wed Jun  5 19:29:42 2013 lucas mayol
 */
 
 #include <sys/types.h>
@@ -137,6 +137,11 @@ int	main(int argc, __attribute__((unused))char **argv)
 
   if (argc == 2)
     {
+      if ((rs.wind.mlx_ptr = mlx_init()) == NULL)
+	{
+	  my_putstr("Mlx error\n", 2);
+	  exit(EXIT_FAILURE);
+	}
       if (init_rs(&rs ,  xml_parsing(argv[1])) == EXIT_FAILURE)
 	return (EXIT_FAILURE);
       printf("MLX %f, %f, %f\n", rs.eyes->cam.x, rs.eyes->cam.y, rs.eyes->cam.z);

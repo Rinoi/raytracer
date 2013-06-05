@@ -103,6 +103,14 @@ typedef struct	s_lux
   struct s_lux	*next;
 } t_lux;
 
+typedef	struct	s_tri
+{
+  int		color[3];
+  t_ptn		nrml[3];
+  t_ptn		a2;
+  t_ptn		a3;
+} t_tri;
+
 typedef	struct	s_obj
 {
   t_ptn		ptn;
