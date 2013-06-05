@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:29:41 2013 louis martin-pierrat
-** Last update Tue Jun  4 19:10:54 2013 louis martin-pierrat
+** Last update Wed Jun  5 20:54:34 2013 louis martin-pierrat
 */
 
 #include	<stdlib.h>
@@ -21,6 +21,18 @@ int		get_fvalue(struct s_xml *tree, char *name, float *value)
     tmp = tmp->next;
   if (tmp != NULL && tmp->value != NULL)
     *(value) = atof(tmp->value);
+  return (tmp == NULL || tmp->value == NULL ? FAILURE : SUCCESS);
+}
+
+int		get_strvalue(struct s_xml *tree, char *name, char **value)
+{
+  struct s_xml	*tmp;
+
+  tmp = tree->child;
+  while (tmp != NULL && m_strcmp(tmp->name, name) != 0)
+    tmp = tmp->next;
+  if (tmp != NULL && tmp->value != NULL)
+    (*value) = tmp->value;
   return (tmp == NULL || tmp->value == NULL ? FAILURE : SUCCESS);
 }
 

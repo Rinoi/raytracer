@@ -10,6 +10,7 @@
     <spec3>1.0</spec3>
     <specpow>60</specpow>
     <reflexion>0.5</reflexion>
+    <texture>Texture/ciel.xpm</texture>
   </material>
 
   <sphere>
@@ -155,7 +156,7 @@
   <!-- </lumiere> -->
 
 <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
-
+z
   <eyes>
   </eyes>
 

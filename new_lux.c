@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:35:43 2013 louis martin-pierrat
-** Last update Wed Jun  5 19:27:12 2013 lucas mayol
+** Last update Wed Jun  5 20:53:31 2013 louis martin-pierrat
 */
 
 #include	<stdio.h>
@@ -67,10 +67,11 @@ void		new_eyes(t_pov **eyes, struct s_xml *tree)
   (tmp == NULL) ? ((*eyes) = new) : (tmp->next = new);
 }
 
-void		new_material(t_mat **material, struct s_xml *tree)
+void		new_material(t_mat **material, t_rs *rs, struct s_xml *tree)
 {
   t_mat		*new;
   t_mat		*tmp;
+  char		*path;
 
   tmp = (*material);
   new = xmalloc(sizeof(t_mat));
@@ -83,6 +84,8 @@ void		new_material(t_mat **material, struct s_xml *tree)
   get_fvalue(tree, "spec1", &new->spec[0]) == FAILURE ? new->spec[0] = 1.0 : 0;
   get_fvalue(tree, "spec2", &new->spec[1]) == FAILURE ? new->spec[1] = 1.0 : 0;
   get_fvalue(tree, "spec3", &new->spec[2]) == FAILURE ? new->spec[2] = 1.0 : 0;
+  get_strvalue(tree, "texture", &path) == FAILURE ?
+    new->img.img = NULL : load_img(rs, &new->img, path);
   /*  */
   printf("material\n");
   printf("id = %d\n", new->id);

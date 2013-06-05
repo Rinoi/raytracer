@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Tue Jun  4 17:48:53 2013 karina martynava
+** Last update Wed Jun  5 20:32:03 2013 louis martin-pierrat
 */
 
 #include <stdlib.h>
@@ -49,7 +49,7 @@ void		cal_color_conus(t_obj *obj, t_inter *inter, float tab[3])
   int		color;
   unsigned char *tabs;
 
-  if (obj->mat->img.img != NULL)
+  if (obj->mat != NULL && obj->mat->img.img != NULL)
     {
       color = cal_texture_conus(obj, inter->ptn);
       tabs = (unsigned char *)&color;
