@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Wed Jun  5 19:29:48 2013 lucas mayol
+** Last update Wed Jun  5 20:19:16 2013 thibault martinez
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -34,8 +34,11 @@ void			rtv1_ini(t_rs *rs)
   /*     my_putstr("Mlx error\n", 2); */
   /*     exit(EXIT_FAILURE); */
   /*   } */
-  rs->wind.wind_ptr =
-    mlx_new_window(rs->wind.mlx_ptr, rs->eyes->larg, rs->eyes->lng, "RT");
+  if (rs->client != 1)
+    {
+      rs->wind.wind_ptr =
+	mlx_new_window(rs->wind.mlx_ptr, rs->eyes->larg, rs->eyes->lng, "RT");
+    }
   rs->wind.sampled.img_ptr = mlx_new_image(rs->wind.mlx_ptr,
 					   rs->eyes->larg, rs->eyes->lng);
   rs->wind.sampled.img =
@@ -85,9 +88,12 @@ void	rt_main_mlx(t_rs *rs)
   rs->thr = 0;
   /* if (rs->mat->img.img == NULL) */
   /*   return ; */
-  send_rayon_main(rs);
-  mlx_expose_hook(rs->wind.wind_ptr, my_expose, rs);
-  mlx_key_hook(rs->wind.wind_ptr, my_keybrd, rs);
-  /* mlx_loop_hook(rs->wind.mlx_ptr, my_keybrd, rs); */
-  mlx_loop(rs->wind.mlx_ptr);
+  if (rs->client == -1)
+    {
+      send_rayon_main(rs);
+      mlx_expose_hook(rs->wind.wind_ptr, my_expose, rs);
+      mlx_key_hook(rs->wind.wind_ptr, my_keybrd, rs);
+      /* mlx_loop_hook(rs->wind.mlx_ptr, my_keybrd, rs); */
+      mlx_loop(rs->wind.mlx_ptr);
+    }
 }

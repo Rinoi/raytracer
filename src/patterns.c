@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 19:19:16 2013 karina martynava
-** Last update Tue Jun  4 23:49:25 2013 karina martynava
+** Last update Wed Jun  5 21:03:56 2013 thibault martinez
 */
 
 #include <unistd.h>
@@ -41,8 +41,9 @@ void	vert_pattern(t_data_t *data, t_st *droit)
 	  droit->y += 1;
 	}
       droit->x += 1;
-      mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
-			      data->rs->wind.sampled.img_ptr, 0, 0);
+      if (data->rs->client != 1)
+	mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
+				data->rs->wind.sampled.img_ptr, 0, 0);
     }
 }
 
@@ -60,8 +61,9 @@ void	nrml_pattern(t_data_t *data, t_st *droit)
 	  droit->x += 1;
 	}
       droit->y += 1;
-      mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
-			      data->rs->wind.sampled.img_ptr, 0, 0);
+      if (data->rs->client != 1)
+	mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
+				data->rs->wind.sampled.img_ptr, 0, 0);
     }
 }
 
@@ -107,7 +109,8 @@ void	alea_pattern(t_data_t *data, t_st *droit)
 	  color = antialiasing_color(2, droit, data->rs);
 	  my_pixel_put_to_image(&data->rs->wind.sampled, droit->x, droit->y, color);
 	}
-      mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
-			      data->rs->wind.sampled.img_ptr, 0, 0);
+      if (data->rs->client != 1)
+	mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
+				data->rs->wind.sampled.img_ptr, 0, 0);
     }
 }

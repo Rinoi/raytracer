@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed Jun  5 19:29:42 2013 lucas mayol
+** Last update Wed Jun  5 20:18:37 2013 thibault martinez
 */
 
 #include <sys/types.h>
@@ -131,23 +131,31 @@ int	init_rs(t_rs *rs, __attribute__((unused))struct s_xml *tree)
 
 #include <stdio.h>
 
-int	main(int argc, __attribute__((unused))char **argv)
+int	main(int argc, char **argv)
 {
   t_rs	rs;
 
-  if (argc == 2)
+  rs.client = -1;
+  if (argc != 1)
     {
       if ((rs.wind.mlx_ptr = mlx_init()) == NULL)
 	{
 	  my_putstr("Mlx error\n", 2);
 	  exit(EXIT_FAILURE);
 	}
-      if (init_rs(&rs ,  xml_parsing(argv[1])) == EXIT_FAILURE)
-	return (EXIT_FAILURE);
-      printf("MLX %f, %f, %f\n", rs.eyes->cam.x, rs.eyes->cam.y, rs.eyes->cam.z);
-      /* my_take_data_for_rs(&rs, fd); */
-      /* rs.tree = creat_tree(rs.obj); */
-      rt_main_mlx(&rs);
+      if (strcmp(argv[1], "--server") == 0 || strcmp(argv[1], "-s") == 0)
+	rt_server(&rs, argv);
+      else if (strcmp(argv[1], "--client") == 0 || strcmp(argv[1], "-c") == 0)
+      	rt_client(&rs, argv);
+      else
+	{
+	  if (init_rs(&rs ,  xml_parsing(argv[1])) == EXIT_FAILURE)
+	    return (EXIT_FAILURE);
+	  printf("MLX %f, %f, %f\n", rs.eyes->cam.x, rs.eyes->cam.y, rs.eyes->cam.z);
+	  /* my_take_data_for_rs(&rs, fd); */
+	  /* rs.tree = creat_tree(rs.obj); */
+	  rt_main_mlx(&rs);
+	}
     }
   else
     {

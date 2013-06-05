@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Tue Jun  4 17:13:15 2013 lucas mayol
+## Last update Wed Jun  5 20:00:06 2013 thibault martinez
 ##
 
 CC	=	gcc
@@ -55,7 +55,12 @@ SRCS	=	src/main.c \
 		matrice/creat_matrice_spe.c \
 		matrice/opération.c \
 		matrice/matrice_dumb.c \
-		matrice/creat_matrice_rot.c
+		matrice/creat_matrice_rot.c \
+		network/server.c \
+		network/client.c \
+		network/send_xml.c \
+		network/receive_xml.c \
+		network/f_error.c \
 
 include		Makefile.xml
 

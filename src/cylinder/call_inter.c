@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Mon Jun  3 17:03:26 2013 lucas mayol
+** Last update Wed Jun  5 20:39:53 2013 thibault martinez
 */
 
 #include <stdlib.h>
@@ -29,6 +29,7 @@ void		change_dr(t_obj *obj, t_st *dr)
   dr->cord.x = ptn->x;
   dr->cord.y = ptn->y;
   dr->cord.z = ptn->z;
+  free(ptn);
   // printf("NEW %f, %f, %f\n\n", dr->vec.x, dr->vec.y, dr->vec.z);
 }
 

@@ -1,0 +1,25 @@
+/*
+** receive_xml.c for cluster in /home/mart_q//cluster/client/src
+** 
+** Made by thibault martinez
+** Login   <mart_q@epitech.net>
+** 
+** Started on  Mon Jun  3 15:48:00 2013 thibault martinez
+** Last update Wed Jun  5 20:00:59 2013 thibault martinez
+*/
+
+#include	"network.h"
+
+int		receive_xml(t_sock *sock)
+{
+  char buffer[512];
+  int ret;
+
+  ret = 512;
+  while (ret >= 512)
+    {
+      ret = read(sock->socket_fd, buffer, 512);
+      write(STDOUT_FILENO, buffer, ret);
+    }
+  return (EXIT_SUCCESS);
+}

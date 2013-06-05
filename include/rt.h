@@ -170,6 +170,7 @@ typedef struct	s_pov
 typedef struct	s_resource
 {
   int		thr;
+  int		client;
   t_obj		*obj;
   t_obj		*obj_inf;
   t_lux		*lux;
