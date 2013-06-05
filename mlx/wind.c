@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Tue Jun  4 15:55:10 2013 lucas mayol
+** Last update Wed Jun  5 02:20:39 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -85,8 +85,8 @@ void	rt_main_mlx(t_rs *rs)
   load_img(rs, &rs->mat->img, "./Texture/ciel.xpm");
   load_img(rs, &rs->mat->next->next->img, "./Texture/f.xpm");
   rs->thr = 0;
-  if (rs->mat->img.img == NULL)
-    return ;
+  /* if (rs->mat->img.img == NULL) */
+  /*   return ; */
   send_rayon_main(rs);
   mlx_expose_hook(rs->wind.wind_ptr, my_expose, rs);
   mlx_key_hook(rs->wind.wind_ptr, my_keybrd, rs);

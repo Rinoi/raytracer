@@ -5,9 +5,10 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Tue Jun  4 17:12:50 2013 lucas mayol
+** Last update Tue Jun  4 17:48:53 2013 karina martynava
 */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include "rt.h"
 
@@ -50,7 +51,7 @@ void		cal_color_conus(t_obj *obj, t_inter *inter, float tab[3])
 
   if (obj->mat->img.img != NULL)
     {
-      color = cal_texture_cylinder(obj, inter->ptn);
+      color = cal_texture_conus(obj, inter->ptn);
       tabs = (unsigned char *)&color;
       tab[0] = (unsigned char)tabs[0] / 255.0;
       tab[1] = (unsigned char)tabs[1] / 255.0;

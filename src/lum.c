@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Mon Jun  3 22:09:54 2013 lucas mayol
+** Last update Tue Jun  4 21:28:08 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -61,7 +61,7 @@ float	reflect_ptn(t_ptn *toref, t_inter *last, t_ptn *viewpoint)
   float	dist;
   float	omega;
 
-  nrml = (*(last->cal_norm))(last->obj, &(last->rela_ptn));	//// NORMAL
+  nrml = (*(last->cal_norm))(last->obj, &(last->ptn));	//// NORMAL
   mult_vect(nrml, 1.0f / sqrt(scal_prod(nrml, nrml)));		//// NORMAL UNI
   mult_vect(toref, - 1.0f / sqrt(scal_prod(toref, toref)));	//// FROM INTER TO LIGNE UNI
   scal = scal_prod(nrml, toref);				
@@ -126,15 +126,11 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
   float	coef;
   t_st	light;
   t_ptn	*nrml;
-  t_ptn	*mat;
 
-  nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
+  nrml = (*(point->cal_norm))(point->obj, &(point->ptn));
   sv = rs->lux;
   add_vect(&light.cord, &point->ptn, &st->cord);
-  /* mat = mul_m_p(point->obj->matrix, &light.cord); */
-  /* light.cord = *mat; */
   sub_vect(&light.cord, &light.cord, &st->cord);
-  //  free(mat);
   while (sv != NULL)
     {
       sub_vect(&light.vec, &sv->cord, &light.cord);

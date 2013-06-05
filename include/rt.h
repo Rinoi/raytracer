@@ -38,6 +38,7 @@
 # define SEP_RED	112.0
 # define SEP_GREEN	66.0
 # define SEP_BLUE	20.0
+# define STEREOSCOPY	0
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;

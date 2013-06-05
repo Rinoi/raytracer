@@ -1,0 +1,13 @@
+CFLAGS	+=	-I./XML_INCLUDE
+
+SRCS	+=	XML/xml_getattributes.c \
+		XML/xml_getchar.c \
+		XML/xml_getcom.c \
+		XML/xml_getdirective.c \
+		XML/xml_getendtag.c \
+		XML/xml_getstr.c \
+		XML/xml_gettag.c \
+		XML/xml_getvalues.c \
+		XML/xml_parsing.c \
+		XML/xml_select.c \
+		XML/xmalloc.c

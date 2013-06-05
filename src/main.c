@@ -28,8 +28,7 @@ int	init_rs(t_rs *rs)
   rs->aff = NULL;
   rs->send_rayon = NULL;
   rs->eyes = malloc(sizeof(*(rs->eyes)));
-
-  rs->env.pattern = 0;
+  rs->env.pattern = 2;
 
   // MATERIEEEL
   if ((rs->mat = malloc(sizeof(*(rs->mat)))) == NULL)
@@ -95,7 +94,7 @@ int	init_rs(t_rs *rs)
   /* if ((rs->obj = malloc(sizeof(*(rs->obj)))) == NULL) */
   /*   return (EXIT_FAILURE); */
   /* rs->obj->next = NULL; */
-  /* rs->obj->mat = b; */
+  /* rs->obj->mat = c; */
   /* rs->obj->ptn.x = 0; */
   /* rs->obj->ptn.y = 0; */
   /* rs->obj->ptn.z = 0; */
@@ -104,16 +103,18 @@ int	init_rs(t_rs *rs)
   /* rs->obj->rot.z = 0; */
   /* rs->obj->limit_z = 25; */
   /* rs->obj->matrix = NULL; */
-  /* rs->obj->cal_inter = call_inter_cylinder; */
-  /* rs->obj->cal_color = cal_color_cylinder; */
+  /* rs->obj->cal_inter = call_inter_conus; */
+  /* rs->obj->cal_color = cal_color_conus; */
   /* r = malloc(sizeof(float)); */
-  /* *r = 5; */
+  /* *r = 55; */
   /* rs->obj->data = (void *)r; */
   /* creat_matrice_for_obj(rs->obj); */
+
+
   if ((rs->obj = malloc(sizeof(*(rs->obj)))) == NULL)
     return (EXIT_FAILURE);
   rs->obj->next = NULL;
-  rs->obj->mat = a;
+  rs->obj->mat = NULL;
   rs->obj->ptn.x = 0;
   rs->obj->ptn.y = 0;
   rs->obj->ptn.z = -10;
@@ -215,12 +216,13 @@ int	init_rs(t_rs *rs)
   /* rs->lux->attribute = NONE; */
   /* rs->lux->lux = 1; */
   /* rs->lux->next = NULL; */
-  /* rs->lux->cord.x = -50; */
-  /* rs->lux->cord.y = 0; */
+  /* rs->lux->cord.x = 0; */
+  /* rs->lux->cord.y = 50; */
   /* rs->lux->cord.z = 0; */
   /* rs->lux->red = 1; */
   /* rs->lux->green = 1; */
   /* rs->lux->blue = 1; */
+
   if ((rs->lux = malloc(sizeof(*(rs->lux)))) == NULL)
     return (EXIT_FAILURE);
   rs->lux->attribute = SPOT;
@@ -230,8 +232,8 @@ int	init_rs(t_rs *rs)
   rs->lux->cord.y = 7;
   rs->lux->cord.z = 0;
   rs->lux->red = 1;
-  rs->lux->green = 0;
-  rs->lux->blue = 0;
+  rs->lux->green = 1;
+  rs->lux->blue = 1;
   if ((rs->lux->next = malloc(sizeof(*(rs->lux)))) == NULL)
     return (EXIT_FAILURE);
   rs->lux->next->attribute = NONE;

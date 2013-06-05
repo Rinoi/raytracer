@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Tue Jun  4 15:33:26 2013 lucas mayol
+** Last update Wed Jun  5 02:22:04 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -43,7 +43,7 @@ void		cal_color_shere(t_obj *obj, t_inter *inter, float tab[3])
   int		color;
   unsigned char	*tabs;
 
-  if (obj->mat->img.img != NULL)
+  if (obj->mat != NULL && obj->mat->img.img != NULL)
     {
       color = cal_texture_sphere(obj, inter->ptn);
       tabs = (unsigned char *)&color;

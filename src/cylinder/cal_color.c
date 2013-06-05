@@ -5,9 +5,10 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Tue Jun  4 17:25:35 2013 lucas mayol
+** Last update Tue Jun  4 17:47:44 2013 karina martynava
 */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include "rt.h"
 
