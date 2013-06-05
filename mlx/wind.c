@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Wed Jun  5 02:20:39 2013 karina martynava
+** Last update Wed Jun  5 02:38:31 2013 karina martynava
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -82,8 +82,6 @@ void	rt_main_mlx(t_rs *rs)
   rtv1_ini(rs);
   /* ini_texture(rs); */
   printf("MLX %f, %f, %f\n", rs->eyes->cam.x, rs->eyes->cam.y, rs->eyes->cam.z);
-  load_img(rs, &rs->mat->img, "./Texture/ciel.xpm");
-  load_img(rs, &rs->mat->next->next->img, "./Texture/f.xpm");
   rs->thr = 0;
   /* if (rs->mat->img.img == NULL) */
   /*   return ; */
