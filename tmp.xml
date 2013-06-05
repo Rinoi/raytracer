@@ -10,6 +10,7 @@
     <spec3>1.0</spec3>
     <specpow>60</specpow>
     <reflexion>0.5</reflexion>
+    <texture>Texture/ciel.xpm</texture>
   </material>
 
   <sphere>
