@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Tue Jun  4 23:47:06 2013 karina martynava
+** Last update Wed Jun  5 02:47:21 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -90,7 +90,6 @@ void		creat_thread(t_rs *rs, int ini, int max)
   data->ini = ini;
   data->max = max;
   data->rs = rs;
-  //  printf("%f\n", data->rs->eyes->cam.x);
   printf("TROLL %f %f %f\n", data->rs->eyes->cam.x, data->rs->eyes->cam.y, data->rs->eyes->cam.z);
   pthread_create(&thread, NULL, send_rayon_main_act, (void *)data);
 }

@@ -45,11 +45,14 @@
 <!-- crée une lumière avec des paramètres par défauts -->
 
   <lumiere>
-    <!-- <attribute>2</attribute> -->
-    <!-- <color>1</color> <\!-- manque la récupération sous forme HEXA -\-> -->
-    <!-- <coord> -->
-    <!--   <x>4</x> -->
-    <!-- </coord> -->
+    <coord>
+      <red>1</red>
+      <green>0</green>
+      <blue>0</blue>
+      <x>-20</x>
+      <y>0</y>
+      <z>0</z>
+    </coord>
   </lumiere>
 
 <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
@@ -60,11 +63,11 @@
 <!-- crée un oeil avec des paramètres par défauts -->
 
   <eyes>
-    <!-- <camera> -->
-    <!--   <x> 0 </x> -->
-    <!--   <y> -100 </y> -->
-    <!--   <z> 0 </z> -->
-    <!-- </camera> -->
+    <camera>
+      <x> -50 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </camera>
     <!-- <rotation> -->
     <!--   <x> 0 </x> -->
     <!--   <y> 0 </y> -->

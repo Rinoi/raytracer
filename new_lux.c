@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:35:43 2013 louis martin-pierrat
-** Last update Wed Jun  5 01:13:12 2013 louis martin-pierrat
+** Last update Wed Jun  5 03:21:29 2013 karina martynava
 */
 
 #include	<stdio.h>
@@ -27,7 +27,7 @@ void		new_lux(t_lux **lux, struct s_xml *tree)
   get_fvalues(tree, "coord", "x", &new->cord.x) == FAILURE ? new->cord.x = 0 : 0;
   get_fvalues(tree, "coord", "y", &new->cord.y) == FAILURE ? new->cord.y = 0 : 0;
   get_fvalues(tree, "coord", "z", &new->cord.z) == FAILURE ? new->cord.z = 0 : 0;
-  get_ivalue(tree, "attribute", &new->attribute) == FAILURE ? new->attribute = SPOT : 0;
+  get_ivalue(tree, "attribute", &new->attribute) == FAILURE ? new->attribute = NONE : 0;
   /*  */
   printf("lumiere\n");
   printf("lux : %f red : %f blue : %f green : %f\n", new->lux, new->red, new->blue, new->green);

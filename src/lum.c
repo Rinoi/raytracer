@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Tue Jun  4 21:28:08 2013 karina martynava
+** Last update Wed Jun  5 03:14:16 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -105,9 +105,10 @@ void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
   float	tab[3];
   
-  point->obj->cal_color(point->obj, point, tab);
+  /* printf("%f\n", coef); */
   if (point->obj->mat && coef > 0)
     {
+      point->obj->cal_color(point->obj, point, tab);
       col[0] = col[0] + coef * sv->blue * tab[0];
       col[1] = col[1] + coef * sv->green * tab[1];
       col[2] = col[2] + coef * sv->red * tab[2];
@@ -127,12 +128,13 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
   t_st	light;
   t_ptn	*nrml;
 
-  nrml = (*(point->cal_norm))(point->obj, &(point->ptn));
+  nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
   sv = rs->lux;
-  add_vect(&light.cord, &point->ptn, &st->cord);
+  add_vect(&light.cord, &point->rela_ptn, &st->cord);
   sub_vect(&light.cord, &light.cord, &st->cord);
   while (sv != NULL)
     {
+      /* printf("%f %f %f\t", sv->cord.x, sv->cord.y, sv->cord.z); */
       sub_vect(&light.vec, &sv->cord, &light.cord);
       if (inlight(rs, &light) || sv->attribute == AMB)
 	{

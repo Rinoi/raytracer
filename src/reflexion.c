@@ -5,8 +5,9 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Wed Jun  5 02:19:08 2013 karina martynava
+** Last update Wed Jun  5 02:50:06 2013 karina martynava
 */
+#include <stdio.h>
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -36,9 +37,6 @@ void	col_update_reflex(float col[4], float tmp_col[4], t_inter *inter, t_st *st)
   col[0] = tmp_col[0] * col[3] + (1.0 - col[3]) * col[0];
   col[1] = tmp_col[1] * col[3] + (1.0 - col[3]) * col[1];
   col[2] = tmp_col[2] * col[3] + (1.0 - col[3]) * col[2];
-  /* col[0] =  * col[0] + col[3] * tmp_col[0]; */
-  /* col[1] = (1.0 - col[3]) * col[1] + col[3] * tmp_col[1]; */
-  /* col[2] = (1.0 - col[3]) * col[2] + col[3] * tmp_col[2]; */
   col[3] = (inter->obj->mat) ? col[3] * inter->obj->mat->reflex : 0;
   new_straight(st, inter);
 }
