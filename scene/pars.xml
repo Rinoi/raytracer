@@ -1,70 +1,79 @@
 <scene>
-  <material>
-    <id>42</id> // flaot propre objet
-    <color> 0xFFFFFF </color> // recupere 3 float (red = FF / 0xFF) etc...
-    <txt> nom de l'image </txt>
-    <spec>1.0</spec> // entre 0 et 1
-    <specpow>60</specpow>
-    <trans>1.0</trans> // entre 0 et 1
-    <reflexion>0</reflexion> // entre 0 et 1
-    <refraction>0</refraction>
-  </material>
-  <obj>
-    <sphere>
-      <cord>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </cord>
-      <data>
-	<rayon> 100 </rayon>
-      </data>
-      <mat_id> 1 </mat_id>
-    </sphere>
-    <triangle>
-      <ptn>
-	<a1>
-	  <x>0</x>
-	  <y>0</y>
-	  <z>150</z>
-	</a1>
-	<a2>
-	  <x>-150</x>
-	  <y>0</y>
-	  <z>0</z>
-	</a2>
-	<a3>
-	  <x>0</x>
-	  <y>150</y>
-	  <z>0</z>
-	</a3>
-      </ptn>
-      <mat_id> 1 </mat_id>
-    </triangle>
-  </obj>
+
+  <!-- <material> -->
+  <!--   <id>42</id> -->
+  <!--   <red>0.2</red> -->
+  <!--   <green>0.2</green> -->
+  <!--   <blue>0.2</blue> -->
+  <!--   <spec1>1.0</spec1> -->
+  <!--   <spec2>1.0</spec2> -->
+  <!--   <spec3>1.0</spec3> -->
+  <!--   <specpow>60</specpow> -->
+  <!--   <reflexion>0</reflexion> -->
+  <!-- </material> -->
+
+  <sphere>
+  </sphere>
+
+
+  <!-- <triangle> -->
+  <!--   <ptn> -->
+  <!--     <a1> -->
+  <!-- 	<x>0</x> -->
+  <!-- 	<y>0</y> -->
+  <!-- 	<z>150</z> -->
+  <!--     </a1> -->
+  <!--     <a2> -->
+  <!-- 	<x>-150</x> -->
+  <!-- 	<y>0</y> -->
+  <!-- 	<z>0</z> -->
+  <!--     </a2> -->
+  <!--     <a3> -->
+  <!-- 	<x>0</x> -->
+  <!-- 	<y>150</y> -->
+  <!-- 	<z>0</z> -->
+  <!--     </a3> -->
+  <!--   </ptn> -->
+  <!--   <mat_id> 1 </mat_id> -->
+  <!-- </triangle> -->
+
+<!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
+
+  <!-- <lumiere> -->
+  <!-- </lumiere> -->
+
+<!-- crée une lumière avec des paramètres par défauts -->
+
   <lumiere>
-    <new name="lumiere 1">
-      <!-- Attribute = NONE : AMB : SPOT : SPOTLEN -->
-      <attribute>NONE</attribute>
-      <cord>
-        <x>-400</x>
-        <y>0</y>
-        <z>0</z>
-      </cord>
-      <color> </color>
-    </new>
+    <!-- <attribute>2</attribute> -->
+    <!-- <color>1</color> <\!-- manque la récupération sous forme HEXA -\-> -->
+    <!-- <coord> -->
+    <!--   <x>4</x> -->
+    <!-- </coord> -->
   </lumiere>
-  <pov>
-    <eye>
-      <cord>
-	<x> </x>
-	<y> </y>
-	<z> </z>
-      </cord>
-    </eye>
-    <screen>
-	<larg> </larg>
-	<long> </long>
-    </screen>
-  </pov>
+
+<!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
+
+  <!-- <eyes> -->
+  <!-- </eyes> -->
+
+<!-- crée un oeil avec des paramètres par défauts -->
+
+  <eyes>
+    <!-- <camera> -->
+    <!--   <x> 0 </x> -->
+    <!--   <y> -100 </y> -->
+    <!--   <z> 0 </z> -->
+    <!-- </camera> -->
+    <!-- <rotation> -->
+    <!--   <x> 0 </x> -->
+    <!--   <y> 0 </y> -->
+    <!--   <z> 0 </z> -->
+    <!-- </rotation> -->
+    <!-- <screen> -->
+    <!--   <larg> 1000 </larg> -->
+    <!--   <long> 1000 </long> -->
+    <!-- </screen> -->
+  </eyes>
+
 </scene>

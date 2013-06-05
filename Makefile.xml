@@ -10,4 +10,6 @@ SRCS	+=	XML/xml_getattributes.c \
 		XML/xml_getvalues.c \
 		XML/xml_parsing.c \
 		XML/xml_select.c \
-		XML/xmalloc.c
+		XML/xmalloc.c \
+		new_lux.c \
+		get_values.c

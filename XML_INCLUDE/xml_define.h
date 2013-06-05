@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:15:49 2013 louis martin-pierrat
-** Last update Mon Jun  3 18:52:38 2013 louis martin-pierrat
+** Last update Tue Jun  4 17:38:58 2013 louis martin-pierrat
 */
 
 #ifndef		__XML_DEFINE__
@@ -23,5 +23,8 @@ int		xml_getstr(const int, char *, int *);
 void		*xmalloc(int);
 int		xml_getendtag(const int, struct s_xml **);
 struct s_xml	*xml_parsing(char *);
+int		m_strcmp(char *, char *);
+int		get_values(struct s_xml *, char *, char *, void *);
+int		get_value(struct s_xml *, char *, void *);
 
 #endif

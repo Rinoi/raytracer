@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 20:54:13 2013 louis martin-pierrat
-** Last update Mon Jun  3 20:55:20 2013 louis martin-pierrat
+** Last update Tue Jun  4 19:10:52 2013 louis martin-pierrat
 */
 
 #ifndef		__XML__
@@ -13,5 +13,11 @@
 
 #include	"xml_struct.h"
 #include	"xml_define.h"
+#include	"xml_macros.h"
+
+int		get_fvalue(struct s_xml *, char *, float *);
+int		get_ivalue(struct s_xml *, char *, int *);
+int		get_fvalues(struct s_xml *, char *, char *, float *);
+int		get_ivalues(struct s_xml *, char *, char *, int *);
 
 #endif

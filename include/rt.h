@@ -15,6 +15,7 @@
 # include <values.h>
 # include "mlx.h"
 # include "kdtree.h"
+#include	"xml.h"
 
 # define RAD(x)		(M_PI * (x) / 180)
 # define NOTINIT	0xFFFFFFFF
@@ -275,4 +276,10 @@ int	cal_texture_plan(t_obj *obj, float x, float y, float z);
 
 float	resolve_two(float a, float b, float c, int *x);
 float	resolve_two_inv(float a, float b, float c, int *x);
+
+void		new_material(t_mat **, struct s_xml *);
+void		new_eyes(t_pov **, struct s_xml *);
+void		new_lux(t_lux **, struct s_xml *);
+void		new_sphere(t_obj **, t_mat *, struct s_xml *);
+
 #endif

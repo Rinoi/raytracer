@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 18:46:13 2013 louis martin-pierrat
-** Last update Mon Jun  3 18:58:49 2013 louis martin-pierrat
+** Last update Tue Jun  4 17:37:22 2013 louis martin-pierrat
 */
 #include	<stdlib.h>
 
@@ -13,7 +13,7 @@
 #include	"xml_define.h"
 #include	"xml_macros.h"
 
-static int	m_strcmp(char *str, char *str2)
+int		m_strcmp(char *str, char *str2)
 {
   int		i;
 
