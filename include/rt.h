@@ -291,5 +291,8 @@ void		new_material(t_mat **, struct s_xml *);
 void		new_eyes(t_pov **, struct s_xml *);
 void		new_lux(t_lux **, struct s_xml *);
 void		new_sphere(t_obj **, t_mat *, struct s_xml *);
+void		new_plane(t_obj **, t_mat *, struct s_xml *);
+void		new_cylinder(t_obj **, t_mat *, struct s_xml *);
+void		new_conus(t_obj **, t_mat *, struct s_xml *);
 
 #endif
