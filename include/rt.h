@@ -19,6 +19,8 @@
 
 # define RAD(x)		(M_PI * (x) / 180)
 # define NOTINIT	0xFFFFFFFF
+#define	SIZE_LARG	1000
+#define	SIZE_LONG	1000
 
 // FOR INTERSECTIONS
 # define EPSILLON	0.0001
@@ -91,7 +93,7 @@ typedef	struct		s_material
 
 typedef struct	s_lux
 {
-  char		attribute;
+  int		attribute;
   t_ptn		cord;
   int		color;
   float		red;
