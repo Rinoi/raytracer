@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:35:43 2013 louis martin-pierrat
-** Last update Wed Jun  5 05:09:28 2013 louis martin-pierrat
+** Last update Wed Jun  5 16:18:26 2013 louis martin-pierrat
 */
 
 #include	<stdio.h>
@@ -49,7 +49,7 @@ void		new_eyes(t_pov **eyes, struct s_xml *tree)
   new = xmalloc(sizeof(t_pov));
   get_ivalues(tree, "screen", "larg", &new->larg) == FAILURE ? new->larg = SIZE_LARG : 0;
   get_ivalues(tree, "screen", "long", &new->lng) == FAILURE ? new->lng = SIZE_LONG : 0;
-  get_fvalues(tree, "camera", "x", &new->cam.x) == FAILURE ? new->cam.x = 0 : 0;
+  get_fvalues(tree, "camera", "x", &new->cam.x) == FAILURE ? new->cam.x = -200 : 0;
   get_fvalues(tree, "camera", "y", &new->cam.y) == FAILURE ? new->cam.y = 0 : 0;
   get_fvalues(tree, "camera", "z", &new->cam.z) == FAILURE ? new->cam.z = 0 : 0;
   get_fvalues(tree, "rotation", "x", &new->rot.x) == FAILURE ? new->rot.x = 0 : 0;
