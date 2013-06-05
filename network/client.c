@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:55:17 2013 thibault martinez
-** Last update Wed Jun  5 21:45:10 2013 thibault martinez
+** Last update Wed Jun  5 22:59:27 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -40,6 +40,5 @@ int		rt_client(t_rs *rs, char **argv)
   send_rayon_main(rs);
   while (write(sock.socket_fd, rs->wind.sampled.img, rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8)) != -1)
     send_rayon_main(rs);
-  printf("END OF TRANSMISSION\n");
   return (EXIT_SUCCESS);
 }

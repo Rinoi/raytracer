@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:43:56 2013 thibault martinez
-** Last update Wed Jun  5 21:52:19 2013 thibault martinez
+** Last update Wed Jun  5 22:30:53 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -51,13 +51,13 @@ int                     handler(t_rs *rs, int fd, fd_set *read_fds)
   static int		ret = 0;
   int			tmp;
 
-  printf("receiving...\n");
+  /* printf("receiving...\n"); */
   /* if (buf == NULL) */
   /*   buf = malloc(sizeof(char) * rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8)); */
   tmp = read(fd, rs->wind.sampled.img + ret, rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8));
-  printf("%s\n", strerror(errno));
+  /* printf("%s\n", strerror(errno)); */
   ret += tmp;
-  printf("RETURN : %d\n", tmp);
+  /* printf("RETURN : %d\n", tmp); */
   if (ret == rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8))
     {
       my_expose(rs);
