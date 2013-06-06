@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:03:56 2013 lucas mayol
-** Last update Thu Jun  6 15:51:34 2013 lucas mayol
+** Last update Thu Jun  6 17:37:38 2013 lucas mayol
 */
 
 #include "rt.h"
@@ -24,11 +24,11 @@ int		color_bruit_bois(t_obj *obj, t_inter *inter)
   if (valeur > 0.2 / 2)
     valeur = 0.2 - valeur;
   f = (1 - cos(3.1415 * valeur / (0.2 / 2))) / 2;
-  col[2] = obj->mat->bruit.color1.x * (1 - f)
-    + obj->mat->bruit.color2.x * f;
-  col[1] = obj->mat->bruit.color1.y * (1 - f)
-    + obj->mat->bruit.color2.y * f;
-  col[0] = obj->mat->bruit.color1.z * (1 - f)
-    + obj->mat->bruit.color2.z * f;
+  col[2] = obj->mat->bruit.color1[0] * (1 - f)
+    + obj->mat->bruit.color2[0] * f;
+  col[1] = obj->mat->bruit.color1[1] * (1 - f)
+    + obj->mat->bruit.color2[1] * f;
+  col[0] = obj->mat->bruit.color1[2] * (1 - f)
+    + obj->mat->bruit.color2[2] * f;
   return (convert_col(col));
 }

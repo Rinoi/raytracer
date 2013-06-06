@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Wed Jun  5 21:00:20 2013 thibault martinez
+** Last update Thu Jun  6 17:53:09 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -21,6 +21,20 @@ t_patterns	g_pat[] =
     {1, vert_pattern},
     {2, alea_pattern}
   };
+
+void		find_ori_ptn(t_inter *inter)
+{
+  t_ptn		*mat;
+
+  inter->ori_ptn.x = inter->ptn.x - inter->obj->ptn.x;
+  inter->ori_ptn.y = inter->ptn.y - inter->obj->ptn.y;
+  inter->ori_ptn.z = inter->ptn.z - inter->obj->ptn.z;
+  mat = mul_m_p(inter->obj->matrix, &inter->ori_ptn);
+  inter->ori_ptn.x = mat->x + inter->obj->ptn.x;
+  inter->ori_ptn.y = mat->y + inter->obj->ptn.y;
+  inter->ori_ptn.z = mat->z + inter->obj->ptn.z;
+  free(mat);
+}
 
 t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 {
@@ -49,6 +63,8 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
   inter_m->ptn.x = droit->cord.x + droit->vec.x * inter_m->d;
   inter_m->ptn.y = droit->cord.y + droit->vec.y * inter_m->d;
   inter_m->ptn.z = droit->cord.z + droit->vec.z * inter_m->d;
+  inter_m->rela_ptn = inter_m->ptn;
+  find_ori_ptn(inter_m);
   return (inter_m);
 }
 

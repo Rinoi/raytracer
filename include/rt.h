@@ -145,6 +145,7 @@ typedef	struct	s_inter
   t_obj		*obj;
   t_ptn		ptn;
   t_ptn		rela_ptn;
+  t_ptn		ori_ptn;
   float		dist;
   double	d;
   int		color;
@@ -312,6 +313,8 @@ void		new_plane(t_obj **, t_mat *, struct s_xml *);
 void		new_cylinder(t_obj **, t_mat *, struct s_xml *);
 void		new_conus(t_obj **, t_mat *, struct s_xml *);
 void		new_triangle(t_obj **, t_mat *, struct s_xml *);
+
+int             color_bruit_bois(t_obj *obj, t_inter *inter);
 
 void		add_to_end(t_obj **, t_obj *);
 t_mat		*seek_mat(int, t_mat *);
