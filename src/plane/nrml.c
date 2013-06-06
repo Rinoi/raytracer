@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:20:26 2013 karina martynava
-** Last update Fri May 31 19:08:39 2013 karina martynava
+** Last update Thu Jun  6 19:07:01 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -22,6 +22,24 @@ t_ptn	*plane_nrml(__attribute__((unused))t_obj *obj, __attribute__((unused))t_pt
   nrml->x = 0;
   nrml->y = 0;
   nrml->z = 100;
+  /* mat = mul_m_p(obj->matrix_inv, nrml); */
+  /* if (mat != NULL) */
+  /*   *nrml = *mat; */
+  /* free(mat); */
+  return (nrml);
+}
+
+t_ptn	*plane_nrml_inv(__attribute__((unused))t_obj *obj, __attribute__((unused))t_ptn *ptn)
+{
+  t_ptn	*nrml;
+  //  t_ptn	*mat;
+
+  nrml = malloc(sizeof(*nrml));
+  if (nrml == NULL)
+    return (NULL);
+  nrml->x = 0;
+  nrml->y = 0;
+  nrml->z = -100;
   /* mat = mul_m_p(obj->matrix_inv, nrml); */
   /* if (mat != NULL) */
   /*   *nrml = *mat; */

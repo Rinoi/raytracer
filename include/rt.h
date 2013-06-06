@@ -293,6 +293,7 @@ t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*cylinder_nrml_inv(t_obj *obj, t_ptn *ptn);
 t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
+t_ptn	*plane_nrml_inv(t_obj *obj, t_ptn *ptn);
 t_ptn	*triangle_nrml(t_obj *obj, t_ptn *ptn);
 
 void	cal_color_cylinder(t_obj *obj, t_inter *inter, float *tab);
