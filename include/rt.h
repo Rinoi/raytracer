@@ -134,9 +134,9 @@ typedef	struct	s_obj
   double       	*matrix_inv;
   float		limit_z;
   t_box		box;
-  t_inter      	*(*cal_inter)(struct s_obj *obj, t_st dr);
-  float		(*cal_lux_cos)(struct s_obj *obj, t_ptn *ptn, t_lux *lux);
-  void		(*cal_color)(struct s_obj *obj, t_inter *inter, float *retour);
+  t_inter      	*(*cal_inter)(struct s_obj *, t_st );
+  float		(*cal_lux_cos)(struct s_obj *, t_ptn *, t_lux *);
+  void		(*cal_color)(struct s_obj *, t_inter *, float *);
   //  unsigned int	d[4];
   struct s_obj	*next;
 } t_obj;
