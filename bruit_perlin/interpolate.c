@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed Jun  5 14:20:55 2013 lucas mayol
-** Last update Wed Jun  5 18:08:10 2013 lucas mayol
+** Last update Thu Jun  6 11:33:20 2013 lucas mayol
 */
 
 #include "rt.h"
@@ -19,7 +19,7 @@ double		cosine_interpolate(double a, double b, double t)
 {
   double	c;
 
-  c = (1 - cos(t * 3.1415) * .5);
+  c = (1 - cos(t * 3.1415)) / 2;
   return ((1. - c) * a + c * b);
 }
 

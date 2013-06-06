@@ -5,13 +5,13 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed Jun  5 15:50:13 2013 lucas mayol
-** Last update Wed Jun  5 17:51:56 2013 lucas mayol
+** Last update Thu Jun  6 11:21:44 2013 lucas mayol
 */
 
 #include "rt.h"
 
 double		perlin(int octaves, double frequency, double persistence,
-		       double x, double y, double z)
+		       t_ptn *ptn)
 {
   double	r;
   double	f;
@@ -25,7 +25,7 @@ double		perlin(int octaves, double frequency, double persistence,
   i = 0;
   while (i < octaves)
     {
-      r += smooth_noise(x * f, y * f, z * f) * a;
+      r += smooth_noise(ptn->x * f, ptn->y * f, ptn->z * f) * a;
       a *= persistence;
       f *= 2;
       i += 1;

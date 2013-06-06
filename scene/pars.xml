@@ -10,7 +10,7 @@
     <spec3>1.0</spec3>
     <specpow>60</specpow>
     <reflexion>0.5</reflexion>
-    <texture>Texture/Banane.xpm</texture>
+    <!-- <texture>Texture/Banane.xpm</texture> -->
   </material>
 
   <material>
@@ -23,93 +23,93 @@
     <spec3>1.0</spec3>
     <specpow>60</specpow>
     <reflexion>0.5</reflexion>
-    <texture>Texture/vis.xpm</texture>
+    <!-- <texture>Texture/vis.xpm</texture> -->
   </material>
 
+  <!-- <sphere> -->
+  <!--   <rayon>15</rayon> -->
+  <!--   <material_id>43</material_id> -->
+  <!-- </sphere> -->
+
   <sphere>
+    <coord>
+      <x>0</x>
+      <y>0</y>
+      <z>0</z>
+    </coord>
     <rayon>15</rayon>
-    <material_id>43</material_id>
-  </sphere>
-
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>30</y>
-      <z>0</z>
-    </coord>
-    <rayon>5</rayon>
     <material_id>42</material_id>
   </sphere>
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>-30</y>
-      <z>0</z>
-    </coord>
-    <rayon>5</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>-30</y> -->
+  <!--     <z>0</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>5</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>-60</y>
-      <z>0</z>
-    </coord>
-    <rayon>8</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>-60</y> -->
+  <!--     <z>0</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>8</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>60</y>
-      <z>0</z>
-    </coord>
-    <rayon>8</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>60</y> -->
+  <!--     <z>0</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>8</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>0</y>
-      <z>60</z>
-    </coord>
-    <rayon>8</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>0</y> -->
+  <!--     <z>60</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>8</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>0</y>
-      <z>-60</z>
-    </coord>
-    <rayon>8</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>0</y> -->
+  <!--     <z>-60</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>8</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>0</y>
-      <z>-30</z>
-    </coord>
-    <rayon>5</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>0</y> -->
+  <!--     <z>-30</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>5</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>0</y>
-      <z>30</z>
-    </coord>
-    <rayon>5</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>0</y> -->
+  <!--     <z>30</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>5</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
   <!-- <cone> -->
   <!--   <coord> -->
@@ -187,8 +187,8 @@
       <z> 0 </z>
     </rotation>
     <screen>
-      <larg> 500 </larg>
-      <long> 500 </long>
+      <larg> 1000 </larg>
+      <long> 1000 </long>
     </screen>
   </eyes>
 

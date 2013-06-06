@@ -20,8 +20,8 @@
 
 # define RAD(x)		(M_PI * (x) / 180)
 # define NOTINIT	0xFFFFFFFF
-# define SIZE_LARG	1000
-# define SIZE_LONG	1000
+#define	SIZE_LARG	1000
+#define	SIZE_LONG	1000
 
 // FOR INTERSECTIONS
 # define EPSILLON	0.0001
@@ -191,8 +191,6 @@ typedef struct	s_patterns
   void		(*ptr)(t_data_t *, t_st *);
 } t_patterns;
 
-int     init_rs(t_rs *rs, struct s_xml *tree);
-
 // color.c
 
 int	convert_col(float col[3]);
@@ -238,7 +236,6 @@ int	antialiasing_color(int antialias, t_st *droit, t_rs *rs);
 // wind.c
 
 void	rt_main_mlx(t_rs *);
-int     my_expose(t_rs *rs);
 
 //my_pixel_put_to_image.c  
 
@@ -299,5 +296,8 @@ void		new_sphere(t_obj **, t_mat *, struct s_xml *);
 void		new_plane(t_obj **, t_mat *, struct s_xml *);
 void		new_cylinder(t_obj **, t_mat *, struct s_xml *);
 void		new_conus(t_obj **, t_mat *, struct s_xml *);
+
+double  perlin(int octaves, double frequency, double persistence,
+               t_ptn *ptn);
 
 #endif

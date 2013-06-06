@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Wed Jun  5 20:00:06 2013 thibault martinez
+## Last update Thu Jun  6 11:29:38 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -61,6 +61,11 @@ SRCS	=	src/main.c \
 		network/send_xml.c \
 		network/receive_xml.c \
 		network/f_error.c \
+                bruit_perlin/lol.c \
+                bruit_perlin/rand_set.c \
+		bruit_perlin/perlin.c \
+		bruit_perlin/noise.c \
+		bruit_perlin/interpolate.c \
 
 include		Makefile.xml
 

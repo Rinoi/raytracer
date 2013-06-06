@@ -187,8 +187,8 @@
       <z> 0 </z>
     </rotation>
     <screen>
-      <larg> 500 </larg>
-      <long> 500 </long>
+      <larg> 1000 </larg>
+      <long> 1000 </long>
     </screen>
   </eyes>
 
