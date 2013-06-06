@@ -5,9 +5,8 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:31:41 2013 karina martynava
-** Last update Sun Jun  2 22:29:35 2013 karina martynava
+** Last update Thu Jun  6 18:10:48 2013 thibault martinez
 */
-
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -28,8 +27,8 @@ void		get_col_componnent(char col[3], int x, int y, t_rs *rs)
   col[2] = modif[0];
 }
 
-void	record_color_for_jpeg(int cord[2], struct jpeg_compress_struct *cinfo,
-			      unsigned char *image_buffer, t_rs *rs)
+void		record_color_for_jpeg(int cord[2], struct jpeg_compress_struct *cinfo,
+				      unsigned char *image_buffer, t_rs *rs)
 {
   unsigned int	pixelIdx;
   char		col[3];

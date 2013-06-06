@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Wed Jun  5 03:14:16 2013 karina martynava
+** Last update Thu Jun  6 18:04:54 2013 thibault martinez
 */
 
 #include <stdlib.h>
@@ -52,7 +52,6 @@ int	inlight(t_rs *rs, t_st *droit)
     }
   return (1);
 }
-
 
 float	reflect_ptn(t_ptn *toref, t_inter *last, t_ptn *viewpoint)
 {
@@ -104,7 +103,7 @@ void	blinn_phong(t_st *st, t_ptn *light, t_inter *last, float col[4], t_lux *sv)
 void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
   float	tab[3];
-  
+
   /* printf("%f\n", coef); */
   if (point->obj->mat && coef > 0)
     {

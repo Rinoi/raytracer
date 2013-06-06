@@ -5,22 +5,22 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:00:53 2013 karina martynava
-** Last update Tue May 28 10:08:09 2013 karina martynava
+** Last update Thu Jun  6 18:08:33 2013 thibault martinez
 */
 
-#include "rt.h"
+#include	"rt.h"
 
-float	scal_prod(t_ptn *a, t_ptn *b)
+float		scal_prod(t_ptn *a, t_ptn *b)
 {
-  float	scal;
+  float		scal;
 
   scal = a->x * b->x + a->y * b->y + a->z * b->z;
   return (scal);
 }
 
-void	sub_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
+void		sub_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
 {
-  t_ptn	tmp;
+  t_ptn		tmp;
 
   tmp.x = a->x - b->x;
   tmp.y = a->y - b->y;
@@ -28,9 +28,9 @@ void	sub_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
   *tochange = tmp;
 }
 
-void	add_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
+void		add_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
 {
-  t_ptn	tmp;
+  t_ptn		tmp;
 
   tmp.x = a->x + b->x;
   tmp.y = a->y + b->y;
@@ -38,7 +38,7 @@ void	add_vect(t_ptn *tochange, t_ptn *a, t_ptn *b)
   *tochange = tmp;
 }
 
-void	mult_vect(t_ptn *a, float k)
+void		mult_vect(t_ptn *a, float k)
 {
   a->x = a->x * k;
   a->y = a->y * k;

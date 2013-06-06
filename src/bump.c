@@ -5,12 +5,12 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 15:33:13 2013 karina martynava
-** Last update Sun Jun  2 16:34:31 2013 karina martynava
+** Last update Thu Jun  6 18:07:39 2013 thibault martinez
 */
 
-#include "rt.h"
+#include	"rt.h"
 
-const char g_noise_perm[] = {
+const char	g_noise_perm[] = {
   151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233,
   7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23, 
   190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219,
@@ -32,22 +32,19 @@ const char g_noise_perm[] = {
   243, 141, 128, 195, 78, 66, 215, 61, 156, 180
 };
 
-void	bump(t_obj *obj, t_ptn *nrml)
+void		bump(t_obj *obj, t_ptn *nrml)
 {
-  t_ptn	noise;
+  t_ptn		noise;
 
-  noise.x = float(noise(0.1 * double(ptHitPoint.x), 0.1 * double(ptHitPoint.y),0.1 * double(ptHitPoint.z)));
-noise.y = float(noise(0.1 * double(ptHitPoint.y), 0.1 * double(ptHitPoint.z),0.1 * double(ptHitPoint.x)));
-noise.z = float(noise(0.1 * double(ptHitPoint.z), 0.1 * double(ptHitPoint.x),0.1 * double(ptHitPoint.y)));
- 
-
-  vNormal.x = (1.0f - obj->mat->bump) * vNormal.x + obj->mat->bump * noiseCoefx;  
-  vNormal.y = (1.0f - obj->mat->bump) * vNormal.y + obj->mat->bump * noiseCoefy;  
-  vNormal.z = (1.0f - obj->mat->bump) * vNormal.z + obj->mat->bump * noiseCoefz;  
-    
+  noise.x = (float)(noise(0.1 * (double)(ptHitPoint.x), 0.1 * (double)(ptHitPoint.y),0.1 * (double)(ptHitPoint.z)));
+  noise.y = (float)(noise(0.1 * (double)(ptHitPoint.y), 0.1 * (double)(ptHitPoint.z),0.1 * (double)(ptHitPoint.x)));
+  noise.z = (float)(noise(0.1 * (double)(ptHitPoint.z), 0.1 * (double)(ptHitPoint.x),0.1 * (double)(ptHitPoint.y)));
+  vNormal.x = (1.0f - obj->mat->bump) * vNormal.x + obj->mat->bump * noiseCoefx;
+  vNormal.y = (1.0f - obj->mat->bump) * vNormal.y + obj->mat->bump * noiseCoefy;
+  vNormal.z = (1.0f - obj->mat->bump) * vNormal.z + obj->mat->bump * noiseCoefz;
   temp = vNormal * vNormal;
   if (temp == 0.0f)
-    break;
+    break; /* FUUUUUUUUUUUUUU vous etes des porcs, arretez de cp de la merde sur internet !!! */
   temp = invsqrtf(temp);
   vNormal = temp * vNormal;
 }
