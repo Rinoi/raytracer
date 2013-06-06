@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:41:37 2013 louis martin-pierrat
-** Last update Thu Jun  6 15:49:38 2013 louis martin-pierrat
+** Last update Thu Jun  6 16:05:33 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
@@ -42,7 +42,6 @@ void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree)
     (new->mat = NULL) : (new->mat = seek_mat(mat_id, mat));
   new->next = NULL;
   new->matrix = NULL;
-  creat_matrice_for_obj(new);
   new->cal_color = call_color_triangle;
   new->cal_inter = call_inter_triangle;
   idontknowwhatisit(&tri->a2, &new->ptn);
