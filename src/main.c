@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Wed Jun  5 21:57:43 2013 louis martin-pierrat
+** Last update Thu Jun  6 15:08:25 2013 louis martin-pierrat
 */
 
 #include <sys/types.h>
@@ -44,10 +44,12 @@ int	init_rs(t_rs *rs, __attribute__((unused))struct s_xml *tree)
 	new_cylinder(&rs->obj, rs->mat, tree->child);
       else if (m_strcmp(tree->child->name, "cone") == 0)
 	new_conus(&rs->obj, rs->mat, tree->child);
+      else if (m_strcmp(tree->child->name, "triangle") == 0)
+	new_triangle(&rs->obj, rs->mat, tree->child);
       tree->child = tree->child->next;
     }
   if (tree == NULL)
-    return (EXIT_FAILURE);
+    exit (EXIT_FAILURE);
   return (0);
 }
 

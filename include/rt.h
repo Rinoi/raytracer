@@ -311,5 +311,9 @@ void		new_sphere(t_obj **, t_mat *, struct s_xml *);
 void		new_plane(t_obj **, t_mat *, struct s_xml *);
 void		new_cylinder(t_obj **, t_mat *, struct s_xml *);
 void		new_conus(t_obj **, t_mat *, struct s_xml *);
+void		new_triangle(t_obj **, t_mat *, struct s_xml *);
+
+void		add_to_end(t_obj **, t_obj *);
+t_mat		*seek_mat(int, t_mat *);
 
 #endif

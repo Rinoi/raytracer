@@ -11,5 +11,15 @@ SRCS	+=	XML/xml_getattributes.c \
 		XML/xml_parsing.c \
 		XML/xml_select.c \
 		XML/xmalloc.c \
-		new_lux.c \
+
+SRCS	+=	new_elem/add_to_end.c \
+		new_elem/new_conus.c \
+		new_elem/new_cylinder.c \
+		new_elem/new_eyes.c \
+		new_elem/new_lux.c \
+		new_elem/new_material.c \
+		new_elem/new_plane.c \
+		new_elem/new_sphere.c \
+		new_elem/new_triangle.c \
+		new_elem/seek_mat.c \
 		get_values.c

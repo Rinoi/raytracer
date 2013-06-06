@@ -31,15 +31,15 @@
   <!--   <material_id>43</material_id> -->
   <!-- </sphere> -->
 
-  <sphere>
-    <coord>
-      <x>0</x>
-      <y>0</y>
-      <z>0</z>
-    </coord>
-    <rayon>15</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <coord> -->
+  <!--     <x>0</x> -->
+  <!--     <y>0</y> -->
+  <!--     <z>0</z> -->
+  <!--   </coord> -->
+  <!--   <rayon>15</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
   <!-- <sphere> -->
   <!--   <coord> -->
@@ -129,26 +129,24 @@
   <!--   <material_id>1</material_id> -->
   <!-- </plan> -->
 
-  <!-- <triangle> -->
-  <!--   <ptn> -->
-  <!--     <a1> -->
-  <!-- 	<x>0</x> -->
-  <!-- 	<y>0</y> -->
-  <!-- 	<z>150</z> -->
-  <!--     </a1> -->
-  <!--     <a2> -->
-  <!-- 	<x>-150</x> -->
-  <!-- 	<y>0</y> -->
-  <!-- 	<z>0</z> -->
-  <!--     </a2> -->
-  <!--     <a3> -->
-  <!-- 	<x>0</x> -->
-  <!-- 	<y>150</y> -->
-  <!-- 	<z>0</z> -->
-  <!--     </a3> -->
-  <!--   </ptn> -->
-  <!--   <mat_id> 1 </mat_id> -->
-  <!-- </triangle> -->
+  <triangle>
+    <a1>
+      <x>0</x>
+      <y>0</y>
+      <z>150</z>
+    </a1>
+    <a2>
+      <x>-150</x>
+      <y>0</y>
+      <z>0</z>
+    </a2>
+    <a3>
+      <x>0</x>
+      <y>150</y>
+      <z>0</z>
+    </a3>
+    <mat_id> 1 </mat_id>
+  </triangle>
 
 <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
 
@@ -170,26 +168,26 @@
 
 <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
 
-  <!-- <eyes> -->
-  <!-- </eyes> -->
+  <eyes>
+  </eyes>
 
 <!-- crée un oeil avec des paramètres par défauts -->
 
-  <eyes>
-    <camera>
-      <x> -80 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </camera>
-    <rotation>
-      <x> 0 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </rotation>
-    <screen>
-      <larg> 1000 </larg>
-      <long> 1000 </long>
-    </screen>
-  </eyes>
+  <!-- <eyes> -->
+  <!--   <camera> -->
+  <!--     <x> -80 </x> -->
+  <!--     <y> 0 </y> -->
+  <!--     <z> 0 </z> -->
+  <!--   </camera> -->
+  <!--   <rotation> -->
+  <!--     <x> 0 </x> -->
+  <!--     <y> 0 </y> -->
+  <!--     <z> 0 </z> -->
+  <!--   </rotation> -->
+  <!--   <screen> -->
+  <!--     <larg> 1000 </larg> -->
+  <!--     <long> 1000 </long> -->
+  <!--   </screen> -->
+  <!-- </eyes> -->
 
 </scene>
