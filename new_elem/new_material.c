@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:22:33 2013 louis martin-pierrat
-** Last update Thu Jun  6 18:11:43 2013 louis martin-pierrat
+** Last update Thu Jun  6 18:49:05 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
@@ -66,7 +66,7 @@ void		new_material(t_mat **material, t_rs *rs, struct s_xml *tree)
   get_fvalue(tree, "specpow", &new->spec_pow) == FAIL ? new->spec_pow = 0 : 0;
   get_strvalue(tree, "texture", &path) == FAIL ?
     new->img.img = NULL : load_img(rs, &new->img, path);
-  new_bruit(new, seek_child(tree, ""));
+  new_bruit(new, seek_child(tree, "bruit"));
   new->next = NULL;
   m_add_to_end(material, new);
 }
