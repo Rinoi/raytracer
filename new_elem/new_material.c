@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:22:33 2013 louis martin-pierrat
-** Last update Thu Jun  6 15:59:30 2013 louis martin-pierrat
+** Last update Thu Jun  6 17:30:50 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
@@ -17,6 +17,36 @@ static void	m_add_to_end(t_mat **obj, t_mat *new)
   while (tmp != NULL && tmp->next != NULL)
     tmp = tmp->next;
   (tmp == NULL) ? ((*obj) = new) : (tmp->next = new);
+}
+
+struct s_xml	*seek_child(struct s_xml *tree, char *str)
+{
+  struct s_xml	*child;
+
+  child = (tree != NULL) ? tree->child : NULL;
+  while (child != NULL && m_strcmp(child->name, str) != 0)
+    child = child->next;
+  return (child);
+}
+
+void		new_bruit(t_mat *material, struct s_xml *tree)
+{
+  get_ivalue(tree, "type", &material->bruit.type) == FAIL ? \
+    material->bruit.type = 0 : 0;
+  get_fvalue(tree, "persistance", &material->bruit.persistance) == FAIL ? \
+    material->bruit.persistance = 0 : 0;
+  get_fvalues(tree, "color1", "red", &material->bruit.color1[0]) == FAIL ? \
+    material->bruit.color1[0] = 0 : 0;
+  get_fvalues(tree, "color1", "green", &material->bruit.color1[1]) == FAIL ? \
+    material->bruit.color1[1] = 0 : 0;
+  get_fvalues(tree, "color1", "blue", &material->bruit.color1[2]) == FAIL ? \
+    material->bruit.color1[2] = 0 : 0;
+  get_fvalues(tree, "color2", "red", &material->bruit.color2[0]) == FAIL ? \
+    material->bruit.color2[0] = 0 : 0;
+  get_fvalues(tree, "color2", "green", &material->bruit.color2[1]) == FAIL ? \
+    material->bruit.color2[1] = 0 : 0;
+  get_fvalues(tree, "color2", "blue", &material->bruit.color2[2]) == FAIL ? \
+    material->bruit.color2[2] = 0 : 0;
 }
 
 void		new_material(t_mat **material, t_rs *rs, struct s_xml *tree)
@@ -36,6 +66,7 @@ void		new_material(t_mat **material, t_rs *rs, struct s_xml *tree)
   get_fvalue(tree, "specpow", &new->spec_pow) == FAIL ? new->spec_pow = 0 : 0;
   get_strvalue(tree, "texture", &path) == FAIL ?
     new->img.img = NULL : load_img(rs, &new->img, path);
+  new_bruit(new, seek_child(tree, ""));
   new->next = NULL;
   m_add_to_end(material, new);
 }
