@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:43:56 2013 thibault martinez
-** Last update Thu Jun  6 11:57:20 2013 thibault martinez
+** Last update Thu Jun  6 18:31:42 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -101,10 +101,12 @@ int                     fd_manager(t_rs *rs, t_sock *sock)
   return (EXIT_SUCCESS);
 }
 
-int		rt_server(t_rs *rs, char **argv)
+int		rt_server(t_rs *rs, int argc, char **argv)
 {
   t_sock                sock;
 
+  if (argc != 4)
+    f_error("Usage : ./rt --server PORT file.xml");
   rs->client = 0;
   init_rs(rs, xml_parsing(argv[3]));
   rt_main_mlx(rs);

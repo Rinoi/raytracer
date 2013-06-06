@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:55:17 2013 thibault martinez
-** Last update Thu Jun  6 11:47:07 2013 thibault martinez
+** Last update Thu Jun  6 18:34:16 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -25,11 +25,13 @@ static int	socket_init(t_sock *sock)
   return (EXIT_SUCCESS);
 }
 
-int		rt_client(t_rs *rs, char **argv)
+int		rt_client(t_rs *rs, int argc, char **argv)
 {
   t_sock	sock;
   int		i;
 
+  if (argc != 4)
+    f_error("Usage : ./rt --client PORT IP");
   rs->client = 1;
   sock.av = argv;
   i = 1;

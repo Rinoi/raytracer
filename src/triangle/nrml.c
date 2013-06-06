@@ -5,17 +5,17 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 21:26:55 2013 lucas mayol
-** Last update Thu Jun  6 12:58:48 2013 lucas mayol
+** Last update Thu Jun  6 18:14:04 2013 thibault martinez
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "rt.h"
+#include	<stdlib.h>
+#include	<stdio.h>
+#include	"rt.h"
 
-t_ptn	*triangle_nrml(t_obj *o, __attribute__((unused)) t_ptn *p)
+t_ptn		*triangle_nrml(t_obj *o, __attribute__((unused)) t_ptn *p)
 {
-  t_ptn	*ptn;
-  t_tri	*tri;
+  t_ptn		*ptn;
+  t_tri		*tri;
 
   tri = (t_tri *)(o->data);
   if ((ptn = malloc(sizeof(t_ptn))) == NULL)

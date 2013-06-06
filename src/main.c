@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Thu Jun  6 15:08:25 2013 louis martin-pierrat
+** Last update Thu Jun  6 18:29:25 2013 thibault martinez
 */
 
 #include <sys/types.h>
@@ -69,9 +69,9 @@ int	main(int argc, char **argv)
 	  exit(EXIT_FAILURE);
 	}
       if (strcmp(argv[1], "--server") == 0 || strcmp(argv[1], "-s") == 0)
-	rt_server(&rs, argv);
+	rt_server(&rs, argc, argv);
       else if (strcmp(argv[1], "--client") == 0 || strcmp(argv[1], "-c") == 0)
-      	rt_client(&rs, argv);
+      	rt_client(&rs, argc, argv);
       else
 	{
 	  if (init_rs(&rs ,  xml_parsing(argv[1])) == EXIT_FAILURE)
