@@ -86,6 +86,7 @@ typedef struct 	s_bruit
 typedef	struct		s_material
 {
   int			id;
+  int			damier;
   float			red;
   float			green;
   float			blue;
