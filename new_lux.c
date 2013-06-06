@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:35:43 2013 louis martin-pierrat
-** Last update Wed Jun  5 20:53:31 2013 louis martin-pierrat
+** Last update Thu Jun  6 14:49:18 2013 louis martin-pierrat
 */
 
 #include	<stdio.h>
@@ -153,8 +153,8 @@ void		new_sphere(t_obj **obj, t_mat *mat, struct s_xml *tree)
 
 void		new_plane(t_obj **obj, t_mat *mat, struct s_xml *tree)
 {
-  t_obj		*new;
   int		mat_id;
+  t_obj		*new;
 
   mat_id = 0;
   new = xmalloc(sizeof(t_obj));
@@ -242,6 +242,41 @@ void		new_conus(t_obj **obj, t_mat *mat, struct s_xml *tree)
   printf("coord = (x : %f y : %f z : %f)\n", new->ptn.x, new->ptn.y, new->ptn.z);
   printf("rotation = (x : %f z : %f z : %f)\n", new->rot.x, new->rot.y, new->rot.z);
   printf("rayon = %f\nmaterial_id = %d\nlimit_z = %f\n\n", *angle, mat_id, new->limit_z);
+  /*  */
+  add_to_end(obj, new);
+}
+
+void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree)
+{ 
+  int		mat_id;
+  t_tri		*tri;
+  t_obj		*new;
+
+  tri = xmalloc(sizeof(t_tri));
+  new = xmalloc(sizeof(t_obj));
+  get_fvalues(tree, "a1", "x", &new->ptn.x) == FAILURE ? new->ptn.x = 0 : 0;
+  get_fvalues(tree, "a1", "y", &new->ptn.y) == FAILURE ? new->ptn.y = 0 : 0;
+  get_fvalues(tree, "a1", "z", &new->ptn.z) == FAILURE ? new->ptn.z = 0 : 0;
+  get_fvalues(tree, "a2", "x", &tri->a2.x) == FAILURE ? tri->a2.x = 0 : 0;
+  get_fvalues(tree, "a2", "y", &tri->a2.y) == FAILURE ? tri->a2.y = 0 : 0;
+  get_fvalues(tree, "a2", "z", &tri->a2.z) == FAILURE ? tri->a2.z = 0 : 0;
+  get_fvalues(tree, "a3", "x", &tri->a2.x) == FAILURE ? tri->a2.x = 0 : 0;
+  get_fvalues(tree, "a3", "y", &tri->a2.y) == FAILURE ? tri->a2.y = 0 : 0;
+  get_fvalues(tree, "a3", "z", &tri->a2.z) == FAILURE ? tri->a2.z = 0 : 0;
+  new->data = (void *)(tri);
+  get_ivalue(tree, "material_id", &mat_id) == FAILURE ?
+    (new->mat = NULL) : (new->mat = seek_mat(mat_id, mat));
+  new->next = NULL;
+  new->matrix = NULL;
+  creat_matrice_for_obj(new);
+  new->cal_color = cal_color_triangle;
+  new->cal_inter = call_inter_triangle;
+  /*  */
+  printf("triangle\n");
+  printf("a1 = (x : %f y : %f z : %f)\n", new->ptn.x, new->ptn.y, new->ptn.z);
+  printf("a2 = (x : %f y : %f z : %f)\n", tri->a2.x, tri->a2.y, tri->a2.z);
+  printf("a3 = (x : %f y : %f z : %f)\n", tri->a3.x, tri->a3.y, tri->a3.z);
+  printf("%d\n", mat_id);
   /*  */
   add_to_end(obj, new);
 }
