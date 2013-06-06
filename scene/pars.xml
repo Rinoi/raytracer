@@ -11,10 +11,10 @@
     <specpow>60</specpow>
     <reflexion>0</reflexion>
     <damier>1</damier>
-    <texture>Texture/tp1.xpm</texture>
+    <!-- <texture>Texture/tp1.xpm</texture> -->
     <bruit>
-      <type>0</type>
-      <persistance>0.5</persistance>
+      <type>1</type>
+      <persistance>0.004</persistance>
       <color1>
     	<red>0.2</red>
     	<green>0.2</green>
@@ -29,6 +29,7 @@
   </material>
 
   <obj>
+
     <sphere>
       <coord>
         <x>0</x>
@@ -40,15 +41,14 @@
 	<y>0</y>
 	<z>0</z>
       </rot>
-      <rayon>8</rayon>
+      <rayon>25</rayon>
       <material_id>42</material_id>
     </sphere>
 
-    <cone>
-      <limit_z>20</limit_z>
+    <sphere>
       <coord>
         <x>0</x>
-        <y>0</y>
+        <y>-50</y>
         <z>0</z>
       </coord>
       <rot>
@@ -56,65 +56,33 @@
 	<y>0</y>
 	<z>0</z>
       </rot>
-      <angle>10</angle>
+      <rayon>25</rayon>
       <material_id>42</material_id>
-    </cone>
-    
-    <cylindre>
-      <rayon>10</rayon>
-      <coord>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </coord>
-      <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </rot>
-      <limit_z>15000</limit_z>
-      <material_id>42</material_id>
-    </cylindre>
-    
-    <plan>
-      <coord>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </coord>
-      <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </rot>
-      <material_id>1</material_id>
-    </plan>
+    </sphere>
 
-    <triangle>
-      <a1>
+    <sphere>
+      <coord>
+        <x>0</x>
+        <y>50</y>
+        <z>0</z>
+      </coord>
+      <rot>
 	<x>0</x>
 	<y>0</y>
 	<z>0</z>
-      </a1>
-      <a2>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </a2>
-      <a3>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </a3>
-      <material_id>1</material_id>
-    </triangle>
+      </rot>
+      <rayon>25</rayon>
+      <material_id>42</material_id>
+    </sphere>
+
   </obj>
 
   <obj_neg>
+
     <sphere>
       <coord>
         <x>0</x>
-        <y>0</y>
+        <y>50</y>
         <z>0</z>
       </coord>
       <rot>
@@ -126,8 +94,22 @@
       <material_id>42</material_id>
     </sphere>
 
-    <cone>
-      <limit_z>20</limit_z>
+    <sphere>
+      <coord>
+        <x>0</x>
+        <y>-20</y>
+        <z>0</z>
+      </coord>
+      <rot>
+	<x>0</x>
+	<y>0</y>
+	<z>0</z>
+      </rot>
+      <rayon>15</rayon>
+      <material_id>42</material_id>
+    </sphere>
+
+    <sphere>
       <coord>
         <x>0</x>
         <y>0</y>
@@ -138,58 +120,25 @@
 	<y>0</y>
 	<z>0</z>
       </rot>
-      <angle>10</angle>
+      <rayon>15</rayon>
       <material_id>42</material_id>
-    </cone>
-    
-    <cylindre>
-      <rayon>10</rayon>
-      <coord>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </coord>
-      <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </rot>
-      <limit_z>15000</limit_z>
-      <material_id>42</material_id>
-    </cylindre>
-    
-    <plan>
-      <coord>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </coord>
-      <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </rot>
-      <material_id>1</material_id>
-    </plan>
+    </sphere>
 
-    <triangle>
-      <a1>
+    <sphere>
+      <coord>
+        <x>0</x>
+        <y>20</y>
+        <z>0</z>
+      </coord>
+      <rot>
 	<x>0</x>
 	<y>0</y>
 	<z>0</z>
-      </a1>
-      <a2>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </a2>
-      <a3>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </a3>
-      <material_id>1</material_id>
-    </triangle>
+      </rot>
+      <rayon>15</rayon>
+      <material_id>42</material_id>
+    </sphere>
+
   </obj_neg>
 
   <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->

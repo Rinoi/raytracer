@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Thu Jun  6 18:13:51 2013 lucas mayol
+** Last update Thu Jun  6 19:41:27 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -33,7 +33,6 @@ void		find_ori_ptn(t_inter *inter)
   inter->ori_ptn.x = mat->x + inter->obj->ptn.x;
   inter->ori_ptn.y = mat->y + inter->obj->ptn.y;
   inter->ori_ptn.z = mat->z + inter->obj->ptn.z;
-  //  free(mat);
 }
 
 t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)

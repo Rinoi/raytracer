@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Tue Jun  4 17:47:44 2013 karina martynava
+** Last update Thu Jun  6 19:30:21 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -68,9 +68,20 @@ void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3])
     {
       if (obj->mat != NULL)
 	{
-	  tab[0] = obj->mat->blue;
-	  tab[1] = obj->mat->green;
-	  tab[2] = obj->mat->red;
+	  if (obj->mat->bruit.type != 0)
+            {
+              color = color_bruit_bois(obj, inter);
+              tabs = (unsigned char *)&color;
+              tab[0] = (unsigned char)tabs[0] / 255.0;
+              tab[1] = (unsigned char)tabs[1] / 255.0;
+              tab[2] = (unsigned char)tabs[2] / 255.0;
+            }
+	  else
+	    {
+	      tab[0] = obj->mat->blue;
+	      tab[1] = obj->mat->green;
+	      tab[2] = obj->mat->red;
+	    }
 	}
       else
 	{
