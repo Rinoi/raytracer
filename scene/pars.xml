@@ -12,7 +12,7 @@
     <reflexion>0.5</reflexion>
     <!-- <texture>Texture/Banane.xpm</texture> -->
     <bruit>
-      <type>1</type>
+      <type>0</type>
       <persistance>0.5</persistance>
       <color1>
     	<red>0.2</red>
@@ -40,10 +40,10 @@
   <!--   <\!-- <texture>Texture/vis.xpm</texture> -\-> -->
   <!-- </material> -->
 
-  <sphere>
-    <rayon>15</rayon>
-    <material_id>42</material_id>
-  </sphere>
+  <!-- <sphere> -->
+  <!--   <rayon>15</rayon> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </sphere> -->
 
   <!-- <sphere> -->
   <!--   <coord> -->
@@ -150,13 +150,13 @@
       <z>0</z>
     </a1>
     <a2>
-      <x></x>
+      <x>0</x>
       <y>0</y>
       <z>150</z>
     </a2>
     <a3>
       <x>0</x>
-      <y>300</y>
+      <y>-150</y>
       <z>0</z>
     </a3>
     <mat_id> 1 </mat_id>
@@ -164,21 +164,21 @@
 
 <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
 
-  <lumiere>
-  </lumiere>
+  <!-- <lumiere> -->
+  <!-- </lumiere> -->
 
 <!-- crée une lumière avec des paramètres par défauts -->
 
-  <!-- <lumiere> -->
-  <!--   <red>0.5</red> -->
-  <!--   <green>0.5</green> -->
-  <!--   <blue>0.5</blue> -->
-  <!--   <coord> -->
-  <!--     <x>-200</x> -->
-  <!--     <y>0</y> -->
-  <!--     <z>0</z> -->
-  <!--   </coord> -->
-  <!-- </lumiere> -->
+  <lumiere>
+    <red>0.5</red>
+    <green>0.5</green>
+    <blue>0.5</blue>
+    <coord>
+      <x>-200</x>
+      <y>0</y>
+      <z>0</z>
+    </coord>
+  </lumiere>
 
 <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
 
