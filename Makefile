@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Thu Jun  6 13:04:18 2013 lucas mayol
+## Last update Thu Jun  6 15:50:50 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -69,6 +69,7 @@ SRCS	=	src/main.c \
 		bruit_perlin/perlin.c \
 		bruit_perlin/noise.c \
 		bruit_perlin/interpolate.c \
+		src/color_bruit.c \
 
 include		Makefile.xml
 

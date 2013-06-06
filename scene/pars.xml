@@ -26,10 +26,10 @@
     <!-- <texture>Texture/vis.xpm</texture> -->
   </material>
 
-  <!-- <sphere> -->
-  <!--   <rayon>15</rayon> -->
-  <!--   <material_id>43</material_id> -->
-  <!-- </sphere> -->
+  <sphere>
+    <rayon>15</rayon>
+    <material_id>43</material_id>
+  </sphere>
 
   <!-- <sphere> -->
   <!--   <coord> -->
@@ -132,17 +132,17 @@
   <triangle>
     <a1>
       <x>0</x>
-      <y>0</y>
-      <z>150</z>
+      <y>150</y>
+      <z>0</z>
     </a1>
     <a2>
-      <x>-150</x>
+      <x></x>
       <y>0</y>
-      <z>0</z>
+      <z>150</z>
     </a2>
     <a3>
       <x>0</x>
-      <y>150</y>
+      <y>300</y>
       <z>0</z>
     </a3>
     <mat_id> 1 </mat_id>

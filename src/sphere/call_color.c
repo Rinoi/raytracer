@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Thu Jun  6 14:49:00 2013 lucas mayol
+** Last update Thu Jun  6 15:21:02 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -59,9 +59,9 @@ int    color_bruit(float x, float y, float z)
   col[2] = c1[0] * (1 - f) + c2[0] * f;
   col[1] = c1[1] * (1 - f) + c2[1] * f;
   col[0] = c1[2] * (1 - f) + c2[2] * f;
-  col[2] = valeur;
-  col[1] = valeur;
-  col[0] = valeur;
+  /* col[2] = valeur; */
+  /* col[1] = valeur; */
+  /* col[0] = valeur; */
   //  printf("%f %f %f\n", col[0], col[1], col[2]);
   return (convert_col(col));
 }
