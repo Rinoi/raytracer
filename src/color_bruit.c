@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:03:56 2013 lucas mayol
-** Last update Thu Jun  6 18:23:56 2013 lucas mayol
+** Last update Thu Jun  6 21:49:20 2013 lucas mayol
 */
 
 #include "rt.h"
@@ -16,22 +16,21 @@ int		color_bruit_bois(t_obj *obj, t_inter *inter)
   float		col[3];
   double	valeur;
   double	f;
+  double	p;
 
-  ptn.x = inter->ptn.x + 999999;
-  ptn.y = inter->ptn.y + 999999;
-  ptn.z = inter->ptn.z + 999999;
-  valeur = fmod(bruit_coherent3D(&ptn, 0.1), 0.2);
+  p = obj->mat->bruit.persistance;
+  ptn.x = inter->ori_ptn.x - obj->ptn.x + 999999 + (100 * obj->id);
+  ptn.y = inter->ori_ptn.y - obj->ptn.y + 999999 + (100 * obj->id);
+  ptn.z = inter->ori_ptn.z - obj->ptn.z + 999999 + (100 * obj->id);
+  valeur = fmod(bruit_coherent3D(&ptn, p), 0.2);
   if (valeur > 0.2 / 2)
     valeur = 0.2 - valeur;
   f = (1 - cos(3.1415 * valeur / (0.2 / 2))) / 2;
-  col[2] = valeur;
-  col[1] = valeur;
-  col[0] = valeur;
-  /* col[2] = obj->mat->bruit.color1[0] * (1 - f) */
-  /*   + obj->mat->bruit.color2[0] * f; */
-  /* col[1] = obj->mat->bruit.color1[1] * (1 - f) */
-  /*   + obj->mat->bruit.color2[1] * f; */
-  /* col[0] = obj->mat->bruit.color1[2] * (1 - f) */
-  /*   + obj->mat->bruit.color2[2] * f; */
+  col[2] = obj->mat->bruit.color1[0] * (1 - f)
+    + obj->mat->bruit.color2[0] * f;
+  col[1] = obj->mat->bruit.color1[1] * (1 - f)
+    + obj->mat->bruit.color2[1] * f;
+  col[0] = obj->mat->bruit.color1[2] * (1 - f)
+    + obj->mat->bruit.color2[2] * f;
   return (convert_col(col));
 }

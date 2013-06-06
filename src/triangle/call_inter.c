@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Mon May  6 12:35:05 2013 lucas mayol
-** Last update Thu Jun  6 18:45:37 2013 lucas mayol
+** Last update Thu Jun  6 21:02:37 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -104,7 +104,7 @@ t_inter		*call_inter_triangle(t_obj *o, t_st dr)
   a = find_a(o, &dr, d, &w);
   b = find_b(o, &dr, d, &w);
   //  printf("a : %f, b : %f, a + b : %f\n", a, b, a + b);
-  if (a >= 0 && b >= 0 /* && a + b <= 1 */)
+  if (a >= 0 && b >= 0 && a + b <= 1)
     {
       /* printf("OK\n"); */
       t = find_t(o, d, &w);
