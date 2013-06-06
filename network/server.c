@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:43:56 2013 thibault martinez
-** Last update Wed Jun  5 22:30:53 2013 thibault martinez
+** Last update Thu Jun  6 11:57:20 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -45,10 +45,11 @@ void                    close_all_fd(t_sock *sock)
 
 #include <errno.h>
 
-int                     handler(t_rs *rs, int fd, fd_set *read_fds)
+int                     handler(t_rs *rs, int fd)
 {
-  static char		*buf = NULL;
+  /* static char		*buf = NULL; */
   static int		ret = 0;
+  static int		c = 1;
   int			tmp;
 
   /* printf("receiving...\n"); */
@@ -60,6 +61,7 @@ int                     handler(t_rs *rs, int fd, fd_set *read_fds)
   /* printf("RETURN : %d\n", tmp); */
   if (ret == rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8))
     {
+      printf("Receiving image [%d]\n", c++);
       my_expose(rs);
       /* close(fd); */
       /* FD_CLR(fd, read_fds); */
@@ -95,7 +97,7 @@ int                     fd_manager(t_rs *rs, t_sock *sock)
   i = -1;
   while (++i < sock->dtablesize)
     if (i != sock->socket_fd && FD_ISSET(i, &sock->c_read_fds))
-      handler(rs, i, &sock->read_fds);
+      handler(rs, i);
   return (EXIT_SUCCESS);
 }
 

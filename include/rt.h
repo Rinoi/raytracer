@@ -190,6 +190,8 @@ typedef struct	s_patterns
   void		(*ptr)(t_data_t *, t_st *);
 } t_patterns;
 
+int     init_rs(t_rs *rs, struct s_xml *tree);
+
 // color.c
 
 int	convert_col(float col[3]);
@@ -235,6 +237,7 @@ int	antialiasing_color(int antialias, t_st *droit, t_rs *rs);
 // wind.c
 
 void	rt_main_mlx(t_rs *);
+int     my_expose(t_rs *rs);
 
 //my_pixel_put_to_image.c  
 

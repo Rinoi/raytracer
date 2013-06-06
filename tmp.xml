@@ -10,12 +10,25 @@
     <spec3>1.0</spec3>
     <specpow>60</specpow>
     <reflexion>0.5</reflexion>
-    <texture>Texture/ciel.xpm</texture>
+    <texture>Texture/Banane.xpm</texture>
+  </material>
+
+  <material>
+    <id>43</id>
+    <red>0.2</red>
+    <green>0.2</green>
+    <blue>0.2</blue>
+    <spec1>1.0</spec1>
+    <spec2>1.0</spec2>
+    <spec3>1.0</spec3>
+    <specpow>60</specpow>
+    <reflexion>0.5</reflexion>
+    <texture>Texture/vis.xpm</texture>
   </material>
 
   <sphere>
     <rayon>15</rayon>
-    <material_id>42</material_id>
+    <material_id>43</material_id>
   </sphere>
 
   <sphere>
@@ -98,14 +111,14 @@
     <material_id>42</material_id>
   </sphere>
 
-  <cone>
-    <coord>
-      <x>-50</x>
-    </coord>
-    <rayon>10</rayon>
-    <limit_z>20</limit_z>
-    <material_id>42</material_id>
-  </cone>
+  <!-- <cone> -->
+  <!--   <coord> -->
+  <!--     <x>-50</x> -->
+  <!--   </coord> -->
+  <!--   <rayon>10</rayon> -->
+  <!--   <limit_z>20</limit_z> -->
+  <!--   <material_id>42</material_id> -->
+  <!-- </cone> -->
 
   <!-- <plan> -->
   <!--   <coord> -->
@@ -157,26 +170,26 @@
 
 <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->
 
-  <eyes>
-  </eyes>
+  <!-- <eyes> -->
+  <!-- </eyes> -->
 
 <!-- crée un oeil avec des paramètres par défauts -->
 
-  <!-- <eyes> -->
-  <!--   <camera> -->
-  <!--     <x> -80 </x> -->
-  <!--     <y> 0 </y> -->
-  <!--     <z> 0 </z> -->
-  <!--   </camera> -->
-  <!--   <rotation> -->
-  <!--     <x> 0 </x> -->
-  <!--     <y> 0 </y> -->
-  <!--     <z> 0 </z> -->
-  <!--   </rotation> -->
-  <!--   <screen> -->
-  <!--     <larg> 500 </larg> -->
-  <!--     <long> 500 </long> -->
-  <!--   </screen> -->
-  <!-- </eyes> -->
+  <eyes>
+    <camera>
+      <x> -80 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </camera>
+    <rotation>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </rotation>
+    <screen>
+      <larg> 500 </larg>
+      <long> 500 </long>
+    </screen>
+  </eyes>
 
 </scene>
