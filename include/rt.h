@@ -77,10 +77,10 @@ typedef	struct	s_straight
 
 typedef struct 	s_bruit
 {
-  float		persistance;
   int		type;
-  t_ptn		color1;
-  t_ptn		color2;
+  float		persistance;
+  float		color1[3];
+  float		color2[3];
 } t_bruit;
 
 typedef	struct		s_material
