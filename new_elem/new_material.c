@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:22:33 2013 louis martin-pierrat
-** Last update Thu Jun  6 17:30:50 2013 louis martin-pierrat
+** Last update Thu Jun  6 18:09:37 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
@@ -31,22 +31,25 @@ struct s_xml	*seek_child(struct s_xml *tree, char *str)
 
 void		new_bruit(t_mat *material, struct s_xml *tree)
 {
-  get_ivalue(tree, "type", &material->bruit.type) == FAIL ? \
-    material->bruit.type = 0 : 0;
-  get_fvalue(tree, "persistance", &material->bruit.persistance) == FAIL ? \
-    material->bruit.persistance = 0 : 0;
-  get_fvalues(tree, "color1", "red", &material->bruit.color1[0]) == FAIL ? \
-    material->bruit.color1[0] = 0 : 0;
-  get_fvalues(tree, "color1", "green", &material->bruit.color1[1]) == FAIL ? \
-    material->bruit.color1[1] = 0 : 0;
-  get_fvalues(tree, "color1", "blue", &material->bruit.color1[2]) == FAIL ? \
-    material->bruit.color1[2] = 0 : 0;
-  get_fvalues(tree, "color2", "red", &material->bruit.color2[0]) == FAIL ? \
-    material->bruit.color2[0] = 0 : 0;
-  get_fvalues(tree, "color2", "green", &material->bruit.color2[1]) == FAIL ? \
-    material->bruit.color2[1] = 0 : 0;
-  get_fvalues(tree, "color2", "blue", &material->bruit.color2[2]) == FAIL ? \
-    material->bruit.color2[2] = 0 : 0;
+  if (tree != NULL)
+    {
+      get_ivalue(tree, "type", &material->bruit.type) == FAIL ? \
+	material->bruit.type = 0 : 0;
+      get_fvalue(tree, "persistance", &material->bruit.persistance) == FAIL ? \
+	material->bruit.persistance = 0 : 0;
+      get_fvalues(tree, "color1", "red", &material->bruit.color1[0]) == FAIL ? \
+	material->bruit.color1[0] = 0 : 0;
+      get_fvalues(tree, "color1", "green", &material->bruit.color1[1]) == FAIL ? \
+	material->bruit.color1[1] = 0 : 0;
+      get_fvalues(tree, "color1", "blue", &material->bruit.color1[2]) == FAIL ? \
+	material->bruit.color1[2] = 0 : 0;
+      get_fvalues(tree, "color2", "red", &material->bruit.color2[0]) == FAIL ? \
+	material->bruit.color2[0] = 0 : 0;
+      get_fvalues(tree, "color2", "green", &material->bruit.color2[1]) == FAIL ? \
+	material->bruit.color2[1] = 0 : 0;
+      get_fvalues(tree, "color2", "blue", &material->bruit.color2[2]) == FAIL ? \
+	material->bruit.color2[2] = 0 : 0;
+    }
 }
 
 void		new_material(t_mat **material, t_rs *rs, struct s_xml *tree)
