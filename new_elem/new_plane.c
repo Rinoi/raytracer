@@ -5,17 +5,21 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:30:13 2013 louis martin-pierrat
-** Last update Thu Jun  6 21:09:25 2013 louis martin-pierrat
+** Last update Thu Jun  6 22:01:24 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
 void		new_plane(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
 {
   int		mat_id;
+  float		*constante;
   t_obj		*new;
 
   mat_id = 0;
   new = xmalloc(sizeof(t_obj));
+  constante = xmalloc(sizeof(float));
+  get_fvalue(tree, "constante", constante) == FAIL ? (*constante) = 0 : 0;
+  new->data = (void *)(constante);
   new->id = i;
   get_fvalues(tree, "coord", "x", &new->ptn.x) == FAIL ? new->ptn.x = 0 : 0;
   get_fvalues(tree, "coord", "y", &new->ptn.y) == FAIL ? new->ptn.y = 0 : 0;
