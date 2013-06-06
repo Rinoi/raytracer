@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed Jun  5 18:57:12 2013 lucas mayol
-** Last update Thu Jun  6 12:03:39 2013 lucas mayol
+** Last update Thu Jun  6 14:27:05 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -214,7 +214,10 @@ double	bruit_coherent3D(t_ptn *ptn, double persistance)
   double p = 1;
   int f = 1;
   int i;
- 
+  
+  /* nombre_octaves3D = 5; */
+  /* persistance = 0.6; */
+  /* pas3D = 40; */
   for(i = 0 ; i < nombre_octaves3D ; i++) {
     somme += p * fonction_bruit3D(ptn->x * f, ptn->y * f, ptn->z * f);
     p *= persistance;

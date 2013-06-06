@@ -276,17 +276,20 @@ t_inter	*call_inter_sphere(t_obj *obj, t_st dr);
 t_inter	*call_inter_cylinder(t_obj *obj, t_st dr);
 t_inter	*call_inter_conus(t_obj *obj, t_st dr);
 t_inter	*call_inter_plane(t_obj *obj, t_st dr);
+t_inter	*call_inter_triangle(t_obj *o, t_st dr);
 
 t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn);
-t_ptn   *cylinder_nrml_inv(t_obj *obj, t_ptn *ptn);
+t_ptn	*cylinder_nrml_inv(t_obj *obj, t_ptn *ptn);
 t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
+t_ptn	*triangle_nrml(t_obj *obj, t_ptn *ptn);
 
 void	cal_color_cylinder(t_obj *obj, t_inter *inter, float *tab);
 void	cal_color_plan(t_obj *obj, t_inter *inter, float tab[3]);
 void	cal_color_shere(t_obj *obj, t_inter *inter, float tab[3]);
 void	cal_color_conus(t_obj *obj, t_inter *inter, float tab[3]);
+void	call_color_triangle(t_obj *obj, t_inter *inter, float tab[3]);
 int	cal_texture_plan(t_obj *obj, float x, float y, float z);
 
 float	resolve_two(float a, float b, float c, int *x);

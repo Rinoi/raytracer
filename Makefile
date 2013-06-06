@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Thu Jun  6 11:29:38 2013 lucas mayol
+## Last update Thu Jun  6 13:04:18 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -41,16 +41,19 @@ SRCS	=	src/main.c \
 		src/patterns.c \
 		src/sphere/call_inter.c \
 		src/cylinder/call_inter.c \
+		src/triangle/call_inter.c \
 		src/conus/call_inter.c \
 		src/plane/call_inter.c \
 		src/sphere/nrml.c \
 		src/cylinder/nrml.c \
 		src/conus/nrml.c \
 		src/plane/nrml.c \
+		src/triangle/nrml.c \
 		src/cylinder/cal_color.c \
 		src/plane/call_color.c \
 		src/sphere/call_color.c \
 		src/conus/call_color.c \
+		src/triangle/call_color.c \
 		matrice/creat_matrice.c \
 		matrice/creat_matrice_spe.c \
 		matrice/opération.c \
