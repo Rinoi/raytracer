@@ -75,6 +75,14 @@ typedef	struct	s_straight
   t_ptn		c_kd;
 } t_st;
 
+typedef struct 	s_bruit
+{
+  float		persistance;
+  int		type;
+  t_ptn		color1;
+  t_ptn		color2;
+} t_bruit;
+
 typedef	struct		s_material
 {
   int			id;
@@ -89,6 +97,7 @@ typedef	struct		s_material
   float			refract;
   float			diff_reflex;
   t_img			img;
+  t_bruit		bruit;
   struct s_material	*next;
 } t_mat;
 
