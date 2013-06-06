@@ -1,0 +1,57 @@
+/*
+** focus.c for rt in /home/martyn_k//raytracer
+** 
+** Made by karina martynava
+** Login   <martyn_k@epitech.net>
+** 
+** Started on  Thu Jun  6 18:43:58 2013 karina martynava
+** Last update Thu Jun  6 18:43:59 2013 karina martynava
+*/
+
+int	focus(t_st *droit, t_rs *rs)
+{
+  int	tmp;
+  float	col[3];
+  int	i;
+  t_st	dr_cp;
+  t_ptn	disturb;
+  t_ptn	goal;
+  t_ptn	start;
+  t_ptn	dir;
+  unsigned char	*modif;
+
+  dir.x = droit->vec.x;
+  dir.y = droit->vec.y; 
+  dir.z = droit->vec.z;
+  mult_vect(&dir, 1 / sqrt(scal_prod(&dir, &dir))); 
+  start.x = 500;
+  start.y = 500;
+  start.z = 0;
+  goal.x = start.x + DISPER * dir.x;
+  goal.y = start.y + DISPER * dir.y;
+  goal.z = start.z + DISPER * dir.z;
+  dr_cp = *droit;
+  col[0] = 0;
+  col[1] = 0;
+  col[2] = 0;
+  i = 0;
+  while (i++ < COMPLEXITY)
+    {
+      dr_cp = *droit;
+      disturb.x = DISPER / RAND_MAX * random();
+      disturb.y = DISPER / RAND_MAX * random();
+      disturb.z = 0;
+      dr_cp.cord.y += disturb.x;
+      dr_cp.cord.z += disturb.y;
+      //      dr_cp = *droit;
+      tmp = antialiasing_color(2, &dr_cp, rs);
+      modif = (unsigned char *)&tmp;
+      col[0] += modif[0] / 225.0f;
+      col[1] += modif[1] / 255.0f;
+      col[2] += modif[2] / 255.0f;
+    }
+  col[0] = col[0] / COMPLEXITY;
+  col[1] = col[1] / COMPLEXITY;
+  col[2] = col[2] / COMPLEXITY;
+  return (convert_col(col));
+}

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Thu Jun  6 12:23:51 2013 lucas mayol
+** Last update Thu Jun  6 21:07:11 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -37,8 +37,5 @@ t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
     }
   inter->cal_norm = sphere_nrml;
   inter->obj = obj;
-  inter->rela_ptn.x = dr.vec.x * inter->d + dr.cord.x + obj->ptn.x;
-  inter->rela_ptn.y = dr.vec.y * inter->d + dr.cord.y + obj->ptn.y;
-  inter->rela_ptn.z = dr.vec.z * inter->d + dr.cord.z + obj->ptn.z;
   return (inter);
 }

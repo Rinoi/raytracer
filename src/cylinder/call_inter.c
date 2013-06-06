@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Wed Jun  5 20:39:53 2013 thibault martinez
+** Last update Thu Jun  6 21:10:04 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -15,13 +15,11 @@ void		change_dr(t_obj *obj, t_st *dr)
 {
   t_ptn		*ptn;
 
-  //  printf("ANC %f, %f, %f\n", dr->vec.x, dr->vec.y, dr->vec.z);
   ptn = mul_m_p(obj->matrix, &dr->vec);
   dr->vec.x = ptn->x;
   dr->vec.y = ptn->y;
   dr->vec.z = ptn->z;
   free(ptn);
-
   dr->cord.x -= obj->ptn.x;
   dr->cord.y -= obj->ptn.y;
   dr->cord.z -= obj->ptn.z;
@@ -30,7 +28,6 @@ void		change_dr(t_obj *obj, t_st *dr)
   dr->cord.y = ptn->y;
   dr->cord.z = ptn->z;
   free(ptn);
-  // printf("NEW %f, %f, %f\n\n", dr->vec.x, dr->vec.y, dr->vec.z);
 }
 
 int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter, int i)
@@ -40,15 +37,15 @@ int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter, int i)
   float         b;
   float         c;
 
-  inter->rela_ptn.x = st->cord.x + st->vec.x * inter->d;
-  inter->rela_ptn.y = st->cord.y + st->vec.y * inter->d;
-  inter->rela_ptn.z = st->cord.z + st->vec.z * inter->d;
-  inter->rela_ptn.x += obj->ptn.x;
-  inter->rela_ptn.y += obj->ptn.y;
-  inter->rela_ptn.z += obj->ptn.z;
+  inter->ptn.x = st->cord.x + st->vec.x * inter->d;
+  inter->ptn.y = st->cord.y + st->vec.y * inter->d;
+  inter->ptn.z = st->cord.z + st->vec.z * inter->d;
+  inter->ptn.x += obj->ptn.x;
+  inter->ptn.y += obj->ptn.y;
+  inter->ptn.z += obj->ptn.z;
 
-  if ((inter->rela_ptn.z > obj->ptn.z)
-      || (inter->rela_ptn.z < obj->ptn.z - obj->limit_z))
+  if ((inter->ptn.z > obj->ptn.z)
+      || (inter->ptn.z < obj->ptn.z - obj->limit_z))
     {
       if (i == 1)
         return (-1);

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Mon Jun  3 00:49:00 2013 lucas mayol
+** Last update Thu Jun  6 21:10:23 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -19,12 +19,12 @@ int             is_a_god_conus(t_obj *obj, t_st *st, t_inter *inter, int i)
   float         c;
   float         angle;
 
-  inter->rela_ptn.x = st->cord.x + st->vec.x * inter->d + obj->ptn.x;
-  inter->rela_ptn.y = st->cord.y + st->vec.y * inter->d + obj->ptn.y;
-  inter->rela_ptn.z = st->cord.z + st->vec.z * inter->d + obj->ptn.z;
+  inter->ptn.x = st->cord.x + st->vec.x * inter->d + obj->ptn.x;
+  inter->ptn.y = st->cord.y + st->vec.y * inter->d + obj->ptn.y;
+  inter->ptn.z = st->cord.z + st->vec.z * inter->d + obj->ptn.z;
                  
-  if ((inter->rela_ptn.z > obj->ptn.z)
-      || (inter->rela_ptn.z <= obj->ptn.z - obj->limit_z))
+  if ((inter->ptn.z > obj->ptn.z)
+      || (inter->ptn.z <= obj->ptn.z - obj->limit_z))
     {
       if (i == 1)
         return (-1);

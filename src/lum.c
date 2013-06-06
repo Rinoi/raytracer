@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Thu Jun  6 18:04:54 2013 thibault martinez
+** Last update Thu Jun  6 21:05:59 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -104,7 +104,6 @@ void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
 {
   float	tab[3];
 
-  /* printf("%f\n", coef); */
   if (point->obj->mat && coef > 0)
     {
       point->obj->cal_color(point->obj, point, tab);
@@ -120,6 +119,18 @@ void	work_with_illumination(t_lux *sv, float col[3], t_inter *point, float coef)
     }
 }
 
+void	create_light_vector(t_lux *sv, t_st *light)
+{
+  if (sv->attribute != DIRECT)
+    sub_vect(&light->vec, &sv->cord, &light->cord);
+  else
+    {
+      light->vec.x = sv->cord.x;
+      light->vec.y = sv->cord.y;
+      light->vec.z = sv->cord.z;
+    }
+}
+
 void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 {
   t_lux	*sv;
@@ -127,14 +138,13 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
   t_st	light;
   t_ptn	*nrml;
 
-  nrml = (*(point->cal_norm))(point->obj, &(point->rela_ptn));
+  nrml = (*(point->cal_norm))(point->obj, &(point->ptn));
   sv = rs->lux;
-  add_vect(&light.cord, &point->rela_ptn, &st->cord);
+  add_vect(&light.cord, &point->ptn, &st->cord);
   sub_vect(&light.cord, &light.cord, &st->cord);
   while (sv != NULL)
     {
-      /* printf("%f %f %f\t", sv->cord.x, sv->cord.y, sv->cord.z); */
-      sub_vect(&light.vec, &sv->cord, &light.cord);
+      create_light_vector(sv, &light);
       if (inlight(rs, &light) || sv->attribute == AMB)
 	{
 	  coef = lambert_coef(&light.vec, nrml, sv->attribute)

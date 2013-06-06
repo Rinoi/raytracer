@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Thu Jun  6 01:26:23 2013 lucas mayol
+** Last update Thu Jun  6 21:06:49 2013 karina martynava
 */
 #include <stdio.h>
 
@@ -21,7 +21,7 @@ void	new_straight(t_st *droit, t_inter *last)
   droit->cord.x = last->ptn.x;
   droit->cord.y = last->ptn.y;
   droit->cord.z = last->ptn.z;
-  nrml = (*(last->cal_norm))(last->obj, &(last->rela_ptn));
+  nrml = (*(last->cal_norm))(last->obj, &(last->ptn));
   mult_vect(nrml, 1.0f / sqrt(scal_prod(nrml, nrml)));
   mult_vect(&droit->vec, 1.0f / sqrt(scal_prod(&droit->vec, &droit->vec)));
   scal = scal_prod(nrml, &droit->vec);

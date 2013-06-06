@@ -30,6 +30,7 @@
 # define NONE		0
 # define AMB		1
 # define SPOT		2
+# define DIRECT		4
 # define SPOTLEN	5
 
 // POST - IN PROCESSING
@@ -175,6 +176,7 @@ typedef struct	s_pov
 {
   t_ptn		cam;
   t_ptn		rot;
+  double	*matrix;
   int		larg;
   int		lng;
   struct s_pov	*next;
@@ -277,6 +279,7 @@ double	*matrice_rot_z(double angle);
 t_ptn	*mul_m_p(double *matrice, t_ptn *ptn);
 double	*mul_matrice(double *m1, double *m2);
 void	creat_matrice_for_obj(t_obj *obj);
+void	creat_matrice_for_eyes(t_pov *obj);
 
 void	rt_main_mlx(t_rs *rs);
 

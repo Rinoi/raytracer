@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Apr 11 13:52:32 2013 lucas mayol
-** Last update Mon Jun  3 22:36:50 2013 lucas mayol
+** Last update Thu Jun  6 21:48:07 2013 karina martynava
 */
 
 #include	<stdlib.h>
@@ -47,7 +47,6 @@ void		creat_matrice_for_obj_inv(t_obj *obj)
 
   if ((obj->matrix_inv = matrice_rot_z(- obj->rot.z)) == NULL)
     return ;
-
   matrice = matrice_rot_y(- obj->rot.y);
   matrice2 = mul_matrice(obj->matrix_inv, matrice);
   free(obj->matrix_inv);
@@ -80,4 +79,23 @@ void		creat_matrice_for_obj(t_obj *obj)
   obj->matrix = matrice2;
   free(matrice);
   creat_matrice_for_obj_inv(obj);
+}
+
+void		creat_matrice_for_eyes(t_pov *obj)
+{
+  double	*matrice;
+  double	*matrice2;
+
+  if ((obj->matrix = matrice_rot_x(obj->rot.x)) == NULL)
+    return ;
+  matrice = matrice_rot_y(obj->rot.y);
+  matrice2 = mul_matrice(obj->matrix, matrice);
+  free(obj->matrix);
+  obj->matrix = matrice2;
+  free(matrice);
+  matrice = matrice_rot_z(obj->rot.z);
+  matrice2 = mul_matrice(obj->matrix, matrice);
+  free(obj->matrix);
+  obj->matrix = matrice2;
+  free(matrice);
 }

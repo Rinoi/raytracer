@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed Jun  5 18:57:12 2013 lucas mayol
-** Last update Thu Jun  6 14:27:05 2013 lucas mayol
+** Last update Thu Jun  6 18:46:50 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -34,7 +34,7 @@ static int longueur_3 = 0;
 static int largeur_3 = 0;
 static int longueur_max_3 = 0;
 static int hauteur_max_3 = 0;
-static double* valeurs3D;
+//static double* valeurs3D;
  
 void initBruit1D(int t, int p, int n) {
   nombre_octaves1D = n;
@@ -157,9 +157,9 @@ void initBruit3D(int l, int h, int k, int p, int n) {
   pas3D = p;
   longueur_max_3 = (int) ceil(longueur_3 * pow(2, nombre_octaves3D  - 1)  / pas3D);
   hauteur_max_3 = (int) ceil(hauteur_3 * pow(2, nombre_octaves3D  - 1)  / pas3D);
-  int largeur_max = (int) ceil(largeur_3 * pow(2, nombre_octaves3D  - 1)  / pas3D);
+  //  int largeur_max = (int) ceil(largeur_3 * pow(2, nombre_octaves3D  - 1)  / pas3D);
 
-  printf("%d %d %d\n", longueur_max_3 , hauteur_max_3 , largeur_max);
+  //  printf("%d %d %d\n", longueur_max_3 , hauteur_max_3 , largeur_max);
   /* valeurs3D = malloc(sizeof(double) * longueur_max_3 * hauteur_max_3 * largeur_max); */
   /* if (valeurs3D == NULL) */
   /*   exit(EXIT_FAILURE); */
