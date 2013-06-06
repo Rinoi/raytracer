@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:35:43 2013 louis martin-pierrat
-** Last update Thu Jun  6 14:49:18 2013 louis martin-pierrat
+** Last update Thu Jun  6 15:04:57 2013 louis martin-pierrat
 */
 
 #include	<stdio.h>
@@ -246,6 +246,9 @@ void		new_conus(t_obj **obj, t_mat *mat, struct s_xml *tree)
   add_to_end(obj, new);
 }
 
+void    call_color_triangle(t_obj *obj, t_inter *inter, float tab[3]);
+t_inter *call_inter_triangle(t_obj *o, t_st dr);
+
 void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree)
 { 
   int		mat_id;
@@ -269,8 +272,9 @@ void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree)
   new->next = NULL;
   new->matrix = NULL;
   creat_matrice_for_obj(new);
-  new->cal_color = cal_color_triangle;
+  new->cal_color = call_color_triangle;
   new->cal_inter = call_inter_triangle;
+
   /*  */
   printf("triangle\n");
   printf("a1 = (x : %f y : %f z : %f)\n", new->ptn.x, new->ptn.y, new->ptn.z);
