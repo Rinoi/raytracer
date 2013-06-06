@@ -12,8 +12,8 @@
     <reflexion>0.5</reflexion>
     <!-- <texture>Texture/Banane.xpm</texture> -->
     <bruit>
-      <type>0</type>
-      <persistance>0</persistance>
+      <type>1</type>
+      <persistance>0.5</persistance>
       <color1>
     	<red>0.2</red>
     	<green>0.2</green>
@@ -42,7 +42,7 @@
 
   <sphere>
     <rayon>15</rayon>
-    <material_id>43</material_id>
+    <material_id>42</material_id>
   </sphere>
 
   <!-- <sphere> -->
