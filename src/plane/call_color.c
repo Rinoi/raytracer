@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Tue Jun  4 15:58:38 2013 lucas mayol
+** Last update Thu Jun  6 19:01:18 2013 louis martin-pierrat
 */
 
 #include <stdio.h>
@@ -27,6 +27,9 @@ void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
   int		color;
   unsigned char	*tabs;
 
+  tab[0] = 1;
+  tab[1] = 1;
+  tab[2] = 1;
   if (obj->mat->img.img != NULL)
     {
       color = cal_texture_plan(obj, inter->ptn.x, inter->ptn.y, inter->ptn.z);
@@ -35,20 +38,10 @@ void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
       tab[1] = (unsigned char)tabs[1] / 255.0;
       tab[2] = (unsigned char)tabs[2] / 255.0;
     }
-  else
+  else if (obj->mat != NULL)
     {
-      printf("NULL\n");
-      if (obj->mat != NULL)
-        {
-          tab[0] = obj->mat->blue;
-          tab[1] = obj->mat->green;
-          tab[2] = obj->mat->red;
-        }
-      else
-        {
-          tab[0] = 1;
-          tab[1] = 1;
-          tab[2] = 1;
-        }
+      tab[0] = obj->mat->blue;
+      tab[1] = obj->mat->green;
+      tab[2] = obj->mat->red;
     }
 }

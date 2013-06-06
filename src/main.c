@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Thu Jun  6 18:29:25 2013 thibault martinez
+** Last update Thu Jun  6 21:10:55 2013 louis martin-pierrat
 */
 
 #include <sys/types.h>
@@ -17,11 +17,11 @@
 #include	"xml.h"
 #include	"xml_macros.h"
 
-int	init_rs(t_rs *rs, __attribute__((unused))struct s_xml *tree)
+int	init_rs(t_rs *rs, struct s_xml *tree)
 {
   rs->aff = NULL;
   rs->send_rayon = NULL;
-  rs->obj_inf = NULL;
+  rs->obj_neg = NULL;
   rs->obj = NULL;
   rs->tree = NULL;
   rs->eyes = NULL;
@@ -36,21 +36,13 @@ int	init_rs(t_rs *rs, __attribute__((unused))struct s_xml *tree)
       	new_lux(&rs->lux, tree->child);
       else if (m_strcmp(tree->child->name, "material") == 0)
   	new_material(&rs->mat, rs, tree->child);
-      else if (m_strcmp(tree->child->name, "sphere") == 0)
-  	new_sphere(&rs->obj, rs->mat, tree->child);
-      else if (m_strcmp(tree->child->name, "plan") == 0)
-	new_plane(&rs->obj, rs->mat, tree->child);
-      else if (m_strcmp(tree->child->name, "cylindre") == 0)
-	new_cylinder(&rs->obj, rs->mat, tree->child);
-      else if (m_strcmp(tree->child->name, "cone") == 0)
-	new_conus(&rs->obj, rs->mat, tree->child);
-      else if (m_strcmp(tree->child->name, "triangle") == 0)
-	new_triangle(&rs->obj, rs->mat, tree->child);
+      else if (m_strcmp(tree->child->name, "obj") == 0)
+	new_objs(rs, tree->child);
+      else if (m_strcmp(tree->child->name, "obj_neg") == 0)
+	new_objs_neg(rs, tree->child);
       tree->child = tree->child->next;
     }
-  if (tree == NULL)
-    exit (EXIT_FAILURE);
-  return (0);
+  return (tree == NULL ? EXIT_FAILURE : 0);
 }
 
 
@@ -74,7 +66,7 @@ int	main(int argc, char **argv)
       	rt_client(&rs, argc, argv);
       else
 	{
-	  if (init_rs(&rs ,  xml_parsing(argv[1])) == EXIT_FAILURE)
+	  if (init_rs(&rs, xml_parsing(argv[1])) == EXIT_FAILURE)
 	    return (EXIT_FAILURE);
 	  printf("MLX %f, %f, %f\n", rs.eyes->cam.x, rs.eyes->cam.y, rs.eyes->cam.z);
 	  /* my_take_data_for_rs(&rs, fd); */

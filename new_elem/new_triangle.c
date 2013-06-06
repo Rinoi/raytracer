@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:41:37 2013 louis martin-pierrat
-** Last update Thu Jun  6 16:05:33 2013 louis martin-pierrat
+** Last update Thu Jun  6 21:09:57 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
@@ -26,7 +26,7 @@ void		idontknowwhatisit(t_ptn *ptn1, t_ptn *ptn2)
   ptn1->z = ptn1->z - ptn2->z;
 }
 
-void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree)
+void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
 {
   int		mat_id;
   t_tri		*tri;
@@ -34,6 +34,7 @@ void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree)
 
   tri = xmalloc(sizeof(t_tri));
   new = xmalloc(sizeof(t_obj));
+  new->id = i;
   get_ptn(tree, "a1", &new->ptn);
   get_ptn(tree, "a2", &tri->a2);
   get_ptn(tree, "a3", &tri->a3);

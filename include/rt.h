@@ -124,6 +124,7 @@ typedef	struct	s_tri
 
 typedef	struct	s_obj
 {
+  int		id;
   t_ptn		ptn;
   t_ptn		rot;
   void		*data;
@@ -184,7 +185,7 @@ typedef struct	s_resource
   int		thr;
   int		client;
   t_obj		*obj;
-  t_obj		*obj_inf;
+  t_obj		*obj_neg;
   t_lux		*lux;
   t_img		bckground;
   t_env		env;
@@ -307,16 +308,20 @@ int	cal_texture_plan(t_obj *obj, float x, float y, float z);
 float	resolve_two(float a, float b, float c, int *x);
 float	resolve_two_inv(float a, float b, float c, int *x);
 
+int             color_bruit_bois(t_obj *obj, t_inter *inter);
+
+
 void		new_material(t_mat **, t_rs *, struct s_xml *);
 void		new_eyes(t_pov **, struct s_xml *);
 void		new_lux(t_lux **, struct s_xml *);
-void		new_sphere(t_obj **, t_mat *, struct s_xml *);
-void		new_plane(t_obj **, t_mat *, struct s_xml *);
-void		new_cylinder(t_obj **, t_mat *, struct s_xml *);
-void		new_conus(t_obj **, t_mat *, struct s_xml *);
-void		new_triangle(t_obj **, t_mat *, struct s_xml *);
+void		new_objs(t_rs *, struct s_xml *);
+void		new_objs_neg(t_rs *, struct s_xml *);
 
-int             color_bruit_bois(t_obj *obj, t_inter *inter);
+void		new_sphere(t_obj **, t_mat *, struct s_xml *, int);
+void		new_plane(t_obj **, t_mat *, struct s_xml *, int);
+void		new_cylinder(t_obj **, t_mat *, struct s_xml *, int);
+void		new_conus(t_obj **, t_mat *, struct s_xml *, int);
+void		new_triangle(t_obj **, t_mat *, struct s_xml *, int);
 
 void		add_to_end(t_obj **, t_obj *);
 t_mat		*seek_mat(int, t_mat *);

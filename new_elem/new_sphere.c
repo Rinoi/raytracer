@@ -5,11 +5,11 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:28:07 2013 louis martin-pierrat
-** Last update Thu Jun  6 15:34:46 2013 louis martin-pierrat
+** Last update Thu Jun  6 21:09:36 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
-void		new_sphere(t_obj **obj, t_mat *mat, struct s_xml *tree)
+void		new_sphere(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
 {
   t_obj		*new;
   float		*rayon;
@@ -17,6 +17,7 @@ void		new_sphere(t_obj **obj, t_mat *mat, struct s_xml *tree)
 
   new = xmalloc(sizeof(t_obj));
   rayon = xmalloc(sizeof(float));
+  new->id = i;
   get_fvalues(tree, "coord", "x", &new->ptn.x) == FAIL ? new->ptn.x = 0 : 0;
   get_fvalues(tree, "coord", "y", &new->ptn.y) == FAIL ? new->ptn.y = 0 : 0;
   get_fvalues(tree, "coord", "z", &new->ptn.z) == FAIL ? new->ptn.z = 0 : 0;

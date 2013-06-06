@@ -5,11 +5,11 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:39:52 2013 louis martin-pierrat
-** Last update Thu Jun  6 15:41:23 2013 louis martin-pierrat
+** Last update Thu Jun  6 21:09:47 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
-void		new_conus(t_obj **obj, t_mat *mat, struct s_xml *tree)
+void		new_conus(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
 {
   int		mat_id;
   float		*angle;
@@ -17,6 +17,7 @@ void		new_conus(t_obj **obj, t_mat *mat, struct s_xml *tree)
 
   new = xmalloc(sizeof(t_obj));
   angle = xmalloc(sizeof(float));
+  new->id = i;
   get_fvalue(tree, "limit_z", &new->limit_z) == FAIL ? new->limit_z = 0 : 0;
   get_fvalues(tree, "coord", "x", &new->ptn.x) == FAIL ? new->ptn.x = 0 : 0;
   get_fvalues(tree, "coord", "y", &new->ptn.y) == FAIL ? new->ptn.y = 0 : 0;

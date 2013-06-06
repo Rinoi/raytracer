@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:43:56 2013 thibault martinez
-** Last update Thu Jun  6 18:31:42 2013 thibault martinez
+** Last update Thu Jun  6 21:05:55 2013 louis martin-pierrat
 */
 
 #include	"rt.h"
@@ -108,7 +108,8 @@ int		rt_server(t_rs *rs, int argc, char **argv)
   if (argc != 4)
     f_error("Usage : ./rt --server PORT file.xml");
   rs->client = 0;
-  init_rs(rs, xml_parsing(argv[3]));
+  if (init_rs(rs, xml_parsing(argv[3])) == EXIT_FAILURE)
+    return (EXIT_FAILURE);
   rt_main_mlx(rs);
   sock.socket_size = sizeof(struct sockaddr_in);
   sock.dtablesize = getdtablesize();

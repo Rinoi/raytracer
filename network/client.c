@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:55:17 2013 thibault martinez
-** Last update Thu Jun  6 18:34:16 2013 thibault martinez
+** Last update Thu Jun  6 21:05:51 2013 louis martin-pierrat
 */
 
 #include	"rt.h"
@@ -39,7 +39,8 @@ int		rt_client(t_rs *rs, int argc, char **argv)
   if (socket_init(&sock) == -1)
     return (EXIT_FAILURE);
   receive_xml(&sock);
-  init_rs(rs, xml_parsing("tmp.xml"));
+  if (init_rs(rs, xml_parsing("tmp.xml")) == EXIT_FAILURE)
+    return (EXIT_FAILURE);
   rt_main_mlx(rs);
   send_rayon_main(rs);
   printf("Sending image [%d] to [%s]\n", i++, sock.av[3]);
