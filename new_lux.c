@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:35:43 2013 louis martin-pierrat
-** Last update Thu Jun  6 15:04:57 2013 louis martin-pierrat
+** Last update Thu Jun  6 15:14:40 2013 louis martin-pierrat
 */
 
 #include	<stdio.h>
@@ -274,6 +274,13 @@ void		new_triangle(t_obj **obj, t_mat *mat, struct s_xml *tree)
   creat_matrice_for_obj(new);
   new->cal_color = call_color_triangle;
   new->cal_inter = call_inter_triangle;
+
+  tri->a2.x = tri->a2.x - new->ptn.x;
+  tri->a2.y = tri->a2.y - new->ptn.y;
+  tri->a2.z = tri->a2.z - new->ptn.z;
+  tri->a3.x = tri->a3.x - new->ptn.x;
+  tri->a3.y = tri->a3.y - new->ptn.y;
+  tri->a3.z = tri->a3.z - new->ptn.z;
 
   /*  */
   printf("triangle\n");
