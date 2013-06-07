@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Fri Jun  7 07:35:26 2013 karina martynava
+** Last update Sat Jun  8 00:57:00 2013 karina martynava
 */
 #include <stdio.h>
 
@@ -83,9 +83,5 @@ void		my_send_rayon(t_rs *rs, t_st *droit, float col[4])
   col[1] = 0;
   col[2] = 0;
   col[3] = 1; /////////// REFLEXION
-  /* color = 0; */
-  /* //  color = get_img_color(&rs->bckground, droit->x / 2, droit->y / 2); */
   reflexion_time(rs, droit, col);
-  /*   color = convert_col(col); */
-  //my_pixel_put_to_image(&rs->wind.img, droit->x, droit->y, color);
 }

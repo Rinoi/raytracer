@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Thu Jun  6 22:25:09 2013 karina martynava
+** Last update Sat Jun  8 01:25:25 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -74,5 +74,6 @@ t_inter		*call_inter_conus(t_obj *obj, t_st dr)
     }
   inter->obj = obj;
   inter->cal_norm = conus_nrml;
+  inter->status = x;
   return (inter);
 }

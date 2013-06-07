@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 00:10:35 2013 lucas mayol
+** Last update Sat Jun  8 01:25:28 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -94,5 +94,6 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
   inter->ptn.y = dr.vec.y * inter->d + dr.cord.y;
   inter->ptn.z = dr.vec.z * inter->d + dr.cord.z;
   inter->obj = obj;
+  inter->status = x;
   return (inter);
 }

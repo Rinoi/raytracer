@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 00:05:23 2013 lucas mayol
+** Last update Sat Jun  8 01:25:28 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -56,7 +56,7 @@ t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
     + pow(dr.cord.z, 2) - pow(*((float *)(obj->data)), 2);
   inter->d = resolve_two(a, b, c, &x);
   inter->cal_norm = sphere_nrml;
-
+  inter->status = x;
   if (inter->d <= EPSILLON)
     {
       free(inter);
