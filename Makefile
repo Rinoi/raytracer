@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Fri Jun  7 02:16:23 2013 lucas mayol
+## Last update Fri Jun  7 22:03:16 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -70,8 +70,11 @@ SRCS	=	src/main.c \
 		bruit_perlin/noise.c \
 		bruit_perlin/interpolate.c \
 		src/my_bump.c \
+		src/call_obj_neg.c \
+		src/is_in_neg.c \
 
 include		Makefile.xml
+
 
 SRCS	+=	src/color_bruit.c
 

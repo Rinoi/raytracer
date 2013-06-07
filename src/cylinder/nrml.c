@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:04:31 2013 karina martynava
-** Last update Mon Jun  3 22:13:08 2013 lucas mayol
+** Last update Fri Jun  7 18:13:13 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -69,6 +69,8 @@ t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn)
   //  printf("proj %f %f %f\n", proj.x, proj.y, proj.z);
   //  printf("NEW : %f, %f, %f\n\n", nrml->x, nrml->y, nrml->z);
   //free(nrml);
+  if (obj->mat->bump != 0)
+    my_bump(nrml, ptn, obj->mat->bump);
   return (nrml);
 }
 

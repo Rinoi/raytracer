@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Thu Jun  6 23:04:15 2013 lucas mayol
+** Last update Sat Jun  8 00:26:32 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -58,6 +58,11 @@ t_inter		*call_inter_plane(t_obj *obj, t_st dr)
   if ((inter = malloc(sizeof(t_inter))) == NULL)
     exit(EXIT_FAILURE);
   inter->d = (c - dr.cord.z) / dr.vec.z;
+  if (is_in_neg(dr.neg, inter->d) == 1)
+    {
+      free(inter);
+      return (NULL);
+    }
   inter->cal_norm = plane_nrml;
   if (c - dr.cord.z > obj->ptn.z)
     inter->cal_norm = plane_nrml_inv;

@@ -10,7 +10,7 @@ SRCS	+=	XML/xml_getattributes.c \
 		XML/xml_getvalues.c \
 		XML/xml_parsing.c \
 		XML/xml_select.c \
-		XML/xmalloc.c \
+		XML/xmalloc.c
 
 SRCS	+=	new_elem/add_to_end.c \
 		new_elem/new_conus.c \
@@ -23,4 +23,4 @@ SRCS	+=	new_elem/add_to_end.c \
 		new_elem/new_triangle.c \
 		new_elem/seek_mat.c \
 		new_elem/get_values.c \
-		new_elem/new_objs.c \
+		new_elem/new_objs.c

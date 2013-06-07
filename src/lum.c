@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Thu Jun  6 21:05:59 2013 karina martynava
+** Last update Sat Jun  8 00:37:40 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -35,6 +35,9 @@ int	inlight(t_rs *rs, t_st *droit)
   t_inter	*inter;
 
   ptn = rs->obj;
+  call_obj_neg(droit, rs);
+  //  droit->neg = NULL;
+  //  return (1);
   while (ptn != NULL)
     {
       inter = ptn->cal_inter(ptn, *droit);

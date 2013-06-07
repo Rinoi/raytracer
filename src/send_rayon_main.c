@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Thu Jun  6 19:41:27 2013 lucas mayol
+** Last update Fri Jun  7 23:21:07 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -42,6 +42,9 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
   t_inter	*inter_m;
 
   ptn = rs->obj;
+  call_obj_neg(droit, rs);
+  /* if (droit->neg != NULL) */
+  /*   printf("ptn : %x\n", droit->neg); */
   inter_m = NULL;
   while (ptn != NULL)
     {
@@ -59,6 +62,7 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
     }
   if (inter_m == NULL)
     return (NULL);
+  //  printf("inter : %f obj : %x;\n", inter_m->d, inter_m->obj);
   inter_m->ptn.x = droit->cord.x + droit->vec.x * inter_m->d;
   inter_m->ptn.y = droit->cord.y + droit->vec.y * inter_m->d;
   inter_m->ptn.z = droit->cord.z + droit->vec.z * inter_m->d;

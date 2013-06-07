@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Thu Jun  6 21:10:04 2013 karina martynava
+** Last update Sat Jun  8 00:10:35 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -45,7 +45,8 @@ int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter, int i)
   inter->ptn.z += obj->ptn.z;
 
   if ((inter->ptn.z > obj->ptn.z)
-      || (inter->ptn.z < obj->ptn.z - obj->limit_z))
+      || (inter->ptn.z < obj->ptn.z - obj->limit_z)
+      || is_in_neg(st->neg, inter->d) == 1)
     {
       if (i == 1)
         return (-1);

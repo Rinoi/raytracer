@@ -9,42 +9,13 @@
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
     <specpow>60</specpow>
-    <reflexion>0.1</reflexion>
+    <reflexion>0.0</reflexion>
     <damier>0</damier>
     <bump>0</bump>
     <!-- <texture>Texture/ciel.xpm</texture> -->
     <bruit>
       <type>1</type>
-      <persistance>0.4</persistance>
-      <color1>
-    	<red>0.2</red>
-    	<green>0.2</green>
-    	<blue>0.2</blue>
-      </color1>
-      <color2>
-    	<red>0.8</red>
-    	<green>0.8</green>
-    	<blue>0.8</blue>
-      </color2>
-    </bruit>
-  </material>
-
-  <material>
-    <id>43</id>
-    <red>0.2</red>
-    <green>0.2</green>
-    <blue>1</blue>
-    <spec1>1.0</spec1>
-    <spec2>1.0</spec2>
-    <spec3>1.0</spec3>
-    <specpow>60</specpow>
-    <reflexion>0.5</reflexion>
-    <damier>0</damier>
-    <bump>0.1</bump>
-    <!-- <texture>Texture/ciel.xpm</texture> -->
-    <bruit>
-      <type>0</type>
-      <persistance>0.004</persistance>
+      <persistance>0.2</persistance>
       <color1>
     	<red>0.2</red>
     	<green>0.2</green>
@@ -72,7 +43,7 @@
     	<z>0</z>
       </rot>
       <constante>-20</constante>
-      <material_id>43</material_id>
+      <material_id>42</material_id>
     </plan>
 
     <!-- <plan> -->
@@ -150,82 +121,53 @@
     <!--   <material_id>43</material_id> -->
     <!-- </plan> -->
 
-    <sphere>
+    <cylindre>
       <coord>
         <x>0</x>
         <y>0</y>
-        <z>0</z>
+        <z>25</z>
       </coord>
       <rot>
 	<x>0</x>
 	<y>0</y>
 	<z>0</z>
       </rot>
-      <rayon>15</rayon>
+      <rayon>20</rayon>
       <material_id>42</material_id>
-    </sphere>
+      <limit_z>42</limit_z>
+    </cylindre>
 
   </obj>
 
   <obj_neg>
 
-    <sphere>
-      <coord>
-        <x>0</x>
-        <y>50</y>
-        <z>0</z>
-      </coord>
-      <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </rot>
-      <rayon>8</rayon>
-      <material_id>42</material_id>
-    </sphere>
+    <!-- <sphere> -->
+    <!--   <coord> -->
+    <!--     <x>10</x> -->
+    <!--     <y>-7</y> -->
+    <!--     <z>0</z> -->
+    <!--   </coord> -->
+    <!--   <rot> -->
+    <!-- 	<x>0</x> -->
+    <!-- 	<y>0</y> -->
+    <!-- 	<z>0</z> -->
+    <!--   </rot> -->
+    <!--   <rayon>20</rayon> -->
+    <!--   <material_id>42</material_id> -->
+    <!-- </sphere> -->
 
     <sphere>
       <coord>
         <x>0</x>
-        <y>-20</y>
+        <y>-7</y>
         <z>0</z>
       </coord>
       <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
+    	<x>0</x>
+    	<y>0</y>
+    	<z>0</z>
       </rot>
-      <rayon>15</rayon>
-      <material_id>42</material_id>
-    </sphere>
-
-    <sphere>
-      <coord>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </coord>
-      <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </rot>
-      <rayon>15</rayon>
-      <material_id>42</material_id>
-    </sphere>
-
-    <sphere>
-      <coord>
-        <x>0</x>
-        <y>20</y>
-        <z>0</z>
-      </coord>
-      <rot>
-	<x>0</x>
-	<y>0</y>
-	<z>0</z>
-      </rot>
-      <rayon>15</rayon>
+      <rayon>20</rayon>
       <material_id>42</material_id>
     </sphere>
 
@@ -243,8 +185,8 @@
     <green>0.8</green>
     <blue>0.8</blue>
     <coord>
-      <x>-100</x>
-      <y>0</y>
+      <x>-40</x>
+      <y>20</y>
       <z>0</z>
     </coord>
   </lumiere>
@@ -269,7 +211,7 @@
   
   <eyes>
     <cam>
-      <x> -100 </x>
+      <x> -40 </x>
       <y> 0 </y>
       <z> 0 </z>
     </cam>

@@ -304,6 +304,7 @@ t_inter	*call_inter_plane(t_obj *obj, t_st dr);
 t_inter	*call_inter_triangle(t_obj *o, t_st dr);
 
 t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn);
+t_ptn	*sphere_nrml_inv(t_obj *obj, t_ptn *ptn);
 t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*cylinder_nrml_inv(t_obj *obj, t_ptn *ptn);
 t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn);
@@ -338,5 +339,5 @@ void		new_triangle(t_obj **, t_mat *, struct s_xml *, int);
 
 void		add_to_end(t_obj **, t_obj *);
 t_mat		*seek_mat(int, t_mat *);
-
+int		is_in_neg(t_neg *obj, float d);
 #endif
