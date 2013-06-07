@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:09:56 2013 karina martynava
-** Last update Tue Jun  4 21:19:52 2013 karina martynava
+** Last update Thu Jun  6 23:00:32 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -16,29 +16,23 @@ t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn)
   t_ptn	*nrml;
   float	angle;
   t_ptn	cp;
-  /* t_ptn	*mat; */
+  t_ptn	*mat;
 
   cp.x = ptn->x - obj->ptn.x;
   cp.y = ptn->y - obj->ptn.y;
   cp.z = ptn->z - obj->ptn.z;
-
-  /* mat = mul_m_p(obj->matrix, &cp); */
-  /* cp.x = mat->x; */
-  /* cp.y = mat->y; */
-  /* cp.z = mat->z; */
-  /* free(mat); */
-
+  mat = mul_m_p(obj->matrix_inv, &cp);
+  cp = *mat;
+  free(mat);
   angle = ((float *)(obj->data))[0];
-  /* angle = sin(RAD(angle)); */
-
+  angle = tan(RAD(angle));
+  angle = pow(angle, 2);
   nrml = malloc(sizeof(*nrml));
   nrml->x = cp.x;
   nrml->y = cp.y;
   nrml->z = - angle * cp.z;
+  mat = mul_m_p(obj->matrix, &nrml);
+  *nrml = *mat;
+  free(mat);
   return (nrml);
-
-  /* mat = mul_m_p(obj->matrix, nrml); */
-  /* free(nrml); */
-  /* return (mat); */
 }
- 

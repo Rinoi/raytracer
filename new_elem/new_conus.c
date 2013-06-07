@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:39:52 2013 louis martin-pierrat
-** Last update Thu Jun  6 21:09:47 2013 louis martin-pierrat
+** Last update Thu Jun  6 22:11:54 2013 karina martynava
 */
 #include	"rt.h"
 
@@ -34,5 +34,6 @@ void		new_conus(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
   new->data = (void *)(angle);
   new->cal_color = cal_color_conus;
   new->cal_inter = call_inter_conus;
+  printf("HELLO\n");
   add_to_end(obj, new);
 }

@@ -44,10 +44,14 @@
 # define SEP_GREEN	66.0
 # define SEP_BLUE	20.0
 # define STEREOSCOPY	0
+# define GO_OUT		1
+# define GO_IN		0
+# define DEFAULT_INDICE	1.0f
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
 typedef struct	s_obj t_obj;
+typedef struct	s_fresnel t_fresnel;
 
 typedef struct	s_img
 {
@@ -80,6 +84,8 @@ typedef	struct	s_straight
   float		power;
   int		x;
   int		y;
+  float		indice;
+  t_fresnel	*ind_list;
   t_ptn		vec;
   t_ptn		cord;
   t_ptn		c_kd;
@@ -106,8 +112,7 @@ typedef	struct		s_material
   float			reflex;
   float			bump;
   float			trans;
-  float			refract;
-  float			diff_reflex;
+  float			indice;
   t_img			img;
   t_bruit		bruit;
   struct s_material	*next;
@@ -139,7 +144,6 @@ typedef	struct	s_obj
   t_ptn		ptn;
   t_ptn		rot;
   void		*data;
-  //  int		id;
   t_mat		*mat;
   double       	*matrix;
   double       	*matrix_inv;
@@ -148,7 +152,6 @@ typedef	struct	s_obj
   t_inter      	*(*cal_inter)(struct s_obj *, t_st );
   float		(*cal_lux_cos)(struct s_obj *, t_ptn *, t_lux *);
   void		(*cal_color)(struct s_obj *, t_inter *, float *);
-  //  unsigned int	d[4];
   struct s_obj	*next;
 } t_obj;
 
@@ -160,6 +163,7 @@ typedef	struct	s_inter
   t_ptn		rela_ptn;
   t_ptn		ori_ptn;
   float		dist;
+  int		status;
   double	d;
   int		color;
 } t_inter;
@@ -215,6 +219,13 @@ typedef struct	s_patterns
   void		(*ptr)(t_data_t *, t_st *);
 } t_patterns;
 
+typedef struct	s_fresnel
+{
+  float			indice;
+  t_mat			*mat;
+  struct s_fresnle	*next;
+  struct s_fresnle	*prev;
+} t_resnel;
 int     init_rs(t_rs *rs, struct s_xml *tree);
 
 // color.c
