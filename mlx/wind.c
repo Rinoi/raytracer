@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Thu Jun  6 14:41:16 2013 lucas mayol
+** Last update Fri Jun  7 16:21:59 2013 lucas mayol
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -86,7 +86,7 @@ void	rt_main_mlx(t_rs *rs)
   /* ini_texture(rs); */
   printf("MLX %f, %f, %f\n", rs->eyes->cam.x, rs->eyes->cam.y, rs->eyes->cam.z);
   rs->thr = 0;
-  initBruit3D(10, 10, 10, 10, 4);
+  initBruit3D(10, 10, 10, 1, 1);
   /* if (rs->mat->img.img == NULL) */
   /*   return ; */
   if (rs->client == -1)

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Thu Jun  6 19:01:18 2013 louis martin-pierrat
+** Last update Fri Jun  7 00:24:24 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -20,6 +20,24 @@ int	cal_texture_plan(t_obj *obj, float x, float y, __attribute__((unused))float 
   if (y < 0)
     y = obj->mat->img.y + y;
   return (get_col(&obj->mat->img, x, y));
+}
+
+float		*my_damier(t_inter *inter, float tab[3])
+{
+  float		x;
+  float		y;
+  const int    	d = 10;
+  
+  x = inter->ori_ptn.x > 0 ? inter->ori_ptn.x : (- inter->ori_ptn.x) + d / 2;
+  y = inter->ori_ptn.y > 0 ? inter->ori_ptn.y : (- inter->ori_ptn.y) + d / 2;
+  if (((int)(x) % d >= (d / 2) && (int)(y) % d < (d / 2)) ||
+      ((int)(x) % d < (d / 2) && (int)(y) % d >= (d / 2)))
+    {
+      tab[0] = 1 - tab[0];
+      tab[1] = 1 - tab[1];
+      tab[2] = 1 - tab[2];
+    }
+  return (tab);
 }
 
 void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
@@ -40,8 +58,21 @@ void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
     }
   else if (obj->mat != NULL)
     {
-      tab[0] = obj->mat->blue;
-      tab[1] = obj->mat->green;
-      tab[2] = obj->mat->red;
+      if (obj->mat->bruit.type != 0)
+	{
+	  color = color_bruit_bois(obj, inter);
+	  tabs = (unsigned char *)&color;
+	  tab[0] = (unsigned char)tabs[0] / 255.0;
+	  tab[1] = (unsigned char)tabs[1] / 255.0;
+	  tab[2] = (unsigned char)tabs[2] / 255.0;
+	}
+      else
+	{
+	  tab[0] = obj->mat->blue;
+	  tab[1] = obj->mat->green;
+	  tab[2] = obj->mat->red;
+	}
     }
+  if (obj->mat->damier == 1)
+    tab = my_damier(inter, tab);
 }

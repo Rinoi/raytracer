@@ -47,6 +47,7 @@
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
+typedef struct	s_obj t_obj;
 
 typedef struct	s_img
 {
@@ -66,6 +67,14 @@ typedef struct	s_data_t
   t_rs		*rs;
 } t_data_t;
 
+typedef struct	s_neg
+{
+  float		deb;
+  float		end;
+  t_obj		*obj;
+  struct s_neg	*next;;
+} t_neg;
+
 typedef	struct	s_straight
 {
   float		power;
@@ -74,6 +83,7 @@ typedef	struct	s_straight
   t_ptn		vec;
   t_ptn		cord;
   t_ptn		c_kd;
+  t_neg		*neg;
 } t_st;
 
 typedef struct 	s_bruit
@@ -311,8 +321,8 @@ int	cal_texture_plan(t_obj *obj, float x, float y, float z);
 float	resolve_two(float a, float b, float c, int *x);
 float	resolve_two_inv(float a, float b, float c, int *x);
 
-int             color_bruit_bois(t_obj *obj, t_inter *inter);
-
+int	color_bruit_bois(t_obj *obj, t_inter *inter);
+void	my_bump(t_ptn *nrml, t_ptn *ptn);
 
 void		new_material(t_mat **, t_rs *, struct s_xml *);
 void		new_eyes(t_pov **, struct s_xml *);

@@ -5,12 +5,12 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue Jun  4 22:02:21 2013 lucas mayol
-** Last update Wed Jun  5 16:08:28 2013 lucas mayol
+** Last update Fri Jun  7 02:00:01 2013 lucas mayol
 */
 
 #include "rt.h"
 
-double	rand_noise_n(int t)
+double	rand_noise(int t)
 {
   float	r;
 
@@ -21,16 +21,16 @@ double	rand_noise_n(int t)
   return (r);
 }
 
-double	rand_noise(int t)
-{
-  float	n;
+/* double	rand_noise(int t) */
+/* { */
+/*   float	n; */
 
-  n = rand_noise_n(t);
-  n = (n + 1.0) / 2.;
-  /* if (n < 0.5) */
-  /*   printf("t : %f\n", n); */
-  return (n);
-}
+/*   n = rand_noise_n(t); */
+/*   n = (n + 1.0) / 2.; */
+/*   /\* if (n < 0.5) *\/ */
+/*   /\*   printf("t : %f\n", n); *\/ */
+/*   return (n); */
+/* } */
 
 double	noise_2d(int x, int y)
 {
