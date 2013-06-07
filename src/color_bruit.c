@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:03:56 2013 lucas mayol
-** Last update Fri Jun  7 01:28:11 2013 lucas mayol
+** Last update Fri Jun  7 17:47:38 2013 lucas mayol
 */
 
 #include "rt.h"
@@ -18,6 +18,7 @@ int		color_bruit_bois(t_obj *obj, t_inter *inter)
   double	f;
   double	p;
 
+  initBruit3D(10, 10, 10, 10, 8);
   p = obj->mat->bruit.persistance;
   ptn.x = inter->ori_ptn.x - obj->ptn.x + 999999 + (100 * obj->id);
   ptn.y = inter->ori_ptn.y - obj->ptn.y + 999999 + (100 * obj->id);

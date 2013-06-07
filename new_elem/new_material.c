@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:22:33 2013 louis martin-pierrat
-** Last update Thu Jun  6 20:58:24 2013 louis martin-pierrat
+** Last update Fri Jun  7 17:08:30 2013 lucas mayol
 */
 #include	"rt.h"
 
@@ -57,6 +57,7 @@ void		new_material(t_mat **material, t_rs *rs, struct s_xml *tree)
   new = xmalloc(sizeof(t_mat));
   get_ivalue(tree, "id", &new->id) == FAIL ? new->id = 0 : 0;
   get_ivalue(tree, "damier", &new->damier) == FAIL ? new->damier = 0 : 0;
+  get_fvalue(tree, "bump", &new->bump) == FAIL ? new->bump = 0 : 0;
   get_fvalue(tree, "red", &new->red) == FAIL ? new->red = 0.2 : 0; 
   get_fvalue(tree, "blue", &new->blue) == FAIL ? new->blue = 1 : 0;
   get_fvalue(tree, "green", &new->green) == FAIL ? new->green = 0.2 : 0;

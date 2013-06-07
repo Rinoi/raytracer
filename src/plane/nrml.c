@@ -5,13 +5,13 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:20:26 2013 karina martynava
-** Last update Fri Jun  7 16:22:48 2013 lucas mayol
+** Last update Fri Jun  7 17:09:12 2013 lucas mayol
 */
 
 #include <stdlib.h>
 #include "rt.h"
 
-t_ptn	*plane_nrml(__attribute__((unused))t_obj *obj, t_ptn *ptn)
+t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
   t_ptn	*mat;
@@ -26,11 +26,12 @@ t_ptn	*plane_nrml(__attribute__((unused))t_obj *obj, t_ptn *ptn)
   if (mat != NULL)
     *nrml = *mat;
   free(mat);
-  my_bump(nrml, ptn);
+  if (obj->mat->bump != 0)
+    my_bump(nrml, ptn, obj->mat->bump);
   return (nrml);
 }
 
-t_ptn	*plane_nrml_inv(__attribute__((unused))t_obj *obj, t_ptn *ptn)
+t_ptn	*plane_nrml_inv(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
   t_ptn	*mat;
@@ -46,6 +47,7 @@ t_ptn	*plane_nrml_inv(__attribute__((unused))t_obj *obj, t_ptn *ptn)
   if (mat != NULL)
     *nrml = *mat;
   free(mat);
-  my_bump(nrml, ptn);
+  if (obj->mat->bump != 0)
+    my_bump(nrml, ptn, obj->mat->bump);
   return (nrml);
 }

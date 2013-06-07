@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Fri Jun  7 00:24:24 2013 lucas mayol
+** Last update Fri Jun  7 17:33:20 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -22,11 +22,10 @@ int	cal_texture_plan(t_obj *obj, float x, float y, __attribute__((unused))float 
   return (get_col(&obj->mat->img, x, y));
 }
 
-float		*my_damier(t_inter *inter, float tab[3])
+float		*my_damier(t_inter *inter, float tab[3], int d)
 {
   float		x;
   float		y;
-  const int    	d = 10;
   
   x = inter->ori_ptn.x > 0 ? inter->ori_ptn.x : (- inter->ori_ptn.x) + d / 2;
   y = inter->ori_ptn.y > 0 ? inter->ori_ptn.y : (- inter->ori_ptn.y) + d / 2;
@@ -73,6 +72,6 @@ void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
 	  tab[2] = obj->mat->red;
 	}
     }
-  if (obj->mat->damier == 1)
-    tab = my_damier(inter, tab);
+  if (obj->mat->damier != 0)
+    tab = my_damier(inter, tab, obj->mat->damier);
 }

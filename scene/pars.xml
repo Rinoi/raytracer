@@ -11,9 +11,10 @@
     <specpow>60</specpow>
     <reflexion>0.1</reflexion>
     <damier>0</damier>
-    <texture>Texture/ciel.xpm</texture>
+    <bump>0</bump>
+    <!-- <texture>Texture/ciel.xpm</texture> -->
     <bruit>
-      <type>0</type>
+      <type>1</type>
       <persistance>0.4</persistance>
       <color1>
     	<red>0.2</red>
@@ -39,6 +40,7 @@
     <specpow>60</specpow>
     <reflexion>0.5</reflexion>
     <damier>0</damier>
+    <bump>0.1</bump>
     <!-- <texture>Texture/ciel.xpm</texture> -->
     <bruit>
       <type>0</type>
@@ -72,6 +74,21 @@
       <constante>-20</constante>
       <material_id>43</material_id>
     </plan>
+
+    <!-- <plan> -->
+    <!--   <coord> -->
+    <!--     <x>0</x> -->
+    <!--     <y>0</y> -->
+    <!--     <z>0</z> -->
+    <!--   </coord> -->
+    <!--   <rot> -->
+    <!-- 	<x>0</x> -->
+    <!-- 	<y>0</y> -->
+    <!-- 	<z>0</z> -->
+    <!--   </rot> -->
+    <!--   <constante>20</constante> -->
+    <!--   <material_id>42</material_id> -->
+    <!-- </plan> -->
 
     <!-- <plan> -->
     <!--   <coord> -->
@@ -226,8 +243,8 @@
     <green>0.8</green>
     <blue>0.8</blue>
     <coord>
-      <x>-20</x>
-      <y>20</y>
+      <x>-100</x>
+      <y>0</y>
       <z>0</z>
     </coord>
   </lumiere>
@@ -252,7 +269,7 @@
   
   <eyes>
     <cam>
-      <x> -80 </x>
+      <x> -100 </x>
       <y> 0 </y>
       <z> 0 </z>
     </cam>

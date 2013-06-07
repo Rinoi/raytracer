@@ -5,21 +5,21 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Fri Jun  7 02:13:31 2013 lucas mayol
-** Last update Fri Jun  7 14:01:21 2013 lucas mayol
+** Last update Fri Jun  7 17:50:06 2013 lucas mayol
 */
 
 #include <stdlib.h>
 #include "rt.h"
 
-void    my_bump(t_ptn *nrml, t_ptn *ptn)
+void    my_bump(t_ptn *nrml, t_ptn *ptn, float bump)
 {
   float nx;
   float ny;
   float nz;
   t_ptn m_ptn;
-  float bump = 0.25;
   float tmp;
 
+  initBruit3D(10, 10, 10, 2, 16);
   tmp = nrml->x * nrml->x + nrml->y * nrml->y + nrml->z * nrml->z;
   tmp = 1 / sqrtf(tmp);
   nrml->x *= tmp;

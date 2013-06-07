@@ -322,7 +322,7 @@ float	resolve_two(float a, float b, float c, int *x);
 float	resolve_two_inv(float a, float b, float c, int *x);
 
 int	color_bruit_bois(t_obj *obj, t_inter *inter);
-void	my_bump(t_ptn *nrml, t_ptn *ptn);
+void	my_bump(t_ptn *nrml, t_ptn *ptn, float bump);
 
 void		new_material(t_mat **, t_rs *, struct s_xml *);
 void		new_eyes(t_pov **, struct s_xml *);
