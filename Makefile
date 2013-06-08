@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sat Jun  8 12:35:59 2013 karina martynava
+## Last update Sat Jun  8 14:09:08 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -43,6 +43,7 @@ SRCS	=	src/main.c \
 		src/antialiasing.c \
 		src/patterns.c \
 		src/sphere/call_inter.c \
+		src/tore/call_inter.c \
 		src/cylinder/call_inter.c \
 		src/triangle/call_inter.c \
 		src/conus/call_inter.c \
@@ -67,18 +68,17 @@ SRCS	=	src/main.c \
 		network/send_xml.c \
 		network/receive_xml.c \
 		network/f_error.c \
-                bruit_perlin/lol.c \
-                bruit_perlin/rand_set.c \
+		bruit_perlin/lol.c \
+		bruit_perlin/rand_set.c \
 		bruit_perlin/perlin.c \
 		bruit_perlin/noise.c \
 		bruit_perlin/interpolate.c \
 		src/my_bump.c \
 		src/call_obj_neg.c \
 		src/is_in_neg.c \
+		src/color_bruit.c
 
 include		Makefile.xml
-
-SRCS	+=	src/color_bruit.c
 
 OBJS	=	$(SRCS:.c=.o)
 

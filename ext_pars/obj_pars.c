@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat May 11 18:19:53 2013 karina martynava
-** Last update Sat Jun  8 06:34:58 2013 karina martynava
+** Last update Sat Jun  8 22:38:52 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -178,10 +178,10 @@ void  pars(t_ext *ext, t_obj **list)
     }
 }
 
-int  obj_pars_main(char **obj, t_obj *tmp)
+t_obj		*obj_pars_main(char *obj, t_obj *tmp)
 {
-  t_ext  ext;
-  t_obj  *list;
+  t_ext		ext;
+  t_obj		*list;
 
   list = NULL;
   ext.obj = tmp; // mettre les valeur a utiliser plus tard
@@ -191,11 +191,8 @@ int  obj_pars_main(char **obj, t_obj *tmp)
   ext.rot.x = 0;
   ext.rot.y = 0;
   ext.rot.z = 0;
-  if (ac > 1)
-    {
-      if ((ext.fd = open(obj, O_RDONLY)) == -1)
-	return (EXIT_FAILURE);
-      pars(&ext, &list);
-    }
-  return (EXIT_SUCCESS);
+  if ((ext.fd = open(obj, O_RDONLY)) == -1)
+    return (NULL);
+  pars(&ext, &list);
+  return (list);
 }

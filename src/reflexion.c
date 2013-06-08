@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Sat Jun  8 12:25:18 2013 karina martynava
+** Last update Sat Jun  8 19:47:15 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -65,7 +65,6 @@ int	reflexion_time(t_rs *rs, t_st *droit, float col[4])
       tmp_col[3] = col[3];
       inter = my_send_rayon_act(rs, &refl);
       bol = 1;
-      cmb++;
       if (inter != NULL && (bol = 1) && ++cmb)
 	{
 	  enligten(inter, rs, tmp_col, &refl);

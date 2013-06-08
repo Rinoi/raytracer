@@ -48,8 +48,8 @@
 # define GO_IN		0
 # define DEFAULT_INDICE	1.0f
 # define DEF_FOCUS	50.0f
-# define COMPLEXITY	10
-# define DISPER		2.0f
+# define COMPLEXITY	1
+# define DISPER		1.0f
 # define SPACE		1.0f
 
 typedef	struct	s_inter t_inter;
@@ -368,5 +368,6 @@ float	lambert_coef(t_ptn *lightray, t_ptn *nrml, char attribute);
 int	inlight(t_rs *rs, t_st *droit, float lux[3]);
 void	blinn_phong(t_st *st, t_ptn *light,
 		    t_inter *last, float col[4], t_lux *sv);
+t_obj		*obj_pars_main(char *obj, t_obj *tmp);
 
 #endif
