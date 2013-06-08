@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sat Jun  8 05:08:54 2013 karina martynava
+## Last update Sat Jun  8 12:35:59 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -24,7 +24,9 @@ INC	=	-I./include
 
 SRCS	=	src/main.c \
 		src/my_put.c \
+		src/specular.c \
 		src/send_rayon_main.c \
+		src/shadows_lambert.c \
 		src/jpeg.c \
 		src/lum.c \
 		src/color.c \

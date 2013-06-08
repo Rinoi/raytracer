@@ -143,26 +143,56 @@
     	<y>0</y>
     	<z>0</z>
       </rot>
-      <rayon>10</rayon>
+      <rayon>20</rayon>
+      <material_id>1</material_id>
+      <limit_z>42</limit_z>
+    </sphere>
+    <sphere>
+      <coord>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coord>
+      <rot>
+    	<x>0</x>
+    	<y>0</y>
+    	<z>0</z>
+      </rot>
+      <rayon>30</rayon>
+      <material_id>1</material_id>
+      <limit_z>42</limit_z>
+    </sphere>
+    <sphere>
+      <coord>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coord>
+      <rot>
+    	<x>0</x>
+    	<y>0</y>
+    	<z>0</z>
+      </rot>
+      <rayon>5</rayon>
       <material_id>1</material_id>
       <limit_z>42</limit_z>
     </sphere>
 
-    <!-- <sphere> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>0</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <rayon>5</rayon> -->
-    <!--   <material_id>4</material_id> -->
-    <!--   <limit_z>42</limit_z> -->
-    <!-- </sphere> -->
+    <sphere>
+      <coord>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coord>
+      <rot>
+    	<x>0</x>
+    	<y>0</y>
+    	<z>0</z>
+      </rot>
+      <rayon>1</rayon>
+      <material_id>4</material_id>
+      <limit_z>42</limit_z>
+    </sphere>
 
     <cylindre>
       <coord>
@@ -247,7 +277,7 @@
   
   <eyes>
     <cam>
-      <x> -50 </x>
+      <x> -100 </x>
       <y> 0 </y>
       <z> 0 </z>
     </cam>

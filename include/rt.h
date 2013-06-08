@@ -31,7 +31,7 @@
 # define AMB		1
 # define SPOT		2
 # define DIRECT		4
-# define SPOTLEN	5
+# define SPOTLEN	10
 
 // POST - IN PROCESSING
 # define ANTIA		2
@@ -340,21 +340,26 @@ float	resolve_two_inv(float a, float b, float c, int *x);
 int	color_bruit_bois(t_obj *obj, t_inter *inter);
 void	my_bump(t_ptn *nrml, t_ptn *ptn, float bump);
 
-void		new_material(t_mat **, t_rs *, struct s_xml *);
-void		new_eyes(t_pov **, struct s_xml *);
-void		new_lux(t_lux **, struct s_xml *);
-void		new_objs(t_rs *, struct s_xml *);
-void		new_objs_neg(t_rs *, struct s_xml *);
+void	new_material(t_mat **, t_rs *, struct s_xml *);
+void	new_eyes(t_pov **, struct s_xml *);
+void	new_lux(t_lux **, struct s_xml *);
+void	new_objs(t_rs *, struct s_xml *);
+void	new_objs_neg(t_rs *, struct s_xml *);
 
-void		new_sphere(t_obj **, t_mat *, struct s_xml *, int);
-void		new_plane(t_obj **, t_mat *, struct s_xml *, int);
-void		new_cylinder(t_obj **, t_mat *, struct s_xml *, int);
-void		new_conus(t_obj **, t_mat *, struct s_xml *, int);
-void		new_triangle(t_obj **, t_mat *, struct s_xml *, int);
+void	new_sphere(t_obj **, t_mat *, struct s_xml *, int);
+void	new_plane(t_obj **, t_mat *, struct s_xml *, int);
+void	new_cylinder(t_obj **, t_mat *, struct s_xml *, int);
+void	new_conus(t_obj **, t_mat *, struct s_xml *, int);
+void	new_triangle(t_obj **, t_mat *, struct s_xml *, int);
 
-void		add_to_end(t_obj **, t_obj *);
-t_mat		*seek_mat(int, t_mat *);
-int		is_in_neg(t_neg *obj, float d);
-void		call_obj_neg(t_st *droit, t_rs *rs);
+void	add_to_end(t_obj **, t_obj *);
+t_mat	*seek_mat(int, t_mat *);
+int	is_in_neg(t_neg *obj, float d);
+void	call_obj_neg(t_st *droit, t_rs *rs);
+void	refraction(t_inter *inter, t_st *st);
+float	lambert_coef(t_ptn *lightray, t_ptn *nrml, char attribute);
+int	inlight(t_rs *rs, t_st *droit, float lux[3]);
+void	blinn_phong(t_st *st, t_ptn *light,
+		    t_inter *last, float col[4], t_lux *sv);
 
 #endif

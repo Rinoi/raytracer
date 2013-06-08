@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 19:19:16 2013 karina martynava
-** Last update Sat Jun  8 10:41:14 2013 karina martynava
+** Last update Sat Jun  8 12:25:19 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -24,6 +24,23 @@ int	random_num_pattern(char *full, int area)
 	num = 0;
     }
   return (num);
+}
+
+char	*alea_init(t_data_t *data, int *area, t_st *droit)
+{
+  char	*full;
+  int	i;
+
+  *area = data->rs->eyes->lng * (data->max - data->ini);
+  if ((full = malloc(sizeof(*full) * (*area))) == NULL)
+    {
+      nrml_pattern(data, droit);
+      return (NULL);
+    }
+  i = 0;
+  while (i < *area)
+    full[i++] = 0;
+  return (full);
 }
 
 void	vert_pattern(t_data_t *data, t_st *droit)
@@ -83,23 +100,6 @@ void	nrml_pattern(t_data_t *data, t_st *droit)
 	mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
 				data->rs->wind.sampled.img_ptr, 0, 0);
     }
-}
-
-char	*alea_init(t_data_t *data, int *area, t_st *droit)
-{
-  char	*full;
-  int	i;
-
-  *area = data->rs->eyes->lng * (data->max - data->ini);
-  if ((full = malloc(sizeof(*full) * (*area))) == NULL)
-    {
-      nrml_pattern(data, droit);
-      return (NULL);
-    }
-  i = 0;
-  while (i < *area)
-    full[i++] = 0;
-  return (full);
 }
 
 void	alea_pattern(t_data_t *data, t_st *droit)

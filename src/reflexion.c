@@ -5,9 +5,8 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Sat Jun  8 03:00:04 2013 karina martynava
+** Last update Sat Jun  8 12:25:18 2013 karina martynava
 */
-#include <stdio.h>
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -32,8 +31,6 @@ void	new_straight(t_st *droit, t_inter *last)
   free(nrml);
 }
 
-void	refraction(t_inter *inter, t_st *st);
-
 void	col_update_reflex(float col[4], float tmp_col[4], t_inter *inter, t_st *st)
 {
   col[0] = tmp_col[0] * col[3] + (1.0 - col[3]) * col[0];
@@ -41,6 +38,15 @@ void	col_update_reflex(float col[4], float tmp_col[4], t_inter *inter, t_st *st)
   col[2] = tmp_col[2] * col[3] + (1.0 - col[3]) * col[2];
   col[3] = (inter->obj->mat) ? col[3] * inter->obj->mat->reflex : 0;
   refraction(inter, st);
+}
+
+void	refl_init(t_st *refl, t_st *droit, int *cmb, int *bol)
+{
+  *refl = *droit;
+  refl->ind_list = NULL;
+  refl->indice = DEFAULT_INDICE;
+  *cmb = 0;
+  *bol = 0;
 }
 
 int	reflexion_time(t_rs *rs, t_st *droit, float col[4])
@@ -52,14 +58,9 @@ int	reflexion_time(t_rs *rs, t_st *droit, float col[4])
   t_st		refl;
   int		i;
 
-  refl = *droit;
-  refl.ind_list = NULL;
-  refl.indice = DEFAULT_INDICE;
-  cmb = 0;
-  bol = 0;
-  while (cmb < MAXDEPTH && cmb != -1 && col[3] > 0.0f)
+  refl_init(&refl, droit, &cmb, &bol);
+  while (cmb < MAXDEPTH && cmb != -1 && col[3] > 0.0f && (i = 0) == 0)
     {
-      i = 0;
       while (i < 3 && (tmp_col[i++] = 0) == 0);
       tmp_col[3] = col[3];
       inter = my_send_rayon_act(rs, &refl);
@@ -82,6 +83,6 @@ void		my_send_rayon(t_rs *rs, t_st *droit, float col[4])
   col[0] = 0;
   col[1] = 0;
   col[2] = 0;
-  col[3] = 1; /////////// REFLEXION
+  col[3] = 1;
   reflexion_time(rs, droit, col);
 }
