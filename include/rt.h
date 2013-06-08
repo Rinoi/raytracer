@@ -183,11 +183,16 @@ typedef struct	s_wind
 
 typedef struct	s_environnement
 {
-  char		antia;
-  char		b_and_w;
-  char		sepia;
-  char		negative;
-  char		pattern;
+  int		antia;
+  int		b_and_w;
+  int		sepia;
+  int		negative;
+  int		pattern;
+  float		expo;
+  int		complexity;
+  float		disper;
+  float		focus;
+  int		stereo;		
 } t_env;
 
 typedef struct	s_pov
