@@ -5,15 +5,18 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Sat Jun  8 20:53:43 2013 louis martin-pierrat
-** Last update Sat Jun  8 22:40:26 2013 karina martynava
+** Last update Sat Jun  8 23:54:13 2013 lucas mayol
 */
 #include	"rt.h"
 
-void	parsing(char *path, t_obj *new)
+void		parsing(char *path, t_obj *new)
 {
-  t_obj	*list;
+  t_extern	*ext;
 
-  list = obj_pars_main(path, new);
+  ext = xmalloc(sizeof(t_extern));
+  ext->obj = obj_pars_main(path, new);
+  ext->kdtree = creat_tree(ext->obj);
+  new->data = (void *)(ext);
 }
 
 void		new_extern(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
@@ -36,8 +39,8 @@ void		new_extern(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
   new->next = NULL;
   new->matrix = NULL;
   creat_matrice_for_obj(new);
-  new->data = (void *)(parsing(path, new));
-  new->cal_color = cal_color_extern;
-  new->cal_inter = call_inter_extern;
+  parsing(path, new);
+  /* new->cal_color = cal_color_extern; */
+  /* new->cal_inter = call_inter_extern; */
   add_to_end(obj, new);
 }

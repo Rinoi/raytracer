@@ -159,6 +159,12 @@ typedef	struct	s_obj
   struct s_obj	*next;
 } t_obj;
 
+typedef struct	s_extern
+{
+  t_obj		*obj;
+  t_kdtree	*kdtree;
+} t_extern;
+
 typedef	struct	s_inter
 {
   t_ptn		*(*cal_norm)(struct s_obj *obj, t_ptn *ptn);

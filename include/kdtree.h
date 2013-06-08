@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Fri May  3 14:45:56 2013 lucas mayol
-** Last update Fri May 10 15:59:54 2013 lucas mayol
+** Last update Sat Jun  8 23:20:51 2013 lucas mayol
 */
 
 #ifndef _KD_TREE_
@@ -24,8 +24,8 @@ typedef struct  s_ptn
 
 typedef struct  s_box
 {
-  t_ptn         origine;
-  t_ptn         lenght;
+  t_ptn		origine;
+  t_ptn		lenght;
 } t_box;
 
 typedef struct  s_plan
@@ -57,5 +57,6 @@ t_kdtree	*creat_tree(t_obj *obj);
 void		my_put_obj_in_tree(t_l_obj **list, t_obj *obj);
 int		where_obj_is_in_plan(t_plan *plan, t_box *box);
 int		creat_tree_rec(t_kdtree *tree, int b);
+void		boxin_triangle(t_obj *obj);
 
 #endif
