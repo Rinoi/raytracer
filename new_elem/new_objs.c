@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 21:02:55 2013 louis martin-pierrat
-** Last update Thu Jun  6 21:11:42 2013 louis martin-pierrat
+** Last update Sat Jun  8 20:53:30 2013 louis martin-pierrat
 */
 #include	"rt.h"
 
@@ -25,6 +25,8 @@ void		new_objs(t_rs *rs, struct s_xml *tree)
 	new_conus(&rs->obj, rs->mat, tree->child, i++);
       else if (m_strcmp(tree->child->name, "triangle") == 0)
 	new_triangle(&rs->obj, rs->mat, tree->child, i++);
+      else if (m_strcmp(tree->child->name, "extern") == 0)
+	new_extern(&rs->obj, rs->mat, tree->child, i++);
       tree->child = tree->child->next;
     }
 }
@@ -45,6 +47,8 @@ void		new_objs_neg(t_rs *rs, struct s_xml *tree)
 	new_conus(&rs->obj_neg, rs->mat, tree->child, i++);
       else if (m_strcmp(tree->child->name, "triangle") == 0)
 	new_triangle(&rs->obj_neg, rs->mat, tree->child, i++);
+      else if (m_strcmp(tree->child->name, "extern") == 0)
+	new_extern(&rs->obj_neg, rs->mat, tree->child, i++);
       tree->child = tree->child->next;
     }
 }

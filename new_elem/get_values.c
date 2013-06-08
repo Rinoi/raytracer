@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Mon Jun  3 23:29:41 2013 louis martin-pierrat
-** Last update Thu Jun  6 18:11:31 2013 louis martin-pierrat
+** Last update Sat Jun  8 21:04:17 2013 louis martin-pierrat
 */
 
 #include	<stdlib.h>
@@ -54,7 +54,8 @@ int		get_ivalue(struct s_xml *tree, char *name, int *value)
   return (tmp == NULL || tmp->value == NULL ? FAILURE : SUCCESS);
 }
 
-int		get_fvalues(struct s_xml *tree, char *name, char *cname, float *value)
+int		get_fvalues(struct s_xml *tree, char *name,
+			    char *cname, float *value)
 {
   struct s_xml	*child;
   struct s_xml	*tmp;

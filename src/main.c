@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sat Jun  8 18:30:56 2013 lucas mayol
+** Last update Sat Jun  8 20:42:57 2013 louis martin-pierrat
 */
 
 #include	<sys/types.h>
@@ -39,6 +39,8 @@ int	init_rs(t_rs *rs, struct s_xml *tree)
 	new_objs(rs, tree->child);
       else if (m_strcmp(tree->child->name, "obj_neg") == 0)
 	new_objs_neg(rs, tree->child);
+      else if (m_strcmp(tree->child->name, "environnement") == 0)
+	set_env(&rs->env, tree->child);
       tree->child = tree->child->next;
     }
   return (tree == NULL ? EXIT_FAILURE : 0);

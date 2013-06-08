@@ -192,7 +192,7 @@ typedef struct	s_environnement
   int		complexity;
   float		disper;
   float		focus;
-  int		stereo;		
+  int		stereo;
 } t_env;
 
 typedef struct	s_pov
@@ -356,6 +356,8 @@ void	new_plane(t_obj **, t_mat *, struct s_xml *, int);
 void	new_cylinder(t_obj **, t_mat *, struct s_xml *, int);
 void	new_conus(t_obj **, t_mat *, struct s_xml *, int);
 void	new_triangle(t_obj **, t_mat *, struct s_xml *, int);
+void	set_env(t_env *, struct s_xml *);
+void	new_extern(t_obj **, t_mat *, struct s_xml *, int);
 
 void	add_to_end(t_obj **, t_obj *);
 t_mat	*seek_mat(int, t_mat *);

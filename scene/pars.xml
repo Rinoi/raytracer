@@ -1,5 +1,18 @@
 <scene>
 
+  <environnement>
+    <antialliasing>64</antialliasing>
+    <black_and_white>1</black_and_white>
+    <sepia>1</sepia>
+    <negatif>1</negatif>
+    <pattern>2</pattern>
+    <exposition>-15.2</exposition>
+    <complexity>15</complexity>
+    <dispersion>1.0</dispersion>
+    <focus>50.0</focus>
+    <stereoscopie>0</stereoscopie>
+  </environnement>
+
   <material>
     <id>42</id>
     <red>0.8</red>
@@ -46,20 +59,20 @@
 
   <obj>
 
-    <!-- <plan> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>45</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <constante>-200</constante> -->
-    <!--   <material_id>42</material_id> -->
-    <!-- </plan> -->
+    <extern>
+      <coord>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coord>
+      <rot>
+    	<x>45</x>
+    	<y>0</y>
+    	<z>0</z>
+      </rot>
+      <material_id>42</material_id>
+      <file>dragon.obj</file>
+    </extern>
 
     <!-- <plan> -->
     <!--   <coord> -->

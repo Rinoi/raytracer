@@ -23,4 +23,6 @@ SRCS	+=	new_elem/add_to_end.c \
 		new_elem/new_triangle.c \
 		new_elem/seek_mat.c \
 		new_elem/get_values.c \
-		new_elem/new_objs.c
+		new_elem/new_objs.c \
+		new_elem/new_env.c \
+		new_elem/new_extern.c
