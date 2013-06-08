@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Thu Jun  6 18:49:51 2013 lucas mayol
+** Last update Sat Jun  8 18:42:00 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -22,7 +22,7 @@ int	cal_texture_sphere(t_obj *obj, t_ptn inter)
   inter.z -= obj->ptn.z;
 
   pc = inter.y;
-  x = acos( - (pc / sqrt(pow(inter.x, 2) + pow(inter.y, 2) + pow(inter.z, 2))));
+  x = acos(- (pc / sqrt(pow(inter.x, 2) + pow(inter.y, 2) + pow(inter.z, 2))));
   x =  x / (3.1415);
   x *= obj->mat->img.x;
 
@@ -36,6 +36,28 @@ int	cal_texture_sphere(t_obj *obj, t_ptn inter)
       printf("x %f y %f\n", x, y);
     }
   return (get_col(&obj->mat->img, x, y));
+}
+
+static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3])
+{
+  int		color;
+  unsigned char	*tabs;
+
+  if (obj->mat->bruit.type != 0)
+    {
+      color = color_bruit_bois(obj, inter);
+      tabs = (unsigned char *)&color;
+      tab[0] = (unsigned char)tabs[0] / 255.0;
+      tab[1] = (unsigned char)tabs[1] / 255.0;
+      tab[2] = (unsigned char)tabs[2] / 255.0;
+    }
+  else
+    {
+      tab[0] = obj->mat->blue;
+      tab[1] = obj->mat->green;
+      tab[2] = obj->mat->red;
+    }
+  return (tab);
 }
 
 void		cal_color_shere(t_obj *obj, t_inter *inter, float tab[3])
@@ -54,22 +76,7 @@ void		cal_color_shere(t_obj *obj, t_inter *inter, float tab[3])
   else
     {
       if (obj->mat != NULL)
-      	{
-	  if (obj->mat->bruit.type != 0)
-	    {
-	      color = color_bruit_bois(obj, inter);
-	      tabs = (unsigned char *)&color;
-	      tab[0] = (unsigned char)tabs[0] / 255.0;
-	      tab[1] = (unsigned char)tabs[1] / 255.0;
-	      tab[2] = (unsigned char)tabs[2] / 255.0;
-	    }
-	  else
-	    {
-	      tab[0] = obj->mat->blue;
-	      tab[1] = obj->mat->green;
-	      tab[2] = obj->mat->red;
-	    }
-      	}
+	tab = color_mat(obj, inter, tab);
       else
       	{
       	  tab[0] = 1;

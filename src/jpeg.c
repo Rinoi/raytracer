@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:31:41 2013 karina martynava
-** Last update Thu Jun  6 18:10:48 2013 thibault martinez
+** Last update Sat Jun  8 17:51:35 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -27,7 +27,8 @@ void		get_col_componnent(char col[3], int x, int y, t_rs *rs)
   col[2] = modif[0];
 }
 
-void		record_color_for_jpeg(int cord[2], struct jpeg_compress_struct *cinfo,
+void		record_color_for_jpeg(int cord[2],
+				      struct jpeg_compress_struct *cinfo,
 				      unsigned char *image_buffer, t_rs *rs)
 {
   unsigned int	pixelIdx;
@@ -78,7 +79,7 @@ void	jpeg_creation(t_rs *rs)
   struct jpeg_error_mgr		jerr;
   FILE				*outfile;
   JSAMPROW			row_pointer[1];
- 
+
   cinfo.err = jpeg_std_error(&jerr);
   jpeg_create_compress(&cinfo);
   if ((outfile = fopen("rt.jpeg", "wb")) == NULL)
@@ -93,7 +94,7 @@ void	jpeg_creation(t_rs *rs)
   cinfo.in_color_space = JCS_RGB;
   jpeg_set_defaults(&cinfo);
   jpeg_set_quality(&cinfo, JPEG_QUALITY, TRUE);
-  img_creation(&cinfo, row_pointer, rs); 
+  img_creation(&cinfo, row_pointer, rs);
   jpeg_finish_compress(&cinfo);
   fclose(outfile);
   jpeg_destroy_compress(&cinfo);

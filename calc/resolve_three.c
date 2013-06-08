@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 02:09:42 2013 karina martynava
-** Last update Fri May 31 15:50:06 2013 karina martynava
+** Last update Sat Jun  8 19:25:54 2013 lucas mayol
 */
 
 #include <values.h>
@@ -60,10 +60,8 @@ float	right_root_three(float root[3], int *x)
 	  ret = root[i];
 	  *x = i;
 	}
-      /* printf("%f\n", root[i]); */
       i++;
     }
-  /* printf("%f\n", ret); */
   return (ret);
 }
 
@@ -80,7 +78,6 @@ float	via_cadran(float eq[4], int *x, float rts[3])
   b = 2.0 * eq[2] * eq[2] * eq[2] / (27.0 * eq[3] * eq[3] * eq[3]);
   b += - eq[2] * eq[1] / (3.0 * eq[3] * eq[3]) + eq[0] / eq[3];
   delta = pow(a / 3.0, 3) + pow(b / 2.0, 2);
-  /* printf("A = %f, B = %f, D = %f\n", a, b, delta); */
   if (delta <= 0)
     {
       i = 3;

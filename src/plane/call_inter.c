@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 01:25:21 2013 karina martynava
+** Last update Sat Jun  8 19:12:11 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -33,8 +33,7 @@ t_inter		*call_inter_plane(t_obj *obj, t_st dr)
   inter->cal_norm = plane_nrml;
   if (c - dr.cord.z > obj->ptn.z)
     inter->cal_norm = plane_nrml_inv;
-  //  printf("PLAN\n");
-  inter->obj = obj; 
+  inter->obj = obj;
   inter->status = 2;
  return (inter);
 }

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 02:33:40 2013 karina martynava
-** Last update Fri May 31 15:50:23 2013 karina martynava
+** Last update Sat Jun  8 19:25:33 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -32,10 +32,8 @@ float	right_root_four(float root[4], int *x)
 	  ret = root[i];
 	  *x = i;
 	}
-      /* printf("%f\n", root[i]); */
       i++;
     }
-  /* printf("%f\n", ret); */
   return (ret);
 }
 
@@ -63,7 +61,7 @@ float	ferrari_rules(int *x, float ans, float abc[3], float bs)
       rts[2] = (-sqrt(ans - abc[0]) + sqrt(tmp)) / 2 - bs;
       rts[3] = (-sqrt(ans - abc[0]) - sqrt(tmp)) / 2 - bs;
     }
-  if(k == 0)
+  if (k == 0)
     return (MAXFLOAT);
   return (right_root_four(rts, x));
 }
@@ -74,7 +72,6 @@ float	sqrt_from_second(float abc[3], int *x, float bs)
   float	delta;
   int	i;
 
- 
   i = 0;
   while (i < 4)
     rts[i++] = MAXFLOAT;

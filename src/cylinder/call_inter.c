@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 01:25:28 2013 karina martynava
+** Last update Sat Jun  8 18:52:20 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -37,13 +37,9 @@ int		is_a_god_cylinder(t_obj *obj, t_st *st, t_inter *inter, int i)
   float         b;
   float         c;
 
-  inter->ptn.x = st->cord.x + st->vec.x * inter->d;
-  inter->ptn.y = st->cord.y + st->vec.y * inter->d;
-  inter->ptn.z = st->cord.z + st->vec.z * inter->d;
-  inter->ptn.x += obj->ptn.x;
-  inter->ptn.y += obj->ptn.y;
-  inter->ptn.z += obj->ptn.z;
-
+  inter->ptn.x = st->cord.x + st->vec.x * inter->d + obj->ptn.x;
+  inter->ptn.y = st->cord.y + st->vec.y * inter->d + obj->ptn.y;
+  inter->ptn.z = st->cord.z + st->vec.z * inter->d + obj->ptn.z;
   if ((inter->ptn.z > obj->ptn.z)
       || (inter->ptn.z < obj->ptn.z - obj->limit_z)
       || is_in_neg(st->neg, inter->d) == 1)
@@ -69,7 +65,7 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
   float		b;
   float		c;
   int		x;
-  
+
   change_dr(obj, &dr);
   if ((inter = malloc(sizeof(t_inter))) == NULL)
     return (NULL);
@@ -80,19 +76,11 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
     - pow(*((float *)(obj->data)), 2);
   inter->d = resolve_two(a, b, c, &x);
   inter->cal_norm = cylinder_nrml;
-  if (inter->d == -1)
+  if (inter->d == -1 || is_a_god_cylinder(obj, &dr, inter, 0) == -1)
     {
       free(inter);
       return (NULL);
     }
-  if (is_a_god_cylinder(obj, &dr, inter, 0) == -1)
-    {
-      free(inter);
-      return (NULL);
-    }
-  inter->ptn.x = dr.vec.x * inter->d + dr.cord.x;
-  inter->ptn.y = dr.vec.y * inter->d + dr.cord.y;
-  inter->ptn.z = dr.vec.z * inter->d + dr.cord.z;
   inter->obj = obj;
   inter->status = x;
   return (inter);

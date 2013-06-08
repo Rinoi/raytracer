@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Wed May 29 18:59:51 2013 karina martynava
-** Last update Sun Jun  2 21:52:45 2013 karina martynava
+** Last update Sat Jun  8 19:19:25 2013 lucas mayol
 */
 
 #include <rt.h>
@@ -58,7 +58,6 @@ int		get_col(t_img *tex, int x, int y)
   unsigned char	cl[3];
   int		i;
 
-  //  printf("x : %d, y : %d\nmax : %d, %d\n\n", x, y, tex->x, tex->y);
   i = tex->sizeline * y;
   i += x * tex->bpp / 8;
   if (tex != NULL)

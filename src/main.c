@@ -5,15 +5,14 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sat Jun  8 04:29:40 2013 karina martynava
+** Last update Sat Jun  8 18:30:56 2013 lucas mayol
 */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include "rt.h"
-
+#include	<sys/types.h>
+#include	<sys/stat.h>
+#include	<fcntl.h>
+#include	<stdlib.h>
+#include	"rt.h"
 #include	"xml.h"
 #include	"xml_macros.h"
 
@@ -45,6 +44,12 @@ int	init_rs(t_rs *rs, struct s_xml *tree)
   return (tree == NULL ? EXIT_FAILURE : 0);
 }
 
+void	my_end(char **argv)
+{
+  my_putstr(argv[0], 2);
+  my_putstr(" : file.xml\n", 2);
+}
+
 int	main(int argc, char **argv)
 {
   t_rs	rs;
@@ -65,16 +70,10 @@ int	main(int argc, char **argv)
 	{
 	  if (init_rs(&rs, xml_parsing(argv[1])) == EXIT_FAILURE)
 	    return (EXIT_FAILURE);
-	  printf("MLX %f, %f, %f\n", rs.eyes->cam.x, rs.eyes->cam.y, rs.eyes->cam.z);
-	  /* my_take_data_for_rs(&rs, fd); */
-	  /* rs.tree = creat_tree(rs.obj); */
 	  rt_main_mlx(&rs);
 	}
     }
   else
-    {
-      my_putstr(argv[0], 2);
-      my_putstr(" : file.xml\n", 2);
-    }
+    my_end(argv);
   return (EXIT_SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 03:48:11 2013 karina martynava
-** Last update Sat Jun  1 00:25:25 2013 karina martynava
+** Last update Sat Jun  8 19:24:47 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -73,13 +73,11 @@ float	resolve_three_bis(float d[4])
     return (resolve_two_bis(d[2], d[1], d[0]));
   while (i++ < 3)
     d[i - 1] = d[i - 1] / d[3];
-
   q = (pow(d[2], 2) - 3 * d[1]) / 9.0;
   r = (d[2] * (pow(d[2], 2) - 4.5 * d[1]) + 13.5 * d[0]) / 27.0;
   delta = pow(q, 3) - pow(r, 2);
-  if (delta >= 0) // 3 solutions
+  if (delta >= 0)
     return (resolve_three_pos_delta_bis(d, q, r));
-  // 1 solution
   s = sqrt(-delta) + fabsf(r);
   s = pow(s, 1.0f / 3.0f);
   ret = (r < 0) ?

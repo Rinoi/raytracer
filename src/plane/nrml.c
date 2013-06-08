@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:20:26 2013 karina martynava
-** Last update Sat Jun  8 04:26:35 2013 karina martynava
+** Last update Sat Jun  8 19:12:33 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -35,7 +35,6 @@ t_ptn	*plane_nrml_inv(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
   t_ptn	*mat;
-  
 
   nrml = malloc(sizeof(*nrml));
   if (nrml == NULL)

@@ -5,12 +5,11 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:18:27 2013 karina martynava
-** Last update Sat Jun  8 11:57:59 2013 karina martynava
+** Last update Sat Jun  8 17:20:16 2013 lucas mayol
 */
 
 #include <stdlib.h>
 #include "rt.h"
-
 
 void	add_antialia(float final_col[3], float col[3])
 {
@@ -38,7 +37,8 @@ void	moving_straight(t_st *cpy, float focus[COMPLEXITY][2], int i, t_rs *rs)
   free(mat);
 }
 
-void	focus_scene(t_st *st, t_rs *rs, float col[4], float focus[COMPLEXITY][2])
+void	focus_scene(t_st *st, t_rs *rs, float col[4],
+		    float focus[COMPLEXITY][2])
 {
   int	i;
   t_st	cpy;
@@ -117,7 +117,7 @@ int	antialiasing_color(int antialias, t_st *droit,
   modif_2 = (unsigned char *)&col_2;
   modif = (unsigned char *)&return_col;
   modif[0] = modif_1[0];
-  modif[1] = 0; //(modif_1[0] + modif_2[0]) / 2;
+  modif[1] = (modif_1[0] + modif_2[0]) / 2;
   modif[2] = modif_2[2];
   return (return_col);
 }

@@ -5,11 +5,11 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Fri Jun  7 17:50:10 2013 lucas mayol
+** Last update Sat Jun  8 19:22:02 2013 lucas mayol
 */
 #include		<unistd.h>
 #include		<stdlib.h>
-
+#include		<stdio.h>
 #include		"mlx.h"
 #include		"rt.h"
 
@@ -29,11 +29,6 @@ void	*xpm_img_frmlx(void *mlx_ptr, char *filename,
 
 void			rtv1_ini(t_rs *rs)
 {
-  /* if ((rs->wind.mlx_ptr = mlx_init()) == NULL) */
-  /*   { */
-  /*     my_putstr("Mlx error\n", 2); */
-  /*     exit(EXIT_FAILURE); */
-  /*   } */
   if (rs->client != 1)
     {
       rs->wind.wind_ptr =
@@ -77,23 +72,15 @@ int	my_expose(t_rs *rs)
   return (0);
 }
 
-
-#include <stdio.h>
-
 void	rt_main_mlx(t_rs *rs)
 {
   rtv1_ini(rs);
-  /* ini_texture(rs); */
-  printf("MLX %f, %f, %f\n", rs->eyes->cam.x, rs->eyes->cam.y, rs->eyes->cam.z);
   rs->thr = 0;
-  /* if (rs->mat->img.img == NULL) */
-  /*   return ; */
   if (rs->client == -1)
     {
       send_rayon_main(rs);
       mlx_expose_hook(rs->wind.wind_ptr, my_expose, rs);
       mlx_key_hook(rs->wind.wind_ptr, my_keybrd, rs);
-      /* mlx_loop_hook(rs->wind.mlx_ptr, my_keybrd, rs); */
       mlx_loop(rs->wind.mlx_ptr);
     }
 }

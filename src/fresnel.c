@@ -5,11 +5,10 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Thu Jun  6 23:23:12 2013 karina martynava
-** Last update Sat Jun  8 12:25:09 2013 karina martynava
+** Last update Sat Jun  8 17:24:45 2013 lucas mayol
 */
 
 #include <stdio.h>
-
 #include <stdlib.h>
 #include "rt.h"
 
@@ -108,14 +107,14 @@ float	refraction_angle(float dens[2], float ij[4], t_st *st, t_ptn *nrml)
   float	ref_type[2];
 
   ij[0] = lambert_coef(&st->vec, nrml, NONE);
-  if (ij[0] >= 0.999f) 
+  if (ij[0] >= 0.999f)
     return (0.0f);
   ij[1] = sqrtf(1 - ij[0] * ij[0]);
   ij[3] = (dens[0] / dens[1]) * ij[1];
   if (ij[3] * ij[3] > 0.9999f)
     return (-1.0f);
   ij[2] = sqrtf(1 - ij[3] * ij[3]);
-  ref_type[0] = (dens[1] * ij[2] - dens[0] * ij[0]) 
+  ref_type[0] = (dens[1] * ij[2] - dens[0] * ij[0])
     / (dens[1] * ij[2] + dens[0] * ij[0]);
   ref_type[1] = (dens[0] * ij[2] - dens[1] * ij[0] )
     / (dens[0] * ij[2] + dens[1] * ij[0]);

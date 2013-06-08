@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 01:58:44 2013 karina martynava
-** Last update Sat Jun  8 02:14:51 2013 karina martynava
+** Last update Sat Jun  8 19:27:58 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -27,11 +27,8 @@ float	resolve_two_inv(float a, float b, float c, int *x)
       two = (- b + sqrt(delta)) / (2 * a);
       if (one <= EPSILLON && two <= EPSILLON)
         return (-1.0);
-      if (two <= EPSILLON)
-        {
-          *x = 0;
-          return (one);
-        }
+      if (two <= EPSILLON && (*x = 0) == 0)
+	return (one);
       if (one <= EPSILLON)
         {
           *x = 1;
@@ -63,11 +60,8 @@ float	resolve_two(float a, float b, float c, int *x)
 	  *x = 0;
 	  return (one);
 	}
-      if (one <= EPSILLON)
-	{
-	  *x = 1;
-	  return (two);
-	}
+      if (one <= EPSILLON && (*x = 1) == 1)
+	return (two);
       *x = one > two ? 1 : 0;
       return (one > two ? two : one);
     }

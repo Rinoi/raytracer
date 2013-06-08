@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 04:27:33 2013 karina martynava
+** Last update Sat Jun  8 18:32:02 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -34,6 +34,13 @@ int		is_a_god_sphere(t_obj *obj, t_st *dr, t_inter *inter, int i)
   return (1);
 }
 
+static void	my_sub_vec(t_ptn *cord, t_ptn *obj)
+{
+  cord->x -= obj->x;
+  cord->y -= obj->y;
+  cord->z -= obj->z;
+}
+
 t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
 {
   t_inter	*inter;
@@ -41,14 +48,10 @@ t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
   float		b;
   float		c;
   int		x;
-  
-  /* if (dr.neg != NULL) */
-  /*   printf("%x\n\n", dr.neg); */
+
   if ((inter = malloc(sizeof(t_inter))) == NULL)
     return (NULL);
-  dr.cord.x -= obj->ptn.x;
-  dr.cord.y -= obj->ptn.y;
-  dr.cord.z -= obj->ptn.z;
+  my_sub_vec(&obj->ptn, &dr.cord);
   a = pow(dr.vec.x, 2) + pow(dr.vec.y, 2) + pow(dr.vec.z, 2);
   b = 2 * (dr.vec.x * dr.cord.x
 	   + dr.vec.y * dr.cord.y + dr.vec.z * dr.cord.z);
@@ -57,18 +60,11 @@ t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
   inter->d = resolve_two(a, b, c, &x);
   inter->cal_norm = sphere_nrml;
   inter->status = x;
-  if (inter->d <= EPSILLON)
+  if (inter->d <= EPSILLON || is_a_god_sphere(obj, &dr, inter, 0) == -1)
     {
       free(inter);
       return (NULL);
     }
-  if (is_a_god_sphere(obj, &dr, inter, 0) == -1)
-    {
-      free(inter);
-      return (NULL);
-    }
-  /* inter->cal_norm = sphere_nrml; */
-
   inter->obj = obj;
   return (inter);
 }

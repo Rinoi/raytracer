@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Wed May 29 20:40:59 2013 karina martynava
-** Last update Fri May 31 19:07:58 2013 karina martynava
+** Last update Sat Jun  8 19:21:04 2013 lucas mayol
 */
 
 #include "mlx.h"
@@ -39,7 +39,7 @@ void	mlx_supersamp(t_rs *rs, int init, int to)
   int	color;
   int	x;
   int	y;
- 
+
   x = init / ANTIA;
   while (x < to)
     {
