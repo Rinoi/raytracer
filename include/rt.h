@@ -47,6 +47,10 @@
 # define GO_OUT		1
 # define GO_IN		0
 # define DEFAULT_INDICE	1.0f
+# define DEF_FOCUS	50.0f
+# define COMPLEXITY	10
+# define DISPER		2.0f
+# define SPACE		1.0f
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
@@ -266,7 +270,7 @@ void	vert_pattern(t_data_t *data, t_st *droit);
 
 // anti aliasing
 
-int	antialiasing_color(int antialias, t_st *droit, t_rs *rs);
+int	antialiasing_color(int antialias, t_st *droit, t_rs *rs, float focus[COMPLEXITY][2]);
 
 // MLX
 

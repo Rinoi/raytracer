@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Thu Jun  6 23:23:12 2013 karina martynava
-** Last update Sat Jun  8 03:42:01 2013 karina martynava
+** Last update Sat Jun  8 11:10:30 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -160,8 +160,8 @@ void	refraction(t_inter *inter, t_st *st)
       new_straight(st, inter);
       return ;
     }
-  free(nrml);
   st->cord.x = inter->ptn.x;
   st->cord.y = inter->ptn.y;
   st->cord.z = inter->ptn.z;
+  free(nrml);
 }
