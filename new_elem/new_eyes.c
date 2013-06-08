@@ -5,8 +5,9 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:20:03 2013 louis martin-pierrat
-** Last update Thu Jun  6 21:51:29 2013 karina martynava
+** Last update Sat Jun  8 04:25:58 2013 karina martynava
 */
+
 #include	"rt.h"
 
 void		new_eyes(t_pov **eyes, struct s_xml *tree)
@@ -27,7 +28,6 @@ void		new_eyes(t_pov **eyes, struct s_xml *tree)
   get_fvalues(tree, "rot", "y", &new->rot.y) == FAIL ? new->rot.y = 0 : 0;
   get_fvalues(tree, "rot", "z", &new->rot.z) == FAIL ? new->rot.z = 0 : 0;
   new->next = NULL;
-  printf("%f %f %f\n", new->rot.z, new->rot.y, new->rot.x);
   creat_matrice_for_eyes(new);
   while (tmp != NULL && tmp->next != NULL)
     tmp = tmp->next;

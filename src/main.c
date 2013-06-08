@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Thu Jun  6 21:10:55 2013 louis martin-pierrat
+** Last update Sat Jun  8 04:29:40 2013 karina martynava
 */
 
 #include <sys/types.h>
@@ -44,9 +44,6 @@ int	init_rs(t_rs *rs, struct s_xml *tree)
     }
   return (tree == NULL ? EXIT_FAILURE : 0);
 }
-
-
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {

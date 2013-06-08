@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 01:58:44 2013 karina martynava
-** Last update Mon Jun  3 00:41:30 2013 lucas mayol
+** Last update Sat Jun  8 02:14:51 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -60,12 +60,12 @@ float	resolve_two(float a, float b, float c, int *x)
 	return (-1.0);
       if (two <= EPSILLON)
 	{
-	  *x = 1;
+	  *x = 0;
 	  return (one);
 	}
       if (one <= EPSILLON)
 	{
-	  *x = 0;
+	  *x = 1;
 	  return (two);
 	}
       *x = one > two ? 1 : 0;

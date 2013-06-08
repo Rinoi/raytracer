@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:01:03 2013 karina martynava
-** Last update Fri Jun  7 23:58:51 2013 lucas mayol
+** Last update Sat Jun  8 04:27:12 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -14,7 +14,6 @@
 t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
-  float	tmp;
 
   nrml = malloc(sizeof(*nrml));
   if (nrml == NULL)
@@ -24,9 +23,6 @@ t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn)
   nrml->z = ptn->z - obj->ptn.z;
   if (obj->mat->bump != 0)
     my_bump(nrml, ptn, obj->mat->bump);
-  /* nrml->x = -nrml->x; */
-  /* nrml->y = -nrml->y; */
-  /* nrml->z = -nrml->z; */
   return (nrml);
 }
 

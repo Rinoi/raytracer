@@ -351,4 +351,6 @@ void		new_triangle(t_obj **, t_mat *, struct s_xml *, int);
 void		add_to_end(t_obj **, t_obj *);
 t_mat		*seek_mat(int, t_mat *);
 int		is_in_neg(t_neg *obj, float d);
+void		call_obj_neg(t_st *droit, t_rs *rs);
+
 #endif

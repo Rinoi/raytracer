@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Thu Jun  6 23:23:12 2013 karina martynava
-** Last update Sat Jun  8 01:28:13 2013 karina martynava
+** Last update Sat Jun  8 03:42:01 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -53,6 +53,34 @@ void 	rm_fresnel(t_fresnel *sv)
     sv->prev->next = sv->next;
 }
 
+void		fresnel_out(t_inter *inter, t_st *st, float ind[2], t_fresnel *sv)
+{
+  ind[0] = inter->obj->mat->indice;
+  if (sv == NULL ||
+      (sv->mat == inter->obj->mat && sv->prev == NULL))
+    {
+      ind[1] = DEFAULT_INDICE;
+      if (sv != NULL)
+	{
+	  free(sv);
+	  st->ind_list = NULL;
+	}
+    }
+  else
+    {
+      ind[1] = sv->indice;
+      while (sv != NULL && sv->prev != NULL)
+	{
+	  if (sv->mat == inter->obj->mat)
+	    {
+	      rm_fresnel(sv);
+	      return ;
+	    }
+	  sv = sv->prev;
+	}
+    }
+}
+
 void		fresnel_indice_list(t_inter *inter, t_st *st, float ind[2])
 {
   t_fresnel	*sv;
@@ -62,45 +90,16 @@ void		fresnel_indice_list(t_inter *inter, t_st *st, float ind[2])
     {
       ind[0] = st->indice;
       ind[1] = inter->obj->mat->indice;
-      printf("IN %f -> %f\n", ind[0], ind[1]);
       add_fresnel(st, inter);
       return ;
     }
   else if (inter->status == GO_OUT)
     {
-      ind[0] = inter->obj->mat->indice;
-      if (sv == NULL ||
-	  (sv->mat == inter->obj->mat && sv->prev == NULL))
-	{
-	  ind[1] = DEFAULT_INDICE;
-	  if (sv != NULL)
-	    {
-	      free(sv);
-	      st->ind_list = NULL;
-	    }
-	  printf("OUT %f -> %f\n", ind[0], ind[1]);
-	  return ;
-	}
-      else
-	{
-	  ind[1] = sv->indice;
-	  while (sv != NULL && sv->prev != NULL)
-	    {
-	      if (sv->mat == inter->obj->mat)
-		{
-		  rm_fresnel(sv);
-		  printf("OUT %f -> %f\n", ind[0], ind[1]);
-		  return ;
-		}
-	      sv = sv->prev;
-	    }
-	}
+      fresnel_out(inter, st, ind, sv);
+      return ;
     }
-  else
-    {
-      ind[0] = st->indice;
-      ind[1] = st->indice;
-    }
+  ind[0] = st->indice;
+  ind[1] = st->indice;
 }
 
 float	vec_prod_norm(t_ptn *u, t_ptn *v)
@@ -113,9 +112,40 @@ float	vec_prod_norm(t_ptn *u, t_ptn *v)
   return (sqrtf(scal_prod(&w, &w)));
 }
 
+float	refraction_angle(float dens[2], float ij[4], t_st *st, t_ptn *nrml)
+{
+  float	reflectance;
+  float	ref_type[2];
+
+  ij[0] = lambert_coef(&st->vec, nrml, NONE);
+  if (ij[0] >= 0.999f) 
+    return (0.0f);
+  ij[1] = sqrtf(1 - ij[0] * ij[0]);
+  ij[3] = (dens[0] / dens[1]) * ij[1];
+  if (ij[3] * ij[3] > 0.9999f)
+    return (-1.0f);
+  ij[2] = sqrtf(1 - ij[3] * ij[3]);
+  ref_type[0] = (dens[1] * ij[2] - dens[0] * ij[0]) 
+    / (dens[1] * ij[2] + dens[0] * ij[0]);
+  ref_type[1] = (dens[0] * ij[2] - dens[1] * ij[0] )
+    / (dens[0] * ij[2] + dens[1] * ij[0]);
+  reflectance = 0.5f * (pow(ref_type[0], 2) + pow(ref_type[1], 2));
+  mult_vect(nrml, 1.0f / sqrt(scal_prod(nrml, nrml)));
+  mult_vect(&st->vec, 1.0f / sqrt(scal_prod(&st->vec, &st->vec)));
+  st->vec.x = st->vec.x + ij[0] * nrml->x;
+  st->vec.y = st->vec.y + ij[0] * nrml->y;
+  st->vec.z = st->vec.z + ij[0] * nrml->z;
+  st->vec.x = (dens[0] / dens[1]) * st->vec.x + (-ij[2]) * nrml->x;
+  st->vec.y = (dens[0] / dens[1]) * st->vec.y + (-ij[2]) * nrml->y;
+  st->vec.z = (dens[0] / dens[1]) * st->vec.z + (-ij[2]) * nrml->z;
+  return (reflectance);
+}
+
 void	refraction(t_inter *inter, t_st *st)
 {
   float	density[2];
+  float	ij[4];
+  t_ptn	*nrml;
 
   if (inter->obj->mat == NULL || inter->obj->mat->indice == 0.0f)
     {
@@ -123,6 +153,14 @@ void	refraction(t_inter *inter, t_st *st)
       return ;
     }
   fresnel_indice_list(inter, st, density);
+  nrml = (*(inter->cal_norm))(inter->obj, &(inter->ptn));
+  st->indice = density[1];
+  if (nrml == NULL || refraction_angle(density, ij, st, nrml) == -1.0f)
+    {
+      new_straight(st, inter);
+      return ;
+    }
+  free(nrml);
   st->cord.x = inter->ptn.x;
   st->cord.y = inter->ptn.y;
   st->cord.z = inter->ptn.z;

@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 01:25:28 2013 karina martynava
+** Last update Sat Jun  8 04:27:33 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -64,7 +64,6 @@ t_inter		*call_inter_sphere(t_obj *obj, t_st dr)
     }
   if (is_a_god_sphere(obj, &dr, inter, 0) == -1)
     {
-      printf("NON\n");
       free(inter);
       return (NULL);
     }

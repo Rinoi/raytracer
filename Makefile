@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sat Jun  8 00:46:52 2013 karina martynava
+## Last update Sat Jun  8 05:08:54 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -75,7 +75,6 @@ SRCS	=	src/main.c \
 		src/is_in_neg.c \
 
 include		Makefile.xml
-
 
 SRCS	+=	src/color_bruit.c
 

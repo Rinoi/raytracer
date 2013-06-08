@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Fri Jun  7 23:21:07 2013 lucas mayol
+** Last update Sat Jun  8 04:29:14 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -22,10 +22,14 @@ t_patterns	g_pat[] =
     {2, alea_pattern}
   };
 
-void		find_ori_ptn(t_inter *inter)
+void		inter_update(t_inter *inter, t_st *droit)
 {
   t_ptn		*mat;
 
+  inter->ptn.x = droit->cord.x + droit->vec.x * inter->d;
+  inter->ptn.y = droit->cord.y + droit->vec.y * inter->d;
+  inter->ptn.z = droit->cord.z + droit->vec.z * inter->d;
+  inter->rela_ptn = inter->ptn;
   inter->ori_ptn.x = inter->ptn.x - inter->obj->ptn.x;
   inter->ori_ptn.y = inter->ptn.y - inter->obj->ptn.y;
   inter->ori_ptn.z = inter->ptn.z - inter->obj->ptn.z;
@@ -43,8 +47,6 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
 
   ptn = rs->obj;
   call_obj_neg(droit, rs);
-  /* if (droit->neg != NULL) */
-  /*   printf("ptn : %x\n", droit->neg); */
   inter_m = NULL;
   while (ptn != NULL)
     {
@@ -62,12 +64,7 @@ t_inter		*my_send_rayon_act(t_rs *rs, t_st *droit)
     }
   if (inter_m == NULL)
     return (NULL);
-  //  printf("inter : %f obj : %x;\n", inter_m->d, inter_m->obj);
-  inter_m->ptn.x = droit->cord.x + droit->vec.x * inter_m->d;
-  inter_m->ptn.y = droit->cord.y + droit->vec.y * inter_m->d;
-  inter_m->ptn.z = droit->cord.z + droit->vec.z * inter_m->d;
-  inter_m->rela_ptn = inter_m->ptn;
-  find_ori_ptn(inter_m);
+  inter_update(inter_m, droit);
   return (inter_m);
 }
 

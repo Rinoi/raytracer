@@ -5,9 +5,10 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:18:27 2013 karina martynava
-** Last update Thu Jun  6 22:01:35 2013 karina martynava
+** Last update Sat Jun  8 04:30:01 2013 karina martynava
 */
 
+#include <stdlib.h>
 #include "rt.h"
 
 void	antialiasing_init(int *i, float final_col[3])
