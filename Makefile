@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sat Jun  8 12:35:59 2013 karina martynava
+## Last update Sat Jun  8 20:34:04 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -69,8 +69,6 @@ SRCS	=	src/main.c \
 		network/f_error.c \
                 bruit_perlin/lol.c \
                 bruit_perlin/rand_set.c \
-		bruit_perlin/perlin.c \
-		bruit_perlin/noise.c \
 		bruit_perlin/interpolate.c \
 		src/my_bump.c \
 		src/call_obj_neg.c \
