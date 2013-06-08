@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sun Jun  9 00:03:56 2013 lucas mayol
+## Last update Sun Jun  9 00:17:51 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -67,18 +67,19 @@ SRCS	=	src/main.c \
 		network/send_xml.c \
 		network/receive_xml.c \
 		network/f_error.c \
-                bruit_perlin/lol.c \
-                bruit_perlin/rand_set.c \
+		bruit_perlin/lol.c \
+		bruit_perlin/rand_set.c \
 		bruit_perlin/interpolate.c \
 		src/my_bump.c \
 		src/call_obj_neg.c \
 		src/is_in_neg.c \
 		src/boxing.c \
-		ext_pars/obj_pars.c \
-		ext_pars/wrdtab.c \
 		kdtree/creat_tree.c \
 		kdtree/creat_tree_e.c \
 		kdtree/creat_plan_for_tree.c \
+		ext_pars/obj_pars.c \
+		ext_pars/wrdtab.c \
+
 
 include		Makefile.xml
 

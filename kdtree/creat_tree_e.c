@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Fri May  3 14:45:13 2013 lucas mayol
-** Last update Sat Jun  8 23:47:31 2013 lucas mayol
+** Last update Sun Jun  9 00:47:42 2013 lucas mayol
 */
 
 #include <stdio.h>
@@ -31,8 +31,6 @@ int	where_obj_is_in_plan(t_plan *plan, t_box *box)
   int	i;
 
   i = 0;
-  /* printf("B = x : %f, y : %f, z : %f\t", */
-  /* 	 box->origine.x, box->origine.y, box->origine.z); */
   if (plan->ptn.x != MAXDOUBLE)
     {
       i += box->origine.x > plan->ptn.x ? 1 : 0;
@@ -48,7 +46,6 @@ int	where_obj_is_in_plan(t_plan *plan, t_box *box)
       i += box->origine.z > plan->ptn.z ? 2 : 0;
       i += (box->origine.z + box->lenght.z) < plan->ptn.z ? -1 : 0;
     }
-  /* printf("   i : %d\n", i); */
   return (i);
 }
 
@@ -65,24 +62,17 @@ void	ini_ptn_tree(t_kdtree *tree, int b)
       tree->max.x = tree->t_p->max.x;
       tree->max.y = tree->t_p->max.y;
       tree->max.z = tree->t_p->max.z;
+      return ;
     }
-  else
-    {
-      tree->ori.x = tree->t_p->ori.x;
-      tree->ori.y = tree->t_p->ori.y;
-      tree->ori.z = tree->t_p->ori.z;
-      tree->max.x = tree->t_p->plan.ptn.x != MAXDOUBLE ?
-	tree->t_p->plan.ptn.x : tree->t_p->max.x;
-
-      tree->max.y = tree->t_p->plan.ptn.y != MAXDOUBLE ?
-	tree->t_p->plan.ptn.y : tree->t_p->max.y;
-
-      tree->max.z = tree->t_p->plan.ptn.z != MAXDOUBLE ?
-	tree->t_p->plan.ptn.z : tree->t_p->max.z;
-    }
-  /* printf("NEW : \n"); */
-  /* printf("  ori = x : %f, y : %f, z : %f\n", tree->ori.x, tree->ori.y, tree->ori.z); */
-  /* printf("  max = x : %f, y : %f, z : %f\n", tree->max.x, tree->max.y, tree->max.z); */
+  tree->ori.x = tree->t_p->ori.x;
+  tree->ori.y = tree->t_p->ori.y;
+  tree->ori.z = tree->t_p->ori.z;
+  tree->max.x = tree->t_p->plan.ptn.x != MAXDOUBLE ?
+    tree->t_p->plan.ptn.x : tree->t_p->max.x;
+  tree->max.y = tree->t_p->plan.ptn.y != MAXDOUBLE ?
+    tree->t_p->plan.ptn.y : tree->t_p->max.y;
+  tree->max.z = tree->t_p->plan.ptn.z != MAXDOUBLE ?
+    tree->t_p->plan.ptn.z : tree->t_p->max.z;
 }
 
 int		creat_tree_rec(t_kdtree *tree, int b)
@@ -107,7 +97,6 @@ int		creat_tree_rec(t_kdtree *tree, int b)
         my_put_obj_in_tree(&tree->t_r->obj, ptn->obj);
       ptn = ptn->next;
     }
-
   if (creat_tree_rec(tree->t_l, -1) == -1)
     tree->t_l = NULL;
   if (creat_tree_rec(tree->t_r, 1) == -1)
