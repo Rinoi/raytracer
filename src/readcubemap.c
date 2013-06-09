@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sun Jun  9 14:40:03 2013 lucas mayol
-** Last update Sun Jun  9 14:57:50 2013 lucas mayol
+** Last update Sun Jun  9 17:14:02 2013 lucas mayol
 */
 
 #include "rt.h"
@@ -16,7 +16,7 @@ int	readcubemap(t_st *st, t_rs *rs)
     {
       if (st->vec.x > 0.0f)
 	{
-	  
+	  return ();
 	}
     }
 }

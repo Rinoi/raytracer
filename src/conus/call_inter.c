@@ -5,23 +5,28 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sun Jun  9 15:13:13 2013 karina martynava
+** Last update Sun Jun  9 16:32:57 2013 lucas mayol
 */
 
 #include <stdlib.h>
 #include "rt.h"
 
-int             is_a_god_conus(t_obj *obj, t_st *st, t_inter *inter, int i)
+void		my_change_vec_for_cylinder(t_st *st, t_inter *inter, t_obj *obj)
 {
-  int           x;
-  float         a;
-  float         b;
-  float         c;
-  float         angle;
-
   inter->ptn.x = st->cord.x + st->vec.x * inter->d + obj->ptn.x;
   inter->ptn.y = st->cord.y + st->vec.y * inter->d + obj->ptn.y;
   inter->ptn.z = st->cord.z + st->vec.z * inter->d + obj->ptn.z;
+}
+
+int		is_a_god_conus(t_obj *obj, t_st *st, t_inter *inter, int i)
+{
+  int		x;
+  float		a;
+  float		b;
+  float		c;
+  float		angle;
+
+  my_change_vec_for_cylinder(st, inter, obj);
   if ((inter->ptn.z > obj->ptn.z)
       || (inter->ptn.z <= obj->ptn.z - obj->limit_z))
     {

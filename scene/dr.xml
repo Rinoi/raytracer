@@ -1,13 +1,13 @@
 <scene>
 
   <environnement>
-    <antialliasing>64</antialliasing>
-    <black_and_white>1</black_and_white>
-    <sepia>1</sepia>
-    <negatif>1</negatif>
-    <pattern>2</pattern>
-    <exposition>-15.2</exposition>
-    <complexity>15</complexity>
+    <antialliasing>1</antialliasing>
+    <black_and_white>0</black_and_white>
+    <sepia>0</sepia>
+    <negatif>0</negatif>
+    <pattern>0</pattern>
+    <exposition>-2.2</exposition>
+    <complexity>1</complexity>
     <dispersion>1.0</dispersion>
     <focus>50.0</focus>
     <stereoscopie>0</stereoscopie>
@@ -88,20 +88,20 @@
       <file>11.obj</file>
     </extern>
 
-    <plan>
-      <coord>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </coord>
-      <rot>
-    	<x>0</x>
-    	<y>0</y>
-    	<z>0</z>
-      </rot>
-      <constante>-10</constante>
-      <material_id>4</material_id>
-    </plan>
+    <!-- <plan> -->
+    <!--   <coord> -->
+    <!--     <x>0</x> -->
+    <!--     <y>0</y> -->
+    <!--     <z>0</z> -->
+    <!--   </coord> -->
+    <!--   <rot> -->
+    <!-- 	<x>0</x> -->
+    <!-- 	<y>0</y> -->
+    <!-- 	<z>0</z> -->
+    <!--   </rot> -->
+    <!--   <constante>-10</constante> -->
+    <!--   <material_id>4</material_id> -->
+    <!-- </plan> -->
 
     <!-- <plan> -->
     <!--   <coord> -->
@@ -233,21 +233,21 @@
     <!--   <limit_z>42</limit_z> -->
     <!-- </triangle> -->
 
-    <!-- <cylindre> -->
+    <!-- <sphere> -->
     <!--   <coord> -->
-    <!--     <x>40</x> -->
-    <!--     <y>40</y> -->
+    <!--     <x>0</x> -->
+    <!--     <y>0</y> -->
     <!--     <z>0</z> -->
     <!--   </coord> -->
     <!--   <rot> -->
-    <!-- 	<x>90</x> -->
+    <!-- 	<x>0</x> -->
     <!-- 	<y>0</y> -->
     <!-- 	<z>0</z> -->
     <!--   </rot> -->
     <!--   <rayon>5</rayon> -->
     <!--   <material_id>42</material_id> -->
     <!--   <limit_z>100</limit_z> -->
-    <!-- </cylindre> -->
+    <!-- </sphere> -->
 
   </obj>
 

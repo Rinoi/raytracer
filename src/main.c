@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sat Jun  8 20:42:57 2013 louis martin-pierrat
+** Last update Sun Jun  9 16:12:16 2013 lucas mayol
 */
 
 #include	<sys/types.h>
@@ -26,7 +26,6 @@ int	init_rs(t_rs *rs, struct s_xml *tree)
   rs->eyes = NULL;
   rs->lux = NULL;
   rs->mat = NULL;
-  rs->env.pattern = 0;
   while (tree != NULL && tree->child != NULL)
     {
       if (m_strcmp(tree->child->name, "eyes") == 0)

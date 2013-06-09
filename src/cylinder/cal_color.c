@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Sun Jun  9 14:27:05 2013 karina martynava
+** Last update Sun Jun  9 16:29:30 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -63,7 +63,8 @@ static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3], t_rs *rs)
   return (tab);
 }
 
-void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3], t_rs *rs)
+void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3],
+				   t_rs *rs)
 {
   int		color;
   unsigned char *tabs;

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:04:31 2013 karina martynava
-** Last update Sun Jun  9 12:34:09 2013 karina martynava
+** Last update Sun Jun  9 16:29:46 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -33,7 +33,6 @@ t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn)
   free(nrml);
   return (mat);
 }
-
 
 t_ptn	*cylinder_nrml_inv(t_obj *obj, t_ptn *ptn)
 {

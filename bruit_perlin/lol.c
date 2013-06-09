@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed Jun  5 18:57:12 2013 lucas mayol
-** Last update Sun Jun  9 08:41:13 2013 lucas mayol
+** Last update Sun Jun  9 16:46:42 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -29,11 +29,6 @@ void		initBruit3D(int p, int n)
 {
   nombre_octaves3D = n;
   pas3D = p;
-}
-
-double		bruit3D(int i, int j, int k)
-{
-  return (noise_3d(i, j, k));
 }
 
 double		interpolation_cos3D(t_bruit_t *br)
@@ -64,14 +59,14 @@ double		fonction_bruit3D(double x, double y, double z)
   i = (int) (x / pas3D);
   j = (int) (y / pas3D);
   k = (int) (z / pas3D);
-  b.a0 = bruit3D(i, j, k);
-  b.a1 =  bruit3D(i + 1, j, k);
-  b.b0 =  bruit3D(i, j + 1, k);
-  b.b1 =  bruit3D(i + 1, j + 1, k);
-  b.c0 =  bruit3D(i, j, k + 1);
-  b.c1 =  bruit3D(i + 1, j, k + 1);
-  b.d0 =  bruit3D(i, j + 1, k + 1);
-  b.d1 =  bruit3D(i + 1, j + 1, k + 1);
+  b.a0 = noise_3d(i, j, k);
+  b.a1 =  noise_3d(i + 1, j, k);
+  b.b0 =  noise_3d(i, j + 1, k);
+  b.b1 =  noise_3d(i + 1, j + 1, k);
+  b.c0 =  noise_3d(i, j, k + 1);
+  b.c1 =  noise_3d(i + 1, j, k + 1);
+  b.d0 =  noise_3d(i, j + 1, k + 1);
+  b.d1 =  noise_3d(i + 1, j + 1, k + 1);
   b.x = fmod(x / pas3D, 1);
   b.y = fmod(y / pas3D, 1);
   b.z = fmod(z / pas3D, 1);
@@ -84,7 +79,7 @@ double		bruit_coherent3D(t_ptn *ptn, double persistance)
   double	p;
   int		f;
   int		i;
-  
+
   somme = 0;
   p = 1;
   f = 1;

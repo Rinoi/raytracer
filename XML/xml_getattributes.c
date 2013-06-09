@@ -5,14 +5,14 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Sat Jun  1 19:35:07 2013 louis martin-pierrat
-** Last update Mon Jun  3 18:59:19 2013 louis martin-pierrat
+** Last update Sun Jun  9 16:40:59 2013 lucas mayol
 */
-#include	"xml_struct.h"
-#include	"xml_define.h"
-#include	"xml_macros.h"
 
 #include	<stdlib.h>
 #include	<stdio.h>
+#include	"xml_struct.h"
+#include	"xml_define.h"
+#include	"xml_macros.h"
 
 int		xml_getattribute(const int fd, struct s_xml **tree)
 {

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:20:26 2013 karina martynava
-** Last update Sun Jun  9 11:53:45 2013 karina martynava
+** Last update Sun Jun  9 15:08:41 2013 lucas mayol
 */
 
 #include <stdlib.h>
@@ -26,7 +26,7 @@ t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn)
   if (mat != NULL)
     *nrml = *mat;
   free(mat);
-  if (obj->mat->bump != 0)
+  if (obj->mat != NULL && obj->mat->bump != 0)
     my_bump(nrml, ptn, obj->mat->bump);
   return (nrml);
 }

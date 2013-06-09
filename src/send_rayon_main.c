@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat May 11 02:21:22 2013 lucas mayol
-** Last update Sun Jun  9 10:40:32 2013 lucas mayol
+** Last update Sun Jun  9 16:39:07 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -113,9 +113,6 @@ void		send_rayon_main(t_rs *rs)
 {
   rs->thr = 0;
   creat_thread(rs, 0, 1 * (rs->eyes->larg));
-  /* creat_thread(rs, 1 * (rs->eyes->larg / 4), 2 * (rs->eyes->larg / 4)); */
-  /* creat_thread(rs, 2 * (rs->eyes->larg / 4), 3 * (rs->eyes->larg / 4)); */
-  /* creat_thread(rs, 3 * (rs->eyes->larg / 4), 4 * (rs->eyes->larg / 4)); */
   while (rs->thr != 1)
     usleep(100000);
 }
