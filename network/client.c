@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:55:17 2013 thibault martinez
-** Last update Sat Jun  8 17:07:55 2013 thibault martinez
+** Last update Sun Jun  9 11:19:12 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -20,7 +20,8 @@ static int	socket_init(t_sock *sock)
   sock->si_client.sin_port = htons(atoi(sock->av[2]));
   if (inet_aton(sock->av[3], &sock->si_client.sin_addr) == 0)
     f_error("Bad ipv4 format");
-  if (connect(sock->socket_fd, (const struct sockaddr *)(&sock->si_client), sock->socket_size) == -1)
+  if (connect(sock->socket_fd, (const struct sockaddr *)(&sock->si_client),
+	      sock->socket_size) == -1)
     f_error(strerror(errno));
   return (EXIT_SUCCESS);
 }
@@ -45,7 +46,8 @@ int		rt_client(t_rs *rs, int argc, char **argv)
   rt_main_mlx(rs);
   send_rayon_main(rs);
   printf("Sending image [%d] to [%s]\n", i++, sock.av[3]);
-  while (write(sock.socket_fd, rs->wind.sampled.img, rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8)) != -1)
+  while (write(sock.socket_fd, rs->wind.sampled.img, rs->wind.sampled.x
+	       * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8)) != -1)
     {
       send_rayon_main(rs);
       printf("Sending image [%d] to [%s]\n", i++, sock.av[3]);

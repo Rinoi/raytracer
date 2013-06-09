@@ -5,9 +5,10 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:43:56 2013 thibault martinez
-** Last update Sat Jun  8 17:11:10 2013 thibault martinez
+** Last update Sun Jun  9 11:22:32 2013 thibault martinez
 */
 
+#include	<errno.h>
 #include	"rt.h"
 #include	"network.h"
 
@@ -43,8 +44,6 @@ void                    close_all_fd(t_sock *sock)
     }
 }
 
-#include <errno.h>
-
 int                     handler(t_rs *rs, int fd)
 {
   /* static char		*buf = NULL; */
@@ -55,24 +54,15 @@ int                     handler(t_rs *rs, int fd)
   /* printf("receiving...\n"); */
   /* if (buf == NULL) */
   /*   buf = malloc(sizeof(char) * rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8)); */
-  tmp = read(fd, rs->wind.sampled.img + ret, rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8));
-  /* printf("%s\n", strerror(errno)); */
+  tmp = read(fd, rs->wind.sampled.img + ret, rs->wind.sampled.x
+	     * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8));
   ret += tmp;
-  /* printf("RETURN : %d\n", tmp); */
-  if (ret == rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8))
+  if (ret == rs->wind.sampled.x * rs->wind.sampled.y
+      * (rs->wind.sampled.bpp / 8))
     {
       printf("Receiving image [%d]\n", c++);
       my_expose(rs);
-      /* close(fd); */
-      /* FD_CLR(fd, read_fds); */
       ret = 0;
-    }
-  else
-    {
-      /* if (write(STDOUT_FILENO, buf, rs->wind.sampled.x * rs->wind.sampled.y * (rs->wind.sampled.bpp / 8)) == -1); */
-      /* printf("loooooooool\n"); */
-      /* rs->wind.sampled.img = strdup(buf); */
-      /* my_expose(rs); */
     }
   return (EXIT_SUCCESS);
 }
@@ -87,10 +77,12 @@ int                     fd_manager(t_rs *rs, t_sock *sock)
     f_error(strerror(errno));
   if (FD_ISSET(sock->socket_fd, &sock->c_read_fds))
     {
-      if ((new_fd = accept(sock->socket_fd, (struct sockaddr *)(&sock->si_client),
+      if ((new_fd = accept(sock->socket_fd,
+			   (struct sockaddr *)(&sock->si_client),
 			   &sock->socket_size)) == -1)
 	f_error(strerror(errno));
-      printf("New connexion from [%s] on slot [%d]\n", inet_ntoa(sock->si_client.sin_addr), new_fd);
+      printf("New connexion from [%s] on slot [%d]\n",
+	     inet_ntoa(sock->si_client.sin_addr), new_fd);
       FD_SET(new_fd, &sock->read_fds);
       send_xml(new_fd, sock);
     }
@@ -117,7 +109,6 @@ int		rt_server(t_rs *rs, int argc, char **argv)
   sock.av = argv;
   if ((sock.socket_fd = socket_init(&sock)) == -1)
     return (EXIT_FAILURE);
-  /* close_all_fd(&sock); */
   FD_ZERO(&sock.read_fds);
   FD_SET(sock.socket_fd, &sock.read_fds);
   while (1)
