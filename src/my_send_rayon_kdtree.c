@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 14 23:41:41 2013 lucas mayol
-** Last update Sun Jun  9 03:24:03 2013 lucas mayol
+** Last update Sun Jun  9 08:19:25 2013 lucas mayol
 */
 
 #include <values.h>
@@ -125,7 +125,8 @@ t_inter		*my_send_rayon_rec(t_kdtree *tree, t_st *droite, int a)
   if (a <= 1 || (tree->t_l == NULL && tree->t_r == NULL))
     {
       my_return = check_obj_in_tree(tree->obj, droite);
-      if (my_return != NULL && my_check_for_p(tree, droite, my_return->d) == -1)
+      if (my_return != NULL
+	  && my_check_for_p(tree, droite, my_return->d) == -1)
 	return (NULL);
       return (my_return);
     }
