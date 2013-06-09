@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat May 11 18:19:53 2013 karina martynava
-** Last update Sat Jun  8 22:38:52 2013 karina martynava
+** Last update Sun Jun  9 08:55:26 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -14,22 +14,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "get_next_line.h"
-#include "obj_pars.h"
 #include "rt.h"
-
-
-typedef struct s_ext
-{
-  t_ptn	ptn;
-  t_ptn	rot;
-  int	fd;
-} t_ext;
-
-typedef struct s_obj_pars_cmd
-{
-    char  *str;
-    void  (*ptr)(t_ext *, t_vr **, char **);
-} t_obj_cmd;
+#include "obj_pars.h"
 
 void  add_point(t_ext *ex, t_vr **vr, char **tab);
 
@@ -42,15 +28,13 @@ const t_obj_cmd  g_cmd[]=
 
 char  **wrd_tab(char *str, char c);
 
-void  add_point(t_ext *ex, t_vr **vr, char **tab)
+void  add_point(__attribute__((unused))t_ext *ex, t_vr **vr, char **tab)
 {
   t_vr  *new;
   int  i;
   int  bol;
 
   if ((i = 0) == 0 && (bol = 1) && (*vr == NULL || (*vr)->i == 99))
-    // 1er APPEL DE LA FONCTION OU SEUIL DES 99 VORTEX ATTEINTS
-    // -> Malloc de la structure
     {
       new = malloc(sizeof(*new));
       if (new == NULL)
@@ -127,22 +111,22 @@ void    add_face(t_ext *ex, t_vr **vr, char **tab, t_obj **list)
   t_tri	*tri;
   int    bol;
 
-  tri = malloc(sizeof(t_tri)); //// ADD AN X
+  tri = malloc(sizeof(t_tri));
   bol = 1;
   if ((elem = malloc(sizeof(t_obj))) == NULL)
     return ;
-  elem = *((*vr)->obj); // recuperation du contenu de la structur obj originelle
+  elem = ex->obj;
   if (bol && tab != NULL && tab[0])
-    get_cord_face(vr, tab[0], &elem->ptn, &(*vr)->obj->ptn); // coordonne de l'obj
+    get_cord_face(vr, tab[0], &elem->ptn, &ex->obj->ptn);
   else
     bol = 0;
   if (bol && tab != NULL && tab[0])
-    get_cord_face(vr, tab[1], &tri->a2, &(*vr)->obj->ptn);
+    get_cord_face(vr, tab[1], &tri->a2, &ex->obj->ptn);
   else
     bol = 0;
   if (bol && tab != NULL && tab[0])
-    get_cord_face(vr, tab[2], &tri->a3, &(*vr)->obj->ptn);
-  from_ptns_to_vec(tri, elem); // on change les points en vecteurs
+    get_cord_face(vr, tab[2], &tri->a3, &ex->obj->ptn);
+  from_ptns_to_vec(tri, elem);
   elem->data = (void *)(tri);
   elem->next = *list;
   *list = elem;
