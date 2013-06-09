@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Mon May  6 12:35:05 2013 lucas mayol
-** Last update Sat Jun  8 19:13:59 2013 lucas mayol
+** Last update Sun Jun  9 10:06:36 2013 lucas mayol
 */
 
 #include <unistd.h>
@@ -104,6 +104,7 @@ t_inter		*call_inter_triangle(t_obj *o, t_st dr)
       if ((my_return = malloc(sizeof(t_inter))) == NULL)
 	return (NULL);
       my_return->d = t;
+      //      printf("t : %f\n", t);
       my_return->obj = o;
       my_return->cal_norm = triangle_nrml;
       return (my_return);

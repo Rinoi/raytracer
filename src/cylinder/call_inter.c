@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 18:52:20 2013 lucas mayol
+** Last update Sun Jun  9 15:12:55 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -76,7 +76,7 @@ t_inter		*call_inter_cylinder(t_obj *obj, t_st dr)
     - pow(*((float *)(obj->data)), 2);
   inter->d = resolve_two(a, b, c, &x);
   inter->cal_norm = cylinder_nrml;
-  if (inter->d == -1 || is_a_god_cylinder(obj, &dr, inter, 0) == -1)
+  if (inter->d <= EPSILLON || is_a_god_cylinder(obj, &dr, inter, 0) == -1)
     {
       free(inter);
       return (NULL);

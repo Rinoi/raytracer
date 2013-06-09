@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Sat Jun  8 20:53:43 2013 louis martin-pierrat
-** Last update Sun Jun  9 05:23:14 2013 lucas mayol
+** Last update Sun Jun  9 11:26:18 2013 lucas mayol
 */
 #include	"rt.h"
 
@@ -37,7 +37,6 @@ void		new_extern(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
   get_ivalue(tree, "material_id", &mat_id) == FAIL ?
     (new->mat = NULL) : (new->mat = seek_mat(mat_id, mat));
   new->next = NULL;
-  new->matrix = NULL;
   creat_matrice_for_obj(new);
   parsing(path, new);
   /* new->cal_color = cal_color_extern; */

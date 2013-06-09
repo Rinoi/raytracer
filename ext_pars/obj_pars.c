@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat May 11 18:19:53 2013 karina martynava
-** Last update Sun Jun  9 09:38:09 2013 karina martynava
+** Last update Sun Jun  9 14:05:19 2013 lucas mayol
 */
 
 #include <string.h>
@@ -93,15 +93,41 @@ void	get_cord_face(t_vr **vr, char *str, t_ptn *ptn, t_ptn *obj)
   ptn->z = (*vr)->ptn[(nb - 1 - (*vr)->total)][2];
 }
 
-
-void	from_ptns_to_vec(t_tri *tri, t_obj *elem)
+void	normalise_ptn_for_square(t_tri *tri, t_obj *elem, t_obj *obj)
 {
-  tri->a2.x -= elem->ptn.x;
-  tri->a2.y -= elem->ptn.y;
-  tri->a2.z -= elem->ptn.z;
-  tri->a3.x -= elem->ptn.x;
-  tri->a3.y -= elem->ptn.y;
-  tri->a3.z -= elem->ptn.z;
+  elem->ptn.x -= obj->ptn.x;
+  elem->ptn.y -= obj->ptn.y;
+  elem->ptn.z -= obj->ptn.z;
+  tri->a2.x -= obj->ptn.x;
+  tri->a2.y -= obj->ptn.y;
+  tri->a2.z -= obj->ptn.z;
+  tri->a3.x -= obj->ptn.x;
+  tri->a3.y -= obj->ptn.y;
+  tri->a3.z -= obj->ptn.z;  
+}
+
+void   	from_ptns_to_vec(t_tri *tri, t_obj *elem, t_obj *obj)
+{
+  t_ptn	*mat;
+
+  normalise_ptn_for_square(tri, elem, obj);
+  mat = mul_m_p(obj->matrix, &tri->a2);
+  tri->a2 = *mat;
+  free(mat);
+  mat = mul_m_p(obj->matrix, &tri->a3);
+  tri->a3 = *mat;
+  free(mat);
+  mat = mul_m_p(obj->matrix, &elem->ptn);
+  elem->ptn.x = mat->x + obj->ptn.x;
+  elem->ptn.y = mat->y + obj->ptn.y;
+  elem->ptn.z = mat->z + obj->ptn.z;
+  free(mat);
+  tri->a2.x = tri->a2.x - elem->ptn.x + obj->ptn.x;
+  tri->a2.y = tri->a2.y - elem->ptn.y + obj->ptn.y;
+  tri->a2.z = tri->a2.z - elem->ptn.z + obj->ptn.z;
+  tri->a3.x = tri->a3.x - elem->ptn.x + obj->ptn.x;
+  tri->a3.y = tri->a3.y - elem->ptn.y + obj->ptn.y;
+  tri->a3.z = tri->a3.z - elem->ptn.z + obj->ptn.z;
 }
 
 void    add_face(t_ext *ex, t_vr **vr, char **tab, t_obj **list)
@@ -125,8 +151,11 @@ void    add_face(t_ext *ex, t_vr **vr, char **tab, t_obj **list)
     bol = 0;
   if (bol && tab != NULL && tab[3])
     get_cord_face(vr, tab[3], &tri->a3, &ex->obj->ptn);
-  from_ptns_to_vec(tri, elem);
+  from_ptns_to_vec(tri, elem, ex->obj);
   elem->data = (void *)(tri);
+  elem->cal_color = call_color_triangle;
+  elem->cal_inter = call_inter_triangle;
+  boxin_triangle(elem);
   elem->next = *list;
   *list = elem;
 }
@@ -166,12 +195,6 @@ t_obj		*obj_pars_main(char *obj, t_obj *tmp)
 
   list = NULL;
   ext.obj = tmp;
-  ext.ptn.x = 0;
-  ext.ptn.y = 0;
-  ext.ptn.z = 0;
-  ext.rot.x = 0;
-  ext.rot.y = 0;
-  ext.rot.z = 0;
   if ((ext.fd = open(obj, O_RDONLY)) == -1)
     return (NULL);
   pars(&ext, &list);
