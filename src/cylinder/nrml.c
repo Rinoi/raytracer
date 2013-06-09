@@ -5,72 +5,41 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:04:31 2013 karina martynava
-** Last update Sat Jun  8 18:53:11 2013 lucas mayol
+** Last update Sun Jun  9 12:34:09 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include "rt.h"
 
-t_ptn	*cylinder_nrml_a(t_obj *obj, t_ptn *ptn)
-{
-  t_ptn	*nrml;
-
-  nrml = malloc(sizeof(*nrml));
-  if (nrml == NULL)
-    return (NULL);
-  nrml->x = ptn->x - obj->ptn.x;
-  nrml->y = ptn->y - obj->ptn.y;
-  nrml->z = 0;
-  return (nrml);
-}
-
-void	call_proj(float d, t_obj *obj, t_ptn *m)
-{
-  t_ptn	*mat;
-
-  m->x = 0;
-  m->y = 0;
-  m->z = -1;
-  mat = mul_m_p(obj->matrix_inv, m);
-  m->x = mat->x * d + obj->ptn.x;
-  m->y = mat->y * d + obj->ptn.y;
-  m->z = mat->z * d + obj->ptn.z;
-  free(mat);
-}
-
 t_ptn	*cylinder_nrml(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
-  t_ptn	proj;
-  float	h;
-  float	d;
+  t_ptn	cp;
+  t_ptn	*mat;
 
+  cp.x = ptn->x - obj->ptn.x;
+  cp.y = ptn->y - obj->ptn.y;
+  cp.z = ptn->z - obj->ptn.z;
+  mat = mul_m_p(obj->matrix, &cp);
+  cp = *mat;
+  free(mat);
   nrml = malloc(sizeof(*nrml));
   if (nrml == NULL)
     return (NULL);
-  h = sqrt(pow(obj->ptn.x - ptn->x, 2)
-	   + pow(obj->ptn.y - ptn->y, 2)
-	   + pow(obj->ptn.z - ptn->z, 2));
-  d = pow(h, 2) - pow(*((float *)(obj->data)), 2);
-  if (d < 0)
-    d = -d;
-  d = sqrt(d);
-  call_proj(d, obj, &proj);
-  nrml->x = ptn->x - proj.x;
-  nrml->y = ptn->y - proj.y;
-  nrml->z = ptn->z - proj.z;
-  if (obj->mat->bump != 0)
-    my_bump(nrml, ptn, obj->mat->bump);
-  return (nrml);
+  nrml->x = cp.x;
+  nrml->y = cp.y;
+  nrml->z = 0;
+  mat = mul_m_p(obj->matrix_inv, nrml);
+  free(nrml);
+  return (mat);
 }
+
 
 t_ptn	*cylinder_nrml_inv(t_obj *obj, t_ptn *ptn)
 {
   t_ptn	*nrml;
 
   nrml = cylinder_nrml(obj, ptn);
-  nrml->x = -nrml->x;
-  nrml->y = -nrml->y;
-  nrml->z = -nrml->z;
+  mult_vect(nrml, -1.0f);
   return (nrml);
 }

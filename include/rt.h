@@ -34,20 +34,20 @@
 # define SPOTLEN	10
 
 // POST - IN PROCESSING
-# define ANTIA		2
+//# define ANTIA		2
 # define MAXDEPTH	10
-# define EXPO		-2.07f
-# define B_AND_W	0
-# define SEPIA		0
-# define NEGATIVE	0
-# define SEP_RED	112.0
-# define SEP_GREEN	66.0
-# define SEP_BLUE	20.0
-# define STEREOSCOPY	0
+//# define EXPO		-2.07f
+//# define B_AND_W	0
+//# define SEPIA		0
+//# define NEGATIVE	0
+//# define SEP_RED	112.0
+//# define SEP_GREEN	66.0
+//# define SEP_BLUE	20.0
+//# define STEREOSCOPY	0
 # define GO_OUT		1
 # define GO_IN		0
 # define DEFAULT_INDICE	1.0f
-# define DEF_FOCUS	50.0f
+//# define DEF_FOCUS	50.0f
 # define COMPLEXITY	1
 # define DISPER		1.0f
 # define SPACE		1.0f
@@ -155,7 +155,7 @@ typedef	struct	s_obj
   t_box		box;
   t_inter      	*(*cal_inter)(struct s_obj *, t_st );
   float		(*cal_lux_cos)(struct s_obj *, t_ptn *, t_lux *);
-  void		(*cal_color)(struct s_obj *, t_inter *, float *);
+  void		(*cal_color)(struct s_obj *, t_inter *, float *, t_rs *);
   struct s_obj	*next;
 } t_obj;
 
@@ -189,16 +189,16 @@ typedef struct	s_wind
 
 typedef struct	s_environnement
 {
-  int		antia;
-  int		b_and_w;
-  int		sepia;
-  int		negative;
-  int		pattern;
-  float		expo;
+  int		antia; // antia
+  int		b_and_w; // de
+  int		sepia; //
+  int		negative; //
+  int		pattern; //
+  float		expo; //
   int		complexity;
   float		disper;
   float		focus;
-  int		stereo;
+  int		stereo; //
 } t_env;
 
 typedef struct	s_pov
@@ -245,7 +245,7 @@ int     init_rs(t_rs *rs, struct s_xml *tree);
 
 // color.c
 
-int	convert_col(float col[3]);
+int	convert_col(float col[3], t_rs *rs);
 
 // lum.c
 
@@ -338,17 +338,17 @@ t_ptn	*plane_nrml(t_obj *obj, t_ptn *ptn);
 t_ptn	*plane_nrml_inv(t_obj *obj, t_ptn *ptn);
 t_ptn	*triangle_nrml(t_obj *obj, t_ptn *ptn);
 
-void	cal_color_cylinder(t_obj *obj, t_inter *inter, float *tab);
-void	cal_color_plan(t_obj *obj, t_inter *inter, float tab[3]);
-void	cal_color_shere(t_obj *obj, t_inter *inter, float tab[3]);
-void	cal_color_conus(t_obj *obj, t_inter *inter, float tab[3]);
-void	call_color_triangle(t_obj *obj, t_inter *inter, float tab[3]);
+void	cal_color_cylinder(t_obj *obj, t_inter *inter, float *tab, t_rs *);
+void	cal_color_plan(t_obj *obj, t_inter *inter, float tab[3], t_rs *);
+void	cal_color_shere(t_obj *obj, t_inter *inter, float tab[3], t_rs *);
+void	cal_color_conus(t_obj *obj, t_inter *inter, float tab[3], t_rs *);
+void	call_color_triangle(t_obj *obj, t_inter *inter, float tab[3], t_rs *);
 int	cal_texture_plan(t_obj *obj, float x, float y, float z);
 
 float	resolve_two(float a, float b, float c, int *x);
 float	resolve_two_inv(float a, float b, float c, int *x);
 
-int	color_bruit_bois(t_obj *obj, t_inter *inter);
+int	color_bruit_bois(t_obj *obj, t_inter *inter, t_rs *);
 void	my_bump(t_ptn *nrml, t_ptn *ptn, float bump);
 
 void	new_material(t_mat **, t_rs *, struct s_xml *);

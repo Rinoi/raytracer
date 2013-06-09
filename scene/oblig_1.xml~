@@ -15,65 +15,34 @@
 
   <material>
     <id>42</id>
-    <red>1</red>
+    <red>1.0</red>
     <green>0</green>
     <blue>0</blue>
     <spec1>1.0</spec1>
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
     <specpow>60</specpow>
-    <reflexion>0.0</reflexion>
+    <reflexion>0</reflexion>
     <damier>0</damier>
     <bump>0</bump>
-    <!-- <texture>Texture/ciel.xpm</texture> -->
-  </material>
-  <material>
-    <id>4</id>
-    <red>1</red>
-    <green>0</green>
-    <blue>0</blue>
-    <spec1>1.0</spec1>
-    <spec2>1.0</spec2>
-    <spec3>1.0</spec3>
-    <specpow>60</specpow>
-    <reflexion>0.0</reflexion>
-    <damier>0</damier>
-    <bump>0</bump>
-    <!-- <texture>Texture/ciel.xpm</texture> -->
-  </material>
-  <material>
-    <id>1</id>
-    <red>0.2</red>
-    <green>0.2</green>
-    <blue>1</blue>
-    <spec1>1.0</spec1>
-    <spec2>1.0</spec2>
-    <spec3>1.0</spec3>
-    <specpow>895623</specpow>
-    <reflexion>0.9</reflexion>
-    <damier>0</damier>
-    <bump>0</bump>
-    <indice>1</indice>
-
-    <!-- <texture>Texture/ciel.xpm</texture> -->
+    <indice>0</indice>
   </material>
 
   <obj> 
-    <cone>
+    <sphere>
       <coord>
         <x>0</x>
-        <y>0</y>
-        <z>0</z>
+        <y>-20</y>
+        <z>-20</z>
       </coord>
       <rot>
-    	<x>42</x>
+    	<x>0</x>
     	<y>0</y>
     	<z>0</z>
       </rot>
-      <angle>70</angle>
+      <rayon>15</rayon>
       <material_id>42</material_id>
-      <limit_z>42</limit_z>
-    </cone>
+    </sphere>
   </obj>
 
   <lumiere>
@@ -81,16 +50,29 @@
     <green>0.8</green>
     <blue>0.8</blue>
     <coord>
-      <x>-500</x>
-      <y>0</y>
-      <z>0</z>
+      <x>0</x>
+      <y>-500</y>
+      <z>-20</z>
+    </coord>
+    <attribute>0</attribute>
+  </lumiere>
+  
+
+  <lumiere>
+    <red>0.8</red>
+    <green>0.8</green>
+    <blue>0.8</blue>
+    <coord>
+      <x>0</x>
+      <y>20</y>
+      <z>500</z>
     </coord>
     <attribute>0</attribute>
   </lumiere>
   
   <eyes>
     <cam>
-      <x> -50 </x>
+      <x> -100 </x>
       <y> 0 </y>
       <z> 0 </z>
     </cam>

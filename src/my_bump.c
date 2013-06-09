@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Fri Jun  7 02:13:31 2013 lucas mayol
-** Last update Sun Jun  9 08:41:52 2013 lucas mayol
+** Last update Sun Jun  9 14:31:55 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -28,7 +28,6 @@ void    my_bump(t_ptn *nrml, t_ptn *ptn, float bump)
   float ny;
   float nz;
   t_ptn m_ptn;
-  float tmp;
 
   initBruit3D(2, 16);
   normalisation_vec(nrml);

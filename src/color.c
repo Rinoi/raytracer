@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 09:27:46 2013 karina martynava
-** Last update Sun Jun  9 10:21:40 2013 karina martynava
+** Last update Sun Jun  9 14:21:06 2013 karina martynava
 */
 
 #include <math.h>
@@ -45,13 +45,15 @@ void	black_and_white(float col[3])
   col[1] = medium;
   col[2] = medium;
 }
-void	exposure(float col[3])
+
+void	exposure(float col[3], t_rs *rs)
 {
   float		blue;
   float		green;
   float		red;
-  const float	exposure = EXPO;
+  float		exposure;
 
+  exposure = rs->env.expo;
   blue = col[0];
   green = col[1];
   red = col[2];
@@ -63,15 +65,14 @@ void	exposure(float col[3])
   col[2] = red;
 }
 
-int		convert_col(float col[3])
+int		convert_col(float col[3], t_rs *rs)
 {
   unsigned int	color;
   unsigned char	*modif;
   float		max;
 
-/* printf("\tcOLOR : ::%f %f %f\n", col[0], col[1], col[2]); */
-    exposure(col);
-  if (SEPIA)
+  exposure(col, rs);
+  if (rs->env.sepia)
     sepia_tone(col);
   max = (col[0] > col[1]) ? col[0] : col[1];
   max = (max > col[2]) ? max : col[2];
@@ -79,9 +80,9 @@ int		convert_col(float col[3])
   col[0] = col[0] * max;
   col[1] = col[1] * max;
   col[2] = col[2] * max;
-  if (B_AND_W)
+  if (rs->env.b_and_w)
     black_and_white(col);
-  if (NEGATIVE)
+  if (rs->env.negative)
     negative_color(col);
   modif = (unsigned char *)&color;
   modif[0] = col[0] * 0xFF;

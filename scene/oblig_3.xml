@@ -5,7 +5,7 @@
     <black_and_white>1</black_and_white>
     <sepia>1</sepia>
     <negatif>1</negatif>
-    <pattern>0</pattern>
+    <pattern>2</pattern>
     <exposition>-15.2</exposition>
     <complexity>15</complexity>
     <dispersion>1.0</dispersion>
@@ -14,24 +14,10 @@
   </environnement>
 
   <material>
-    <id>42</id>
-    <red>1</red>
-    <green>0</green>
-    <blue>0</blue>
-    <spec1>1.0</spec1>
-    <spec2>1.0</spec2>
-    <spec3>1.0</spec3>
-    <specpow>60</specpow>
-    <reflexion>0.0</reflexion>
-    <damier>0</damier>
-    <bump>0</bump>
-    <!-- <texture>Texture/ciel.xpm</texture> -->
-  </material>
-  <material>
     <id>4</id>
     <red>1</red>
-    <green>0</green>
-    <blue>0</blue>
+    <green>0.2</green>
+    <blue>0.2</blue>
     <spec1>1.0</spec1>
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
@@ -43,37 +29,50 @@
   </material>
   <material>
     <id>1</id>
-    <red>0.2</red>
-    <green>0.2</green>
-    <blue>1</blue>
+    <red>0.4</red>
+    <green>0.4</green>
+    <blue>0</blue>
     <spec1>1.0</spec1>
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
-    <specpow>895623</specpow>
-    <reflexion>0.9</reflexion>
+    <specpow>60</specpow>
+    <reflexion>0</reflexion>
     <damier>0</damier>
     <bump>0</bump>
-    <indice>1</indice>
-
-    <!-- <texture>Texture/ciel.xpm</texture> -->
+    <indice>0</indice>
   </material>
 
   <obj> 
-    <cone>
+    <sphere>
       <coord>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
+        <x>-10</x>
+        <y>-25</y>
+        <z>-25</z>
       </coord>
       <rot>
-    	<x>42</x>
+    	<x>0</x>
     	<y>0</y>
     	<z>0</z>
       </rot>
-      <angle>70</angle>
-      <material_id>42</material_id>
-      <limit_z>42</limit_z>
-    </cone>
+      <rayon>15</rayon>
+      <material_id>1</material_id>
+      <limit_z>700</limit_z>
+    </sphere>
+    <cylindre>
+      <coord>
+        <x>200</x>
+        <y>-20</y>
+        <z>0</z>
+      </coord>
+      <rot>
+    	<x>50</x>
+    	<y>-84</y>
+    	<z>0</z>
+      </rot>
+      <rayon>5</rayon>
+      <material_id>4</material_id>
+      <limit_z>700</limit_z>
+    </cylindre>
   </obj>
 
   <lumiere>
@@ -81,9 +80,9 @@
     <green>0.8</green>
     <blue>0.8</blue>
     <coord>
-      <x>-500</x>
+      <x>-10</x>
       <y>0</y>
-      <z>0</z>
+      <z>-2</z>
     </coord>
     <attribute>0</attribute>
   </lumiere>

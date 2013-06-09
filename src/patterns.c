@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 19:19:16 2013 karina martynava
-** Last update Sat Jun  8 12:25:19 2013 karina martynava
+** Last update Sun Jun  9 14:14:39 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -62,7 +62,7 @@ void	vert_pattern(t_data_t *data, t_st *droit)
       droit->y = 0;
       while (droit->y <= data->rs->eyes->larg)
 	{
-	  color = antialiasing_color(2, droit, data->rs, focus);
+	  color = antialiasing_color(data->rs->env.antia, droit, data->rs, focus);
 	  my_pixel_put_to_image(&data->rs->wind.sampled, droit->x, droit->y, color);
 	  droit->y += 1;
 	}
@@ -91,7 +91,7 @@ void	nrml_pattern(t_data_t *data, t_st *droit)
       droit->x = 0;
       while (droit->x <= data->rs->eyes->lng)
 	{
-	  color = antialiasing_color(2, droit, data->rs, focus);
+	  color = antialiasing_color(data->rs->env.antia, droit, data->rs, focus);
 	  my_pixel_put_to_image(&data->rs->wind.sampled, droit->x, droit->y, color);
 	  droit->x += 1;
 	}
@@ -131,7 +131,7 @@ void	alea_pattern(t_data_t *data, t_st *droit)
 	  full[num] = 1;
 	  droit->y = num / (data->rs->eyes->lng);
 	  droit->x = num % (data->rs->eyes->lng);
-	  color = antialiasing_color(2, droit, data->rs, focus);
+	  color = antialiasing_color(data->rs->env.antia, droit, data->rs, focus);
 	  my_pixel_put_to_image(&data->rs->wind.sampled, droit->x, droit->y, color);
 	}
       if (data->rs->client != 1)

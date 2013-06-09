@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:09:56 2013 karina martynava
-** Last update Sun Jun  9 11:44:37 2013 karina martynava
+** Last update Sun Jun  9 14:12:10 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -30,8 +30,8 @@ t_ptn	*conus_nrml(t_obj *obj, t_ptn *ptn)
   nrml->x = cp.x;
   nrml->y = cp.y;
   nrml->z = angle * cp.z;
-  /* mat = mul_m_p(obj->matrix_inv, nrml); */
-  /* *nrml = *mat; */
-  /* free(mat); */
+  mat = mul_m_p(obj->matrix_inv, nrml);
+  *nrml = *mat;
+  free(mat);
   return (nrml);
 }
