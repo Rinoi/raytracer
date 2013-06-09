@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Thu Jun  6 23:23:12 2013 karina martynava
-** Last update Sun Jun  9 09:53:36 2013 karina martynava
+** Last update Sun Jun  9 11:14:25 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -14,8 +14,6 @@
 
 float	lambert_coef(t_ptn *lightray, t_ptn *nrml, char attribute);
 void	new_straight(t_st *droit, t_inter *last);
-
-
 
 void	add_fresnel(t_st *st, t_inter *inter)
 {
@@ -54,7 +52,7 @@ void 	rm_fresnel(t_fresnel *sv)
     sv->prev->next = sv->next;
 }
 
-void		fresnel_out(t_inter *inter, t_st *st, float ind[2], t_fresnel *sv)
+void	fresnel_out(t_inter *inter, t_st *st, float ind[2], t_fresnel *sv)
 {
   ind[0] = inter->obj->mat->indice;
   if (sv == NULL ||
@@ -105,16 +103,18 @@ void		fresnel_indice_list(t_inter *inter, t_st *st, float ind[2])
 
 float	refraction_angle(float dens[2], float ij[4], t_st *st, t_ptn *nrml)
 {
-  ij[0] = lambert_coef(&st->vec, nrml, NONE);
-  if (ij[0] >= 0.999)
-    return (0.0f);
-  ij[1] = sqrtf(1.0 - pow(ij[0], 2));
-  ij[3] = (dens[0] / dens[1]) * ij[1];
-  if (ij[3] * ij[3] >= 0.999)
-    return (-1.0);
-  ij[2] = sqrtf(1.0 - pow(ij[3], 2));
+  float	dist;
+
   mult_vect(nrml, 1.0f / sqrt(scal_prod(nrml, nrml)));
   mult_vect(&st->vec, 1.0f / sqrt(scal_prod(&st->vec, &st->vec)));
+  ij[0] = fabsf(scal_prod(&st->vec, nrml));
+  if (ij[0] > 0.999)
+    return (0.0f);
+  ij[1] = sqrtf(1.0f - ij[0] * ij[0]);
+  ij[3] = (dens[0] / dens[1]) * ij[1];
+  if (ij[3] * ij[3] > 0.999)
+    return (-1.0);
+  ij[2] = sqrtf(1.0f - ij[3] * ij[3]);
   st->vec.x = st->vec.x + ij[0] * nrml->x;
   st->vec.y = st->vec.y + ij[0] * nrml->y;
   st->vec.z = st->vec.z + ij[0] * nrml->z;
@@ -138,6 +138,9 @@ void	refraction(t_inter *inter, t_st *st)
   fresnel_indice_list(inter, st, density);
   nrml = (*(inter->cal_norm))(inter->obj, &(inter->ptn));
   st->indice = density[1];
+  if (density[0] != density[1] && density[0] == inter->obj->mat->indice)
+    mult_vect(nrml, -1.0);
+
   if (nrml == NULL || refraction_angle(density, ij, st, nrml) == -1.0f)
     {
       new_straight(st, inter);

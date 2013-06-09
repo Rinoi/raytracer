@@ -15,9 +15,9 @@
 
   <material>
     <id>42</id>
-    <red>0.8</red>
-    <green>0.8</green>
-    <blue>0.8</blue>
+    <red>1</red>
+    <green>0</green>
+    <blue>0</blue>
     <spec1>1.0</spec1>
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
@@ -49,32 +49,31 @@
     <spec1>1.0</spec1>
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
-    <specpow>60</specpow>
-    <reflexion>0.8</reflexion>
+    <specpow>895623</specpow>
+    <reflexion>0.9</reflexion>
     <damier>0</damier>
     <bump>0</bump>
-    <indice>0.5</indice>
+    <indice>1</indice>
+
     <!-- <texture>Texture/ciel.xpm</texture> -->
   </material>
 
-  <obj>
- 
-
-    <sphere>
+  <obj> 
+    <cone>
       <coord>
         <x>0</x>
         <y>0</y>
         <z>0</z>
       </coord>
       <rot>
-    	<x>0</x>
+    	<x>42</x>
     	<y>0</y>
     	<z>0</z>
       </rot>
-      <rayon>20</rayon>
+      <angle>70</angle>
       <material_id>42</material_id>
       <limit_z>42</limit_z>
-    </sphere>
+    </cone>
   </obj>
 
   <lumiere>
@@ -82,8 +81,8 @@
     <green>0.8</green>
     <blue>0.8</blue>
     <coord>
-      <x>0</x>
-      <y>960</y>
+      <x>-500</x>
+      <y>0</y>
       <z>0</z>
     </coord>
     <attribute>0</attribute>
@@ -98,8 +97,7 @@
   <!--     <y>-20</y> -->
   <!--     <z>0</z> -->
   <!--   </coord> -->
-  <!-- </lumiere> -->
-  
+  <!-- </lumiere> -->  
   <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->  
   <!-- <eyes> -->
   <!-- </eyes> -->
