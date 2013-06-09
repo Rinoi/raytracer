@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 09:27:46 2013 karina martynava
-** Last update Sun Jun  2 21:52:48 2013 karina martynava
+** Last update Sun Jun  9 10:21:40 2013 karina martynava
 */
 
 #include <math.h>
@@ -69,7 +69,8 @@ int		convert_col(float col[3])
   unsigned char	*modif;
   float		max;
 
-  exposure(col);
+/* printf("\tcOLOR : ::%f %f %f\n", col[0], col[1], col[2]); */
+    exposure(col);
   if (SEPIA)
     sepia_tone(col);
   max = (col[0] > col[1]) ? col[0] : col[1];

@@ -5,29 +5,29 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 04:06:32 2013 karina martynava
-** Last update Sat Jun  8 12:35:44 2013 karina martynava
+** Last update Sun Jun  9 10:28:23 2013 karina martynava
 */
 
 #include <stdlib.h>
 #include <math.h>
 #include "rt.h"
 
-void	work_with_illumination(float col[4], t_inter *point, float lux[3])
+void	work_with_illumination(float col[4], t_inter *point, float lux[3], float coef)
 {
   float	tab[3];
 
-  if (point->obj->mat && col[3] > 0)
+  if (point->obj->mat && coef > 0)
     {
       point->obj->cal_color(point->obj, point, tab);
-      col[0] = col[0] + col[3] * lux[0] * tab[0];
-      col[1] = col[1] + col[3] * lux[1] * tab[1];
-      col[2] = col[2] + col[3] * lux[2] * tab[2];
+      col[0] = col[0] + coef * lux[0] * tab[0];
+      col[1] = col[1] + coef * lux[1] * tab[1];
+      col[2] = col[2] + coef * lux[2] * tab[2];
     }
-  else if (col[3] > 0)
+  else if (coef > 0)
     {
-      col[0] = col[0] + col[3] * lux[0] * 1;
-      col[1] = col[1] + col[3] * lux[1] * 1;
-      col[2] = col[2] + col[3] * lux[2] * 1;
+      col[0] = col[0] + coef * lux[0] * 1;
+      col[1] = col[1] + coef * lux[1] * 1;
+      col[2] = col[2] + coef * lux[2] * 1;
     }
 }
 
@@ -61,8 +61,7 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 
   nrml = (*(point->cal_norm))(point->obj, &(point->ptn));
   sv = rs->lux;
-  add_vect(&light.cord, &point->ptn, &st->cord);
-  sub_vect(&light.cord, &light.cord, &st->cord);
+  light.cord = point->ptn;
   while (sv != NULL && init_lux(lux, sv))
     {
       create_light_vector(sv, &light);
@@ -71,7 +70,7 @@ void	enligten(t_inter *point, t_rs *rs, float col[4], t_st *st)
 	  coef = lambert_coef(&light.vec, nrml, sv->attribute) * sv->lux;
 	  coef = (sv->attribute == SPOT) ? coef / SPOTLEN * \
 	    (1 - (sqrt(scal_prod(&light.vec, &light.vec)))) : coef;
-	  work_with_illumination(col, point, lux);
+	  work_with_illumination(col, point, lux, coef);
 	  if (sv->attribute != AMB && point->obj->mat != NULL)
 	    blinn_phong(st, &light.vec, point, col, sv);
 	}

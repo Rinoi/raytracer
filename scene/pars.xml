@@ -5,7 +5,7 @@
     <black_and_white>1</black_and_white>
     <sepia>1</sepia>
     <negatif>1</negatif>
-    <pattern>2</pattern>
+    <pattern>0</pattern>
     <exposition>-15.2</exposition>
     <complexity>15</complexity>
     <dispersion>1.0</dispersion>
@@ -59,91 +59,6 @@
 
   <obj>
  
-    <extern>
-      <coord>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </coord>
-      <rot>
-    	<x>45</x>
-    	<y>0</y>
-    	<z>0</z>
-      </rot>
-      <material_id>42</material_id>
-      <file>scene/dragon.obj</file>
-    </extern>
-
-    <!-- <plan> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>0</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <constante>20</constante> -->
-    <!--   <material_id>42</material_id> -->
-    <!-- </plan> -->
-    <!-- <plan> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>-90</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <constante>-25</constante> -->
-    <!--   <material_id>43</material_id> -->
-    <!-- </plan> -->
-    <!-- <plan> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>90</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <constante>-25</constante> -->
-    <!--   <material_id>43</material_id> -->
-    <!-- </plan> -->
-    <!-- <plan> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>-90</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <constante>-25</constante> -->
-    <!--   <material_id>43</material_id> -->
-    <!-- </plan> -->
-    <!-- <plan> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>0</x> -->
-    <!-- 	<y>90</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <constante>-50</constante> -->
-    <!--   <material_id>43</material_id> -->
-    <!-- </plan> -->
 
     <sphere>
       <coord>
@@ -157,117 +72,18 @@
     	<z>0</z>
       </rot>
       <rayon>20</rayon>
-      <material_id>1</material_id>
+      <material_id>42</material_id>
       <limit_z>42</limit_z>
     </sphere>
-
-    <!-- <sphere> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>0</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <rayon>30</rayon> -->
-    <!--   <material_id>1</material_id> -->
-    <!--   <limit_z>42</limit_z> -->
-    <!-- </sphere> -->
-    <!-- <sphere> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>0</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <rayon>5</rayon> -->
-    <!--   <material_id>1</material_id> -->
-    <!--   <limit_z>42</limit_z> -->
-    <!-- </sphere> -->
-
-    <!-- <sphere> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>0</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <rayon>1</rayon> -->
-    <!--   <material_id>4</material_id> -->
-    <!--   <limit_z>42</limit_z> -->
-    <!-- </sphere> -->
-
-    <cylindre>
-      <coord>
-        <x>40</x>
-        <y>40</y>
-        <z>0</z>
-      </coord>
-      <rot>
-    	<x>90</x>
-    	<y>0</y>
-    	<z>0</z>
-      </rot>
-      <rayon>5</rayon>
-      <material_id>42</material_id>
-      <limit_z>100</limit_z>
-    </cylindre>
-
   </obj>
-
-  <!-- <obj_neg> -->
-  <!-- <sphere> -->
-  <!--   <coord> -->
-  <!--     <x>10</x> -->
-  <!--     <y>-7</y> -->
-  <!--     <z>0</z> -->
-  <!--   </coord> -->
-  <!--   <rot> -->
-  <!-- 	<x>0</x> -->
-  <!-- 	<y>0</y> -->
-  <!-- 	<z>0</z> -->
-  <!--   </rot> -->
-  <!--   <rayon>20</rayon> -->
-  <!--   <material_id>42</material_id> -->
-  <!-- </sphere> -->
-  <!--   <sphere> -->
-  <!--     <coord> -->
-  <!--       <x>0</x> -->
-  <!--       <y>-7</y> -->
-  <!--       <z>0</z> -->
-  <!--     </coord> -->
-  <!--     <rot> -->
-  <!--   	<x>0</x> -->
-  <!--   	<y>0</y> -->
-  <!--   	<z>0</z> -->
-  <!--     </rot> -->
-  <!--     <rayon>20</rayon> -->
-  <!--     <material_id>42</material_id> -->
-  <!--   </sphere> -->
-  <!-- </obj_neg> -->
-  <!-- des parametres par défauts sont set si jamais il manque des informations donc : -->  
-  <!-- <lumiere> -->
-  <!-- </lumiere> -->
-  <!-- crée une lumière avec des paramètres par défauts -->
 
   <lumiere>
     <red>0.8</red>
     <green>0.8</green>
     <blue>0.8</blue>
     <coord>
-      <x>-100</x>
-      <y>0</y>
+      <x>0</x>
+      <y>960</y>
       <z>0</z>
     </coord>
     <attribute>0</attribute>
