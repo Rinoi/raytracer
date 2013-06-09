@@ -23,22 +23,27 @@
 # define SIZE_LARG	1000
 # define SIZE_LONG	1000
 
-// FOR INTERSECTIONS
 # define EPSILLON	0.0001
 
-// LUM
 # define NONE		0
 # define AMB		1
 # define SPOT		2
 # define DIRECT		4
 # define SPOTLEN	10
 
-// POST - IN PROCESSING
 # define MAXDEPTH	10
 # define GO_OUT		1
 # define GO_IN		0
 # define DEFAULT_INDICE	1.0f
 # define SPACE		1.0f
+
+# define DT_IMG		&data->rs->wind.sampled
+# define DT_IMG_PTR	data->rs->wind.sampled.img_ptr
+# define DT_WIND_PTR	data->rs->wind.wind_ptr
+# define DT_MLX		data->rs->wind.mlx_ptr
+# define D_X		droit->x
+# define D_Y		droit->y
+# define DT_ANT		data->rs->env.antia
 
 typedef	struct	s_inter t_inter;
 typedef struct	s_resource t_rs;
@@ -379,4 +384,9 @@ void		inter_update(t_inter *inter, t_st *droit);
 t_inter		*my_send_rayon_rec(t_kdtree *tree, t_st *droite, int a);
 t_inter		*call_inter_extern(t_obj *obj, t_st dr);
 int		readcubemap(t_st *st, t_rs *rs);
+int		scale_col(int a, int b, int i);
+int		my_check_for_p(t_kdtree *tree, t_st *droite, double t);
+float		v_abs(double nb);
+t_inter		*check_obj_in_tree(t_l_obj *obj, t_st *droit);
+void	alea_apply(t_data_t *data, t_st *droit, char *full, int area);
 #endif

@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  9 17:57:51 2013 karina martynava
-** Last update Sun Jun  9 17:59:03 2013 karina martynava
+** Last update Sun Jun  9 18:19:45 2013 karina martynava
 */
 
 #include <values.h>
@@ -42,7 +42,6 @@ t_inter		*check_obj_in_tree(t_l_obj *obj, t_st *droit)
   inter_update(inter_m, droit);
   return (inter_m);
 }
-
 
 float		v_abs(double nb)
 {
