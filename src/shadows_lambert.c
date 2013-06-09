@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  8 12:28:18 2013 karina martynava
-** Last update Sun Jun  9 10:38:30 2013 lucas mayol
+** Last update Sun Jun  9 15:58:18 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -44,14 +44,13 @@ int	inlight(t_rs *rs, t_st *droit, float lux[3])
   while (ptn != NULL)
     {
       inter = ptn->cal_inter(ptn, *droit);
-      if (inter != NULL && inter->d < 1 && inter->d > EPSILLON)
+      if (inter != NULL && inter->d <= 1 && inter->d > EPSILLON)
 	{
 	  if (inter->obj->mat == NULL ||
 	      (inter->obj->mat && inter->obj->mat->reflex == 0 &&
 	       inter->obj->mat->indice == 0))
 	    {
 	      free(inter);
-	      printf("!!!!! NULL !!!!\n");
 	      return (0);
 	    }
 	  else if  (inter->obj->mat->reflex && inter->obj->mat->indice)

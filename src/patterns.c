@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 19:19:16 2013 karina martynava
-** Last update Sun Jun  9 15:31:27 2013 karina martynava
+** Last update Sun Jun  9 16:05:17 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -22,9 +22,10 @@ int		scal_color_img(int a, int b, int i)
   modif_1 = (unsigned char *)&a;
   modif_2 = (unsigned char *)&b;
   modif = (unsigned char *)&col;
-  modif[0] = (1.0 - modif_1[0] / i) + modif_2[0] / i;
-  modif[1] = (1.0 - modif_1[1] / i) + modif_2[1] / i;
-  modif[2] = (1.0 - modif_1[2] / i) + modif_2[2] / i;
+  modif[0] = (i - 1) * modif_1[0] / i + modif_2[0] / i;
+  modif[1] = (i - 1) * modif_1[1] / i + modif_2[1] / i;
+  modif[2] = (i - 1) * modif_1[2] / i + modif_2[2] / i;
+  modif[3] = (i - 1) * modif_1[3] / i + modif_2[3] / i;
   return (col);
 }
 
@@ -64,14 +65,16 @@ void	vert_pattern(t_data_t *data, t_st *droit)
   int	color;
   int	i;
   float	focus[2];
+  int	sv;
 
   srandom(time(NULL) * getpid());
   i = 0;
+  sv = droit->y;
   while (i++ < data->rs->env.complexity)
     {
       focus[0] = data->rs->env.disper * random() / RAND_MAX;
       focus[1] = data->rs->env.disper * random() / RAND_MAX;
-      droit->x = droit->y;
+      droit->x = sv;
       while (droit->x <= data->max)
 	{
 	  droit->y = 0;

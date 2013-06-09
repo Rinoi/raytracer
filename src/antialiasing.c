@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:18:27 2013 karina martynava
-** Last update Sun Jun  9 15:30:29 2013 karina martynava
+** Last update Sun Jun  9 15:53:45 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -18,7 +18,7 @@ void	add_antialia(float final_col[3], float col[3])
   final_col[2] += col[2];
 }
 
-void	moving_straight(t_st *cpy, float focus[2], /* int i,  */t_rs *rs)
+void	moving_straight(t_st *cpy, float focus[2], t_rs *rs)
 {
   t_ptn	*mat;
   t_ptn	goal;
@@ -39,7 +39,6 @@ void	moving_straight(t_st *cpy, float focus[2], /* int i,  */t_rs *rs)
 
 void	focus_scene(t_st *st, t_rs *rs, float col[4], float focus[2])
 {
-  /* int	i; */
   t_st	cpy;
   float	tmp_col[4];
 
@@ -47,19 +46,15 @@ void	focus_scene(t_st *st, t_rs *rs, float col[4], float focus[2])
   tmp_col[1] = 0;
   tmp_col[2] = 0;
   cpy = *st;
-  /* i = 0; */
-  /* while (i++ < rs->env.complexity) */
-  /*   { */
   cpy = *st;
-  moving_straight(&cpy, focus, /* i,  */rs);
+  moving_straight(&cpy, focus, rs);
   my_send_rayon(rs, &cpy, col);
   tmp_col[0] += col[0];
   tmp_col[1] += col[1];
   tmp_col[2] += col[2];
-  /* } */
-  col[0] = tmp_col[0];// / rs->env.complexity;
-  col[1] = tmp_col[1];// / rs->env.complexity;
-  col[2] = tmp_col[2];// / rs->env.complexity;
+  col[0] = tmp_col[0];
+  col[1] = tmp_col[1];
+  col[2] = tmp_col[2];
 }
 
 int	antialiasing_apply(int antialias, t_st *droit,

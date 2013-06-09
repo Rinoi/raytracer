@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Sat Jun  8 20:19:57 2013 louis martin-pierrat
-** Last update Sat Jun  8 21:03:11 2013 louis martin-pierrat
+** Last update Sun Jun  9 15:59:11 2013 karina martynava
 */
 #include	"rt.h"
 
@@ -21,7 +21,7 @@ void		set_env(t_env *env, struct s_xml *tree)
     || env->expo >= 0 ? env->expo = -2 : 0;
   get_ivalue(tree, "complexity", &env->complexity) == FAIL
     || env->complexity <= 0 ? env->complexity = 50 : 0;
-  get_fvalue(tree, "dispersion", &env->disper) == FAIL ? env->disper = 2 : 0;
+  get_fvalue(tree, "dispersion", &env->disper) == FAIL ? env->disper = 0 : 0;
   get_fvalue(tree, "focus", &env->focus) == FAIL || env->focus <= 0 ?
     env->focus = 50 : 0;
   get_ivalue(tree, "stereoscopie", &env->stereo) == FAIL ? env->stereo = 0 :0;
