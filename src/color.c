@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 09:27:46 2013 karina martynava
-** Last update Sun Jun  9 14:21:06 2013 karina martynava
+** Last update Sun Jun  9 15:28:04 2013 karina martynava
 */
 
 #include <math.h>
@@ -85,8 +85,8 @@ int		convert_col(float col[3], t_rs *rs)
   if (rs->env.negative)
     negative_color(col);
   modif = (unsigned char *)&color;
-  modif[0] = col[0] * 0xFF;
-  modif[1] = col[1] * 0xFF;
-  modif[2] = col[2] * 0xFF;
+  modif[0] = (char)(col[0] * 225);
+  modif[1] = (char)(col[1] * 255);
+  modif[2] = (char)(col[2] * 255);
   return (color);
 }

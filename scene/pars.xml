@@ -1,14 +1,14 @@
 <scene>
 
   <environnement>
-    <antialliasing>64</antialliasing>
-    <black_and_white>1</black_and_white>
-    <sepia>1</sepia>
-    <negatif>1</negatif>
+    <antialliasing>8</antialliasing>
+    <black_and_white>0</black_and_white>
+    <sepia>0</sepia>
+    <negatif>0</negatif>
     <pattern>0</pattern>
-    <exposition>-15.2</exposition>
-    <complexity>15</complexity>
-    <dispersion>1.0</dispersion>
+    <exposition>-2.0</exposition>
+    <complexity>1</complexity>
+    <dispersion>0.0</dispersion>
     <focus>50.0</focus>
     <stereoscopie>0</stereoscopie>
   </environnement>
@@ -16,8 +16,8 @@
   <material>
     <id>42</id>
     <red>1</red>
-    <green>0</green>
-    <blue>0</blue>
+    <green>1</green>
+    <blue>1</blue>
     <spec1>1.0</spec1>
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
@@ -36,7 +36,7 @@
     <spec2>1.0</spec2>
     <spec3>1.0</spec3>
     <specpow>60</specpow>
-    <reflexion>0.0</reflexion>
+    <reflexion>0.8</reflexion>
     <damier>0</damier>
     <bump>0</bump>
     <!-- <texture>Texture/ciel.xpm</texture> -->
@@ -53,13 +53,43 @@
     <reflexion>0.9</reflexion>
     <damier>0</damier>
     <bump>0</bump>
-    <indice>1</indice>
+    <indice>1.2</indice>
 
     <!-- <texture>Texture/ciel.xpm</texture> -->
   </material>
 
   <obj> 
-    <cone>
+    <!-- <cylindre> -->
+    <!--   <coord> -->
+    <!--     <x>40</x> -->
+    <!--     <y>50</y> -->
+    <!--     <z>0</z> -->
+    <!--   </coord> -->
+    <!--   <rot> -->
+    <!-- 	<x>90</x> -->
+    <!-- 	<y>0</y> -->
+    <!-- 	<z>0</z> -->
+    <!--   </rot> -->
+    <!--   <rayon>5</rayon> -->
+    <!--   <material_id>42</material_id> -->
+    <!--   <limit_z>100</limit_z> -->
+    <!-- </cylindre> -->
+    <!-- <sphere> -->
+    <!--   <coord> -->
+    <!--     <x>0</x> -->
+    <!--     <y>0</y> -->
+    <!--     <z>0</z> -->
+    <!--   </coord> -->
+    <!--   <rot> -->
+    <!-- 	<x>42</x> -->
+    <!-- 	<y>0</y> -->
+    <!-- 	<z>0</z> -->
+    <!--   </rot> -->
+    <!--   <rayon>20</rayon> -->
+    <!--   <material_id>1</material_id> -->
+    <!--   <limit_z>42</limit_z> -->
+    <!-- </sphere> -->
+    <sphere>
       <coord>
         <x>0</x>
         <y>0</y>
@@ -70,10 +100,25 @@
     	<y>0</y>
     	<z>0</z>
       </rot>
-      <angle>70</angle>
-      <material_id>42</material_id>
+      <rayon>10</rayon>
+      <material_id>4</material_id>
       <limit_z>42</limit_z>
-    </cone>
+    </sphere>
+    <sphere>
+      <coord>
+        <x>0</x>
+        <y>-20</y>
+        <z>-20</z>
+      </coord>
+      <rot>
+    	<x>42</x>
+    	<y>0</y>
+    	<z>0</z>
+      </rot>
+      <rayon>10</rayon>
+      <material_id>4</material_id>
+      <limit_z>42</limit_z>
+    </sphere>
   </obj>
 
   <lumiere>

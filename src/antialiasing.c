@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:18:27 2013 karina martynava
-** Last update Sun Jun  9 14:20:48 2013 karina martynava
+** Last update Sun Jun  9 15:30:29 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -18,7 +18,7 @@ void	add_antialia(float final_col[3], float col[3])
   final_col[2] += col[2];
 }
 
-void	moving_straight(t_st *cpy, float focus[COMPLEXITY][2], int i, t_rs *rs)
+void	moving_straight(t_st *cpy, float focus[2], /* int i,  */t_rs *rs)
 {
   t_ptn	*mat;
   t_ptn	goal;
@@ -27,8 +27,8 @@ void	moving_straight(t_st *cpy, float focus[COMPLEXITY][2], int i, t_rs *rs)
   goal.x = cpy->cord.x + rs->env.focus * cpy->vec.x;
   goal.y = cpy->cord.y + rs->env.focus * cpy->vec.y;
   goal.z = cpy->cord.z + rs->env.focus * cpy->vec.z;
-  cpy->cord.y += focus[i - 1][0];
-  cpy->cord.z += focus[i - 1][1];
+  cpy->cord.y += focus[0];
+  cpy->cord.z += focus[1];
   cpy->vec.x = goal.x - cpy->cord.x;
   cpy->vec.y = goal.y - cpy->cord.y;
   cpy->vec.z = goal.z - cpy->cord.z;
@@ -37,10 +37,9 @@ void	moving_straight(t_st *cpy, float focus[COMPLEXITY][2], int i, t_rs *rs)
   free(mat);
 }
 
-void	focus_scene(t_st *st, t_rs *rs, float col[4],
-		    float focus[COMPLEXITY][2])
+void	focus_scene(t_st *st, t_rs *rs, float col[4], float focus[2])
 {
-  int	i;
+  /* int	i; */
   t_st	cpy;
   float	tmp_col[4];
 
@@ -48,35 +47,37 @@ void	focus_scene(t_st *st, t_rs *rs, float col[4],
   tmp_col[1] = 0;
   tmp_col[2] = 0;
   cpy = *st;
-  i = 0;
-  while (i++ < COMPLEXITY)
-    {
-      cpy = *st;
-      moving_straight(&cpy, focus, i, rs);
-      my_send_rayon(rs, &cpy, col);
-      tmp_col[0] += col[0];
-      tmp_col[1] += col[1];
-      tmp_col[2] += col[2];
-    }
-  col[0] = tmp_col[0] / COMPLEXITY;
-  col[1] = tmp_col[1] / COMPLEXITY;
-  col[2] = tmp_col[2] / COMPLEXITY;
+  /* i = 0; */
+  /* while (i++ < rs->env.complexity) */
+  /*   { */
+  cpy = *st;
+  moving_straight(&cpy, focus, /* i,  */rs);
+  my_send_rayon(rs, &cpy, col);
+  tmp_col[0] += col[0];
+  tmp_col[1] += col[1];
+  tmp_col[2] += col[2];
+  /* } */
+  col[0] = tmp_col[0];// / rs->env.complexity;
+  col[1] = tmp_col[1];// / rs->env.complexity;
+  col[2] = tmp_col[2];// / rs->env.complexity;
 }
 
 int	antialiasing_apply(int antialias, t_st *droit,
-			   t_rs *rs, float focus[COMPLEXITY][2])
+			   t_rs *rs, float focus[2])
 {
   int	i;
   int	j;
   float	final_col[4];
   float	col[4];
   float	antia;
+  float	aa;
 
   i = 0;
   final_col[0] = 0;
   final_col[1] = 0;
   final_col[2] = 0;
-  antia = (antialias % 2 != 0 || antialias == 0) ? 1.0f : 1.0f / antialias;
+  aa = (antialias >= 0) ? antialias : 1.0f;
+  antia = (antialias % 2 != 0 || antialias < 0) ? 1.0f : 1.0f / antialias;
   while (i++ < antialias && (j = 0) == 0)
     while (j < antialias)
       {
@@ -86,14 +87,14 @@ int	antialiasing_apply(int antialias, t_st *droit,
 	focus_scene(droit, rs, col, focus);
 	add_antialia(final_col, col);
       }
-  final_col[0] = final_col[0] * antia;
-  final_col[1] = final_col[1] * antia;
-  final_col[2] = final_col[2] * antia;
+  final_col[0] = final_col[0] * antia * antia;
+  final_col[1] = final_col[1] * antia * antia;
+  final_col[2] = final_col[2] * antia * antia;
   return (convert_col(final_col, rs));
 }
 
 int	antialiasing_color(int antialias, t_st *droit,
-			   t_rs *rs, float focus[COMPLEXITY][2])
+			   t_rs *rs, float focus[2])
 {
   int	col_1;
   int	col_2;

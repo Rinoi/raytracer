@@ -34,22 +34,10 @@
 # define SPOTLEN	10
 
 // POST - IN PROCESSING
-//# define ANTIA		2
 # define MAXDEPTH	10
-//# define EXPO		-2.07f
-//# define B_AND_W	0
-//# define SEPIA		0
-//# define NEGATIVE	0
-//# define SEP_RED	112.0
-//# define SEP_GREEN	66.0
-//# define SEP_BLUE	20.0
-//# define STEREOSCOPY	0
 # define GO_OUT		1
 # define GO_IN		0
 # define DEFAULT_INDICE	1.0f
-//# define DEF_FOCUS	50.0f
-# define COMPLEXITY	1
-# define DISPER		1.0f
 # define SPACE		1.0f
 
 typedef	struct	s_inter t_inter;
@@ -282,7 +270,7 @@ void	vert_pattern(t_data_t *data, t_st *droit);
 
 // anti aliasing
 
-int	antialiasing_color(int antialias, t_st *droit, t_rs *rs, float focus[COMPLEXITY][2]);
+int	antialiasing_color(int antialias, t_st *droit, t_rs *rs, float focus[2]);
 
 // MLX
 
