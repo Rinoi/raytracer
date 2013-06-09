@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Tue May 28 08:01:03 2013 karina martynava
-** Last update Sat Jun  8 04:27:12 2013 karina martynava
+** Last update Sun Jun  9 11:53:46 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -21,7 +21,7 @@ t_ptn	*sphere_nrml(t_obj *obj, t_ptn *ptn)
   nrml->x = ptn->x - obj->ptn.x;
   nrml->y = ptn->y - obj->ptn.y;
   nrml->z = ptn->z - obj->ptn.z;
-  if (obj->mat->bump != 0)
+  if (obj->mat && obj->mat->bump != 0)
     my_bump(nrml, ptn, obj->mat->bump);
   return (nrml);
 }

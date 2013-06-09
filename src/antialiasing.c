@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:18:27 2013 karina martynava
-** Last update Sat Jun  8 17:20:16 2013 lucas mayol
+** Last update Sun Jun  9 14:20:48 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -24,9 +24,9 @@ void	moving_straight(t_st *cpy, float focus[COMPLEXITY][2], int i, t_rs *rs)
   t_ptn	goal;
 
   mult_vect(&cpy->vec, 1.0f / sqrt(scal_prod(&cpy->vec, &cpy->vec)));
-  goal.x = cpy->cord.x + DEF_FOCUS * cpy->vec.x;
-  goal.y = cpy->cord.y + DEF_FOCUS * cpy->vec.y;
-  goal.z = cpy->cord.z + DEF_FOCUS * cpy->vec.z;
+  goal.x = cpy->cord.x + rs->env.focus * cpy->vec.x;
+  goal.y = cpy->cord.y + rs->env.focus * cpy->vec.y;
+  goal.z = cpy->cord.z + rs->env.focus * cpy->vec.z;
   cpy->cord.y += focus[i - 1][0];
   cpy->cord.z += focus[i - 1][1];
   cpy->vec.x = goal.x - cpy->cord.x;
@@ -89,7 +89,7 @@ int	antialiasing_apply(int antialias, t_st *droit,
   final_col[0] = final_col[0] * antia;
   final_col[1] = final_col[1] * antia;
   final_col[2] = final_col[2] * antia;
-  return (convert_col(final_col));
+  return (convert_col(final_col, rs));
 }
 
 int	antialiasing_color(int antialias, t_st *droit,
@@ -103,7 +103,7 @@ int	antialiasing_color(int antialias, t_st *droit,
   unsigned char	*modif_2;
   unsigned char	*modif;
 
-  if (STEREOSCOPY == 0)
+  if (rs->env.stereo == 0)
     return (antialiasing_apply(antialias, droit, rs, focus));
   cpy = *droit;
   cpy.vec.y = cpy.vec.y - SPACE;

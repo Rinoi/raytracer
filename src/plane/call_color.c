@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu May 30 17:28:25 2013 lucas mayol
-** Last update Sat Jun  8 19:11:03 2013 lucas mayol
+** Last update Sun Jun  9 14:28:59 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -40,14 +40,14 @@ float		*my_damier(t_inter *inter, float tab[3], int d)
   return (tab);
 }
 
-static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3])
+static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3], t_rs *rs)
 {
   int		color;
   unsigned char	*tabs;
 
   if (obj->mat->bruit.type != 0)
     {
-      color = color_bruit_bois(obj, inter);
+      color = color_bruit_bois(obj, inter, rs);
       tabs = (unsigned char *)&color;
       tab[0] = (unsigned char)tabs[0] / 255.0;
       tab[1] = (unsigned char)tabs[1] / 255.0;
@@ -62,7 +62,7 @@ static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3])
   return (tab);
 }
 
-void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
+void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3], t_rs *rs)
 {
   int		color;
   unsigned char	*tabs;
@@ -81,7 +81,7 @@ void		cal_color_plan(t_obj *obj, t_inter *inter, float tab[3])
   else if (obj->mat != NULL)
     {
       if (obj->mat != NULL)
-        tab = color_mat(obj, inter, tab);
+        tab = color_mat(obj, inter, tab, rs);
     }
   if (obj->mat->damier != 0)
     tab = my_damier(inter, tab, obj->mat->damier);

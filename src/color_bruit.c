@@ -5,12 +5,12 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:03:56 2013 lucas mayol
-** Last update Sun Jun  9 08:42:21 2013 lucas mayol
+** Last update Sun Jun  9 14:21:42 2013 karina martynava
 */
 
 #include "rt.h"
 
-int		color_bruit_bois(t_obj *obj, t_inter *inter)
+int		color_bruit_bois(t_obj *obj, t_inter *inter, t_rs *rs)
 {
   t_ptn		ptn;
   float		col[3];
@@ -33,5 +33,5 @@ int		color_bruit_bois(t_obj *obj, t_inter *inter)
     + obj->mat->bruit.color2[1] * f;
   col[0] = obj->mat->bruit.color1[2] * (1 - f)
     + obj->mat->bruit.color2[2] * f;
-  return (convert_col(col));
+  return (convert_col(col, rs));
 }

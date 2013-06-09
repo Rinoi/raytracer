@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Tue May 28 02:57:22 2013 lucas mayol
-** Last update Sat Jun  8 19:12:11 2013 lucas mayol
+** Last update Sun Jun  9 11:59:04 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -25,7 +25,7 @@ t_inter		*call_inter_plane(t_obj *obj, t_st dr)
   if ((inter = malloc(sizeof(t_inter))) == NULL)
     exit(EXIT_FAILURE);
   inter->d = (c - dr.cord.z) / dr.vec.z;
-  if (is_in_neg(dr.neg, inter->d) == 1)
+  if (is_in_neg(dr.neg, inter->d) == 1 || inter->d <= EPSILLON)
     {
       free(inter);
       return (NULL);

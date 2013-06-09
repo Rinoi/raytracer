@@ -5,12 +5,9 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Thu Jun  6 15:41:37 2013 louis martin-pierrat
-** Last update Thu Jun  6 21:09:57 2013 louis martin-pierrat
+** Last update Sun Jun  9 14:31:37 2013 karina martynava
 */
 #include	"rt.h"
-
-void		call_color_triangle(t_obj *obj, t_inter *inter, float tab[3]);
-t_inter		*call_inter_triangle(t_obj *o, t_st dr);
 
 void		get_ptn(struct s_xml *tree, char *str, t_ptn *ptn)
 {

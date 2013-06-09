@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Wed May 29 21:56:35 2013 lucas mayol
-** Last update Sat Jun  8 18:53:51 2013 lucas mayol
+** Last update Sun Jun  9 14:27:05 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -41,14 +41,14 @@ int		cal_texture_cylinder(t_obj *obj, t_ptn inter)
   return (get_col(&obj->mat->img, x, y));
 }
 
-static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3])
+static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3], t_rs *rs)
 {
   int		color;
   unsigned char	*tabs;
 
   if (obj->mat->bruit.type != 0)
     {
-      color = color_bruit_bois(obj, inter);
+      color = color_bruit_bois(obj, inter, rs);
       tabs = (unsigned char *)&color;
       tab[0] = (unsigned char)tabs[0] / 255.0;
       tab[1] = (unsigned char)tabs[1] / 255.0;
@@ -63,7 +63,7 @@ static float	*color_mat(t_obj *obj, t_inter *inter, float tab[3])
   return (tab);
 }
 
-void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3])
+void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3], t_rs *rs)
 {
   int		color;
   unsigned char *tabs;
@@ -79,7 +79,7 @@ void		cal_color_cylinder(t_obj *obj, t_inter *inter, float tab[3])
   else
     {
       if (obj->mat != NULL)
-	tab = color_mat(obj, inter, tab);
+	tab = color_mat(obj, inter, tab, rs);
       else
 	{
 	  tab[0] = 1;
