@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sun Jun  9 17:46:43 2013 lucas mayol
+## Last update Sun Jun  9 18:09:27 2013 karina martynava
 ##
 
 CC	=	gcc
@@ -23,6 +23,9 @@ RM	=	rm -f
 INC	=	-I./include
 
 SRCS	=	src/main.c \
+		src/alea.c \
+		src/kdtree_sec.c \
+		src/refraction.c \
 		src/my_put.c \
 		src/specular.c \
 		src/send_rayon_main.c \
@@ -81,8 +84,9 @@ SRCS	=	src/main.c \
 		src/my_send_rayon_kdtree.c \
 		src/extern/call_inter.c \
 		ext_pars/obj_pars.c \
+		ext_pars/obj_pars_begin.c \
 		ext_pars/wrdtab.c \
-		src/readcubemap.c \
+		ext_pars/cord.c
 
 include		Makefile.xml
 

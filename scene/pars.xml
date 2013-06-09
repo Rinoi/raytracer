@@ -2,16 +2,16 @@
 <scene>
 
   <environnement>
-    <antialliasing>8</antialliasing>
+    <antialliasing>2</antialliasing>
     <black_and_white>0</black_and_white>
     <sepia>0</sepia>
     <negatif>0</negatif>
-    <pattern>1</pattern>
+    <pattern>2</pattern>
     <exposition>-1.0</exposition>
-    <complexity>100</complexity>
+    <complexity>1</complexity>
     <dispersion>0.0</dispersion>
     <focus>50.0</focus>
-    <stereoscopie>1</stereoscopie>
+    <stereoscopie>0</stereoscopie>
   </environnement>
 
   <material>
@@ -26,6 +26,20 @@
     <reflexion>0.0</reflexion>
     <damier>0</damier>
     <bump>0</bump>
+    <bruit>
+      <type>1</type>
+      <persistance>0.8</persistance>
+      <color1>
+	<red>1</red>
+	<green>1</green>
+	<blue>0.2</blue>
+      </color1>
+      <color2>
+	<red>0</red>
+	<green>1.0</green>
+	<blue>0</blue>
+      </color2>
+    </bruit>
     <!-- <texture>Texture/ciel.xpm</texture> -->
   </material>
   <material>
@@ -54,42 +68,27 @@
     <reflexion>0.9</reflexion>
     <damier>0</damier>
     <bump>0</bump>
-    <indice>1.2</indice>
+    <indice>1.05</indice>
 
     <!-- <texture>Texture/ciel.xpm</texture> -->
   </material>
 
   <obj> 
-    <!-- <cylindre> -->
-    <!--   <coord> -->
-    <!--     <x>40</x> -->
-    <!--     <y>50</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>90</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <rayon>5</rayon> -->
-    <!--   <material_id>42</material_id> -->
-    <!--   <limit_z>100</limit_z> -->
-    <!-- </cylindre> -->
-    <!-- <sphere> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>42</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <rayon>20</rayon> -->
-    <!--   <material_id>1</material_id> -->
-    <!--   <limit_z>42</limit_z> -->
-    <!-- </sphere> -->
+    <cylindre>
+      <coord>
+        <x>40</x>
+        <y>50</y>
+        <z>0</z>
+      </coord>
+      <rot>
+    	<x>90</x>
+    	<y>0</y>
+    	<z>0</z>
+      </rot>
+      <rayon>5</rayon>
+      <material_id>42</material_id>
+      <limit_z>100</limit_z>
+    </cylindre>
     <sphere>
       <coord>
         <x>0</x>
@@ -101,39 +100,22 @@
     	<y>0</y>
     	<z>0</z>
       </rot>
-      <rayon>10</rayon>
-      <material_id>4</material_id>
-      <limit_z>42</limit_z>
-    </sphere>
-    <sphere>
-      <coord>
-        <x>0</x>
-        <y>-20</y>
-        <z>-20</z>
-      </coord>
-      <rot>
-    	<x>42</x>
-    	<y>0</y>
-    	<z>0</z>
-      </rot>
-      <rayon>10</rayon>
-      <material_id>4</material_id>
+      <rayon>20</rayon>
+      <material_id>1</material_id>
       <limit_z>42</limit_z>
     </sphere>
   </obj>
-
   <lumiere>
     <red>0.8</red>
     <green>0.8</green>
     <blue>0.8</blue>
     <coord>
-      <x>0</x>
+      <x>-30</x>
       <y>0</y>
-      <z>500</z>
+      <z>0</z>
     </coord>
     <attribute>0</attribute>
   </lumiere>
-  
   <eyes>
     <cam>
       <x> -50 </x>

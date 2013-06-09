@@ -5,14 +5,14 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 19:19:16 2013 karina martynava
-** Last update Sun Jun  9 16:05:17 2013 karina martynava
+** Last update Sun Jun  9 17:48:54 2013 karina martynava
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "rt.h"
 
-int		scal_color_img(int a, int b, int i)
+int		scale_col(int a, int b, int i)
 {
   int		col;
   unsigned char	*modif_1;
@@ -29,37 +29,6 @@ int		scal_color_img(int a, int b, int i)
   return (col);
 }
 
-int	random_num_pattern(char *full, int area)
-{
-  int	num;
-
-  num = random() % area;
-  while (full[num] != 0)
-    {
-      num++;
-      if (num == area)
-	num = 0;
-    }
-  return (num);
-}
-
-char	*alea_init(t_data_t *data, int *area, t_st *droit)
-{
-  char	*full;
-  int	i;
-
-  *area = data->rs->eyes->lng * (data->max - data->ini);
-  if ((full = malloc(sizeof(*full) * (*area))) == NULL)
-    {
-      nrml_pattern(data, droit);
-      return (NULL);
-    }
-  i = 0;
-  while (i < *area)
-    full[i++] = 0;
-  return (full);
-}
-
 void	vert_pattern(t_data_t *data, t_st *droit)
 {
   int	color;
@@ -69,26 +38,22 @@ void	vert_pattern(t_data_t *data, t_st *droit)
 
   srandom(time(NULL) * getpid());
   i = 0;
-  sv = droit->y;
-  while (i++ < data->rs->env.complexity)
+  sv = D_Y;
+  while (i++ < data->rs->env.complexity && (D_X = sv) == sv)
     {
       focus[0] = data->rs->env.disper * random() / RAND_MAX;
       focus[1] = data->rs->env.disper * random() / RAND_MAX;
-      droit->x = sv;
-      while (droit->x <= data->max)
+      while (D_X <= data->max && (D_Y = 0) == 0)
 	{
-	  droit->y = 0;
-	  while (droit->y <= data->rs->eyes->larg)
+	  while (D_Y <= data->rs->eyes->larg)
 	    {
-	      color = antialiasing_color(data->rs->env.antia, droit, data->rs, focus);
-	      color = scal_color_img(get_col(&data->rs->wind.sampled, droit->x, droit->y), color, i);
-	      my_pixel_put_to_image(&data->rs->wind.sampled, droit->x, droit->y, color);
-	      droit->y += 1;
+	      color = antialiasing_color(DT_ANT, droit, data->rs, focus);
+	      color = scale_col(get_col(DT_IMG, D_X, D_Y), color, i);
+	      my_pixel_put_to_image(DT_IMG, D_X, D_Y++, color);
 	    }
-	  droit->x += 1;
+	  D_X += 1;
 	  if (data->rs->client != 1)
-	    mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
-				    data->rs->wind.sampled.img_ptr, 0, 0);
+	    mlx_put_image_to_window(DT_MLX, DT_WIND_PTR, DT_IMG_PTR, 0, 0);
 	}
     }
 }
@@ -102,26 +67,22 @@ void	nrml_pattern(t_data_t *data, t_st *droit)
 
   srandom(time(NULL) * getpid());
   i = 0;
-  sv = droit->y;
-  while (i++ < data->rs->env.complexity)
+  sv = D_Y;
+  while (i++ < data->rs->env.complexity && (D_Y = sv) == sv)
     {
       focus[0] = data->rs->env.disper * random() / RAND_MAX;
       focus[1] = data->rs->env.disper * random() / RAND_MAX;
-      droit->y = sv;
-      while (droit->y <= data->max)
+      while (D_Y <= data->max && (D_X = 0) == 0)
 	{
-	  droit->x = 0;
-	  while (droit->x <= data->rs->eyes->lng)
+	  while (D_X <= data->rs->eyes->lng)
 	    {
-	      color = antialiasing_color(data->rs->env.antia, droit, data->rs, focus);
-	      color = scal_color_img(get_col(&data->rs->wind.sampled, droit->x, droit->y), color, i);
-	      my_pixel_put_to_image(&data->rs->wind.sampled, droit->x, droit->y, color);
-	      droit->x += 1;
+	      color = antialiasing_color(DT_ANT, droit, data->rs, focus);
+	      color = scale_col(get_col(DT_IMG, D_X, D_Y), color, i);
+	      my_pixel_put_to_image(DT_IMG, D_X++, D_Y, color);
 	    }
-	  droit->y += 1;
+	  D_Y += 1;
 	  if (data->rs->client != 1)
-	    mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
-				    data->rs->wind.sampled.img_ptr, 0, 0);
+	    mlx_put_image_to_window(DT_MLX, DT_WIND_PTR, DT_IMG_PTR, 0, 0);
 	}
     }
 }
@@ -130,37 +91,12 @@ void	alea_pattern(t_data_t *data, t_st *droit)
 {
   char	*full;
   int	area;
-  int	i;
-  int	j;
-  int	k;
-  int	num;
-  int	color;
-  float	focus[2];
 
-  srandom(time(NULL) * getpid());
-  k = 0;
-  while (k++ < data->rs->env.complexity)
+  if ((full = alea_init(data, &area, droit)) == NULL)
     {
-      focus[0] = data->rs->env.disper * random() / RAND_MAX;
-      focus[1] = data->rs->env.disper * random() / RAND_MAX;
-      if ((full = alea_init(data, &area, droit)) == NULL)
-	return ;
-      j = data->ini;
-      while (j++ < data->max)
-	{
-	  i = 0;
-	  while (i++ < data->rs->eyes->lng)
-	    {
-	      num = random_num_pattern(full, area);
-	      full[num] = 1;
-	      droit->y = num / (data->rs->eyes->lng);
-	      droit->x = num % (data->rs->eyes->lng);
-	      color = antialiasing_color(data->rs->env.antia, droit, data->rs, focus);
-	      my_pixel_put_to_image(&data->rs->wind.sampled, droit->x, droit->y, color);
-	    }
-	  if (data->rs->client != 1)
-	    mlx_put_image_to_window(data->rs->wind.mlx_ptr, data->rs->wind.wind_ptr,
-				    data->rs->wind.sampled.img_ptr, 0, 0);
-	}
+      nrml_pattern(data, droit);
+      return ;
     }
+  srandom(time(NULL) * getpid());
+  alea_apply(data, droit, full, area);
 }

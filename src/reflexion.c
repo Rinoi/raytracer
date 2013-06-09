@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat Jun  1 01:31:53 2013 karina martynava
-** Last update Sun Jun  9 10:21:24 2013 karina martynava
+** Last update Sun Jun  9 16:44:03 2013 karina martynava
 */
 
 #include <unistd.h>
@@ -31,7 +31,8 @@ void	new_straight(t_st *droit, t_inter *last)
   free(nrml);
 }
 
-void	col_update_reflex(float col[4], float tmp_col[4], t_inter *inter, t_st *st)
+void	col_update_reflex(float col[4], float tmp_col[4],
+			  t_inter *inter, t_st *st)
 {
   col[0] = tmp_col[0] * col[3] + (1.0 - col[3]) * col[0];
   col[1] = tmp_col[1] * col[3] + (1.0 - col[3]) * col[1];

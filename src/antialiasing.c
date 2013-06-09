@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sun Jun  2 20:18:27 2013 karina martynava
-** Last update Sun Jun  9 15:53:45 2013 karina martynava
+** Last update Sun Jun  9 16:29:40 2013 karina martynava
 */
 
 #include <stdlib.h>
@@ -22,13 +22,16 @@ void	moving_straight(t_st *cpy, float focus[2], t_rs *rs)
 {
   t_ptn	*mat;
   t_ptn	goal;
+  float	dist;
 
-  mult_vect(&cpy->vec, 1.0f / sqrt(scal_prod(&cpy->vec, &cpy->vec)));
-  goal.x = cpy->cord.x + rs->env.focus * cpy->vec.x;
-  goal.y = cpy->cord.y + rs->env.focus * cpy->vec.y;
-  goal.z = cpy->cord.z + rs->env.focus * cpy->vec.z;
-  cpy->cord.y += focus[0];
-  cpy->cord.z += focus[1];
+  cpy->vec.y += focus[0];
+  cpy->vec.z += focus[1];
+  dist = sqrtf(scal_prod(&cpy->vec, &cpy->vec));
+  if (dist == 0)
+    return ;
+  goal.x = cpy->cord.x + rs->env.focus * cpy->vec.x / dist;
+  goal.y = cpy->cord.y + rs->env.focus * cpy->vec.y / dist;
+  goal.z = cpy->cord.z + rs->env.focus * cpy->vec.z / dist;
   cpy->vec.x = goal.x - cpy->cord.x;
   cpy->vec.y = goal.y - cpy->cord.y;
   cpy->vec.z = goal.z - cpy->cord.z;
@@ -45,7 +48,6 @@ void	focus_scene(t_st *st, t_rs *rs, float col[4], float focus[2])
   tmp_col[0] = 0;
   tmp_col[1] = 0;
   tmp_col[2] = 0;
-  cpy = *st;
   cpy = *st;
   moving_straight(&cpy, focus, rs);
   my_send_rayon(rs, &cpy, col);
@@ -65,13 +67,11 @@ int	antialiasing_apply(int antialias, t_st *droit,
   float	final_col[4];
   float	col[4];
   float	antia;
-  float	aa;
 
   i = 0;
   final_col[0] = 0;
   final_col[1] = 0;
   final_col[2] = 0;
-  aa = (antialias >= 0) ? antialias : 1.0f;
   antia = (antialias % 2 != 0 || antialias < 0) ? 1.0f : 1.0f / antialias;
   while (i++ < antialias && (j = 0) == 0)
     while (j < antialias)

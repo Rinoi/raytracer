@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Fri May 31 17:47:41 2013 louis martin-pierrat
-** Last update Fri May 31 19:38:35 2013 louis martin-pierrat
+** Last update Sun Jun  9 18:04:08 2013 karina martynava
 */
 #include	<unistd.h>
 #include	"xml_macros.h"
@@ -20,7 +20,7 @@ static int	reset_static(char buffer[BUFFER_SIZE], int *read, int *ret)
   *read = 0;
   *ret = 0;
   return (FAILURE);
-} 
+}
 
 int		xml_getchar(const int fd, char *c)
 {

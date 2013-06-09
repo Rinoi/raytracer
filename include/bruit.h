@@ -1,11 +1,11 @@
 /*
-** bruit.h for RT in /home/mayol_l//git/raytracer
+** bruit.h for rt in /home/martyn_k//raytracer
 ** 
-** Made by lucas mayol
-** Login   <mayol_l@epitech.net>
+** Made by karina martynava
+** Login   <martyn_k@epitech.net>
 ** 
-** Started on  Tue Jun  4 22:05:03 2013 lucas mayol
-** Last update Sun Jun  9 08:41:28 2013 lucas mayol
+** Started on  Sun Jun  9 18:02:07 2013 karina martynava
+** Last update Sun Jun  9 18:02:08 2013 karina martynava
 */
 
 #ifndef _BRUIT_
