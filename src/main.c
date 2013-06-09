@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Sat Apr 13 13:23:50 2013 lucas mayol
-** Last update Sun Jun  9 16:12:16 2013 lucas mayol
+** Last update Sun Jun  9 18:35:42 2013 louis martin-pierrat
 */
 
 #include	<sys/types.h>
@@ -42,7 +42,7 @@ int	init_rs(t_rs *rs, struct s_xml *tree)
 	set_env(&rs->env, tree->child);
       tree->child = tree->child->next;
     }
-  return (tree == NULL ? EXIT_FAILURE : 0);
+  return (tree == NULL || rs->eyes == NULL? EXIT_FAILURE : 0);
 }
 
 void	my_end(char **argv)
