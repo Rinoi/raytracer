@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sun Jun  9 00:17:51 2013 lucas mayol
+## Last update Sun Jun  9 05:22:11 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -77,6 +77,8 @@ SRCS	=	src/main.c \
 		kdtree/creat_tree.c \
 		kdtree/creat_tree_e.c \
 		kdtree/creat_plan_for_tree.c \
+		src/my_send_rayon_kdtree.c \
+		src/extern/call_inter.c \
 		ext_pars/obj_pars.c \
 		ext_pars/wrdtab.c \
 

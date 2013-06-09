@@ -5,7 +5,7 @@
 ** Login   <mart_p@epitech.net>
 ** 
 ** Started on  Sat Jun  8 20:53:43 2013 louis martin-pierrat
-** Last update Sat Jun  8 23:54:13 2013 lucas mayol
+** Last update Sun Jun  9 05:23:14 2013 lucas mayol
 */
 #include	"rt.h"
 
@@ -41,6 +41,6 @@ void		new_extern(t_obj **obj, t_mat *mat, struct s_xml *tree, int i)
   creat_matrice_for_obj(new);
   parsing(path, new);
   /* new->cal_color = cal_color_extern; */
-  /* new->cal_inter = call_inter_extern; */
+  new->cal_inter = call_inter_extern;
   add_to_end(obj, new);
 }

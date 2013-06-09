@@ -375,5 +375,8 @@ int	inlight(t_rs *rs, t_st *droit, float lux[3]);
 void	blinn_phong(t_st *st, t_ptn *light,
 		    t_inter *last, float col[4], t_lux *sv);
 t_obj		*obj_pars_main(char *obj, t_obj *tmp);
+void		inter_update(t_inter *inter, t_st *droit);
+t_inter		*my_send_rayon_rec(t_kdtree *tree, t_st *droite, int a);
+t_inter		*call_inter_extern(t_obj *obj, t_st dr);
 
 #endif

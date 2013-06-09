@@ -5,7 +5,7 @@
 ** Login   <mayol_l@epitech.net>
 ** 
 ** Started on  Fri May  3 14:45:56 2013 lucas mayol
-** Last update Sat Jun  8 23:20:51 2013 lucas mayol
+** Last update Sun Jun  9 03:22:21 2013 lucas mayol
 */
 
 #ifndef _KD_TREE_
