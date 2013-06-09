@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Thu Jun  6 23:23:12 2013 karina martynava
-** Last update Sat Jun  8 22:18:15 2013 karina martynava
+** Last update Sun Jun  9 09:06:46 2013 karina martynava
 */
 
 #include <stdio.h>
@@ -103,32 +103,39 @@ void		fresnel_indice_list(t_inter *inter, t_st *st, float ind[2])
 
 float	refraction_angle(float dens[2], float ij[4], t_st *st, t_ptn *nrml)
 {
-  float	reflectance;
-  float	ref_type[2];
-
-  mult_vect(nrml, 1.0f / sqrt(scal_prod(nrml, nrml)));
-  mult_vect(&st->vec, 1.0f / sqrt(scal_prod(&st->vec, &st->vec)));
   ij[0] = lambert_coef(&st->vec, nrml, NONE);
-  if (ij[0] >= 1.0f - EPSILLON)
+  if (ij[0] >= 0.999)
     return (0.0f);
-  ij[1] = sqrtf(1.0f - ij[0] * ij[0]);
-  ij[3] = (dens[0] / dens[1]) * ij[1];
-  if (ij[3] * ij[3] >=  1.0f - EPSILLON)
-    return (-1.0f);
-  ij[2] = sqrtf(1 - ij[3] * ij[3]);
-  ref_type[0] = (dens[1] * ij[2] - dens[0] * ij[0])
-    / (dens[1] * ij[2] + dens[0] * ij[0]);
-  ref_type[1] = (dens[0] * ij[2] - dens[1] * ij[0] )
-    / (dens[0] * ij[2] + dens[1] * ij[0]);
-  reflectance = 0.5f * (pow(ref_type[0], 2) + pow(ref_type[1], 2));
-  printf("%f %f\n", ij[0], ij[2]);
-  st->vec.x = st->vec.x + ij[0] * nrml->x;
-  st->vec.y = st->vec.y + ij[0] * nrml->y;
-  st->vec.z = st->vec.z + ij[0] * nrml->z;
-  st->vec.x = (dens[0] / dens[1]) * st->vec.x - ij[2] * nrml->x;
-  st->vec.y = (dens[0] / dens[1]) * st->vec.y - ij[2] * nrml->y;
-  st->vec.z = (dens[0] / dens[1]) * st->vec.z - ij[2] * nrml->z;
-  return (reflectance);
+  ij[1] = sqrtf(1.0 - pow(ij[0], 2));
+  /* i[3] = (dens[0] / dens[1]) */
+  /* printf("%f %f\n", ij[0], ij[1]); */
+
+  /* float	reflectance; */
+  /* float	ref_type[2]; */
+
+  /* ij[0] = lambert_coef(&st->vec, nrml, NONE); */
+  /* mult_vect(nrml, 1.0f / sqrt(scal_prod(nrml, nrml))); */
+  /* mult_vect(&st->vec, 1.0f / sqrt(scal_prod(&st->vec, &st->vec))); */
+  /* if (ij[0] >= 1.0f - EPSILLON) */
+  /*   return (0.0f); */
+  /* ij[1] = sqrtf(1.0f - ij[0] * ij[0]); */
+  /* ij[3] = (dens[0] / dens[1]) * ij[1]; */
+  /* if (ij[3] * ij[3] >=  1.0f - EPSILLON) */
+  /*   return (-1.0f); */
+  /* ij[2] = sqrtf(1 - ij[3] * ij[3]); */
+  /* ref_type[0] = (dens[1] * ij[2] - dens[0] * ij[0]) */
+  /*   / (dens[1] * ij[2] + dens[0] * ij[0]); */
+  /* ref_type[1] = (dens[0] * ij[2] - dens[1] * ij[0] ) */
+  /*   / (dens[0] * ij[2] + dens[1] * ij[0]); */
+  /* reflectance = 0.5f * (pow(ref_type[0], 2) + pow(ref_type[1], 2)); */
+  /* printf("%f %f\n", ij[0], ij[2]); */
+  /* st->vec.x = st->vec.x + ij[0] * nrml->x; */
+  /* st->vec.y = st->vec.y + ij[0] * nrml->y; */
+  /* st->vec.z = st->vec.z + ij[0] * nrml->z; */
+  /* st->vec.x = (dens[0] / dens[1]) * st->vec.x - ij[2] * nrml->x; */
+  /* st->vec.y = (dens[0] / dens[1]) * st->vec.y - ij[2] * nrml->y; */
+  /* st->vec.z = (dens[0] / dens[1]) * st->vec.z - ij[2] * nrml->z; */
+  /* return (reflectance); */
 }
 
 void	refraction(t_inter *inter, t_st *st)

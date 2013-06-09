@@ -5,9 +5,10 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Sat May 11 18:19:53 2013 karina martynava
-** Last update Sun Jun  9 08:55:26 2013 karina martynava
+** Last update Sun Jun  9 09:38:09 2013 karina martynava
 */
 
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -66,15 +67,13 @@ void	init_ptn_safety(t_ptn *ptn, t_ptn *obj)
 
 void	get_cord_face(t_vr **vr, char *str, t_ptn *ptn, t_ptn *obj)
 {
-  // Le but de la fonction est de trouver le bon numero de vortex, pour recuperer les bonnes coordonnes
   int	nb;
 
   nb = atoi(str);
   if (nb <= 0 || (*vr) == NULL)
     return ;
-  // Initialiastion
   init_ptn_safety(ptn, obj);
-  while (nb <= (*vr)->total || nb - 1 >= (*vr)->total + 99) // Recherche de la bonne structure
+  while (nb <= (*vr)->total || nb - 1 >= (*vr)->total + 99)
     {
       if (nb - 1 <= (*vr)->total)
 	{
@@ -89,9 +88,9 @@ void	get_cord_face(t_vr **vr, char *str, t_ptn *ptn, t_ptn *obj)
 	  *vr = (*vr)->nxt;
 	}
     }
-  ptn->x += (*vr)->ptn[(nb - 1 - (*vr)->total)][0];
-  ptn->y += (*vr)->ptn[(nb - 1 - (*vr)->total)][1];
-  ptn->z += (*vr)->ptn[(nb - 1 - (*vr)->total)][2];
+  ptn->x = (*vr)->ptn[(nb - 1 - (*vr)->total)][0];
+  ptn->y = (*vr)->ptn[(nb - 1 - (*vr)->total)][1];
+  ptn->z = (*vr)->ptn[(nb - 1 - (*vr)->total)][2];
 }
 
 
@@ -115,17 +114,17 @@ void    add_face(t_ext *ex, t_vr **vr, char **tab, t_obj **list)
   bol = 1;
   if ((elem = malloc(sizeof(t_obj))) == NULL)
     return ;
-  elem = ex->obj;
-  if (bol && tab != NULL && tab[0])
-    get_cord_face(vr, tab[0], &elem->ptn, &ex->obj->ptn);
+  *elem = *(ex->obj);
+  if (bol && tab != NULL && tab[1])
+    get_cord_face(vr, tab[1], &(elem->ptn), &ex->obj->ptn);
   else
     bol = 0;
-  if (bol && tab != NULL && tab[0])
-    get_cord_face(vr, tab[1], &tri->a2, &ex->obj->ptn);
+  if (bol && tab != NULL && tab[2])
+    get_cord_face(vr, tab[2], &tri->a2, &ex->obj->ptn);
   else
     bol = 0;
-  if (bol && tab != NULL && tab[0])
-    get_cord_face(vr, tab[2], &tri->a3, &ex->obj->ptn);
+  if (bol && tab != NULL && tab[3])
+    get_cord_face(vr, tab[3], &tri->a3, &ex->obj->ptn);
   from_ptns_to_vec(tri, elem);
   elem->data = (void *)(tri);
   elem->next = *list;
@@ -135,7 +134,6 @@ void    add_face(t_ext *ex, t_vr **vr, char **tab, t_obj **list)
 void  pars(t_ext *ext, t_obj **list)
 {
   int  i;
-  int  j;
   char  *str;
   char  **tab;
   t_vr  *vr;
@@ -145,14 +143,13 @@ void  pars(t_ext *ext, t_obj **list)
   fs = fdopen(ext->fd, "r");
   vr = NULL;
   str = NULL;
-  while (getline(&str, &n, fs) != 0)
+  while (getline(&str, &n, fs) >= 0)
     {
       tab = wrd_tab(str, ' ');
       if (tab != NULL && strcmp(g_cmd[0].str, tab[0]) == 0)
       	(g_cmd[0].ptr)(ext, &vr, tab);
       else if (tab != NULL && strcmp(g_cmd[1].str, tab[0]) == 0)
       	add_face(ext, &vr, tab, list);
-      printf("\n");
       i = 0;
       while (tab != NULL && tab[i] != NULL)
 	free(tab[i++]);
@@ -168,7 +165,7 @@ t_obj		*obj_pars_main(char *obj, t_obj *tmp)
   t_obj		*list;
 
   list = NULL;
-  ext.obj = tmp; // mettre les valeur a utiliser plus tard
+  ext.obj = tmp;
   ext.ptn.x = 0;
   ext.ptn.y = 0;
   ext.ptn.z = 0;

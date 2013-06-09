@@ -59,20 +59,20 @@
 
   <obj>
  
-    <!-- <extern> -->
-    <!--   <coord> -->
-    <!--     <x>0</x> -->
-    <!--     <y>0</y> -->
-    <!--     <z>0</z> -->
-    <!--   </coord> -->
-    <!--   <rot> -->
-    <!-- 	<x>45</x> -->
-    <!-- 	<y>0</y> -->
-    <!-- 	<z>0</z> -->
-    <!--   </rot> -->
-    <!--   <material_id>42</material_id> -->
-    <!--   <file>dragon.obj</file> -->
-    <!-- </extern> -->
+    <extern>
+      <coord>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coord>
+      <rot>
+    	<x>45</x>
+    	<y>0</y>
+    	<z>0</z>
+      </rot>
+      <material_id>42</material_id>
+      <file>scene/dragon.obj</file>
+    </extern>
 
     <!-- <plan> -->
     <!--   <coord> -->
