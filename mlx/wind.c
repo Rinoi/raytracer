@@ -5,7 +5,7 @@
 ** Login   <martyn_k@epitech.net>
 ** 
 ** Started on  Mon May 27 23:30:59 2013 karina martynava
-** Last update Sat Jun  8 19:22:02 2013 lucas mayol
+** Last update Sun Jun  9 17:57:31 2013 lucas mayol
 */
 #include		<unistd.h>
 #include		<stdlib.h>
@@ -75,6 +75,12 @@ int	my_expose(t_rs *rs)
 void	rt_main_mlx(t_rs *rs)
 {
   rtv1_ini(rs);
+  load_img(rs, &rs->cube.up, "./Texture/alpup.xpm");
+  load_img(rs, &rs->cube.forward, "./Texture/alforward.xpm");
+  load_img(rs, &rs->cube.right, "./Texture/alright.xpm");
+  load_img(rs, &rs->cube.left, "./Texture/alleft.xpm");
+  load_img(rs, &rs->cube.backward, "./Texture/alback.xpm");
+  load_img(rs, &rs->cube.down, "./Texture/aldown.xpm");
   rs->thr = 0;
   if (rs->client == -1)
     {

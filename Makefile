@@ -5,7 +5,7 @@
 ## Login   <mayol_l@epitech.net>
 ## 
 ## Started on  Sat May 11 02:21:08 2013 lucas mayol
-## Last update Sun Jun  9 10:11:41 2013 thibault martinez
+## Last update Sun Jun  9 17:46:43 2013 lucas mayol
 ##
 
 CC	=	gcc
@@ -82,7 +82,7 @@ SRCS	=	src/main.c \
 		src/extern/call_inter.c \
 		ext_pars/obj_pars.c \
 		ext_pars/wrdtab.c \
-
+		src/readcubemap.c \
 
 include		Makefile.xml
 

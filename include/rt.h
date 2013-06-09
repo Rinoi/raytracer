@@ -199,6 +199,16 @@ typedef struct	s_pov
   struct s_pov	*next;
 } t_pov;
 
+typedef struct	s_cubet
+{
+  t_img		right;
+  t_img		left;
+  t_img		up;
+  t_img		down;
+  t_img		forward;
+  t_img		backward;
+} t_cubet;
+
 typedef struct	s_resource
 {
   int		thr;
@@ -214,6 +224,7 @@ typedef struct	s_resource
   t_kdtree	*tree;
   t_pov		*eyes;
   t_mat		*mat;
+  t_cubet	cube;
 } t_rs;
 
 typedef struct	s_patterns
@@ -367,5 +378,5 @@ t_obj		*obj_pars_main(char *obj, t_obj *tmp);
 void		inter_update(t_inter *inter, t_st *droit);
 t_inter		*my_send_rayon_rec(t_kdtree *tree, t_st *droite, int a);
 t_inter		*call_inter_extern(t_obj *obj, t_st dr);
-
+int		readcubemap(t_st *st, t_rs *rs);
 #endif
