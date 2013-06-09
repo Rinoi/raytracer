@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:43:56 2013 thibault martinez
-** Last update Thu Jun  6 21:05:55 2013 louis martin-pierrat
+** Last update Sat Jun  8 17:11:10 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -105,6 +105,7 @@ int		rt_server(t_rs *rs, int argc, char **argv)
 {
   t_sock                sock;
 
+  signal(SIGPIPE, server_handler);
   if (argc != 4)
     f_error("Usage : ./rt --server PORT file.xml");
   rs->client = 0;

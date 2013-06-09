@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Wed Jun  5 19:55:17 2013 thibault martinez
-** Last update Thu Jun  6 21:05:51 2013 louis martin-pierrat
+** Last update Sat Jun  8 17:07:55 2013 thibault martinez
 */
 
 #include	"rt.h"
@@ -30,6 +30,7 @@ int		rt_client(t_rs *rs, int argc, char **argv)
   t_sock	sock;
   int		i;
 
+  signal(SIGPIPE, client_handler);
   if (argc != 4)
     f_error("Usage : ./rt --client PORT IP");
   rs->client = 1;

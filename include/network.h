@@ -5,7 +5,7 @@
 ** Login   <mart_q@epitech.net>
 ** 
 ** Started on  Fri May 31 12:33:32 2013 thibault martinez
-** Last update Thu Jun  6 11:54:03 2013 thibault martinez
+** Last update Sat Jun  8 17:11:35 2013 thibault martinez
 */
 
 #ifndef			_SERVER_H_
@@ -23,6 +23,7 @@
 #include		<netdb.h>
 #include		<sys/stat.h>
 #include		<fcntl.h>
+#include		<signal.h>
 
 #define			BACKLOG	10
 
@@ -40,6 +41,8 @@ typedef struct		s_sock
 
 void			send_xml(int fd, t_sock *sock);
 int			receive_xml(t_sock *sock);
+void			client_handler(int sig);
+void			server_handler(int sig);
 void			f_error(char *);
 
 #endif
