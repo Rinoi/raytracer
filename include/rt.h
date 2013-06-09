@@ -241,6 +241,7 @@ typedef struct	s_fresnel
   struct s_fresnel	*next;
   struct s_fresnel	*prev;
 } t_resnel;
+
 int     init_rs(t_rs *rs, struct s_xml *tree);
 
 // color.c
